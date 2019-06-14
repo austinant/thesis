@@ -1,0 +1,1371 @@
+\documentclass{report}
+
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage[doublespacing]{setspace}
+\usepackage{amsmath,amsthm,amssymb,mathrsfs}
+\usepackage[hidelinks]{hyperref}
+%\usepackage{enumitem}
+\usepackage{enumerate}
+\usepackage{stmaryrd}
+\usepackage{tikz-cd}
+
+\title{Subset Arithmetic and the Factorization Theory of Power Monoids}
+\author{Austin A. Antoniou}
+\date{\today}
+
+%MathBB, Mathcal, Mathfrak shortcuts
+\newcommand{\A}{\mathscr{A}}
+\renewcommand{\aa}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathscr{F}}
+\newcommand{\NN}{\mathbb{N}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\Z}{\mathcal{Z}}
+
+
+\newcommand{\gen}[1]{\langle #1 \rangle}
+\newcommand{\llb}{\llbracket}
+\newcommand{\rrb}{\rrbracket}
+
+\newcommand{\fin}{\textrm{fin}}
+\newcommand{\funt}{{\textrm{fin}, \times}}
+\newcommand{\fun}{{\textrm{fin}, 1}}
+\newcommand{\fon}{{\textrm{fin}, 0}}
+
+\renewcommand{\:}{\text{:}}
+
+\newcommand{\PN}{{\P_{\fin,0}(\NN)}}
+
+
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{rk}[defn]{Remark}
+\newtheorem{eg}[defn]{Example}
+\newtheorem{conj}[defn]{Conjecture}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+
+%%%%%%
+%%%%%%
+\chapter{Introduction}
+%%%%%%
+%%%%%%
+
+Factorization theory pursues a full understanding of how complex objects decompose into their simplest constituent parts.  
+Depending on the algebraic structure in question, the difficulty of gaining such an understanding can vary wildly. 
+Some objects can be broken down in exactly one way, while others exhibit more exotic behavior and are able to be broken down into many combinations of simpler parts.
+Among our tasks are to test the bounds of this behavior, and to completely classify the circumstances under which it can occur.
+
+
+%%%%%%
+%%%%%%
+\section{History and Motivation}
+%%%%%%
+%%%%%%
+
+The most elementary setting in which we study factorizations is the set $\ZZ$ of integers.
+It is well known (as the Fundamental Theorem of Arithmetic) that every integer (other than $-1$, $0$, and $1$) factors uniquely as a product of prime integers.
+For instance, $12$ can be written as $2\cdot 2\cdot 3$.
+Of course, 12 can also be written as either of the products $2\cdot 3\cdot 2$ or $(-3)\cdot 2\cdot (-2)$, but we consider these factorizations to be fundamentally the same.  
+This tells us that, in addition to identifying the prime factors involved, there should also be an equivalence of factorizations in play.
+Making these ideas rigorous is one of the challenges of extending this familiar example to a more general theory.
+
+
+There are many settings other than the integers in which it is reasonable to decompose elements into atoms. 
+However, most will not share the familiar unique factorization of the integers.  
+Historically, one of the greatest examples comes from the ring of integers of an algebraic number field; namely, $\ZZ[\sqrt{-5}]$.
+Consider $6$ as an element of this ring: $6=2\cdot3$, but we also have $6 = (1+\sqrt{-5})(1-\sqrt{-5})$.
+It is not a hard exercise to show that these two factorizations are not equivalent (meaning that $2$ and $3$ are not associate to $1\pm\sqrt{-5}$), so $6$ has more than one type of factorization into irreducibles.
+
+%For an example, one doesn't need to migrate too far from the integers: consider the subset of integers which can be obtained as a sum of any number of copies of $4$, $9$, or $11$.
+%The list of such integers begins: $\{0, 4, 8, 9, 11, 12, 13, 15, 16, 17, ... \}$.
+%Here, it is necessary to determine which integers will appear in the list (one can show that every integer after $15$ will appear), but we will be more interested in the questions of how many ways integers can be written just using $4$, $9$, and $11$.
+%As an example, $22$ can be written as $11+11$ or as $9+9+4$; so $22$ can be decomposed into two atoms or into three.
+%This is an instance of an element whose factorizations aren't unique, but a fairly tame one relative to the sort of phenomena that can arise within the study of non-unique factorizations.
+
+Much of the field has taken place in the setting of monoids which are not only commutative (satisfying $ab = ba$) but also cancellative, meaning that $ab = ac$ implies $b = c$.
+It is true that monoids of ideals in commutative rings and monoids of modules naturally give rise to examples of non-cancellative settings in which it is reasonable to study factorization properties. 
+Our goal here is to explore a relatively new class of monoids which are non-cancellative, exhibit many rich properties, and yet are rooted in a simple and natural combinatorial construction.
+
+
+%%%%%%
+%%%%%%
+\section{Plan and Main Results}
+%%%%%%
+%%%%%%
+We will conclude this chapter by defining and recalling some preliminary notions which are necessary to move forward with our discussion, including the formal language we will use to encode the data of factorizations and some notions which capture the varying degrees of non-unique factorization.
+
+Chapter \ref{ch:power monoids} will introduce the main object of this paper: the power monoid.  
+In brief, for any monoid $H$, let $\P_\fin(H)$ be the collection of finite, nonempty subsets of $H$ with the operation of setwise multiplication given by $X\cdot Y = \{xy: x\in X, y\in Y\}$.  
+This forms a monoid which can behave wildly.
+However, the submonoid $\P_\fun(H)$ of subsets containing $1$ is more feasible for study, and yields some meaningful results which can be lifted back to the full monoid $\P_\fin(H)$.
+We will see in Section \ref{sec:boundaries} when it is reasonable to study factorizations in $\P_\fun(H)$.
+As it turns out, this monoid is atomic exactly when $H$ has no nontrivial idempotents or elements of order $2$ (Theorem \ref{thm:atomicity}).
+Moreover, $\P_\fun(H)$ has bounded factorization lengths if and only if $H$ is torsion-free (Theorem \ref{cor:BF-torsion}).
+
+
+
+
+
+
+
+%%%%%%
+%%%%%%
+\section{Preliminaries}
+%%%%%%
+%%%%%%
+\subsection{Notation and Conventions}
+
+$\NN = \{0,1,2,3,\dots\}$ will denote the set of non-negative integers.
+$i$, $j$, $k$, $\ell$, $m$, and $n$ will usually stand for non-negative integers, unless otherwise specified.
+In general unless otherwise specified, lowercase letter will usually refer to elements of a monoid; ordinary uppercase letters to subsets; script or calligraphic uppercase letters to collections of subsets.
+For real numbers $a$ and $b$, $\llb a,b \rrb = \{ n\in \ZZ : a \le n \le b \}$ shall denote the integer interval (or just ``interval") from $a$ to $b$.
+
+The \textit{free monoid} on some generating set $S$ will be denoted by $\F^*(S)$.  
+This monoid should be thought of as the set of formal words whose letters belong to $S$.
+Its operation, denoted by $*$ to avoid confusion where another multiplicative operation is present, is meant to be interpreted as the concatenation of words.
+The elements of $\F^*(S)$ will usually be represented by the fraktur letters $\aa$, $\bb$, and so on.  
+The \textit{length} of a word $\mathfrak{s}= s_1 * \cdots * s_\ell  \in \F^*(S)$, where each $s_i\in S$ and $| \mathfrak{s} | := \ell$.
+The empty word $\emptyset$ is said to have length zero.
+
+If $S$ is a set and $\E$ is an equivalence relation on $S$, the equivalence class of some $x\in S$ shall be denoted by $[x]_\E$.
+The subscript may be removed in situations where the implied equivalence is clear.
+
+\subsection{Fundamental Notions of Factorization Theory}
+\begin{defn}
+A monoid is a pair $(H,\cdot)$, where $H$ is a set and $\cdot $ is a binary operation (called multiplication in the absence of any other name) on $H$, satisfying
+\begin{enumerate}
+\item Associativity: for every $x,y,z \in H$, $(x\cdot y)\cdot z = x\cdot (y\cdot z)$
+\item Identity: there is an element $1_H\in H$ such that $1\cdot x = x\cdot 1 = x$ for all $x\in H$
+\end{enumerate}
+Often, the operation will be omitted when no confusion can arise; it is standard practice to write $xy$ instead of $x \cdot y$.
+Similarly, the identity $1_H$ will usually be written as $1$.
+
+A map $\varphi: H \to K$ between monoids is a \textbf{homomorphism} if $\varphi(1_H) = 1_K$ and $\varphi(xy) = \varphi(x)\varphi(y)$.
+\end{defn}
+
+
+
+\begin{defn}
+Let $H$ be a monoid.
+\begin{enumerate}
+\item $u\in H$ is a \textbf{unit} if there is $v\in H$ with $uv = vu = 1$.  
+The set of units of $H$ is denoted by $H^\times$.  
+$H$ is called \textit{reduced} if $H^\times = \{1\}$.
+\item $a\in H\setminus H^\times$ is an \textbf{atom} if, whenever $a = xy$, either $x\in H^\times$ or $y\in H^\times$. The set of atoms of $H$ is denoted by $\A(H)$.
+\item $x,y\in H$ are \textbf{associates} if there are units $u,v\in H^\times$ so that $x = uyv$. In this case, we write $x \sim y$.
+\item $x\in H$ is \textbf{idompotent} (or \textbf{an idempotent}) if $x^2 = x$.
+\end{enumerate}
+\end{defn}
+
+Note that $a$ is an atom if and only if every divisor of $a$ is either an associate of $a$ or a unit in $H$.
+This may be taken as a definition of an atom, or used as a starting point for generalized notions of an atom, as in [RANTHONY REFERENCE FOR DIFFERENT NOTIONS OF ASSOCIATE/ATOMS].
+
+\begin{prop}
+Let $H$ be a monoid, let $a\in \A(H)$, and let $u,v\in H^\times$.
+Then $uav \in \A(H)$.
+\end{prop}
+
+\begin{defn}
+Let $H$ be a monoid.
+The \textbf{factorization homomorphism} of $H$ is the unique homomorphism $\pi_H: \F^*(H) \to H$ satisfying $\pi_H(x) = x$ for all $x\in H$.
+
+The \textbf{factorization monoid} of $H$ is the free monoid $\F^*(\A(H))$ generated by the atoms of $H$.
+Its elements are referred to as \textit{factorizations}.
+
+If $x\in H$ is a non-unit, then the \textbf{set of factorizations} of $x$ is
+\[ \Z_H(x) := \{ \aa\in \F^*(\A(H)) : \pi_H(\aa) = x \} = \F^*(\A(H)) \cap \pi_H^{-1}(x) \]
+The subscript ``$H$" may be omitted for brevity if the ambient monoid in which the factorization is being considered is clear from context.
+
+For a non-empty word $\aa\in \Z_H(x)$, if we write $\aa = a_1*\cdots*a_k$, the atoms $a_i$ are said to be \textit{factors} of $x$.
+\end{defn}
+
+\begin{defn}
+Let $H$ be a monoid, $x\in H$ be a non-unit, and $\aa,\bb \in \F^*(\A(H))$.
+We will say that $\aa$ is \textbf{equivalent} to $\bb$ if, writing $\aa = a_1*\cdots * a_k$ and $\bb = b_1*\cdots * b_\ell$,
+\begin{enumerate}
+\item $k = \ell$.
+\item The factors in $\bb$ are permuted associates of the factors of $\aa$; that is, there is a permutation $\sigma\in S_n$ (where $S_n$ is the symmetric group on $\llb 1,n \rrb$) such that $b_i \sim a_{\sigma(i)}$ for all $i\in \llb 1,k \rrb$.
+\item $\aa$ and $\bb$ have the same product; i.e., $\pi_H(\aa) = \pi_H(\bb)$.
+\end{enumerate}
+\end{defn}
+
+It is not difficult to check that the relation defined here is indeed an equivalence relation on $\F^*(\A(H))$.
+
+\begin{defn}
+Let $H$ be a monoid and $x\in H\setminus H^\times$.
+The \textbf{set of factorization classes} of $x$ is
+\[ \mathsf{Z}_H(x) := \{ [\aa]: \aa\in \Z_H(x) \} = \Z_H(x)/\sim \]
+and the \textbf{set of (factorization) lengths} of $x$ is
+\[ \mathsf{L}_H(x) := \{ |\aa| : [\aa] \in \mathsf{Z}_H(x) \}. \]
+\end{defn}
+
+\begin{defn}
+Let $H$ be a monoid.
+Here we define some properties to measure the degree of uniqueness of factorization in $H$.
+\begin{itemize}
+\item $H$ has \textbf{unique factorization (UF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{Z}_H(x)| = 1$.
+\item $H$ is \textbf{half factorial (HF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{L}_H(x)| = 1$.
+\item $H$ has \textbf{finite factorization (FF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{Z}_H(x)| <\infty$.
+\item $H$ has \textbf{bounded factorization (BF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{L}_H(x)| < \infty$.
+\item $H$ is \textbf{atomic} if, for all $x\in H\setminus H^\times$, $\mathsf{Z}_H(x) \neq \emptyset$.
+\end{itemize}
+\end{defn}
+
+\begin{prop}
+We have the following logical implications among the properties defined just above:
+\[\begin{tikzcd}[arrows = Rightarrow]
+ & \text{HF} \arrow{dr}&  &  \\
+\text{UF} \arrow{ur}\arrow{dr}  &  & \text{BF} \arrow{r}& \text{Atomic} \\
+ & \text{FF} \arrow{ur} &  & 
+\end{tikzcd}\]
+\end{prop}
+
+
+
+\begin{eg}
+It is helpful to see some examples or non-examples of each of these properties.
+\begin{enumerate}[(i)]
+\item $\ZZ\setminus \{0\}$ is a unique factorization monoid (this is the Fundamental Theorem of Arithmetic).
+\item Let $\mathbb{P} \subseteq \NN$ be the set of primes, and let $M = \gen{\mathbb{P}\times \mathbb{P}}$ be the monoid generated by pairs of primes under multiplication.  
+Then, for any pair $(m,n)\in M$, it is clear that any factorization of $(m,n)$ has length equal to the number of primes (counted with multiplicity) dividing $m$ or $n$.
+However, this is not a UF monoid; we have, for instance, that $(2,2)(3,3)(2,3) = (12,18) = (2,3)(2,3)(3,2)$.
+\item Most examples we will encounter from here onward will be FF, so it is perhaps more useful to see a non-example of an FF monoid.
+Let $R = \mathbb{R} + x \mathbb{C}[x]$ be the ring of polynomials with complex coefficients and real constant term.
+Then, for all nonzero $r\in \mathbb{R}$, we have
+\[ x^2 = ((r+i)x)\left(\frac{1}{r+i}\,x\right). \]
+Since $r+i\notin R$ for $r\neq0$, each $r+i$ is a non-unit of $R$, so we have found infinitely many factorizations of $x^2$.
+However, any element of $R\setminus \{0\}$ has only finitely many factorization \textit{lengths} by a degree argument.
+Thus the monoid $R\setminus \mathbb{Z}$ is BF but not FF.
+\item Some of the richest factorization behavior is encountered in BF monoids.  
+Here we mention some highly studied classes of BF monoids without going into too much detail, on the promise that we will discuss a new class of examples in heavy detail later.
+\begin{itemize}
+\item \textit{Numerical monoids}: proper subsets $H \subsetneqq \NN$ with finite complement which are closed under addition. \textcolor{red}{[CITE SOME PAPERS]}
+\item \textit{Monoids of zero-sum sequences}: for a finite abelian group $G$, this monoid consists of formal words or ``sequences" in the elements of $G$ whose sums are equal to $0$.  
+%This monoid can be written as $\F(G) \cap \sigma^{-1}(0)$, where $\F(G)$ is the free \textit{abelian} monoid in which words are unordered and $\sigma: \F(G) \to G$ is the unique homomorphism sending $g \mapsto g$ (compare with our product map $\pi_H: \F^*(H) \to H$).
+The interest in these monoids can be traced back to the study of the class group of a Dedekind domain (usually a ring of integers of a number field).  \textcolor{red}{[CITE SOME PAPERS]}
+
+\item \textit{Integer-valued polynomials}: let $D$ be a domain with field of fractions $K$; then $\operatorname{Int}(D) := \{f(x) \in K[x]: f(D) \subseteq D \}$ is the ring of integer-valued polynomials of $D$.
+In addition to the rich theory developed around understanding the prime ideal structure of this ring, it is amenable to the study of factorization behavior, and exhibits some surprising behaviors.  
+For example, any finite subset of $\NN_{\ge2}$ can be realized as the set of factorization lengths of some polynomial $f(x)\in \operatorname{Int}(D)$.
+Additionally, one can pose similar questions regarding the ring $\operatorname{Int}^\text{R}(D)$ of integer-valued rational functions. \textcolor{red}{[CITE SOME PAPERS]}
+\end{itemize}
+\item Since we will usually be looking at atomic monoids, we offer a non-example here; consider the set $Q = \mathbb{Q}_{\ge 0}$ of non-negative rational numbers under addition.
+$Q$ is reduced (its only unit is the identity, $0$) and we have, for any non-zero element $x\in Q$, that $x = \frac{x}{2} + \frac{x}{2}$.
+This is a decomposition of $x$ into two non-zero (hence non-unit) elements, so $x$ is not an atom.
+Thus we learn that $Q$ not only fails to have factorizations into atoms, but also to have atoms at all.
+\end{enumerate}
+\end{eg}
+
+%%%%%%
+%%%%%%
+\chapter{Power Monoids} \label{ch:power monoids}
+%%%%%%
+%%%%%%
+
+
+
+We begin by defining our central object of study: the power monoid.
+These objects were first introduced and studied by Y. Fan and S. Tringali in \cite{fan-tringali18}.
+
+\begin{defn}
+Let $H$ be a monoid; for nonempty $X,Y\subset H$, we will define the operation of setwise multiplication by
+\[X \cdot Y = \{xy : x\in X,\, y\in Y \}. \]
+This operation endows several collections of subsets of $H$ with a monoid structure.  
+Namely, we have the \textit{Power Monoid} of $H$:
+\[ \P_\fin(H) = \{ X \subseteq H: X\neq \emptyset,\, |X| < \infty \}\]
+the \textit{Restricted Power Monoid} of $H$:
+\[ \P_\funt(H) = \{ X \subseteq H: X \cap H^\times \neq \emptyset,\,|X| < \infty \} \]
+and the \textit{Reduced Power Monoid} of $H$:
+\[ \P_\fun(H) = \{ X \subseteq H: 1\in X, \,  |X| < \infty \}. \]
+\end{defn}
+
+\begin{rk} Let $H$ be a monoid.
+\begin{enumerate}[(i)] 
+\item $\P_\fin(H) \supseteq \P_\funt(H) \supseteq \P_\fun(H)$.
+\item The identity of each of these monoids is $\{1_H\}$.
+Moreover, $\P_\fun(H)$ is indeed a reduced monoid; i.e., its only unit is $\{1_H\}$.
+\item Unless $H$ is trivial, $\P_\fin(H)$ is non-cancellative.
+\end{enumerate}
+\end{rk}
+
+%%%%%%
+%%%%%%
+\section{Conditions for Atomicity and Bounded Factorization Lengths} \label{sec:boundaries}
+%%%%%%
+%%%%%%
+
+
+%We begin with some basic facts about power monoids, many of which come from [CITATION].  
+%Many are elementary and are offered without proofs; however, proofs may be given in cases where they yield extra insight.
+
+Here we embark on the study of the (arithmetic and algebraic) structure of power monoids.
+We begin with some elementary but helpful observations we may often use without comment.
+%
+\begin{prop}\label{prop:unit-adjust}
+Let $H$ be a monoid and let $u,v\in H^\times$.  
+The following hold:
+\begin{enumerate}[(i)]
+\item\label{prop:unit-adjust(i)} If $a\in \mathscr{A}(H)$ then $uav\in \mathscr{A}(H)$.
+\item\label{prop:unit-adjust(ii)} If $x\in H\setminus H^\times$ then $\mathsf{L}_H(uxv) = \mathsf{L}_H(x)$.
+\end{enumerate}
+\end{prop}
+%
+\begin{proof}
+These are no different from points (ii) and (iv) of \cite[Lemma 2.2]{fan-tringali18}.
+\end{proof}
+
+\begin{prop}\label{prop:pm-arith}
+Let $H$ be a monoid. The following hold:
+	\begin{enumerate}[(i)]
+	\item\label{prop:pm-arith(i)} If $X_1,\ldots,X_n\in \P_{\fin,\times}(H)$ then $|X_1 \cdots X_n| \ge \max_{1 \le i \le n} |X_i|$, and if $X_1,\ldots,X_n\in \P_{\fin,1}(H)$ then $X_1 \cup \cdots \cup X_n \subseteq X_1 \cdots X_n$.
+	%
+	\item\label{prop:pm-arith(ii)} If $K\subseteq H$ is a submonoid then $\P_\fun(K)$ is a divisor-closed submonoid of $\P_\fun(H)$.
+	%
+	\item \label{prop:pm-arith(iii)} $\P_\fun(H)$ is a reduced monoid and $\P_\fin(H)^\times=\P_\funt(H)^\times = \bigl\{ \{u\}: u\in H^\times\bigr\}$.
+	\item \label{prop:pm-arith(iv)} $\mathscr{A}(\mathcal P_{\funt}(H)) \subseteq H^\times \mathscr{A}(\mathcal P_{\fun}(H)) H^\times$.
+	\end{enumerate}
+\end{prop}
+%
+\begin{proof}
+(\ref{prop:pm-arith(ii)}) and (\ref{prop:pm-arith(iii)}) are both straightforward from (\ref{prop:pm-arith(i)}); for the latter it suffices to note that $|uXv| = |X|$ for all $u, v \in H^\times$ and $X \in \mathcal P_{\fin,\times}(H)$, and that $(X \cdot 1) \cup (1 \cdot Y) \subseteq XY$ for all $X, Y \in \mathcal P_\fun(H)$.
+
+As for (\ref{prop:pm-arith(iv)}), let $A\in \mathscr{A}(\P_\funt(H))$.
+	Because $A$ contains a unit, we can find $u\in H^\times$ such that $1\in uA$.
+	Then $uA$ is an element of $\P_\fun(H)$, and by Proposition \ref{prop:unit-adjust}(\ref{prop:unit-adjust(i)}) it is also an atom of $\P_\funt(H)$.
+	Thus, if $X,Y\in \P_\fun(H) \subseteq \P_\funt(H)$ and $uA = XY$, then $X$ or $Y$ is the identity in $\P_\fun(H)$.
+	This means $uA$ is an atom of $\P_\fun(H)$, so $A=u^{-1}(uA)\in H^\times \mathscr{A}(\P_\fun(H))$, as we wished.
+\end{proof}
+%
+%
+Our ultimate goal is to investigate factorizations in $\P_\fin(H)$ for an arbitrary monoid $H$. However, this is a difficult task in general, due to a variety of ``pathological phenomena'' that arise; see, for example, \cite[Remark 3.6]{fan-tringali18}. %So,
+It is in practice more convenient to start with $\P_\fun(H)$ and then lift arithmetic results from $\P_\fun(H)$ to $\P_\funt(H)$, a point of view which is corroborated by the simple consideration that $\P_\fin(H) = \P_\funt(H)$ whenever $H$ is a group (i.e., in the case of greatest interest in Arithmetic Combinatorics).
+In turn, we will see that studying the arithmetic of $\P_\funt(H)$ is tantamount to studying that of $\P_\fun(H)$, in a sense to be made precise presently.
+To do so in as all-encompassing a way as possible, we recall from \cite[Definition 3.2]{tringali18} a notion which formally packages the idea that, under suitable conditions, arithmetic may be transferred from one monoid to another.
+%
+\begin{defn}\label{def:equimorphism}
+Let $H$ and $K$ be monoids and let $\varphi: H\to K$ be a monoid homomorphism.
+We say $\varphi$ is an \textit{equimorphism} if
+\begin{enumerate}[(\small{E}1)]
+\item\label{def:equimorphism(E1)} $\varphi^{-1}(K^\times)\subseteq H^\times$;
+\item\label{def:equimorphism(E2)} $\varphi$ is atom-preserving, meaning that $\varphi(\mathscr{A}(H)) \subseteq \mathscr{A}(K)$;
+\item\label{def:equimorphism(E3)} If $x\in H$ and $\mathfrak{b}\in \mathcal{Z}_K(\varphi(x))$ is a non-empty word, there is $\mathfrak{a}\in \mathcal{Z}_H(x)$ with $\varphi^*(\mathfrak{a}) \in \llb \mathfrak{b} \rrb_{\mathscr{C}_K}$,
+\end{enumerate}
+where $\varphi^*: \mathscr{F}^*(H)\to\mathscr{F}^*(K)$ is the (unique) monoid homomorphism induced by $\varphi$.
+Moreover, we say that $\varphi$ is \textit{essentially surjective} if $K = K^\times \varphi(H)K^\times$.
+\end{defn}
+%
+\begin{prop}\label{prop:equimorphism}
+Let $H$ and $K$ be monoids and $\varphi:H\to K$ an equimorphism. The following hold:
+\begin{enumerate}[(i)]%[label={\rm (\roman{*})}]
+\item\label{prop:equimorphism(i)} $\mathsf{L}_H(x) = \mathsf{L}_K(\varphi(x))$ for all $x\in H\setminus H^\times$.
+\item\label{prop:equimorphism(ii)} If $\varphi$ is essentially surjective, then for all $y\in K\setminus K^\times$ there is $x\in H\setminus H^\times$ with $\mathsf{L}_K(y) = \mathsf{L}_H(x)$.
+\end{enumerate}
+\end{prop}
+%
+\begin{proof}
+	These statements and their proofs can be found in \cite[Theorem 2.22]{fan-tringali18} and \cite[Theorem 3.3]{tringali18}.
+\end{proof}
+%
+\begin{prop}\label{prop:funt&fun-have-the-same-system-of-lengths}
+	Let $H$ be a Dedekind-finite monoid. The following hold:
+	%
+	\begin{enumerate}[(i)]
+	\item\label{prop:funt&fun-have-the-same-system-of-lengths(i)} The \textup{(}natural\textup{)} embedding $\P_\fun(H)\hookrightarrow \P_\funt(H)$ is an essentially surjective equimorphism.
+	\item\label{prop:funt&fun-have-the-same-system-of-lengths(ii)} $\mathscr{A}(\mathcal P_{\funt}(H)) = H^\times \mathscr{A}(\mathcal P_{\fun}(H)) H^\times$.
+	\item\label{prop:funt&fun-have-the-same-system-of-lengths(iii)} Let $X \in \mathcal P_{\fun}(H)$. Then $\mathsf{L}_{\mathcal P_{\fun}(H)}(X) = \mathsf{L}_{\mathcal P_{\funt}(H)}(X)$.
+	\item\label{prop:funt&fun-have-the-same-system-of-lengths(iv)} $\mathscr L(\mathcal P_{\funt}(H)) = \mathscr L(\mathcal P_{\fun}(H))$.
+	\end{enumerate}
+\end{prop}
+%
+\begin{proof}
+	%	
+	To ease notation, we will write $P_\times$ in place of $\mathcal P_{\fin,\times}(H)$ and $P_1$ in place of $\mathcal P_{\fin,1}(H)$.
+	
+	In view of Proposition \ref{prop:equimorphism}, points (\ref{prop:funt&fun-have-the-same-system-of-lengths(iii)}) and (\ref{prop:funt&fun-have-the-same-system-of-lengths(iv)}) are immediate from (\ref{prop:funt&fun-have-the-same-system-of-lengths(i)}).
+	Moreover, the inclusion from left to right in (\ref{prop:funt&fun-have-the-same-system-of-lengths(ii)}) is precisely the content of Proposition \ref{prop:pm-arith}(\ref{prop:pm-arith(iv)}), and the other inclusion will follow from (\ref{prop:funt&fun-have-the-same-system-of-lengths(i)}).
+	As such, we focus on (\ref{prop:funt&fun-have-the-same-system-of-lengths(i)}) for the remainder of the proof.
+	
+	Clearly, the embedding $P_1\hookrightarrow P_\times$ satisfies \ref{def:equimorphism(E1)}.
+	We also see that it is essentially surjective, as any $X\in P_\times$ contains a unit $u \in H$, so $u^{-1}X\in P_1$ and thus $X = u(u^{-1}X)$ is associate to an element of $P_1$.
+ 
+	To prove \ref{def:equimorphism(E2)}, let $A\in\mathscr{A}(P_1)$.
+	We aim to show that $A$ is an atom of $P_\times$. For, suppose that $A = XY$ for some $X,Y\in P_\times$. Then
+	$xy=1$ for some $x \in X$ and $y \in Y$. So, using that $H$ is Dedekind-finite, we get from \cite[Lemma 2.2(i)]{fan-tringali18} that $x,y\in H^\times$, and hence $y=x^{-1}$.
+	It follows that $A = XY = (Xx^{-1})(xY)$ and $Xx^{-1}, xY\in P_\times$. But then
+	$Xx^{-1} = \{1\}$ or $xY = \{1\}$, since $P_1$ is a reduced monoid and $A$ is an atom of $P_1$.
+	That is, $X$ or $Y$ is a one-element subset of $H^\times$, whence $A$ is an atom of $P_\times$. 
+	
+	We are left with \ref{def:equimorphism(E3)}. So, pick $X \in P_1$. If $X = \{1\}$, the conclusion holds vacuously. Otherwise,  let $\mathfrak{b} := B_1*\cdots*B_k\in \mathcal{Z}_{P_\times}(X)$. Since $X\in P_1$, there are $u_1\in B_1,\ldots, u_k\in B_k$ such that $1=u_1\cdots u_k$.
+	Hence, as in the proof of \ref{def:equimorphism(E2)}, it must be that $u_1,\ldots, u_k\in H^\times$.
+	Accordingly, we take, for every $i \in \llb 1, k \rrb$, $A_i := u_0 \cdots u_{i-1} B_i u_i^{-1} \cdots u_1^{-1}$, where $u_0 := 1$.
+	Then $1 \in A_i$, and we see from Proposition \ref{prop:pm-arith}(\ref{prop:pm-arith(iv)}) and \cite[Proposition 2.2(ii)]{fan-tringali18} that $A_i$ is an atom of $P_1$, and consequently $\mathfrak{a}:= A_1*\cdots * A_k \in \mathcal{Z}_{P_1}(X)$.
+	But each $A_i$ is associate to $B_i$ (by construction). So we have  $\mathfrak{a}\in \llb \mathfrak{b} \rrb_{\mathscr{C_{P_\times}}}$, as wished.
+%	
+\end{proof}
+%
+The next example shows that Dedekind-finiteness is, to some extent, necessary for Proposition \ref{prop:funt&fun-have-the-same-system-of-lengths}(\ref{prop:funt&fun-have-the-same-system-of-lengths(ii)}), and hence for the subsequent conclusions.
+%
+\begin{eg}
+Let $\mathsf{B}$ be the set of all binary sequences $\mathfrak{s}: \mathbf N^+ \to \{0,1\}$, and let $H$ denote the monoid of all functions $\mathsf{B} \to \mathsf{B}$ under composition; we will write $\mathsf{B}$ multiplicatively, so that, if $f, g \in \mathsf{B}$ then $fg$ is the map $\mathsf{B} \to \mathsf{B}: \mathfrak{s} \mapsto f(g(\mathfrak s))$.
+Further, let $n\ge 5$ and consider the functions $L,R,P:\mathsf{B} \to\mathsf{B}$ given by
+\begin{align*}
+L: (a_1,a_2,\dots) &\mapsto (a_2,a_3,\dots)  &\,\textrm{(left shift)}\\
+R: (a_1,a_2,\dots) &\mapsto (0,a_1,a_2,\dots) &\,\textrm{(right shift)}\\
+P: (a_1,a_2,\dots) &\mapsto (a_{n},a_1,\dots, a_{n-1}, a_{n+2}, a_{n+3},\dots,) &\,\textrm{(cycle the first $n$ terms)}
+\end{align*}
+In particular, observe that $LR = \operatorname{id}_\mathsf{B}$ but $RL \neq \operatorname{id}_\mathsf{B}$, whence $H$ is not Dedekind-finite.
+
+We will prove that $A:= \{L,P\} \cdot \{R,P\} = \{\operatorname{id}_\mathsf{B}, LP, PR, P^2 \}$ is an atom of $\P_\fun(H)$, although it is not, by construction, an atom of $\P_\funt(H)$. Indeed,
+assume $A = XY$ for some $X,Y\in \P_\fun(H)$.
+Then $X,Y\subseteq A$ and it is clear that $P^2$ must belong to $X$ or $Y$ (since $P^2$ must be a product of units), but not both (which is the reason for choosing $n\ge 5$).
+Without loss of generality, let $P^2 \in X \setminus Y$.
+Then $Y = \{\operatorname{id}_\mathsf{B}\}$, since one can easily check that $P^2LP, P^3R \notin A$, by noting that the action of $P^2LP$ and $P^3R$ differ from that of $A$ on the sequences $(1,1,\ldots)$ and $(1,0,1,1,\ldots)$. This makes $A$ an atom of $\P_\fun(H)$.
+\end{eg}
+%
+We see from Proposition \ref{prop:funt&fun-have-the-same-system-of-lengths} that studying factorization properties of $\P_\fun(H)$ is sufficient for studying corresponding properties of $\P_\funt(H)$, at least in the case when $H$ is Dedekind-finite.
+Thus, as a starting point in the investigation of the arithmetic of $\P_\fun(H)$, one might wish to give a comprehensive description of
+the atoms of $\P_\fun(H)$.
+This is however an overwhelming task even in specific cases (e.g., when $H$ is the additive group of the integers), let alone the general case. Nevertheless, we can obtain basic information about $\mathscr A(\P_\fun(H))$ in full generality.
+%
+%
+\begin{lemma}\label{lem:2-elt-atoms}
+Let $H$ be a monoid and $x \in H \setminus \{1\}$.
+The following hold:
+\begin{enumerate}[(i)]
+%
+\item\label{prop:2-elt-atoms(i)} The set $\{1, x\}$ is an atom of $\P_\fun(H)$ if and only if $1 \ne x^2 \ne x$.
+\item\label{prop:2-elt-atoms(ii)} If $x^2=1_H$ or $x^2=x$, then $\{1_H,x\}$ is not a product of atoms in $\P_{\fin,1}(H)$ or in $\P_\funt(H)$.
+\end{enumerate}
+\end{lemma}
+%
+\begin{proof}
+(\ref{prop:2-elt-atoms(i)}) It is clear that, if $x^2 = 1$ or $x^2 = x$, then $\{1,x\} = \{1,x\}^2$, and therefore $\{1,x\}$ is not an atom of $\mathcal P_\fun(H)$. As for the converse, assume that $\{1,x\} = YZ$ for some non-units $Y,Z \in \mathcal P_\fun(H)$. Then we get from Proposition \ref{prop:pm-arith} that $X$ and $Y$ are two-elements sets, namely, $Y = \{1, y\}$ and $Z = \{1, z\}$ with $y,z \in H \setminus \{1\}$. Hence $\{1,x\} = YZ = \{1,y,z,yz\}$, and immediately this implies $x=y=z$.  Therefore, $\{1,x\} = \{1,x,x^2\}$, which is only possible if $x^2 = 1$ or $x^2 = x$.
+
+(\ref{prop:2-elt-atoms(ii)}) Suppose that $x^2 = 1$ or $x^2 = x$. Then the calculation above shows that $\{1,x\} = \{1,x\}^2$ and there is no other decomposition of $\{1,x\}$ into a product of non-unit elements of $\mathcal P_{\fin,1}(H)$. So, $\{1,x\}$ is a non-trivial idempotent (hence, a non-unit) and has no factorization into atoms of $\mathcal P_{\fin,1}(H)$.
+
+It remains to prove the analogous statement for $\mathcal P_{\fin,\times}(H)$.
+For, assume to the contrary that $\{1_H,x\}$ factors into a product of, say, $n$ atoms of $\mathcal P_{\fin,\times}(H)$. Then $n \ge 2$, since $\{1_H, x\}$ is a non-trivial idempotent (and hence not an atom itself). Consequently, we can write $\{1_H,x\} = YZ$, where $Y$ is an atom and $Z$ a non-unit of $\mathcal P_{\fin,\times}(H)$. In particular, we get from points (\ref{prop:pm-arith(i)}) and (\ref{prop:pm-arith(iii)}) of Proposition \ref{prop:pm-arith} that both $X$ and $Y$ are $2$-element sets, say, $Y = \{u, y\}$ and $Z = \{v, z\}$. It is then immediate to see that there are only two possibilities: $1_H$ is the product of two units from $Y$ and $Z$, or $1_H$ is the product of two non-units from $Y$ and $Z$.
+Without loss of generality, we are thus reduced to considering the following cases.
+\vskip 0.1cm
+\textsc{Case 1:} $uv=1_H$. Then $uz \ne 1_H$ (or else $z = u^{-1} = v$, contradicting the fact that $Z$ is a $2$-element set). So $uz=x$, and similarly $yv=x$. Then $y = xu = uzu$ and $z = xv = vyv$, and therefore
+$$
+\{u,y\} = \{u,uzu\} = \{1_H,uz\}\cdot \{u\} = \{1_H,x\}\cdot\{u\} = \{u,y\}\cdot \{vu,zu\}
+$$
+However, this shows that $\{u,y\}$ is not an atom of $\P_\funt(H)$, in contrast with our assumptions.
+\vskip 0.1cm
+\textsc{Case 2:}
+$yz = 1_H$ and $y,z\in H\setminus H^\times$. Then $u,v\in H^\times$, by the fact that $\{u, y\}, \{v, z\} \in \mathcal P_{\fin,\times}(H)$; and we must have $uz=x$, for $uz=1_H$ would yield $z = u^{-1}\in H^\times$.
+In particular, $x = uz$ is not a unit in $H$, so $uv=1_H$ and we are back to the previous case.
+\end{proof}
+%
+We have just seen that, to even {\it hope} for $\P_\fun(H)$ to be atomic, we must have that the ``bottom layer'' of two-element subsets of $H$ consists only of atoms, and it will turn out that this is also a sufficient condition.
+Before proving this, it seems appropriate to point out some structural implications of the condition that every non-identity element of $H$ is neither an idempotent nor a square root of $1$.
+%
+\begin{lemma}\label{prop:no-non-id-elts-of-small-order-implies-structure}
+Let $H$ be a monoid such that $1 \ne x^2 \ne x$ for all $x\in H\setminus\{1\}$. The following hold:
+%
+\begin{enumerate}[(i)]
+\item\label{prop:no-non-id-elts-of-small-order-implies-structure(i)}
+	$H$ is Dedekind-finite.
+\item\label{prop:no-non-id-elts-of-small-order-implies-structure(ii)}
+	If $x \in H$ and $\gen{x} = \{x^k : k\ge 1 \}$ is finite, then $x \in H^\times$ and $\gen{x}$ is a cyclic group.
+\end{enumerate}
+\end{lemma}
+%
+\begin{proof}
+(\ref{prop:no-non-id-elts-of-small-order-implies-structure(i)})
+	Let $y,z\in H$ such that $yz = 1$. Then $(zy)^2 = z(yz)y = zy$, and using that $H$ has no non-trivial i\-dem\-po\-tents, we conclude that $zy=1$. Consequently, $H$ is Dedekind-finite.
+
+(\ref{prop:no-non-id-elts-of-small-order-implies-structure(ii)})
+	This follows from \cite[Ch. V, Exercise 4, p. 68]{whitelaw}, according to which every finite semigroup has an idempotent.
+ 	The proof is short, so we give it here for the sake of self-containedness.
+ 	
+ 	Because $\gen{x}$ is finite, there exist $n, k \in \mathbf N^+$ such that $x^n = x^{n+k}$, and by induction $x^n = x^{n+hk}$ for all $h \in \mathbf N$. It follows that
+$$
+(x^{nk})^2 = x^{2nk} = x^{(k+1)n}x^{(k-1)n} = x^n x^{(k-1)n} = x^{nk},
+$$
+and hence $\gen{x}$ has an idempotent. But $H$ has no non-trivial idempotents, thus it must be the case that $x^{nk}=1$. That is, $x$ is invertible with $x^{-1} = x^{nk-1} \in \gen{x}$, and $\gen{x}$ is a (finite) cyclic group.
+\end{proof}
+
+%
+
+\begin{thm}\label{thm:atomicity}
+Let $H$ be a monoid. Then $\mathcal P_\fun(H)$ is an atomic monoid if and only if $1 \ne x^2 \ne x$ for all $x \in H \setminus \{1\}$.
+\end{thm}
+%
+\begin{proof}
+The ``only if'' part is a consequence of Lemma \ref{lem:2-elt-atoms}(\ref{prop:no-non-id-elts-of-small-order-implies-structure(ii)}).
+As for the other direction, assume that $1 \ne x^2 \ne x$ for each $x\in H\setminus\{1\}$, and fix $X \in \mathcal P_{\fun}(H)$ with $|X| \ge 2$.
+
+We wish to show that $X$ can be factored as a product of atoms.
+If $|X| = 2$, the claim is true by Lemma \ref{lem:2-elt-atoms}(\ref{prop:no-non-id-elts-of-small-order-implies-structure(i)}). So let $|X| \ge 3$, and suppose inductively that every $Y \in \P_\fun(H)$ with $2 \le |Y| < |X|$ is a product of atoms. If $X$ is an atom, we are done.
+Otherwise, $X = A B$ for some non-units $A, B \in \P_\fun(H)$, and by symmetry we can take $|X| \ge |A| \ge |B| \ge 2$.
+
+If $|A| < |X|$, both $A$ and $B$ factor as a product of atoms (by the inductive hypothesis), and so too does $X=A B$. Therefore, we are only left to consider the case when $|X| = |A|$. This implies $A B = A$ and $B\subseteq A$, as $A=A\cdot 1\subseteq AB=X$ and $B = 1\cdot B\subseteq AB=A$.
+
+Since $B$ is a non-unit, we can choose $b\in B\setminus\{1\} \subseteq A$ and set $A_b := A \setminus \{b\}$, so $|A_b| < |A|$.
+If $|B|<|A|$ then $A_b$ and $B$ are both products of atoms (by induction), thus so is $X = AB = A_bB$.
+If $|B|=|A|$ then, in fact, $B=A$.
+By assumption, $|A| = |X| \ge 3$, so choose $a\in A\setminus\{1,b\}$; then $X=AB = A_b(B\setminus\{a\})$.
+By induction, both sets on the right hand side are products of atoms, making the same true for $X$ and finishing the proof.
+\end{proof}
+
+
+Now that we have established when power monoids are atomic, we can engage in a finer study of their arithmetic. For instance, we may wish to study their (systems of) sets of lengths. However, we are met with a problem immediately: Some sets of lengths in power monoids are infinite in a rather trivial way.
+%
+\begin{eg}\label{eg:unbounded-fzn}
+Let $H$ be a monoid with an element $x$ of finite odd order $m \ge 3$, and set $X := \{1 \} \cup \langle x \rangle_H$. Then it is clear that, for every $n \ge m-1$, $X$ is the setwise product of $n$ copies of $\{1, x\}$. This shows that the set of lengths of $X$ relative to $\P_\fun(H)$ contains the interval $\llb m-1, \infty \rrb$ (and hence is infinite), since we know from Lemma \ref{lem:2-elt-atoms} that $\{1, x\}$ is an atom of $\P_\fun(H)$.
+\end{eg}
+
+\begin{thm}\label{cor:BF-torsion}
+Let $H$ be a monoid. The following hold:
+\begin{enumerate}[(i)]
+\item\label{cor:BF-torsion(i)} If $H$ is torsion-free and $X\in \P_\fun(H)$ then $\sup \mathsf{L}(X) \le |X|^2$.
+\item\label{cor:BF-torsion(ii)} $\P_\fun(H)$ is \textup{BF} if and only if $H$ is torsion-free.
+\item\label{cor:BF-torsion(iii)} $\P_\funt(H)$ is \textup{BF} if and only if $H$ is torsion-free.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+(\ref{cor:BF-torsion(i)})
+Let $n := |X|$ and suppose for a contradiction that there is some $\ell>n^2$ with $\ell\in \mathsf{L}(X)$.
+There are $A_1,\dots, A_\ell\in \mathscr{A}(\P_\fun(H))$ with $X = A_1\cdots A_\ell$.
+By the Pigeonhole Principle, there is some element $x\in X$ and a subset $I \subseteq \llb 1,\ell \rrb$ such that $m := |I|>n$ and $a_i = x$ for each $i\in I$.
+Writing $I = \{i_1,\ldots, i_m\}$, we have that $x^k = \prod_{j=1}^k a_{i_j} \in A_1\cdots A_\ell = X$.
+However, since $H$ is torsion-free, each power of $x$ is distinct, so $X \subseteq \{1,x,\dots, x^m\}$, which is a contradiction since $m > n = |X|$.
+
+(\ref{cor:BF-torsion(ii)})
+First suppose for a contradiction that $\P_\fun(H)$ is BF and has an element $x$ of finite order $m$; then $\P_\fun(H)$ is also atomic, and we know by Theorem \ref{thm:atomicity} and Lemma \ref{prop:no-non-id-elts-of-small-order-implies-structure}(\ref{prop:no-non-id-elts-of-small-order-implies-structure(ii)}) that $x^m=1$.
+If $m$ is even then $(x^{m/2})^2=1$, contradicting the atomicity of $\P_\fun(H)$ since, by Theorem \ref{thm:atomicity}, no non-identity element of $H$ can have order 2. 
+If $m$ is odd then Example \ref{eg:unbounded-fzn} shows us that the set of lengths of $\gen{x}$ is infinite, a contradiction to the assumption that $\P_\fun(H)$ is BF.
+
+Conversely, suppose $H$ is torsion-free; then all powers of non-identity elements are distinct, so Theorem \ref{thm:atomicity} implies that $\P_\fun(H)$ is atomic, and (\ref{cor:BF-torsion(i)}) gives an explicit upper bound on the lengths of factorizations.
+
+(\ref{cor:BF-torsion(iii)}) 
+By (\ref{cor:BF-torsion(ii)}), it is sufficient to show that $\P_\funt(H)$ is BF if and only if $\P_\fun(H)$ is BF.
+The ``only if'' direction follows from \cite[Theorem 2.28(iv) and Corollary 2.29]{fan-tringali18}, so suppose that $\P_\fun(H)$ is BF.
+Then $\P_\fun(H)$ is atomic and so, by Theorem \ref{thm:atomicity}, we have $1\neq x^2 \neq x$ for all $x\in H\setminus\{1\}$.
+From here, Lemma \ref{prop:no-non-id-elts-of-small-order-implies-structure}(\ref{prop:no-non-id-elts-of-small-order-implies-structure(ii)}) implies $H$ is Dedekind finite, so the embedding $\P_\fun(H)\hookrightarrow\P_\funt(H)$ is an essentially surjective equimorphism by Proposition \ref{prop:funt&fun-have-the-same-system-of-lengths}(\ref{prop:funt&fun-have-the-same-system-of-lengths(i)}).
+The result then follows from Proposition \ref{prop:funt&fun-have-the-same-system-of-lengths}(\ref{prop:funt&fun-have-the-same-system-of-lengths(iii)}).
+\end{proof}
+
+
+
+
+%%%%%%
+%%%%%%
+\section{Minimal Factorizations and Conditions for Minimal Properties} \label{sec:min fac}
+%%%%%%
+%%%%%%
+
+
+%%%%%%
+%%%%%%
+\section{Subset Arithmetic in Finite Cyclic Groups} \label{sec:finite cyclic}
+%%%%%%
+%%%%%%
+
+%%%%%%
+%%%%%%
+\chapter{Power Monoids of Natural Lattices} \label{ch:applications}
+%%%%%%
+%%%%%%
+\section{Passage to and from Other Monoids} \label{sec:passage}
+
+In this section, we give several reasons which motivate the study of $\PN$, mention some known facts about this monoid, and outline some techniques which can hopefully help us learn more about all aspects of this monoid (and which help us recover some results of Y. Fan and S. Tringali from a different viewpoint).
+
+We begin by outlining several reasons that, certainly within the scope of power monoids, $\PN$ is a well-motivated and natural setting in which to study factorizations.
+
+\subsubsection*{Non-Torsion Monoids}
+
+If $H$ is a non-torsion monoid, let $x\in H$ be an element with infinite multiplicative order.  
+Then the map $f: \NN \to \gen{x}$ given by $n\mapsto x^n$ is an isomorphism (specifically, from $(\NN,+)\to (\gen{x},\cdot)$).
+On the level of sets, this yields an isomorphism $f: \PN \to \P_\fun(\gen{x})$.
+In turn, this isomorphism induces an isomorphism $f^*: \F(\A(\PN)) \to \F(\A(\P_\fun(\gen{x})))$.
+As a consequence, for any $X \in \PN$, we have a bijection $f^*: \Z_{\PN}(X) \to \Z_{\P_\fun(\gen{x})}(f(X)) = \Z_{\P_\fun(H)}(f(X))$, where the last inequality follows from Proposition \ref{prop:pm-arith} (\ref{prop:pm-arith(ii)}).
+
+Thus the study of factorizations of $\PN$ actually tells us about the factorization of certain subsets of $H$.
+Of course, there is much more to be studied in $\P_\fun(H)$ when we include subsets of $\gen{x,y}\subseteq H$, especially when $x$ and $y$ do not commute.
+However, what we have observed above does tell us that every behavior encountered in $\PN$ actually occurs in many more power monoids.
+
+
+\subsubsection*{Cyclic Groups}
+
+Abelian groups are a classical setting for combinatorial sumset problems \textcolor{red}{[CITE SOME PAPERS]}.
+By the Fundamental Theorem of Finitely Generated Abelian Groups, all finitely-generated abelian groups can be constructed as direct sums of cyclic groups, so studying the power monoid of a cyclic group can be motivated by the hope to fully understand sumset arithmetic in all abelian groups.
+
+For any abelian group $G$, $\P_\fin(G)  = \P_\funt(G)$, and we have by \textcolor{red}{[LEMMA ON PRESERVATION OF MINIMAL FACTORIZATIONS IN COMMUTATIVE CASE]} that the embedding $\P_\fun(G) \hookrightarrow \P_\funt(G)$ is an essentially surjective equimorphism.
+Thus the study of $\P_\fun(G)$ actually encompasses the full study of $\P_\fin(G)$. 
+
+Section \textcolor{red}{[SECTION REFERENCE HERE]} tells us about the factorization theory of $\P_\fon(\ZZ/n\ZZ)$, establishing a foothold in the study of subset arithmetic of finite cyclic groups.  
+By analogy, we should study $\P_\fon(\ZZ)$ to complete our understanding of cyclic groups.
+However, a mild reduction allows us to pass to $\PN$: if $X \subseteq \ZZ$ is a finite subset, then $X-\min(X) \in \PN$, and there is a bijection (using Proposition \ref{prop:unit-adjust} (\ref{prop:unit-adjust(ii)})) between $\Z_{\P_\fon(\ZZ)}(X)$ and $\Z_{\P_\fon(\ZZ)}(X-\min(X))$.
+By Proposition \ref{prop:pm-arith} (\ref{prop:pm-arith(ii)}) (the divisor-closedness of $\PN$ in $\P_\fon(\ZZ)$), the latter is equal to $\Z_{\PN}(X-\min(X))$.
+
+
+\subsubsection*{Higher-Dimensional Integer Lattices}
+
+We have seen just above that studying $\PN$ is sufficient for studying the subset arithmetic of $\ZZ$.
+In a similar way, we may also justify the passage between $\PN$ and $\P_\fon(\NN^d)$, for $d\ge 2$ (at least in a certain local sense), making $\PN$ an appropriate setting for the study of all torsion-free abelian groups.
+
+\begin{lemma} \label{lem:passage to N2}
+Let $W\in \P_\fon(\NN^2)$.
+Then there is a map $f\NN^2 \to \NN$ which induces a length-preserving bijection $\Z_{\P_\fon(\NN^2)}(W) \to \Z_{\PN}(f(W))$.
+\end{lemma}
+
+\begin{proof}
+Begin by choosing $N > 2\max\{ u : (u,v)\in W \}$ and defining $f: \NN^2 \to \NN$ by $f(u,v) = u + Nv$.
+It is not too hard to see that $f$ is a homomorphism, and $f|_W$ is injective; for the latter, suppose that $f(u,v) = f(u',v')$.
+Then $u+Nv = u'+Nv'$, which implies that $u-u' = N(v'-v)$.
+By the choice of $N$, $N|v'-v| > |u-u'|$ unless $u-u' = v-v' = 0$, so $f$ is indeed injective.
+
+Now we can consider the map $F:\Z_{\P_\fon(\NN^2)}(W) \to \Z_{\PN}(f(W))$ defined by $F(A_1*\cdots*A_k) = f(A_1)*\cdots*f(A_k)$.
+To see that this map is well-defined, we need only see that
+\begin{itemize}
+\item $f$ preserves atoms contained in $W$; i.e., if $A\subseteq W$ is an atom, so is $f(A)$. 
+To see this, suppose that $f(A) = X+Y$ for some $X,Y\in \PN$. 
+Then, because $f$ is a bijection and a homomorphism, $A = f^{-1}(X) + f^{-1}(Y)$.
+Since $A$ is an atom, $f^{-1}(X) = \{0\}$ (without loss of generality), so that $X = \{0\}$.
+\item $F$ preserves products; i.e., $\pi_{\PN}(F(\aa)) = f(W)$ for any $\aa\in\Z_{\P_\fon(\NN^2)}(W)$.
+We can see this by way of a simple computation: writing $\aa = A_1*\cdots*A_k$,
+\[ \pi_{\P_\fon(\NN^2)}(F(\aa)) 
+= f(A_1) + \cdots + f(A_k) 
+= f(A_1+\cdots+ A_k) 
+= f(W). \]
+\end{itemize}
+%Both these points are straightforward consequences of the fact that $f|_W$ is a bijection $W \to f(W)$.
+Now it is clear that $F$ is well-defined and preserves factorization lengths.  
+We can see that $F$ is a bijection by finding its inverse; consider the map $G: \Z_{\PN}(f(W)) \to \Z_{\P_\fon(\NN^2)}(W)$ given by $B_1*\cdots*B_k\mapsto f^{-1}(B_1)*\cdots*f^{-1}(B_k)$.
+$G$ is well-defined by reasoning identical to that for $F$, and it is plain to see that $F$ and $G$ are inverses.
+\end{proof}
+
+\begin{cor} \label{cor:passage to Nd}
+Let $d\ge 2$ and let $W\in \P_\fon(\NN^d)$.
+Then there is $U\in \PN$ and a length-preserving bijection $F:\Z_{\P_\fon(\NN^d)}(W) \to \Z_{\PN}(U)$.
+\end{cor}
+\begin{proof}
+	To prove this, one only needs to induct on $d$ and apply the previous lemma.
+\end{proof}
+
+We will soon see some advantages of working inside of $\NN^d$.
+First, however, we state a general lemma on finding sumset decompositions in abelian groups.
+Let $G$ be an abelian group and $X\in \P_\fon(G)$.
+Often, for a given $A\in \P_\fon(G)$, we need to determine whether $A$ divides $X$; that is, whether there is $Y$ so that $X = A+Y$.
+Due to the non-cancellative nature of power monoids, there is not a canonical choice for such a $Y$.
+In general, there may be many such $Y$.
+%We will often find ourselves trying to determine whether a given set is an atom.
+%The easiest way to show that a set is not an atom is to produce a nontrivial factor; however, due to the non-cancellative nature of power monoids, a potential factor does not come equipped with an obvious quotient.
+%That is, if we suspect $A$ divides $X$, we cannot simply check whether $X/Y$ belongs to our monoid, as there is no obvious choice for ``$X/A$''.
+To partially make up for this, we have the following definition and lemma.
+
+\begin{defn} \label{def:cofactor}
+	Let $G$ be an abelian group and $X,A\in \P_{\fin,0}(G)$.
+	We define the \textbf{cofactor of $A$ in $X$} by
+	\[ X\:A := \bigcap_{a\in A} (X-a) \]
+\end{defn}
+
+\begin{prop} \label{prop:cofactors}
+	Let $X,A \in \PN$. 
+	\begin{enumerate}[(i)]
+		\item $A + X\:A \subseteq X$.
+		\item If $X = A + Y$ then $Y \subseteq X\:A$.
+		\item If $A$ divides $X$ if and only if $A + X\:A = X$.
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	Point (i) is straightforward to see; suppose $a\in A$ and $x\in X\:A$.
+	Then, by construction, $x\in X-a$ so that $x+a \in (X-a) +a = X$.
+	
+	For (ii), suppose $y\in Y$ and $a\in A$.
+	Then $a+y \in A + Y = X$, so $y \in X-a$; this was true for any $a\in A$, so $y\in \bigcap_{a\in A} (X-a) = X\:A$.
+	
+	To see (iii), first suppose that $A$ divides $X$; then there is some $Y$ so that $A + Y = X$.
+	Then, using (ii) and then (i), we have that $X = A+Y \subseteq A+ (X\:A) \subseteq X$, whence all the inclusions are equalities.
+\end{proof}
+
+
+\section{Higher-Dimensional Lattices}
+
+Lemma \ref{lem:passage to N2} and Corollary \ref{cor:passage to Nd} essentially state that the factorization theory of $\P_\fon(\NN^d)$ is locally included in that of $\PN$.
+Thus, to study $\P_\fon(\NN^d)$, we need only look inside $\PN$. 
+Another perspective is the following: to study factorizations in $\PN$, we now have access to the space and geometric intuition afforded to us by working inside the $d$-dimensional lattice $\NN^d$.
+
+To demonstrate the potential power of this technique, we recover some known results about the sets of lengths which occur in $\PN$.
+These are due to Y. Fan and S. Tringali and originally appear in \cite{fan-tringali18}.
+The proofs given here differ cosmetically, but also, to a degree, in substance.
+It is the author's hope that a proof from a different perspective will be meaningfully illuminative.
+
+
+
+
+
+\begin{prop} \label{prop:singleton-length-set}
+Let $n\ge 2$ and let $e_1,\dots, e_n\in \NN^d$ be $\ZZ$-linearly independent.
+Set $C := \{0,e_1\} + \cdots \{0,e_n\}$.
+Then $C$ has exactly one factorization; that is $\Z_{\PN}(C) = \{ \{0,e_1\}*\cdots*\{0,e_n\} \}$.
+\end{prop}
+
+\begin{proof}
+We prove this by induction on $n$.
+The result is trivial when $n=1$, since $\{0,e_1\}$ is an atom.
+Assume $n\ge 2$ and suppose $C = X + Y$, for some $X,Y\subseteq C$ with $X$ an atom and $Y\neq\{0\}$.
+
+We begin by setting some notation, by analogy with the proof given in \cite{fan-tringali18}: let $I_X:=\{i\in \llb1,n\rrb : e_i\in X\}$ and $I_Y := \{i\in \llb1,n\rrb: e_i\in Y\}$.
+Additionally, for any $I\subseteq \llb1,n\rrb$, we set $e_I := \sum_{i\in I} e_i$.
+
+Begin by noting that $\llb 1,n \rrb = I_X \sqcup I_Y$; indeed, for each $i\in\llb 1,n \rrb$, $e_i\in X+Y$, and it must be that $e_i\in X\cup Y$ since all the $e_i$ are linearly independent.  
+Moreover, we cannot have $e_i\in X\cap Y$ since $2e_i \notin C = \{e_I : I\subseteq \llb 1,n \rrb \}$.
+
+\noindent\underline{Claim A}: For any $I\subseteq I_X$, $e_I\in X$.\\
+Since $e_I\in C = X+Y$, there are subsets $J,K\subseteq \llb 1,n \rrb$ with $e_J\in X, e_K \in Y$.
+Necessarily, $I = J\sqcup K$, so if $K\neq \emptyset$ there must be $k\in K\subseteq I_X$, whence $2e_k + e_{K\setminus\{k\}} = e_k + e_K\in X+Y$, but this is a contradiction as no element of $C = X+Y$ has an $e_k$-coefficient of $2$.
+Thus $K = \emptyset$ and $e_I = e_J \in X$.
+
+\noindent\underline{Claim B}: For $I\subseteq \llb 1,n \rrb$, $e_I\in X$ only if $I\subseteq I_X$.\\
+Suppose $I = J\sqcup K$ with $J\subseteq I_X$ and $K\subseteq I_Y$.
+If $k\neq \emptyset$, then the argument from the previous claim yields a contradiction as before.
+Thus $I = J\subseteq I_X$.
+
+We conclude that $X = \{ e_I : I\subseteq I_X\} = \sum_{i\in I_X} \{0,e_i\}$ and, by symmetry, that $Y = \sum_{i\in I_Y} \{0,e_i\}$.
+Since we assumed that $X$ is an atom, there is some $k$ for which $I_X = \{k\}$ so that $X = \{0,e_k\}$.
+Then $Y = \sum_{i\neq k} \{0,e_i\}$; by induction, $Y$ factors uniquely as the sum of the atoms $\{0,e_i\}$ for $i\neq k$; up to reording, all possible choices of $k$ yield the same factorization and we have the desired result; namely, that $\Z_{\P_\fon(\NN^d)}(C) = \{ \{0,e_1\}*\cdots*\{0,e_n\} \}$.
+\end{proof}
+
+\begin{thm} \label{thm:2n-length-set}
+Let $n\ge 2$ and let $e_1,\dots, e_n\in \NN^n$ be $\ZZ$-linearly independent.
+Set $f = \sum_{i=1}^n e_i$, $g=f+e_n$.%, and $C_\ell = \sum_{i=1}^\ell \{0,e_i\}$ for $\ell\in \{n-1,n\}$.
+Letting $U = \sum_{i=1}^n + \{0,g\}$, we have 
+\[\Z_{\P_\fon(\NN^n)}(U) = \left\{ \{0,e_1\}*\cdots*\{0,e_n\}*\{0,g\}, \left[\sum_{i=1}^{n-1}\{0,e_i\}+\{0,g\}\right]\cup\{f\} * \{0,e_n\} \right\}. \]
+\end{thm}
+
+\begin{proof}
+Suppose $U = X + Y$ for some $X,Y\subseteq U$ with $X,Y\neq \{0\}$.
+As in the previous theorem, we will let $I_X := \{i\in \llb 1,n \rrb: e_i\in X\}$, $I_Y := \{i\in \llb1,n \rrb: e_i\in Y \}$, and $e_I := \sum_{i\in I}e_i$ for any $I\subseteq \llb 1,n \rrb$.
+As before, we have $\llb 1,n \rrb = I_X \sqcup I_Y$.
+
+To prove some of the following claims, we will use a basic understanding of which linear combinations of the $e_i$ appear as elements of $U$.
+Every element of $U$ has one of the following forms:
+\begin{enumerate}[(F1)]
+\item $e_I$: the coefficient to each $e_i$ is either $0$ or $1$.
+\item $g+e_I$: the $e_n$ coefficient is either $2$ or $3$, and all other $e_i$-coefficients are either $1$ or $2$.
+\end{enumerate}
+
+We now wish to determine the structure of $X$ and $Y$.
+For the ease of understanding the argument, we state and prove several small claims about $X$ (which will also hold for $Y$ by symmetry).
+\begin{enumerate}[(A)]
+\item If $I\subseteq I_X$ then $e_I\in X$. 
+
+Suppose $I = J\sqcup K$ with $e_J\in X$ and $e_K\in Y$.
+If $K\neq \emptyset$ then let $k\in K\subseteq I_X$; we have $2e_k + e_{K\setminus\{k\}} = e_k + e_K\in X+Y$, which is impossible unless $K = \llb 1,n\rrb$, so that $e_K = f$.
+However, since $1\in K\subseteq I\subseteq I_X$, this implies that $2e_1 + e_{K\setminus\{k\}} = e_1 + e_K\in X+Y$, a contradiction.
+
+\item For $I\subsetneqq \llb 1,n \rrb$, $e_I\in X$ only if $I\subseteq I_X$.
+
+Suppose $K := I \cap I_Y$ is nonempty (otherwise, we are done).
+Then $e_{I\setminus K} + 2e_K = e_I + e_K \in X +Y$ has at least one coefficient equal to $0$ and at least one coefficient $\ge 2$, which is a contradiction.
+
+\item If $g + e_I\in X$ then $e_I\in X$. 
+
+Let $K := I\cap I_Y$; then $g + e_{I\setminus K} + 2e_K = (g+e_I) + e_K \in X+Y$, which is not possible unless $K=\emptyset$ (since no element of $U$ has more than one coefficient $>2$).
+This implies the desired conclusion.
+
+\item Exactly one of $X$ or $Y$ has an element of the form $g + e_I$. 
+
+This is easy to see; if neither $X$ nor $Y$ has such an element then no element of $X+Y$ has a coefficient larger than two.
+On the other hand, if $g+e_J\in X$ and $g+e_K\in Y$ then $2g + e_J + e_K \in X+Y$, which is a contradiction since this element has an $e_n$-coefficient $\ge 4$.
+
+\item If $g+ e_H\in X$ for some $H\subseteq \llb 1,n \rrb$ then $g + e_I \in X$ for every $I\subseteq I_X$ with $I\subsetneqq \llb 1,n\rrb$. 
+
+%First note that if $H = \llb 1,n \rrb$ then $g+f\in X$ and so $Y = \{0\}$.
+%It must be that $H\subsetneqq \llb 1,n \rrb$.
+Let $I \subseteq I_X$ with $I\subsetneqq \llb1,n\rrb$.
+Since $g+e_I\in U = X+Y$, we may write $g+e_I = x +y$ with $x = \delta g + e_J\in X$ (for $\delta\in \{0,1\}$) and $y=e_K\in Y$ by (D).
+Now $g + e_I = \delta g + e_J + e_K$.
+\begin{itemize}
+\item[\underline{Case 1}:] If $\delta = 1$ then $e_I = e_J + e_K$, hence $I = J\sqcup K$. 
+Since $I\neq \llb1,n\rrb$, $K\subsetneqq \llb 1,n \rrb$ and so $K\subseteq I_Y$ by (B).
+However, we now have that $K = \emptyset$ since $K\subseteq I \subseteq I_X$.
+Thus $g + e_I = g + e_J \in X$, as we wished.
+\item[\underline{Case 2}:] If $\delta = 0$ then $g + e_I = e_J + e_K$, and the only possibility is that $I = \llb 1,n-1\rrb$ and $J = K = \llb 1,n\rrb$ (so $e_J = e_K = f$).
+However, since $\llb 1,n-1 \rrb \subseteq I_X$, we have $e_1 + f \in X+Y$, which is a contradiction (no element of $U$ has an $e_n$-coefficient of $1$ and an $e_1$-coefficient of $2$), finishing the proof of the claim.
+\end{itemize}
+\end{enumerate}
+
+Assume without loss of generality that $g\in X$.
+If $I_X = \emptyset$ then $X = \{0,g\}$ and $Y = \sum_{i=1}^n \{0,e_i\}$ by Claim A.
+By Theorem \ref{prop:singleton-length-set}, $Y$ factors uniquely and we have $\{0,e_1\}*\cdots \{0,e_n\}*\{0,g\}\in \Z_{\P_\fon(\NN^n)}(U)$.
+
+Now suppose $I_X \neq \emptyset$.
+Then, by Claims (C) and (E), 
+\[X \supseteq \{0,g\} + \sum_{i\in I_X} \{0,e_i\} \tag{1} \label{factor-includes} \]
+We can completely determine the structure of $Y$.
+First observe that we cannot have $f=e_{\llb1,n\rrb}\in Y$ since we would then have $(g+e_{I_X})+f \in X+Y$, but this is not an element of $U$.
+This allows us to use Claim (B), as well as (A) and (D), to say that $Y = \sum_{i\in I_Y} \{0,e_i\}$.
+
+With this, we can say more about the structure of $X$.
+By Proposition \ref{prop:cofactors}, we have 
+\[X \subseteq U\:Y = \bigcap_{y\in Y}(U-y) = \bigcap_{K\subseteq I_Y} \underbrace{\{e_I - e_K, g+e_I - e_K : I\subseteq \llb 1,n \rrb \}}_{=:U_K} \]
+
+Recalling the forms (F1) and (F2) of all elements of $U$ that we outlined earlier, we can similarly express the forms of elements of $U\:Y$:
+\begin{enumerate}[(F1$'$)]
+\item $e_I$ for $I\subseteq I_X$. 
+To see this, observe that $e_I = e_{I\cup K}-e_K\in U_K$ for any $K\subseteq I_Y$.
+On the other hand note that, for $H \subseteq \llb 1,n \rrb$ with $H\cap I_Y\neq \emptyset$, $g+e_H\notin U_{H\cap I_Y}$, so these are the only elements of form (F1) which remain in $U\:Y$.
+%
+%for each $k\in I_Y$, every element of the form $e_I - e_k\in U_{\{k\}}\cap U$ has $e_k$ coefficient of zero.
+%In the intersection of the $U_K$ over all $K\subseteq I_Y$, we are left only with the elements whose $e_i$ coefficients are $0$ for all $i\in I_Y$.
+\item $g+e_I$ for $I\subseteq I_X$.
+For this, we observe $g+e_{I\cup K} - e_K\in U_K$. 
+Similar to the argument just above, we see that $g+e_H\notin U_{H\cap I_Y}$ whenever $H\cap I_Y\neq\emptyset$.
+\item $f\in U\:Y$ only if $I_Y = \{n\}$.
+First, it is clear that $f = e_{\llb 1,n \rrb} \in U_\emptyset$.
+For any $K\subseteq I_Y$ with $n\in K$, $f = g+ e_{K\setminus\{n\}} - e_K\in U_K$.
+However, if $n\notin K$ but $K$ is non-empty, then $f\notin U_K = \{e_I, g+e_I-e_K: I\subseteq \llb1,n\rrb\}$.
+This is because $e_I - e_K \neq f$ (since $K$ is non-empty), and $g+e_I-e_K$ has an $e_n$ coefficient larger than $1$ (since $n\notin K$).
+\end{enumerate}
+We now have, combining our work here with (\ref{factor-includes}) above, that
+\[ \{0,g\} + \sum_{i\in I_X}\{0,e_i\} \subseteq X \subseteq U\:Y \subseteq \left[\{0,g\}+\sum_{i\in I_X} \{0,e_i\} \right]\cup\{f\},\]
+so we have determined $X$ almost exactly, up to the choice of whether $f\in X$.
+
+Before discussing the possible factorizations of $X$, recall that $Y = \sum_{i\in I_Y} \{0,e_i\}$ and so $Y$ factors uniquely (by Theorem \ref{prop:singleton-length-set}) as the sum of the $\{0,e_i\}$ for $i\in I_Y$.
+
+Now we turn to $X$; first suppose $f\notin X$.
+Then $X = \{0,g\} +\sum_{i\in I_X} \{0,e_i\}$, which has a unique factorization (by Theorem \ref{prop:singleton-length-set}) as the sum of $\{0,g\}$ and the $\{0,e_i\}$ for $i\in I_X$.
+This can only produce -- up to reordering, of course -- the factorization $\{0,g\}*\{0,e_1\}*\cdots*\{0,e_n\}\in \Z_{\P_\fon(\NN^n)}(U)$.
+
+If $f\in X$, then $X = \left[\{0,g\}+\sum_{i\in I_X} \{0,e_i\} \right]\cup\{f\}$ (and $Y = \{0,e_n\}$ per our considerations in (F3$'$)).
+We claim that $X$ is an atom, which will produce the factorization $X*\{0,e_n\}\in \Z_{\P_\fon(\NN^n)}(U)$ and complete the proof.
+
+Suppose $X = A + B$.
+We can see, by comparing the sizes of coefficients, that $f \notin \operatorname{span}_\ZZ(e_1,\dots, e_{n-1},g)$ and \textcolor{red}{$g\notin \operatorname{span}_\ZZ(e_1,\dots, e_{n-1},f)$. (THIS ISN'T QUITE RIGHT).}
+Thus we have $f,g\in A\cup B$; however, since $f+g\notin X$, it must be that $f,g\in A$ (without loss of generality).
+Then, for any $I\subseteq \llb 1,n-1\rrb$ and $\delta\in \{0,1\}$, $f + (g+ e_I) \notin X$, so $g+e_I\notin B$.
+Finally, $g + f \notin X$, so $f\notin B$, meaning that $B = \{0\}$ so that $X$ is indeed an atom.
+\end{proof}
+
+
+\begin{rk}
+	\textcolor{red}{REMARKS ON WHICH PROP/THEOREM OF FAN-TRINGALI WE JUST REVCOVERED.
+		INCLUDE COMPARISON OF SMALLEST-CASE CONSTRUCTIONS FOR BOTH}
+\end{rk}
+
+
+
+%%%%%%
+%%%%%%
+\section{Partition Type of Factorizations} \label{sec:partitions}
+%%%%%%
+%%%%%%
+
+
+%One can see that the intervals $\llb 0,n \rrb$ have overwhelmingly many factorizations in $\P_{\fin,0}(\NN)$.
+%Any subset of $\NN$ can be obtained by removing points from such an interval, and we know that arbitrary subsets may exhibit all sorts of factorization behavior.  
+%As such, it may be interesting to try and observe gradual changes in this behavior as we remove points from $\llb 0,n \rrb$.
+%At the opposite extreme of the extremely flexible factorization behavior of $\llb 0,n \rrb$, we have the subsets with the most behavior: the atoms.
+%We would like to determine whether there is a distinct threshold for the number of points we are required to remove from $\llb 0,n \rrb$ to obtain an atom.
+
+The length set realization Theorems \ref{prop:singleton-length-set} and \ref{thm:2n-length-set} show that some subsets of $\NN$ have very well-controlled sets of factorization.
+On the other hand, there are subsets with comparatively ``wild" set of factorizations; the intervals $\llb 0,n \rrb$ are a simple class examples which demonstrate this since, for instance, we have $\mathsf{L}(\llb0,n\rrb) = \llb 2,n \rrb$ \cite[Proposition 4.8]{fan-tringali18}.
+However, observe that any subset $X$ can be obtained by deleting points from the interval $\llb 0,\max(X) \rrb$.
+If $X$ has relatively tame factorization behavior and we imagine this process of deleting points from $\llb 0,\max(X)\rrb$, then the subsets between the full interval and $X$ experience a transition between ``wild" and ``tame" factorization behavior.
+In what follows, we seek to more rigorously quantify what is meant by ``wild" factorization behavior and to investigate the nature of this transition.
+
+Since we will be thinking of elements of $\PN$ as subsets of the intervals $\llb 0,n \rrb$, it will be convenient to have some notation to help us filter $\NN$.
+
+
+\begin{defn} \label{def:filtration}
+For $n\ge 0$, we distinguish the following collections of subsets:
+\begin{align*}
+ \P_n &= \{ X \subseteq \llb 0,n \rrb : 0,n\in X \} \\
+\mathcal{A}_n &= \mathcal{A}(\PN) \cap \P_n  \\
+\mathcal{N}_n &= \P_n \setminus \mathcal{A}_n 
+\end{align*}
+%Here we are just filtering the subsets, atoms, and non-atoms (respectively) in accordance with the intuitive grading on subsets of $\NN$.
+\end{defn}
+
+
+%\begin{defn}
+%Define a function $z:\NN \to \NN$ by
+%\[ z(n) := \Z_{\P_{\fin,0}(\NN)}(\llb 0,n \rrb) \]
+%\end{defn}
+%This function measures the number of factorizations of an interval into atoms of $\P_{\fin,0}(\NN)$.
+%Our goal in the coming pages will be to describe the behavior (especially growth) of this function. 
+%In so doing, we should glean some insight into the most flexibly factorable elements of the natural power monoid.
+
+In any monoid, we can distinguish different factorizations of an element $x$ by their lengths; that is, we know that if $\aa,\bb\in \Z(x)$ with $|\aa| \neq |\bb|$, then $\aa$ and $\bb$ are not equivalent.
+In $\PN$, we have some additional leverage which comes from integer partitions; we make some definitions to facilitate this leverage now.
+
+\begin{defn}
+Let $n\ge 1$. A \textit{partition of $n$} is $P = (m_1,\dots, m_k)$, where $m_1 \ge \dots \ge m_k \ge 1$ and $m_1+\cdots + m_k = n$. 
+Each $m_i$ is said to be a \textit{part} of $P$, and $k$ is said to be the \textit{length} or number of parts of $P$.
+For brevity, we occasionally write $P \vdash n$.
+
+For $X \in \PN$ and for any partition $P = (m_1,\dots, m_k)$ of $\max(X)$, we define the \textbf{set of factorizations of $X$ of (partition) type $P$} to be
+\[ \Z^P(X) := \{ A_1*\cdots * A_k \in \Z(X) : A_i \in \mathcal{A}_{m_i} \textrm{ for } i\in \llb 1,k \rrb \}. \]
+We also define the \textbf{set of (partition) types of $X$} to be
+\[ \mathsf{T}(X) :=  \{ P \vdash \max(X) : \Z^P(X) \neq \emptyset \}. \]
+\end{defn}
+
+\begin{rk}
+There are some elementary observations to be made which connect factorization behavior with partition type.
+Say $X \in \PN$ with $n = \max(X)$.
+\begin{enumerate}[(i)]
+\item $\Z(X) = \bigsqcup_{P} \Z^P(X)$, a disjoint union taken over all partitions $P$ of $n$.
+\item $\Z^{(n)}(X) = \emptyset$ if and only if $X$ is not an atom.
+\end{enumerate}
+Though the disjoint union in (i) is not too hard to see, it is not clear that each $\Z^P(X)$ is nonempty.
+In fact, we will soon see evidence to the contrary.
+\end{rk}
+
+
+%Here, we have demonstrated that each $\Z^P(\llb 0,n \rrb)$ is nonempty when $\min(P) = 1$.  
+%However, as with other aspects of the set of factorizations of $\llb 0,n \rrb$, we hope this indicates that intervals have \textit{many} factorizations of each such type $P$.
+%On the other hand, some types can never admit factorizations; we shall see some examples of this soon.
+
+\begin{prop} \label{prop:2-elt factor/cofactor}
+Let $X\in \PN$.
+\begin{enumerate}[(i)]
+\item Let $n = \max(X) + b$. $X + \{0,b\} = \llb 0,n \rrb$ if and only if $X \cap \{k,k-b\} \neq \emptyset$ for every $k\in \llb 0,n \rrb$.
+\item For any $c\ge 1$, $X + \{0,2c\} = \llb 0,\max(X)+2c \rrb$ implies that $\{0,c\}$ divides $X$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+For (i), we first prove the ``only if" direction.  
+Suppose $k\in \llb 0,n \rrb$; then $k\in X + \{0,b\}$.
+We must have that $k\in X + 0$ or that $k \in X + b$, which is the same as saying $k\in X$ or $k-b\in X$.
+
+Conversely, suppose that $k\in \llb 0,n \rrb$.
+If $k\in X \subseteq X + \{0,b\}$, we are done.
+If $k\notin X$, then we have by assumption that $k-b\in X$, meaning $k\in X +b \subseteq X+ \{0,b\}$.
+We conclude that $X + \{0,b\} \supseteq \llb 0,n \rrb$, and the other inclusion is clear since $\max(X+\{0,b\}) = \max(X) + b = n$.
+
+For (ii), we use Proposition \ref{prop:cofactors}.
+Let $Y = X\:\{0,c\} = X\cap (X-c)$; we know that $\{0,c\} + Y \subseteq X$, so we just need to show the other inclusion.
+Suppose $X \supsetneqq \{0,c\} + Y$; then there is $x\in X$ with $x\notin \{0,c\} + Y$.
+This means that $x\notin X \cap (X-c)$ and $x \notin X \cap (X-c)$; all together, this means $x+c,x-c\notin X$.
+However, this contradicts part (i), taking $b = 2c$ and $k = x+c$.
+Thus we must have $X = \{0,c\} + X\:\{0,c\}$.
+\end{proof}
+
+\begin{prop} \label{prop:bad types}
+Let $n\ge 1$.
+\begin{enumerate}[(i)]
+\item For $n\ge 4$, $\Z^{(n-2,2)}(\llb 0,n \rrb) = \emptyset$.
+\item For even $n\ge 4$, $\Z^{(2,\dots,2)}(\llb 0,n \rrb) = \emptyset$.
+\item For odd $n\ge 5$, $\Z^{(3,2,\dots, 2)}(\llb 0,n \rrb) = \emptyset$.
+\item For even $n\ge 6$, $\Z^{(4,2,\dots, 2)}(\llb 0,n \rrb) = \emptyset$.
+\item For odd $n\ge 7$, $\Z^{(5,2,\dots, 2)}(\llb 0,n \rrb) = \emptyset$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+For (i), we can use the second part of Lemma \ref{prop:2-elt factor/cofactor} with $c = 1$ to see that there can be no atom $A$ with $A+\{0,2\} = \llb 0,n \rrb$.
+
+It is easy to see (ii) because $\{0,2\}$ is the only atom in $\mathcal{A}_2$, and no sum of the form $\{0,2\} +\dots +\{0,2\}$ can contain $1$, let alone a whole interval.
+
+For (iii), write $n = 2m+1$.
+We note that $\mathcal{A}_3 = \{\{0,2,3\}, \{0,1,3\} \}$.
+Since $1$ belongs to the interval, if $\llb 0,2m+1 \rrb$ is to have a factorization of partition type $(3,2,\dots,2)$, then that factorization must include $\{0,1,3\}$.
+However, we see that 
+\[ \{0,1,3\} + (m-1)\{0,2\}  = \{0,1,3\} + \{0,2,\dots, 2m-2\} = \llb 0, 2m-1 \rrb \cup \{2m+1\} \]
+which does not contain $2m = n-1$, so $\llb 0,2m+1\rrb$ cannot have a factorization of type $(3,2,\dots,2)$.
+
+The arguments for the remaining parts proceed along similar lines.
+For (iv), we note that the only atoms in $\mathcal{A}_4$ which contain $1$ are $\{0,1,4\}$ and $\{0,1,2,4\}$.
+However, if $n = 2m$, we have
+\[ \{0,1,2,4\} + (m-2)\{0,2\} = \{0,1,4\} + \{0,2,\dots, 2m-4\} = \llb 0, 2m-2 \rrb \cup \{2m\} \]
+which again fails to contain $n-1$.
+
+Finally, we turn to (v).
+We similarly begin by observing that the only atoms in $\mathcal{A}_5$ which contain $1$ are $\{0,1,5\}$, $\{0,1,2,5\}$, and $\{0,1,3,5\}$.
+Let $n = 2m+1$.
+By calculations similar to those above, one can see that $n-2 \notin \{0,1,2,5\} +(m-2)\{0,2\}$ and $n-1\notin \{0,1,3,5\} + (m-2)\{0,2\}$.
+\end{proof}
+
+As we have just seen above, several partition types fail to appear because of the limited number of atoms available in $\mathcal{A}_N$ for small $N$.
+Even in $\mathcal{A}_5$, where there are a few choices of atoms containing $1$, there is no atom which contains both $1$ as well as enough ``comparably larger'' elements closer to $5$.
+However, this issue does not seem to arise for atoms with larger maximum; indeed, in $\mathcal{A}_7$ we have several choices which fit this requirement: for example, $\{0, 1, 2, 4, 6, 7\}$, and $\{0, 1, 3, 5, 6, 7\}$ seem promising if one hopes to produce factorizations of type $(7,2,\dots, 2)$. 
+Indeed, the problems that occur for atoms of sizes between $2$ and $5$ do not persist, for we have the following.
+
+Our goal now will be to verify that intervals have factorizations of various partition types.  
+To aid in this, we will need a few classes of specifically structured ``large atoms" to populate the sets $\mathcal{A}_N$.
+
+\begin{prop} \label{prop:2-congruence atoms}
+Each of the following sets is an atom of $\PN$ for the given values of the parameter $h$.
+\begin{enumerate}[(i)]
+\item $B_{2h-1} := \{0,1,3,\dots, 2h-1\}$ for $h\ge 1$.
+\item $B_{2h} := \{0,1,3,\dots, 2h-1,2h\}$ for $h \ge 3$.
+\item $C_{2h} := \{0,2,4,\dots,2h\}\cup\{1\}$ for $h\ge 2$.
+\item $C_{2h+1} := \{0,2,4,\dots, 2h\}\cup\{1,2h+1\}$ for $h\ge 3$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Beginning with (i), we suppose that there are $X,Y\in \PN$ so that $B_{2h-1} = X + Y$.
+Without loss of generality, $1\in X$.
+Then $Y\subseteq B_{2h-1}$ cannot contain any nonzero elements; if $y\in Y\setminus\{0\}$ then $1+y\in B_{2h-1}$ is even, a contradiction.
+Thus $Y = \{0\}$ and $B_{2h-1}$ is an atom.
+
+For (ii), we start similarly by assuming that $B_{2h} = X + Y$ and that $1\in X$.
+If $y\in Y \setminus\{0\}$, then $1+y\in B_{2h}$ is even, meaning that $y = 2h-1$.
+We now have that $Y = \{0\}$ or $Y = \{0,2h-1\}$.
+In the first case, we are done; but we are nearly done in the second case as well.  
+Since $\max(X) + \max(Y) = 2h$, it must be that $X = \{0,1\}$, so $B_{2h} = X+Y = \{0,1\} + \{0,2h-1\} = \{0,1,2h-1,2h\}$.
+However, this is impossible since we have assumed that $h\ge 3$.
+
+Turning to (iii), suppose that $C_{2h} = X + Y$ and that $1\in X$.
+We know that if $Y$ has a nonzero even element then $C_{2h} = X + Y$ contains the odd element $y+1 > 1$.
+Thus $Y \subseteq \{0,1\}$; but then $C_{2h} \subseteq \{0,1\} + \{0,1\} = \{0,1,2\}$, which is incompatible with the assumption that $h\ge 2$.
+
+Finally, for (iv), let $X$ and $Y$ be subsets such that $C_{2h+1} = X + Y$, and say $1\in X$.
+Similarly to (iii), we see that $Y$ can have no nonzero even elements $y$ \textit{unless} $y=2h$.
+This means that the only possibilities are $Y = \{0\}$ (in which case we are done), $Y = \{0,1\}$, or $\max(Y) = 2h$.
+These last two cases are symmetric, so suppose $\max(Y) = 2h$.
+Then $X = \{0,1\}$ and $Y \subseteq \{0,1,2h\}$, so $C_{2h+1} \subseteq \{0,1\} + \{0,1,2h\} = \{0,1,2,2h,2h+1\}$.
+This last inequality is seen to be infeasible by recalling that $h\ge 3$.
+\end{proof}
+
+We will see that the above constructions are helpful because sums of small numbers of these atoms will be able to form relatively large intervals.
+
+\begin{lemma} \label{lem:two-part types}
+If $q\ge r \ge 3$ then $\llb 0, q+r \rrb \in \A_q + \A_r$; that is, there are atoms $A_q\in \A_q$ and $A'_r\in \A_r$ such that $A_q + A'_r = \llb 0,q+r \rrb$.
+\end{lemma}
+
+\begin{proof}
+There are several cases to consider; roughly, these amount to when both, one of, or none of $q$ and $r$ is large.
+
+\underline{Case 1}: $q,r \ge 6$. 
+
+\underline{Subcase 1.a}: $q = 2s$ and $r = 2t+1$.
+Then 
+\begin{align*}
+B_{2s} + C_{2t+1} 
+&\supseteq \{0,1\}\cup\{2s-1,2s\} + \{0,1,2,4,\dots, ,2t,2t+1\} \\
+&= \llb 0, 2t+2 \rrb \cup \llb 2s-1,2s+2t+1 \rrb
+\end{align*}
+and, switching the roles of $s$ and $t$ in the calculation we just saw, we also have 
+\[B_{2s}+C_{2t+1} \supseteq \llb 0,2s+1 \rrb \cup \llb 2t,2s+2t+1 \rrb.\]
+Thus we conclude that $\llb 0,2s+2t+1 \rrb \subseteq B_{2s}+C_{2t+1} \subseteq \llb 0,2s+2t+1 \rrb$ and so $B_r + C_q = \llb 0,q+r \rrb$.
+
+\underline{Subcase 1.b}: $q = 2s+1$ and $r = 2t$.
+Because the above computation does not depend on which of $q$ and $r$ is smaller, we may recycle that argument to see that $C_q + B_r = \llb 0,q+r \rrb$.
+
+\underline{Subcase 1.c}: $q = 2s+1$ and $r = 2t+1$.\\
+One can show that $C_q + C_r = \llb 0,q+r \rrb$ by a calculation similar to the one above.
+
+\underline{Subcase 1.d}: $q = 2s$ and $r = 2t+1$. \\
+Again, similar methods will tell us that $B_q + C_r = \llb 0,q+r \rrb$.
+
+\underline{Case 2}: $3 \le r \le 5 < q$.\\
+There are only a few possibilities here.
+Let $A_3 = \{0,1,3\}$, $A_4 = \{0,2,3,4\}$, and $A_5 = \{0,2,4,5\}$; then we can see that $B_q +A_r = \llb 0,q+r \rrb$ when $q$ is even and $C_q + A_r = \llb 0,q+r \rrb$ when $q$ is odd.
+
+\underline{Case 3}: $3\le r\le q \le 5$.\\
+This leaves only a handful of $(q,r)$ pairs to check; namely $(3,3)$, $(4,3)$, $(5,3)$, $(4,4)$, $(5,4)$, and $(5,5)$.
+By judicious choice of atoms like $A_3$, $A_4$, and $A_5$ in the previous case, the result can be realized for each of these pairs.
+\end{proof}
+
+\begin{prop} \label{prop:3-congruence atoms}
+For $h\ge 2$, each of the following subsets of $\NN$ is an atom in $\PN$:
+\begin{enumerate}[(i)]
+\item $D_{3h} := \{0,3,6,\dots, 3h\} \cup \{ 1, 3h-1 \}$.
+\item $D_{3h+1} := \{0,3,6,\dots, 3h\} \cup \{ 1, 3h+1 \}$.
+\item $D_{3h+1} := \{0,3,6,\dots, 3h\} \cup \{ 1, 3h+1, 3h+2 \}$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+The arguments for each are similar, but (i) and (ii) are comparatively easier than (iii), so we will just prove (iii).
+Suppose that there are $X$ and $Y$ so that $D_{3h+2} = X + Y$.
+We may freely suppose that $1\in X$ this implies that $Y \subseteq \{0,3h,3h+1\}$.
+We cannot have $\max(Y) = 3h$, for then $\max(X) = 3h+2 - \max(Y) = 2$.
+This is impossible since $2\notin D_{3h+2}$.
+
+If $\max(Y) = 3h+1$ then $X = \{0,1\}$, so $D_{3h+2} \subseteq \{0,1\} + \{0,3h,3h+1\} = \{0,1,3h,3h+1,3h+2\}$.
+However, this cannot be the case since $3,6\in D_{3h+2}$.
+The only remaining possibility is that $Y = \{0\}$, which implies that $D_{3h+2}$ is an atom, as we wished.
+\end{proof}
+
+These atoms will help us obtain more decompositions of intervals, with the following rough justification: we know that $3\NN + 2\NN = \NN \setminus\{1\}$. 
+We hope to mimic this for finite subsets by adding a truncated (and slightly modified) copy of $3\NN$ to a truncated copy of $2\NN$.
+To make this precise, we have the following lemma.
+
+\begin{lemma} \label{lemma:many 2s types}
+For $q \ge 6$ and $t\ge 2$, there is an atom $A\in \A_q$ with $A + t\{0,2\} = \llb 0, q+2t \rrb$.
+\end{lemma}
+
+\begin{proof}
+This essentially depends on the congruence class of $q$ modulo $6$.
+In the spirit of the argument from the preceding proposition, we demonstrate the result for the most representatively difficult of these cases.
+
+Suppose $q \equiv 0 \mod 6$, so $q = 3h$ for some even $h$.
+We first note that
+\begin{align*}
+D_{3h} + t\{0,2\} 
+&\supseteq \{0,6,\dots, 3h\} + \{0,2,4,\dots, 2t\} \\
+& = \{0,2,4,\dots, 3h+2t \}
+\end{align*}
+and similarly that
+\begin{align*}
+D_{3h} + t\{0,2\}
+&\supseteq \{3,9,\dots, 3(h-1) \}\cup\{1,3h-1\} + \{0,2,4,\dots, 2t \} \\
+&= \{3,5,\dots, 3h-3 + 2t \}\cup \{1,3h-1 + 2t \} \\
+&= \{1,3,5,\dots, 3h+2t-1 \}
+\end{align*}
+Putting these together, we see that $D_{3h} + t\{0,2\} = \llb 0,3h+2t \rrb$.
+\end{proof}
+
+\begin{rk}
+The most important details that make this argument work are
+\begin{enumerate}[(i)]
+\item $1,q-1\in D_q$
+\item $\{0,2,4\} \subseteq t\{0,2\}$
+\end{enumerate}
+Point (i) enables us to ``perturb" $t\{0,2\}$ in a way which ensures that the points near the ends of the desired interval are included.
+Point (ii) is significant because it allows us to include the middle portion of the interval by covering it with ``patches" of length $6$.
+This is also a comforting constraint in light of Proposition \ref{prop:bad types}, which says that $D_q + \{0,2\}$ cannot be an interval since $D_q$ is an atom.
+\end{rk}
+
+
+\begin{thm} \label{thm:good types}
+Let $n\ge 1$ and suppose $P$ is a partition of $n$ with $P \notin \{(n-2,2)\} \cup \{ (m,2\dots,2) : 2\le m \le 5\}$.
+Then $\Z^P(\llb 0,n \rrb) \neq \emptyset$.
+In particular, $|\mathsf{T}(\llb 0,n \rrb)| = p(n)-4$, where $p(n)$ is the number of integer partitions of $n$.
+\end{thm}
+
+\begin{proof}
+It is helpful to first classify the ways in which $P$ can avoid being a partition not of the types prescribed above.  
+We have several possibilities.
+
+
+\underline{Case 1}: $P = (q,2,\dots, 2)$ with $m\ge 6$.
+
+Here, Lemma \ref{lemma:many 2s types} implies that $\Z^P(\llb 0,n \rrb) \neq \emptyset$.
+
+\underline{Case 2}: $P$ has two parts, both of which are larger than $2$.
+
+The content of Lemma \ref{lem:two-part types} is exactly that $\Z^P(\llb 0,n \rrb) \neq \emptyset$ for any such partition.
+
+\underline{Case 3}: $P = (m_1,\dots, m_k)$ with $k\ge 3$ and $m_1\ge m_2 \ge 3$.
+
+To resolve this possibility, we proceed by induction.
+The constraints on $P$ imply that $n\ge 8$.  
+Enumerating the factorizations of $\llb 0,8 \rrb$ by hand (or, preferably, by computer) is not prohibitively difficult and indeed confirms that $\llb 0,8 \rrb$ has factorizations of every type other than those excluded in the statement of the theorem.
+
+Suppose now that $n > 8$ and, for $8\le m < n$, $\llb 0,m \rrb$ has factorizations of each type fitting the description in (iii).
+Consider $P' = (m_1,\dots, m_{k-1})$.
+If $k=3$ then $P'=(m_1,m_2)$ is a partition of $n-m_k$ as described in case 2, and if $k>3$ then $P'$ is as in case 3.  
+In any event, either by the result from case 2 or by our inductive assumption, we know that $\Z^{P'}(\llb 0,n-m_k \rrb) \neq \emptyset$.
+Taking $\aa' \in \Z^{P'}(\llb 0,n-m_k \rrb)$, we have that $\aa := \aa' * \{0,m_k\} \in \Z^P(\llb 0,n \rrb)$.
+
+\underline{Case 4}: $P$ has smallest part equal to $1$.
+
+Finally, we have the partitions described in (iv): those with smallest part equal to 1.
+The result is reasonable to check by hand for $n=1,2,3$.
+We proceed by induction on $n$, assuming that $n>3$ and that the proposition is true for $m<n$.
+Let us write $P = (m_1,\dots, m_k, 1)$.
+
+If $k=1$, we can see that $C_{n-1}*\{0,1\}\in \Z^P(\llb 0,n \rrb)$, where $C_{n-1}$ is one of the atoms constructed in Proposition \ref{prop:2-congruence atoms}.
+Similarly, if $k=2$ we have by Lemma \ref{lem:two-part types} that there are atoms $A\in \A_{m_1}$ and $A'\in \A_{m_2}$ with $A+A' = \llb 0,m_1+m_2 \rrb$, so $A*A'* \{0,1\}\in \Z^P(\llb 0,n \rrb)$.
+
+Now assume that $k>2$ and write $P' = (m_1,\dots, m_k)$.
+If $m_k=1$, then there is some $\aa'\in \Z^{P'}(\llb 0,n-1 \rrb)$ by induction, so that $\aa = \aa' * \{0,1\}\in \Z^P(\llb 0,n \rrb)$.
+However, if $m_k > 1$, set $Q = (m_1,\dots, m_{k-1}, 1)$ (a partition of $n-m_k$).
+Again, we have by induction that there is some $\bb \in \Z^Q(\llb 0, n-m_k \rrb)$.
+Since $k>2$ and $m_k \le m_i$ for all $i\ge 1$, we also have that $m_k < n/2$ and so $n-m_k > m_k$.
+This allows us to conclude that $\aa = \bb * \{0,m_k\} \in \Z^P(\llb 0,n \rrb)$, proving what we wished.
+\end{proof}
+
+We have just seen that intervals of the form $\llb 0,n \rrb$ have factorizations of most partition types.
+There is a very sharp dichotomy between the wildly varied factorization behavior of intervals and that of any other subset of $\NN$, which we will see presently.  
+
+\begin{defn}
+Let $m_1,\dots, m_k$ be integers.
+We will refer to $S = (m_1,\dots, m_k)$ as a \textit{sequence} of integers.
+Define the \textbf{set of subsums of S} to be $\Sigma(S) := \left\{ \sum_{i\in I} m_i : I\subseteq \llb 1,k \rrb \right\}$.
+\end{defn}
+
+\begin{rk}
+The notion of ``set of subsums" of a sequence can be compared with the similar notion which appears in much of the literature on zero-sum problems in finite abelian groups \textcolor{red}{[CITE SOME PAPERS]}.  
+Ours is nearly identical, except for its inclusion of the empty sum.
+Since we are not focused on the appearance of zero sums, including the empty sum does not put us at any disadvantage in our setting.
+To the contrary, it is convenient for us as it allows us to express the set of subsums of $S = (m_1,\dots, m_k)$ as a sum in $\P_\fon(\ZZ)$: $\Sigma(S)  = \{0,m_1\} + \cdots +\{0,m_k\}$.
+\end{rk}
+
+\begin{lemma} \label{lem:long-partitions}
+Let $m_1,\dots, m_k$ be positive integers with $m_1\ge \cdots \ge m_k \ge 1$ and let $n = m_1 + \cdots + m_k$.
+If $k> n/2$ then $\Sigma(m_1,\dots, m_k) = \llb 0,n \rrb$.
+\end{lemma}
+
+\begin{proof}
+To prove this, we will induct on $k$; if $k=1 > n/2$, then $n \le 1$ and the result is trivial.
+Now suppose $k > 1$ and that, for any sequence $T$ consisting of $\ell < k$ terms satisfying $\ell > \max(\Sigma(T))/2$, $\Sigma(T) = \llb 0, \max(\Sigma(T)) \rrb$.
+
+First observe that the maximum term of $S$ is at least the average of the terms of $S$; that is, $m_1 \ge \frac{n}{k}$.
+From here, we have
+\[ \frac{m_2+\cdots + m_k}{k-1} = \frac{n-m_1}{k-1} \le \frac{n-n/k}{k-1} = \frac{n}{k} < 2 \]
+Thus $k - 1 > \frac{m_2+\cdots+m_k}{2}$ and we can apply the inductive hypothesis to $T := (m_2,\dots, m_k)$.
+Now we have $\Sigma(T) = \llb 0, n-m_1 \rrb$, so $\Sigma(S) = \{0,m_1\} + \llb 0,n-m_1 \rrb = \llb 0,n-m_1 \rrb \cup \llb m_1,n \rrb$.
+This union of intervals is equal to $\llb 0,n \rrb$ if $m_1 \le m_2 + \cdots + m_k +1$, so all that remains is to verify this last inequality.
+
+From our assumption that $k > n/2$, we have $k-1 \ge (n-1)/2$, so 
+\[m_2 + \cdots + m_k \ge 1 +\cdots + 1 = k-1 \ge \frac{n-1}{2}.\]
+Using this inequality twice, we have that
+\[m_1 = n - (m_2 + \cdots + m_k) \le n - \frac{n-1}{2} = \frac{n+1}{2} \le m_2 + \cdots + m_k + 1,\]
+exactly as we wished.
+\end{proof}
+
+\begin{lemma} \label{lem:n/2-partitions}
+Let $n$ be even and let $P$ be a partition into $n/2$ parts.
+Then one of the following holds:
+\begin{itemize}
+	\item $\Sigma(P) = \llb 0, n \rrb$.
+	\item $\Sigma(P) = \llb 0,n \rrb$ and $P = (n/2+1,1,\dots,1)$.
+	\item $\Sigma(P) = 2\cdot \llb 0, n/2 \rrb$ and $P = (2,\dots, 2)$
+\end{itemize}
+\end{lemma}
+
+\begin{proof}
+Let $P = (m_1,\dots, m_k)$ with $k=n/2$ and $m_1\ge \cdots \ge m_k \ge 1$.
+Note that the average size of the parts of $P$ is $(m_1+\cdots+m_k)/k = n/(n/2) = 2$.
+Thus the smallest part $m_k$ satisfies $m_k \le 2$.
+
+If $m_k = 2$ then $m_1 = n - (m_2+\cdots+m_k) \le n - (k-1)(2) = n - (n/2-1)2 = 2$.
+Thus we have $m_1 = \cdots = m_k = 2$ and so $\Sigma(P) = \{0,2\}+\cdots+\{0,2\} = \{0,2,\dots,n\} = 2\cdot\llb0,n/2\rrb$ (recalling that $2\cdot X = \{2x: x\in X\}$, as opposed to $2X = X+X$).
+
+Suppose now that $m_k=1$.
+Then, since the average of the parts $m_i$ is equal to $2$, we must have that the greatest part $m_1 > 2$.
+As a result, 
+\[\frac{m_2+\cdots+m_k}{k-1} = \frac{n-m_1}{n/2-1} < \frac{n-2}{n/2-1} = 2, \]
+so $k-1 > (m_2 + \cdots + m_k)/2$; by Lemma \ref{lem:long-partitions}, $\Sigma(m-2,\dots,m_k) = \llb 0, n-m_1 \rrb$.
+
+Now we have $\Sigma(P) = \{0,m_1\} + \llb 0,n-m_1\rrb = \llb 0,n-m_1 \rrb \cup \llb m_1, n\rrb$, so $\Sigma(P) = \llb 0,n \rrb$ provided $2m_1 < n+1$.
+If not, then $2m_1 \ge n+2$, so $m_1 \ge \frac{n+2}{2}$.
+From this, it follows that 
+\[m_2 +\cdots+m_k = n-m_1 \le n - \frac{n+2}{2} = \frac{n}{2}-1 = k-1.\]
+Since each $m_i \ge 1$, we must have $m_2 = \cdots = m_k = 1$, so $P = (n/2+1, 1,\dots, 1)$ and $\Sigma(P) = \llb 0,n/2-1 \rrb \cup \llb n/2+1,n\rrb$.
+\end{proof}
+
+\begin{thm}
+Let $X \in \PN$ and suppose that there is $k\in \mathsf{L}(X)$ with $k > \max(X)$.
+Then $X = \llb 0, \max(X) \rrb$.
+\end{thm}
+
+\begin{proof}
+Let $n = \max(X)$ and let $\aa\in\Z(X)$ be a factorization with length $|\aa| = k$.
+Then there are integers $m_1\ge\cdots \ge m_k \ge 1$ and atoms $A_i\in \A_{m_i}$ with $\aa = A_1*\cdots*A_k$.
+The result is immediate from Lemma \ref{lem:long-partitions}, since we have
+\[ X = A_1 + \cdots + A_k \supseteq \{0,m_1\} + \cdots + \{0,m_k\} = \Sigma(m_1,\cdots,m_k) = \llb 0,n \rrb \]
+and we know $X \subseteq \llb 0,\max(X) \rrb = \llb 0, n \rrb$.
+\end{proof}
+
+
+
+%Now we know that $\llb 0,n\rrb$ has factorizations of most partition types.  
+%In many cases, the existence of one factorization of a given type seems to indicate the possible presence of others.
+%In what follows, we will try to determine the extent to which that is true.
+
+%%%%%%
+%%%%%%
+\section{Non-Atomicity of Near Intervals in the Natural Power Monoid} \label{sec:near intervals}
+%%%%%%
+%%%%%%
+
+We have seen that intervals are, in some sense, as far as possible from being atoms.
+Every set, including atoms, can be realized as an interval with some (possibly many) points removed.  
+Thus we expect that $\llb 0,n \rrb \setminus S$ ``loses" factorizations as $S$ is allowed to become larger.  
+We would like to understand certain thresholds in this process of varying $S$; for instance, how large does $S$ need to become for $\llb 0,n \rrb \setminus S$ to become an atom?  
+From here, we pivot to a slightly different question with the same underlying theme: given $n$, is it possible that $\llb 0,n \rrb \setminus S$ always factors nontrivially for $|S|$ sufficiently small?
+Our goal is to formalize this question and make some progress toward determining the answer.
+
+\begin{conj}
+There is a function $s:\NN \to \NN$ such that, for any subset $S\subseteq \llb 0,n \rrb$ with $|S| \le s(n)$, $\llb 0,n \rrb \setminus S$ factors nontrivially in $\PN$.
+\end{conj}
+
+The following lemma represents many of the ``easy cases" when the set $S$ to be removed from the interval is concentrated in a small segment of the interval.
+
+\begin{lemma}\label{first-third}
+Let $n\in \NN$ and let $S\subseteq \NN$ with $3(\max(S)+1)< n$.
+Then $\llb 0,n \rrb \setminus S$ factors nontrivially and is divisible by $\{0,\max(S)+1\}$.
+\end{lemma}
+
+\begin{proof}
+Let $c =  \max(S)+1$ and $X = \llb 0, n \rrb \setminus S$.
+By Proposition \ref{prop:cofactors}, it is sufficient to show that $X \subseteq \{0,c\} + X\cap (X-c)$.
+Suppose $x\in X$; if $x \le n-c$ then $x + c \le n$, so that $x+c\in X$ and $x = 0 + x \in \{0,c\} + X\cap(X-c)$.
+If $x \ge n - c$ then $x - c \ge n - c  \ge c$ by assumption, meaning that $\max(S) + 1 \le x - c \le n$, so $x-c\in X$.
+Thus $x-c\in X\cap (X-c)$ and we have $x = c + (x-c) \in \{0,c\} + X\cap (X-c)$, which is what we needed to show.
+\end{proof}
+
+\begin{lemma}\label{reflection}
+Let $r:\PN \to \PN$ be given by $r(X) = \max(X) - X$.
+Then, for any $X\in \PN$, $r$ induces a bijection $\Z_\PN(X) \to \Z_\PN(r(X))$.
+In particular, $X$ is divisible by some $\{0,c\}$ if and only if $\max(X) - X$ is also divisible by $\{0,c\}$.
+\end{lemma}
+
+\begin{proof}
+We will prove that $X = Y + Z$ if and only if $r(X) = r(Y) + r(Z)$.
+This will imply that $X$ is an atom if and only if so is $r(X)$ and, by an inductive extension of the argument, will imply the desired result.
+Actually it will suffice to show only one implication, since $r(r(X)) = \max(X) - (\max(X) -X) = \max(X) - \max(X) + X = X$.
+
+Suppose $X = Y+Z$ for some $Y,Z\in \PN$. 
+Then
+\[ r(X) = \max(X) - X = (\max(Y) + \max(Z)) - (Y+Z) = \max(Y) -Y + \max(Z) -Z = r(Y) + r(Z) \]
+which is all we needed to see.
+\end{proof}
+
+Now we will see some examples in support of the conjecture made at the beginning of this section, which will motivate our work going forward.  
+These will also demonstrate how we wish to use the above lemmas.
+
+\begin{eg}
+\begin{enumerate}[(i)]
+\item If $n\ge 6$ then $\llb 0, n \rrb \setminus \{ k \}$ is divisible by some $\{0,c\}$ for any $k \in \llb 1,n-1 \rrb$.
+\item If $n\ge 18$ then $\llb 0,n \rrb \setminus \{ k , \ell \}$ is divisible by some $\{0,c\}$ for any $k\in \llb 1, n-1 \rrb$.
+\end{enumerate}
+Example (i) is easy enough to verify by hand; since (ii) takes a little more effort, we give an outline here.
+For convenience, suppose $1 \le k < \ell < n - k$, where the very last inequality comes at no loss of generality by Lemma \ref{reflection}.
+Let $X = \llb 0,n \rrb \setminus \{k,\ell\}$; we wish to show that $\{0,c\}$ divides $X$.
+
+We begin first by ruling out the cases when $k>1$ and $\ell-k > 2$, where we can see that $X$ is divisible by $\{0,1\}$.
+The leftover possibilities are that $k=1$ or $\ell - k \le 2$.
+
+\noindent\underline{Case 1A}: If $k = 1$ and $\ell \le 5$, one can see that $\{0,\ell+1\}$ divides $X$ by Lemma \ref{first-third}. \\
+\underline{Case 1B}: If $k = 1$ and $6 \le \ell \le n-4$, $\{0,2\}$ divides $X$. \\
+\underline{Case 1C}: If $k = 1$ and $n-3 \le \ell \le n-1$, the cases $\ell = n-3, n-2$, and $n-1$ can be handled by $c = 4,2$, and $2$, respectively.
+
+\noindent\underline{Case 2A}: If $\ell - k =1$ and $k>1$ then $\{0,1\}$ divides $X$. \\
+\underline{Case 2B}: If $k=1$ and $\ell=2$ then $\{0,3\}$ divides $X$. \\
+\underline{Case 2C}: If $\ell-k = 2$ and $k\ge 4$, $\{0,c\}$ divides $X$. \\ 
+\underline{Case 2D}: If $\{k,\ell\} =\{2,4\}$ or $\{3,5\}$, one can see that $\{0,5\}$ and $\{0,6\}$ divide $X$, respectively (by Lemma \ref{first-third}).
+In particular, the latter of these cases forces the requirement that $n\ge 18$.
+\end{eg}
+This example shows us a small sample of the ways in which removing a small set $S$ of points from $\llb 0,n \rrb$ can thwart the divisibility of $\llb 0,n \rrb\setminus S$ by $\{0,c\}$ for all small values of $c$, if the points of $S$ are chosen carefully.  
+In what lies ahead, we seek to anticipate all ``worst possible" configurations of $S$ to work toward our conjecture.
+
+In addition to determining the threshold value of $n$ beyond which $\llb 0,n \rrb\setminus S$ is divisible by some $\{0,c\}$ for a fixed $|S|$, we might also benefit from investigating the values of $c$ which are viable as divisors of $\llb 0,n \rrb\setminus S$.
+To aid in this, we define some constants.
+
+
+
+
+\newpage
+\nocite{*}
+\bibliography{bib}
+\bibliographystyle{plain}
+
+\end{document}
