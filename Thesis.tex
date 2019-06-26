@@ -273,7 +273,7 @@ Thus we learn that $Q$ not only fails to have factorizations into atoms, but als
 
 %%%%%%
 %%%%%%
-\chapter{Power Monoids} \label{ch:power monoids}
+\chapter{Power Monoids and (Minimal) Factorization Properties} \label{ch:power monoids}
 %%%%%%
 %%%%%%
 
@@ -584,19 +584,115 @@ The result then follows from Proposition \ref{prop:funt&fun-have-the-same-system
 \chapter{Power Monoids of Natural Lattices} \label{ch:applications}
 %%%%%%
 %%%%%%
-\section{Passage to and from Other Monoids} \label{sec:passage}
+\section{Passage to Other Monoids}\label{sec:passage}
 
-In this section, we give several reasons which motivate the study of $\PN$, mention some known facts about this monoid, and outline some techniques which can hopefully help us learn more about all aspects of this monoid (and which help us recover some results of Y. Fan and S. Tringali from a different viewpoint).
+The natural power monoid $\PN$ is connected to the study of many other power monoids.
+In this section we will mention some ways of passing between the natural power monoid $\PN$ and other monoids while preserving certain aspects of factorization behavior.  
+In particular, we will discuss the way in which information about factorization can be locally transported between $\PN$ and $\P_\fon(\NN^d)$ for $d>1$, in a sense to be made rigorous in the coming pages.  
 
-We begin by outlining several reasons that, certainly within the scope of power monoids, $\PN$ is a well-motivated and natural setting in which to study factorizations.
+\begin{defn}
+Let $H$ and $K$ be monoids. 
+We will say that $H$ is \textbf{locally transferrable} to $K$ if, for every non-unit $x\in H$, there is a homomorphism $f: H \to K$ such that the map $f^*:\Z_H(x) \to \Z_K(f(x))$ is a (length-preserving) bijection, where $f^*$ is identified with the restriction to $\Z_H(x)$ of the induced map $f^*: \F^*(\A(H)) \to \F^*(\A(K))$.
+\end{defn}
+
+\subsection*{Natural Lattice Power Monoids}
+
+\begin{lemma}\label{lem:local-transport}
+Let $\varphi: G \to H$ be a homomorphism of abelian groups. 
+If there is a subset $W\subseteq G$ with the property:
+\begin{itemize}
+\item[$(*)$] For all $x,y,z\in W$, $\varphi(x) = \varphi(y) + \varphi(z)$ if and only if $x = y + z$.
+\end{itemize}
+Then we have that
+\begin{enumerate}[(i)]
+\item The restriction $\varphi|_W$ is injective.
+\item $\varphi$ preserves atoms in $W$; that is, if $A\subseteq W$ is an atom in $\P_\fon(G)$ then $\varphi(A)$ is an atom in $\P_\fon(H)$.
+\item There is a length-preserving bijection $\Z_{\P_\fon(G)}(W) \to \Z_{\P_\fon(H)}(\varphi(W))$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+Point (i) is clear by taking $z = 0$ in property $(*)$.
+To see (ii), suppose $A\subseteq W$ and $\varphi(A) = Y+Z$.
+Then, since $Y,Z\subseteq \varphi(A)$, we may write $Y = \varphi(B)$ and $Z = \varphi(C)$ for some $B,C\subseteq A$.
+For any $a\in A$, $\varphi(a) \in \varphi(B) + \varphi(C)$, so there are $b\in B$ and $c\in C$ with $\varphi(a) = \varphi(b) + \varphi(c)$.
+By $(*)$, $a = b + c \in B+C$, so $A \subseteq B + C$.
+A nearly identical argument yields the other inclusion, so that $A = B+C$.
+Thus, if $A$ is an atom, so too must be $\varphi(A)$. 
+
+To see (iii), we define the map $\Phi:\Z(W) \to \Z(\varphi(W))$ as follows: for a factorization $\aa = A_1*\cdots * A_k \in \Z(W)$, let $\Phi(\aa) = \varphi(A_1)*\cdots*\varphi(A_k)$. 
+By (ii), such a $\Phi(\aa)$ is indeed a word in atoms.  
+It is also not too difficult to check that $\pi_{\P_\fon(H)}(\Phi(\aa)) = \varphi(W)$, so that $\Phi$ is a well-defined map.  
+
+Now we wish to see that $\Phi$ is a bijection; we will show that $\Phi$ has an inverse.
+Let $\bb = B_1 * \cdots * B_k\in \Z(\varphi(W))$.
+Each $B_i = \varphi(A_i)$ for some $A_i\subseteq W$ and, by (i), $\varphi^{-1}(\varphi(A_i)) = A_i$.
+Thus the map sending $\bb \mapsto \varphi^{-1}(B_1) * \cdots * \varphi^{-1}(B_k)$ is easily checked to be inverse to $\Phi$, which is all we needed to show.
+\end{proof}
+
+\begin{rk}
+Note that the property $(*)$ in Lemma \ref{lem:local-transport} is \textit{not} equivalent to the restriction $\varphi|_W$ being injective, because we have not made any assumption of algebraic structure on $W$; in particular, $W$ is not necessarily closed under addition. 
+\end{rk}
+
+\begin{prop}\label{prop:flattening}
+Let $d \ge 1$ and $W\in \P_\fon(\NN^{d+1})$.
+Let $N > 2 \max\{\pi_d(w): w\in W\}$, where $\pi_d: \NN^{d+1} \to \NN$ is the projection map from the $d$th coordinate.
+Define $\varphi: \NN^{d+1} \to \NN^d$ by $\varphi(w_1,\dots, w_{d+1}) = (w_1,\dots, w_{d-1},w_d + N w_{d+1})$.
+Then
+\begin{enumerate}[(i)]
+	\item $\varphi$ is a homomorphism.
+	\item For all $x,y,z\in W$, $\varphi(x) = \varphi(y) + \varphi(z)$ if and only if $x = y + z$.
+	\item There is a length-preserving bijection $\Z_{\P_\fon(\NN^{d+1})}(W) \to \Z_{\P_\fon(\NN^d)}(\varphi(W))$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+It is easy to see (i), for this follows from the distributivity of multiplication in $\ZZ$.
+
+Point (ii) will follow from our choice of $N$ (Recall that $N > 2m$, where $m = \max\{\pi_d(w): w\in W\}$).
+Suppose $x,y,z\in W$, writing $x = (x_1,\dots, x_{d+1})$ and so on.  
+If $x = y+z$, then it is clear that $\varphi(x) = \varphi(y) + \varphi(z)$ by (i).
+Conversely, if $\varphi(x) = \varphi(y) + \varphi(z)$, then we immediately have $x_i = y_i + z_i$ for all $i < d$.
+For the $d$th component, we have 
+\[x_d + Nx_{d+1} = y_d + Ny_{d+1} + z_d + Nz_{d+1}, \]
+meaning that $x_d -y_d - z_d = N(y_{d+1}+z_{d+1}-x_{d+1})$.
+Since $|x_d - y_d - z_d| \le 2m < N$, it must be that both sides of this last equation are equal to zero, so that $x_d = y_d + z_d$ and $x_{d+1} = y_{d+1}+z_{d+1}$.
+Now we have $x = y+z$, as we wished.
+
+Finally, (iii) follows from (i) and (ii) by Lemma \ref{lem:local-transport}.
+\end{proof}
+
+\begin{thm}\label{thm:passage-to-Nd}
+Let $d > 1$. 
+Then $\P_\fon(\NN^d)$ is locally transferrable to $\PN$.
+\end{thm}
+\begin{proof}
+One can prove this by a straightforward induction on $d$, using Proposition \ref{prop:flattening} to resolve both the base case and the inductive step.  
+\end{proof}
+
+We will revisit the connection between $\PN$ and the natural lattice in the next section.
+For now, we will mention some more connections to other power monoids.
+
+%In this section, we give several reasons which motivate the study of $\PN$, mention some known facts about this monoid, and outline some techniques which can hopefully help us learn more about all aspects of this monoid (and which help us recover some results of Y. Fan and S. Tringali from a different viewpoint).
+
+%We begin by outlining several reasons that, certainly within the scope of power monoids, $\PN$ is a well-motivated and natural setting in which to study factorizations.
 
 \subsubsection*{Non-Torsion Monoids}
 
+\textcolor{red}{MENTION FAN-TRINGALI THEOREM EMBEDDING $\NN$ INTO NON-TORSION MONOID}.
+	
+\begin{prop}\label{prop:natural-to-non-tors}
+Let $H$ be a non-torsion monoid.
+Then there is an equimorphism from $\PN \to \P_\fun(H)$.
+\end{prop}
+\begin{proof}
+This follows from \textcolor{red}{CITE TRINGALI THEOREM}, but we can sum up the basic ideas involved.  
 If $H$ is a non-torsion monoid, let $x\in H$ be an element with infinite multiplicative order.  
 Then the map $f: \NN \to \gen{x}$ given by $n\mapsto x^n$ is an isomorphism (specifically, from $(\NN,+)\to (\gen{x},\cdot)$).
 On the level of sets, this yields an isomorphism $f: \PN \to \P_\fun(\gen{x})$.
 In turn, this isomorphism induces an isomorphism $f^*: \F(\A(\PN)) \to \F(\A(\P_\fun(\gen{x})))$.
-As a consequence, for any $X \in \PN$, we have a bijection $f^*: \Z_{\PN}(X) \to \Z_{\P_\fun(\gen{x})}(f(X)) = \Z_{\P_\fun(H)}(f(X))$, where the last inequality follows from Proposition \ref{prop:pm-arith} (\ref{prop:pm-arith(ii)}).
+As a consequence, for any $X \in \PN$, we have a bijection $f^*: \Z_{\PN}(X) \to \Z_{\P_\fun(\gen{x})}(f(X)) = \Z_{\P_\fun(H)}(f(X))$, where the last inequality follows from Proposition \ref{prop:pm-arith} (\ref{prop:pm-arith(ii)}) (that is, $\P_\fun(\gen{x})$ is divisor-closed in $\P_\fun(H)$).
+\end{proof}
 
 Thus the study of factorizations of $\PN$ actually tells us about the factorization of certain subsets of $H$.
 Of course, there is much more to be studied in $\P_\fun(H)$ when we include subsets of $\gen{x,y}\subseteq H$, especially when $x$ and $y$ do not commute.
@@ -617,49 +713,9 @@ However, a mild reduction allows us to pass to $\PN$: if $X \subseteq \ZZ$ is a 
 By Proposition \ref{prop:pm-arith} (\ref{prop:pm-arith(ii)}) (the divisor-closedness of $\PN$ in $\P_\fon(\ZZ)$), the latter is equal to $\Z_{\PN}(X-\min(X))$.
 
 
-\subsubsection*{Higher-Dimensional Integer Lattices}
 
 We have seen just above that studying $\PN$ is sufficient for studying the subset arithmetic of $\ZZ$.
 In a similar way, we may also justify the passage between $\PN$ and $\P_\fon(\NN^d)$, for $d\ge 2$ (at least in a certain local sense), making $\PN$ an appropriate setting for the study of all torsion-free abelian groups.
-
-\begin{lemma} \label{lem:passage to N2}
-Let $W\in \P_\fon(\NN^2)$.
-Then there is a map $f\NN^2 \to \NN$ which induces a length-preserving bijection $\Z_{\P_\fon(\NN^2)}(W) \to \Z_{\PN}(f(W))$.
-\end{lemma}
-
-\begin{proof}
-Begin by choosing $N > 2\max\{ u : (u,v)\in W \}$ and defining $f: \NN^2 \to \NN$ by $f(u,v) = u + Nv$.
-It is not too hard to see that $f$ is a homomorphism, and $f|_W$ is injective; for the latter, suppose that $f(u,v) = f(u',v')$.
-Then $u+Nv = u'+Nv'$, which implies that $u-u' = N(v'-v)$.
-By the choice of $N$, $N|v'-v| > |u-u'|$ unless $u-u' = v-v' = 0$, so $f$ is indeed injective.
-
-Now we can consider the map $F:\Z_{\P_\fon(\NN^2)}(W) \to \Z_{\PN}(f(W))$ defined by $F(A_1*\cdots*A_k) = f(A_1)*\cdots*f(A_k)$.
-To see that this map is well-defined, we need only see that
-\begin{itemize}
-\item $f$ preserves atoms contained in $W$; i.e., if $A\subseteq W$ is an atom, so is $f(A)$. 
-To see this, suppose that $f(A) = X+Y$ for some $X,Y\in \PN$. 
-Then, because $f$ is a bijection and a homomorphism, $A = f^{-1}(X) + f^{-1}(Y)$.
-Since $A$ is an atom, $f^{-1}(X) = \{0\}$ (without loss of generality), so that $X = \{0\}$.
-\item $F$ preserves products; i.e., $\pi_{\PN}(F(\aa)) = f(W)$ for any $\aa\in\Z_{\P_\fon(\NN^2)}(W)$.
-We can see this by way of a simple computation: writing $\aa = A_1*\cdots*A_k$,
-\[ \pi_{\P_\fon(\NN^2)}(F(\aa)) 
-= f(A_1) + \cdots + f(A_k) 
-= f(A_1+\cdots+ A_k) 
-= f(W). \]
-\end{itemize}
-%Both these points are straightforward consequences of the fact that $f|_W$ is a bijection $W \to f(W)$.
-Now it is clear that $F$ is well-defined and preserves factorization lengths.  
-We can see that $F$ is a bijection by finding its inverse; consider the map $G: \Z_{\PN}(f(W)) \to \Z_{\P_\fon(\NN^2)}(W)$ given by $B_1*\cdots*B_k\mapsto f^{-1}(B_1)*\cdots*f^{-1}(B_k)$.
-$G$ is well-defined by reasoning identical to that for $F$, and it is plain to see that $F$ and $G$ are inverses.
-\end{proof}
-
-\begin{cor} \label{cor:passage to Nd}
-Let $d\ge 2$ and let $W\in \P_\fon(\NN^d)$.
-Then there is $U\in \PN$ and a length-preserving bijection $F:\Z_{\P_\fon(\NN^d)}(W) \to \Z_{\PN}(U)$.
-\end{cor}
-\begin{proof}
-	To prove this, one only needs to induct on $d$ and apply the previous lemma.
-\end{proof}
 
 We will soon see some advantages of working inside of $\NN^d$.
 First, however, we state a general lemma on finding sumset decompositions in abelian groups.
@@ -670,7 +726,7 @@ In general, there may be many such $Y$.
 %We will often find ourselves trying to determine whether a given set is an atom.
 %The easiest way to show that a set is not an atom is to produce a nontrivial factor; however, due to the non-cancellative nature of power monoids, a potential factor does not come equipped with an obvious quotient.
 %That is, if we suspect $A$ divides $X$, we cannot simply check whether $X/Y$ belongs to our monoid, as there is no obvious choice for ``$X/A$''.
-To partially make up for this, we have the following definition and lemma.
+To partially make up for this, we have the following definition and proposition.
 
 \begin{defn} \label{def:cofactor}
 	Let $G$ be an abelian group and $X,A\in \P_{\fin,0}(G)$.
@@ -698,67 +754,200 @@ To partially make up for this, we have the following definition and lemma.
 	Then, using (ii) and then (i), we have that $X = A+Y \subseteq A+ (X\:A) \subseteq X$, whence all the inclusions are equalities.
 \end{proof}
 
+\section{Independence Arguments in the Lattice}
 
-\section{Higher-Dimensional Lattices}
+Throughout the rest of this chapter, we will make reference to $\NN^d$, where $d$ is to be thought of simply as a sufficiently high ambient dimension.
+Unless otherwise specified, all subsets involved will be finite subsets of $\NN^d$ containing $0$ (i.e. elements of $\P_\fon(\NN^d)$).
 
-Lemma \ref{lem:passage to N2} and Corollary \ref{cor:passage to Nd} essentially state that the factorization theory of $\P_\fon(\NN^d)$ is locally included in that of $\PN$.
+Theorem \ref{thm:passage-to-Nd} states that the factorization theory of $\P_\fon(\NN^d)$ is locally included in that of $\PN$.
 Thus, to study $\P_\fon(\NN^d)$, we need only look inside $\PN$. 
 Another perspective is the following: to study factorizations in $\PN$, we now have access to the space and geometric intuition afforded to us by working inside the $d$-dimensional lattice $\NN^d$.
+To make effective use of this intuition, we formulate and exploit a notion of independence of subsets of the lattice $\NN^d$.
+\begin{defn}
+Let $d\ge 1$.  
+For a subset $U \subseteq \NN^d$, set $\ZZ U := \operatorname{span}_\ZZ(U) = \left\{\sum_{i=1}^n c_i u_i : u_1,\dots, u_n\in U, c_1,\dots, c_n\in \ZZ \right\}$
 
-To demonstrate the potential power of this technique, we recover some known results about the sets of lengths which occur in $\PN$.
-These are due to Y. Fan and S. Tringali and originally appear in \cite{fan-tringali18}.
-The proofs given here differ cosmetically, but also, to a degree, in substance.
-It is the author's hope that a proof from a different perspective will be meaningfully illuminative.
+We will say that subsets $U$ and $V$ of $\NN^d$ are \textbf{$\ZZ$-independent (or $V$ is $\ZZ$-independent from $U$)} if $\ZZ U \cap \ZZ V = \{0\}$.
 
+We will say that subsets $U_1,\dots, U_n\subseteq \NN^d$ are \textbf{\textcolor{red}{(totally)} $\ZZ$-independent} if, for every pair of disjoint subsets $I,J\subseteq\llb 1,n \rrb$, $\sum_{i\in I} U_i$ and $\sum_{j\in J} U_j$ are $\ZZ$-independent. \textcolor{red}{(Should this be a stronger notion than regular $\ZZ$-independence of $n>2$ sets, or is the regular notion useless?)}
+\end{defn}
 
-
-
-
-\begin{prop} \label{prop:singleton-length-set}
-Let $n\ge 2$ and let $e_1,\dots, e_n\in \NN^d$ be $\ZZ$-linearly independent.
-Set $C := \{0,e_1\} + \cdots \{0,e_n\}$.
-Then $C$ has exactly one factorization; that is $\Z_{\PN}(C) = \{ \{0,e_1\}*\cdots*\{0,e_n\} \}$.
+We begin by outlining some basic properties of $\ZZ$-independence.  
+More often than not, we will use these without mention, or by simply citing ``$\ZZ$-independence."
+\begin{prop} \label{prop:eltwise-indep}
+Let $U, U_1,\dots, U_k$ be \textcolor{red}{totally} $\ZZ$-independent subsets of $\NN^d$.
+\begin{enumerate}[(i)]
+	\item For any elements $u_1,\dots, u_n\in U$, if $\sum_i u_i = 0$ then $u_i = 0$ for all $i=1,\dots, n$.
+	\item For $u_1,v_1\in U_1$,\dots, $u_k,v_k\in U_k$, if $\sum_i u_i = \sum_i v_i$ then $u_i = v_i$ for $i = 1,\dots, k$.
+\end{enumerate}
 \end{prop}
 
 \begin{proof}
-We prove this by induction on $n$.
-The result is trivial when $n=1$, since $\{0,e_1\}$ is an atom.
-Assume $n\ge 2$ and suppose $C = X + Y$, for some $X,Y\subseteq C$ with $X$ an atom and $Y\neq\{0\}$.
+(i) is actually a simple consequence of $\NN^d$ being a reduced monoid, and has nothing to do with $\ZZ$-independence.  
+We include it among results one $\ZZ$-independence because of the way in which it will be used in our arguments to come.
 
-We begin by setting some notation, by analogy with the proof given in \cite{fan-tringali18}: let $I_X:=\{i\in \llb1,n\rrb : e_i\in X\}$ and $I_Y := \{i\in \llb1,n\rrb: e_i\in Y\}$.
-Additionally, for any $I\subseteq \llb1,n\rrb$, we set $e_I := \sum_{i\in I} e_i$.
+For (ii), we can induct on $k$.
+The result is trivial if $k = 1$, so let $k=2$.
+$u_1 + v_1 = u_2 + v_2$ implies that $u_1 - v-1 = v_2 - u_2 \in \operatorname{span}_\ZZ U_1 \cap \operatorname{span}_\ZZ U_2 = \{0\}$, so $u_1 = v_1$ and $u_2 = v_2$.
 
-Begin by noting that $\llb 1,n \rrb = I_X \sqcup I_Y$; indeed, for each $i\in\llb 1,n \rrb$, $e_i\in X+Y$, and it must be that $e_i\in X\cup Y$ since all the $e_i$ are linearly independent.  
-Moreover, we cannot have $e_i\in X\cap Y$ since $2e_i \notin C = \{e_I : I\subseteq \llb 1,n \rrb \}$.
-
-\noindent\underline{Claim A}: For any $I\subseteq I_X$, $e_I\in X$.\\
-Since $e_I\in C = X+Y$, there are subsets $J,K\subseteq \llb 1,n \rrb$ with $e_J\in X, e_K \in Y$.
-Necessarily, $I = J\sqcup K$, so if $K\neq \emptyset$ there must be $k\in K\subseteq I_X$, whence $2e_k + e_{K\setminus\{k\}} = e_k + e_K\in X+Y$, but this is a contradiction as no element of $C = X+Y$ has an $e_k$-coefficient of $2$.
-Thus $K = \emptyset$ and $e_I = e_J \in X$.
-
-\noindent\underline{Claim B}: For $I\subseteq \llb 1,n \rrb$, $e_I\in X$ only if $I\subseteq I_X$.\\
-Suppose $I = J\sqcup K$ with $J\subseteq I_X$ and $K\subseteq I_Y$.
-If $k\neq \emptyset$, then the argument from the previous claim yields a contradiction as before.
-Thus $I = J\subseteq I_X$.
-
-We conclude that $X = \{ e_I : I\subseteq I_X\} = \sum_{i\in I_X} \{0,e_i\}$ and, by symmetry, that $Y = \sum_{i\in I_Y} \{0,e_i\}$.
-Since we assumed that $X$ is an atom, there is some $k$ for which $I_X = \{k\}$ so that $X = \{0,e_k\}$.
-Then $Y = \sum_{i\neq k} \{0,e_i\}$; by induction, $Y$ factors uniquely as the sum of the atoms $\{0,e_i\}$ for $i\neq k$; up to reording, all possible choices of $k$ yield the same factorization and we have the desired result; namely, that $\Z_{\P_\fon(\NN^d)}(C) = \{ \{0,e_1\}*\cdots*\{0,e_n\} \}$.
+For the inductive step, suppose $k>2$ and that the result holds for integers smaller than $k$.
+The equation $\sum_i u_i = \sum_i v_i$ implies that $u_1 - v_1 = \sum_{i\ge 2} (v_i - u_i)$, and we have that 
+\[u_1 - v_1 \in \operatorname{span}_\ZZ U_1 \cap \operatorname{span}_\ZZ(U_2+\cdots+ U_k) = \{0\},\]
+yielding that $u_1 = v_1$ and $\sum_{i\ge 2} u_i = \sum_{i\ge 2} v_i$.
+By induction, the last equation implies that $u_i = v_i$ for all $i$ and we are done.
 \end{proof}
+
+\begin{prop} \label{prop:indep-decomp}
+Let $U,V \subseteq \NN^d$ be $\ZZ$-independent and let $A_1,\dots, A_k$ be nonzero subsets with $U+V = \sum_{i=1}^k A_i$.
+\begin{enumerate}[(i)]
+	\item $U_j = \sum_{i=1}^k U_j\cap A_i$.
+	\item If $U \cap A_i = \{0\}$ then, for any $V'\subseteq V$, $(U+V')\cap A_i = V'\cap A_i$.
+	\item For each $i$, $U\cap A_i \neq \{0\}$ or $V \cap A_i \neq \{0\}$.
+	\item $k \le \max \mathsf{L}(U) + \max \mathsf{L}(V)$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+(i) For each $i$, let $u_i\in U\cap A_i$.
+Then $\sum_i u_i \in \sum_i A_i = U+V$, and there are $u\in U$ and $v\in V$ with $\sum_i u_i = u+v$.
+By Proposition \ref{prop:eltwise-indep}(ii), $v = 0$ and $\sum_i u_i = u \in U$
+
+The other inclusion is similar; for any $u\in U \subseteq \sum_i A_i$, we can find $u_1,\dots,u_k\in U$ and $v_1,\dots, v_k\in V$ such that $u_i+v_i\in A_i$ for each $i$ and $u = \sum_i (u_i + v_i)$.
+Again by Proposition \ref{prop:eltwise-indep}(ii), $\sum_i v_i = 0$, and each $v_i = 0$ by Proposition \ref{prop:eltwise-indep}(i).
+
+Moving on to (ii), it is sufficient to prove the result for $i=1$ by renumbering the $A_i$ if necessary.
+Suppose $u\in U$, $v\in V'$, and $u+v\in A_1$.
+Since $U\cap A_1 = \{0\}$, we know from (i) that
+\[ U = \sum_{i\ge 1} U\cap A_i = \sum_{i\ge 2} U\cap A_i, \]
+so $u+v + U \subseteq A_1 + \sum_{i\ge 2} A_i \subseteq U+V$.
+Thus, for any $w\in U$, there are $u'\in U$ and $v'\in V$ so that $u+v+w = u'+v'$.
+By the $\ZZ$-independence of $U$ and $V$, $v' = v$ and so we actually have that $u+v+U \subseteq U + v$.
+We can cancel $v$ to get $u+U \subseteq U$.
+Since $|u+U| = |U| <\infty$, we must actually have $u+U = U$; however, this implies that $u = 0$.
+We now have that $v = u+v \in A_1$, so $(U+V')\cap A_1 \subseteq V' \cap A_1$.
+The reverse inclusion is trivial since $0\in U$, so we are done.
+
+(iii) follows quickly from (ii); suppose $U\cap A_i = \{0\} = V\cap A_i$.
+Then $A_i = (U+V)\cap A_i = V\cap A_i = \{0\}$ (we used (ii) at the second equal sign).
+
+Finally, for (iv): let $\ell = \max \mathsf{L}(U)$ and $m = \max\mathsf{L}(V)$.
+Without loss of generality, say $\llb 1,s \rrb = \{i: U\cap A_i \neq \{0\} \}$ and $\llb t,k \rrb = \{i: V\cap A_i \neq \{0\} \}$.
+Since, by (i), $U = \sum_i U\cap A_i = \sum_{i\le s} U \cap A_i$, $| \llb 1,s \rrb | \le \ell$ (similarly, $|\llb t,k \rrb| \le m$).
+By (iii), $\llb 1,k \rrb = \llb 1,s \rrb \cup \llb t,k \rrb$, so $k \le \ell + m$ as we wished.
+\end{proof}
+
+\begin{lemma} \label{lem:indep-atom-decomp}
+Let $U, V_1,\dots, V_m$ be \textcolor{red}{(totally)} $\ZZ$-independent.
+Suppose each $V_j$ is an atom, and let $V := \sum_j V_j$.
+Further suppose that $A_1,\dots, A_k$ are nonzero subsets with $U+V = \sum_{i=1}^k A_i$.
+\begin{enumerate}[(i)]
+	\item There is a function $f: \llb 1,m \rrb \to \llb 1,k \rrb$ with $U_j \subset A_{f(j)}$ for each $j\in \llb 1,m\rrb$.
+	\item For each $h\in \llb 1,k\rrb$, $V\cap A_h = \sum_{j\in f^{-1}(h)} V_j$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+For (i), fix $j\in \llb 1,m \rrb$.
+Then, by Proposition \ref{prop:indep-decomp}(i), $V_j = \sum_i V_j \cap A_i$.
+Since $V_j$ is an atom, only one summand on the right side of this equation can be zero; let $f(j)$ denote the index of that summand.
+Then we have $V_j = V_j \cap A_{f(j)} \subseteq A_{f(j)}$.
+
+To prove (ii), let $J := f^{-1}(h) = \{j: V_j \subseteq A_h\}$ and call $V' = \sum_{j\in J} V_j$.
+Similarly, let $K = \llb 1,m \rrb \setminus J$ and call $V'' = \sum_{j\in K} V_j$.
+Because $V_1,\dots, V_m$ are \textcolor{red}{totally} $\ZZ$-independent, $V'$ and $V''$ are $\ZZ$-independent.
+
+For each $j\in J$ and each $i\neq h$, $V_j\cap A_i = \{0\}$. 
+An easy induction on $|J|$ then yields that $V' \cap A_i = \{0\}$ for each $i\neq h$.
+As a result, we have (using Proposition \ref{prop:indep-decomp}(i)) that $V' = \sum_i V'\cap A_i = V' \cap A_h$.
+
+On the other hand, for $j\in K$, $V_j\cap A_h = \{0\}$, so $(V' + V_j) \cap A_h = V' \cap A_h$ (using Prop \ref{prop:indep-decomp} (ii)).
+By induction on $|K|$, we can see that $A_h = V\cap A_h = (V' + V'')\cap A_h = V' \cap A_h = V'$, which completes the proof.
+\end{proof}
+
+\begin{thm} \label{thm:ind-atoms}
+If $V_1,\dots,V_m$ are \textcolor{red}{totally} $\ZZ$-independent then $V_1+\cdots + V_m$ factors uniquely.
+\end{thm}
+
+\begin{proof}
+Let $V = V_1+\cdots + V_m$.
+The result will essentially follow from Lemma \ref{lem:indep-atom-decomp}, taking $U = \{0\}$.
+
+Let $A_1,\dots, A_k$ be atoms with $V = \sum_i A_i$.
+As in Lemma \ref{lem:indep-atom-decomp}(i), there is $f:\llb 1,m \rrb \to \llb 1,k\rrb$ with $V_j \subseteq A_{f(j)}$ for each $j\in \llb 1,m\rrb$.
+We wish to show that $f$ is injective; let $h\in \llb 1,k \rrb$ and let $J = f^{-1}(h)$.
+By Lemma \ref{lem:indep-atom-decomp}(ii), $A_h = V \cap A_h = \sum_{j\in J} V_j$, which is only an atom if $|J|=1$, making $f$ injective.  
+
+We have shown more; we in fact have, for each $j\in \llb 1,m \rrb$, $V_j = A_{f(j)}$.
+All that remains to see is that $f$ is a surjection.
+To see this, suppose $A_i \notin f(\llb 1,m \rrb)$.
+Then $V_j \cap A_i = \{0\}$ for all $j\in  \llb 1,m \rrb$, and we have by Proposition \ref{prop:indep-decomp}(ii) and induction that $A_i = \{0\}$.
+However, this is impossible since $A_i$ is an atom.  
+
+We conclude that $f$ is a bijection and that the only factorization of $V$ is $V_1*\cdots*V_m$.
+\end{proof}
+
+\begin{rk}
+Theorem \ref{thm:ind-atoms} allows us to recover \textcolor{red}{[FAN-TRINGALI SINGLETON LENGTH SET RESULT]}.
+\end{rk}
+
+\section{Length Sets in High-Dimensional Lattices}
+In this section, we wish to show that certain prescribed sets occur as sets of lengths of elements of $\P_\fon(\NN^d)$ (and hence as sets of lengths of elements of $\PN$).
+We begin by recovering a version of \textcolor{red}{[CITE FAN-TRINGALI $\{2,n+1\}$ RESULT]}, which says that, for any $n\ge 2$, there is an element $U$ which has exactly two factorizations: one of length $2$, and one of length $n+1$.
+
+%To demonstrate the potential power of this technique, we recover some known results about the sets of lengths which occur in $\PN$.
+%These are due to Y. Fan and S. Tringali and originally appear in \cite{fan-tringali18}.
+%The proofs given here differ cosmetically, but also, to a degree, in substance.
+%It is the author's hope that a proof from a different perspective will be meaningfully illuminative.
+
+
+%\begin{prop} \label{prop:singleton-length-set}
+%Let $n\ge 2$ and let $e_1,\dots, e_n\in \NN^d$ be $\ZZ$-linearly independent.
+%Set $C := \{0,e_1\} + \cdots \{0,e_n\}$.
+%Then $C$ has exactly one factorization; that is $\Z_{\PN}(C) = \{ \{0,e_1\}*\cdots*\{0,e_n\} \}$.
+%\end{prop}
+
+%\begin{proof}
+%We prove this by induction on $n$.
+%The result is trivial when $n=1$, since $\{0,e_1\}$ is an atom.
+%Assume $n\ge 2$ and suppose $C = X + Y$, for some $X,Y\subseteq C$ with $X$ an atom and $Y\neq\{0\}$.
+
+%We begin by setting some notation, by analogy with the proof given in \cite{fan-tringali18}: let $I_X:=\{i\in \llb1,n\rrb : e_i\in X\}$ and $I_Y := \{i\in \llb1,n\rrb: e_i\in Y\}$.
+%Additionally, for any $I\subseteq \llb1,n\rrb$, we set $e_I := \sum_{i\in I} e_i$.
+
+%Begin by noting that $\llb 1,n \rrb = I_X \sqcup I_Y$; indeed, for each $i\in\llb 1,n \rrb$, $e_i\in X+Y$, and it must be that $e_i\in X\cup Y$ since all the $e_i$ are linearly independent.  
+%Moreover, we cannot have $e_i\in X\cap Y$ since $2e_i \notin C = \{e_I : I\subseteq \llb 1,n \rrb \}$.
+
+%\noindent\underline{Claim A}: For any $I\subseteq I_X$, $e_I\in X$.\\
+%Since $e_I\in C = X+Y$, there are subsets $J,K\subseteq \llb 1,n \rrb$ with $e_J\in X, e_K \in Y$.
+%Necessarily, $I = J\sqcup K$, so if $K\neq \emptyset$ there must be $k\in K\subseteq I_X$, whence $2e_k + e_{K\setminus\{k\}} = e_k + e_K\in X+Y$, but this is a contradiction as no element of $C = X+Y$ has an $e_k$-coefficient of $2$.
+%Thus $K = \emptyset$ and $e_I = e_J \in X$.
+
+%\noindent\underline{Claim B}: For $I\subseteq \llb 1,n \rrb$, $e_I\in X$ only if $I\subseteq I_X$.\\
+%Suppose $I = J\sqcup K$ with $J\subseteq I_X$ and $K\subseteq I_Y$.
+%If $k\neq \emptyset$, then the argument from the previous claim yields a contradiction as before.
+%Thus $I = J\subseteq I_X$.
+
+%We conclude that $X = \{ e_I : I\subseteq I_X\} = \sum_{i\in I_X} \{0,e_i\}$ and, by symmetry, that $Y = \sum_{i\in I_Y} \{0,e_i\}$.
+%Since we assumed that $X$ is an atom, there is some $k$ for which $I_X = \{k\}$ so that $X = \{0,e_k\}$.
+%Then $Y = \sum_{i\neq k} \{0,e_i\}$; by induction, $Y$ factors uniquely as the sum of the atoms $\{0,e_i\}$ for $i\neq k$; up to reording, all possible choices of $k$ yield the same factorization and we have the desired result; namely, that $\Z_{\P_\fon(\NN^d)}(C) = \{ \{0,e_1\}*\cdots*\{0,e_n\} \}$.
+%\end{proof}
 
 \begin{thm} \label{thm:2n-length-set}
 Let $n\ge 2$ and let $e_1,\dots, e_n\in \NN^n$ be $\ZZ$-linearly independent.
-Set $f = \sum_{i=1}^n e_i$, $g=f+e_n$.%, and $C_\ell = \sum_{i=1}^\ell \{0,e_i\}$ for $\ell\in \{n-1,n\}$.
-Letting $U = \sum_{i=1}^n + \{0,g\}$, we have 
+Set $f = \sum_{i=1}^n e_i$, $g=f+e_n$.
+Letting $U = \sum_{i=1}^n \{0,e_i\} + \{0,g\}$, we have 
 \[\Z_{\P_\fon(\NN^n)}(U) = \left\{ \{0,e_1\}*\cdots*\{0,e_n\}*\{0,g\}, \left[\sum_{i=1}^{n-1}\{0,e_i\}+\{0,g\}\right]\cup\{f\} * \{0,e_n\} \right\}. \]
 \end{thm}
 
 \begin{proof}
 Suppose $U = X + Y$ for some $X,Y\subseteq U$ with $X,Y\neq \{0\}$.
-As in the previous theorem, we will let $I_X := \{i\in \llb 1,n \rrb: e_i\in X\}$, $I_Y := \{i\in \llb1,n \rrb: e_i\in Y \}$, and $e_I := \sum_{i\in I}e_i$ for any $I\subseteq \llb 1,n \rrb$.
-As before, we have $\llb 1,n \rrb = I_X \sqcup I_Y$.
+First we set some notation by analogy with \textcolor{red}{[THM LABEL FOR REF?]} \cite{fan-al17}: $I_X := \{i\in \llb 1,n \rrb: e_i\in X\}$, $I_Y := \{i\in \llb1,n \rrb: e_i\in Y \}$.
+For further convenience and compactness, we let $e_I := \sum_{i\in I}e_i$ for any $I\subseteq \llb 1,n \rrb$.
 
-To prove some of the following claims, we will use a basic understanding of which linear combinations of the $e_i$ appear as elements of $U$.
+Begin by noting that $\llb 1,n \rrb = I_X \sqcup I_Y$; indeed, for each $i\in\llb 1,n \rrb$, $e_i\in X+Y$, and it must be that $e_i\in X\cup Y$ since all the $e_i$ are linearly independent.  
+Moreover, we cannot have $e_i\in X\cap Y$ since $2e_i \notin C = \{e_I : I\subseteq \llb 1,n \rrb \}$.
+
+To prove some of the claims which follow, we will use a basic understanding of which linear combinations of the $e_i$ appear as elements of $U$.
 Every element of $U$ has one of the following forms:
 \begin{enumerate}[(F1)]
 \item $e_I$: the coefficient to each $e_i$ is either $0$ or $1$.
@@ -808,7 +997,7 @@ However, since $\llb 1,n-1 \rrb \subseteq I_X$, we have $e_1 + f \in X+Y$, which
 
 Assume without loss of generality that $g\in X$.
 If $I_X = \emptyset$ then $X = \{0,g\}$ and $Y = \sum_{i=1}^n \{0,e_i\}$ by Claim A.
-By Theorem \ref{prop:singleton-length-set}, $Y$ factors uniquely and we have $\{0,e_1\}*\cdots \{0,e_n\}*\{0,g\}\in \Z_{\P_\fon(\NN^n)}(U)$.
+By Theorem \ref{thm:ind-atoms}, $Y$ factors uniquely and we have $\{0,e_1\}*\cdots \{0,e_n\}*\{0,g\}\in \Z_{\P_\fon(\NN^n)}(U)$.
 
 Now suppose $I_X \neq \emptyset$.
 Then, by Claims (C) and (E), 
@@ -842,10 +1031,10 @@ We now have, combining our work here with (\ref{factor-includes}) above, that
 \[ \{0,g\} + \sum_{i\in I_X}\{0,e_i\} \subseteq X \subseteq U\:Y \subseteq \left[\{0,g\}+\sum_{i\in I_X} \{0,e_i\} \right]\cup\{f\},\]
 so we have determined $X$ almost exactly, up to the choice of whether $f\in X$.
 
-Before discussing the possible factorizations of $X$, recall that $Y = \sum_{i\in I_Y} \{0,e_i\}$ and so $Y$ factors uniquely (by Theorem \ref{prop:singleton-length-set}) as the sum of the $\{0,e_i\}$ for $i\in I_Y$.
+Before discussing the possible factorizations of $X$, recall that $Y = \sum_{i\in I_Y} \{0,e_i\}$ and so $Y$ factors uniquely (by Theorem \ref{thm:ind-atoms}) as the sum of the $\{0,e_i\}$ for $i\in I_Y$.
 
 Now we turn to $X$; first suppose $f\notin X$.
-Then $X = \{0,g\} +\sum_{i\in I_X} \{0,e_i\}$, which has a unique factorization (by Theorem \ref{prop:singleton-length-set}) as the sum of $\{0,g\}$ and the $\{0,e_i\}$ for $i\in I_X$.
+Then $X = \{0,g\} +\sum_{i\in I_X} \{0,e_i\}$, which has a unique factorization (by Theorem \ref{thm:ind-atoms}) as the sum of $\{0,g\}$ and the $\{0,e_i\}$ for $i\in I_X$.
 This can only produce -- up to reordering, of course -- the factorization $\{0,g\}*\{0,e_1\}*\cdots*\{0,e_n\}\in \Z_{\P_\fon(\NN^n)}(U)$.
 
 If $f\in X$, then $X = \left[\{0,g\}+\sum_{i\in I_X} \{0,e_i\} \right]\cup\{f\}$ (and $Y = \{0,e_n\}$ per our considerations in (F3$'$)).
@@ -868,7 +1057,8 @@ Finally, $g + f \notin X$, so $f\notin B$, meaning that $B = \{0\}$ so that $X$ 
 
 %%%%%%
 %%%%%%
-\section{Partition Type of Factorizations} \label{sec:partitions}
+\chapter{Partition Type of Factorizations in the Natural Power Monoid}
+\section{Bad Partition Types for Intervals} \label{sec:partitions}
 %%%%%%
 %%%%%%
 
@@ -996,6 +1186,12 @@ We similarly begin by observing that the only atoms in $\mathcal{A}_5$ which con
 Let $n = 2m+1$.
 By calculations similar to those above, one can see that $n-2 \notin \{0,1,2,5\} +(m-2)\{0,2\}$ and $n-1\notin \{0,1,3,5\} + (m-2)\{0,2\}$.
 \end{proof}
+
+%%%%%%
+%%%%%%
+\section{Good Partition Types for Intervals}
+%%%%%%
+%%%%%%
 
 As we have just seen above, several partition types fail to appear because of the limited number of atoms available in $\mathcal{A}_N$ for small $N$.
 Even in $\mathcal{A}_5$, where there are a few choices of atoms containing $1$, there is no atom which contains both $1$ as well as enough ``comparably larger'' elements closer to $5$.
@@ -1191,6 +1387,7 @@ Since $k>2$ and $m_k \le m_i$ for all $i\ge 1$, we also have that $m_k < n/2$ an
 This allows us to conclude that $\aa = \bb * \{0,m_k\} \in \Z^P(\llb 0,n \rrb)$, proving what we wished.
 \end{proof}
 
+\section{Partition Subsums and Near Intervals}
 We have just seen that intervals of the form $\llb 0,n \rrb$ have factorizations of most partition types.
 There is a very sharp dichotomy between the wildly varied factorization behavior of intervals and that of any other subset of $\NN$, which we will see presently.  
 
@@ -1262,7 +1459,7 @@ Since each $m_i \ge 1$, we must have $m_2 = \cdots = m_k = 1$, so $P = (n/2+1, 1
 \end{proof}
 
 \begin{thm}
-Let $X \in \PN$ and suppose that there is $k\in \mathsf{L}(X)$ with $k > \max(X)$.
+Let $X \in \PN$ and suppose that there is $k\in \mathsf{L}(X)$ with $k > \max(X)/2$.
 Then $X = \llb 0, \max(X) \rrb$.
 \end{thm}
 
@@ -1282,83 +1479,85 @@ and we know $X \subseteq \llb 0,\max(X) \rrb = \llb 0, n \rrb$.
 
 %%%%%%
 %%%%%%
-\section{Non-Atomicity of Near Intervals in the Natural Power Monoid} \label{sec:near intervals}
-%%%%%%
-%%%%%%
 
-We have seen that intervals are, in some sense, as far as possible from being atoms.
-Every set, including atoms, can be realized as an interval with some (possibly many) points removed.  
-Thus we expect that $\llb 0,n \rrb \setminus S$ ``loses" factorizations as $S$ is allowed to become larger.  
-We would like to understand certain thresholds in this process of varying $S$; for instance, how large does $S$ need to become for $\llb 0,n \rrb \setminus S$ to become an atom?  
-From here, we pivot to a slightly different question with the same underlying theme: given $n$, is it possible that $\llb 0,n \rrb \setminus S$ always factors nontrivially for $|S|$ sufficiently small?
-Our goal is to formalize this question and make some progress toward determining the answer.
-
-\begin{conj}
-There is a function $s:\NN \to \NN$ such that, for any subset $S\subseteq \llb 0,n \rrb$ with $|S| \le s(n)$, $\llb 0,n \rrb \setminus S$ factors nontrivially in $\PN$.
-\end{conj}
-
-The following lemma represents many of the ``easy cases" when the set $S$ to be removed from the interval is concentrated in a small segment of the interval.
-
-\begin{lemma}\label{first-third}
-Let $n\in \NN$ and let $S\subseteq \NN$ with $3(\max(S)+1)< n$.
-Then $\llb 0,n \rrb \setminus S$ factors nontrivially and is divisible by $\{0,\max(S)+1\}$.
-\end{lemma}
-
-\begin{proof}
-Let $c =  \max(S)+1$ and $X = \llb 0, n \rrb \setminus S$.
-By Proposition \ref{prop:cofactors}, it is sufficient to show that $X \subseteq \{0,c\} + X\cap (X-c)$.
-Suppose $x\in X$; if $x \le n-c$ then $x + c \le n$, so that $x+c\in X$ and $x = 0 + x \in \{0,c\} + X\cap(X-c)$.
-If $x \ge n - c$ then $x - c \ge n - c  \ge c$ by assumption, meaning that $\max(S) + 1 \le x - c \le n$, so $x-c\in X$.
-Thus $x-c\in X\cap (X-c)$ and we have $x = c + (x-c) \in \{0,c\} + X\cap (X-c)$, which is what we needed to show.
-\end{proof}
-
-\begin{lemma}\label{reflection}
-Let $r:\PN \to \PN$ be given by $r(X) = \max(X) - X$.
-Then, for any $X\in \PN$, $r$ induces a bijection $\Z_\PN(X) \to \Z_\PN(r(X))$.
-In particular, $X$ is divisible by some $\{0,c\}$ if and only if $\max(X) - X$ is also divisible by $\{0,c\}$.
-\end{lemma}
-
-\begin{proof}
-We will prove that $X = Y + Z$ if and only if $r(X) = r(Y) + r(Z)$.
-This will imply that $X$ is an atom if and only if so is $r(X)$ and, by an inductive extension of the argument, will imply the desired result.
-Actually it will suffice to show only one implication, since $r(r(X)) = \max(X) - (\max(X) -X) = \max(X) - \max(X) + X = X$.
-
-Suppose $X = Y+Z$ for some $Y,Z\in \PN$. 
-Then
-\[ r(X) = \max(X) - X = (\max(Y) + \max(Z)) - (Y+Z) = \max(Y) -Y + \max(Z) -Z = r(Y) + r(Z) \]
-which is all we needed to see.
-\end{proof}
-
-Now we will see some examples in support of the conjecture made at the beginning of this section, which will motivate our work going forward.  
-These will also demonstrate how we wish to use the above lemmas.
-
-\begin{eg}
-\begin{enumerate}[(i)]
-\item If $n\ge 6$ then $\llb 0, n \rrb \setminus \{ k \}$ is divisible by some $\{0,c\}$ for any $k \in \llb 1,n-1 \rrb$.
-\item If $n\ge 18$ then $\llb 0,n \rrb \setminus \{ k , \ell \}$ is divisible by some $\{0,c\}$ for any $k\in \llb 1, n-1 \rrb$.
-\end{enumerate}
-Example (i) is easy enough to verify by hand; since (ii) takes a little more effort, we give an outline here.
-For convenience, suppose $1 \le k < \ell < n - k$, where the very last inequality comes at no loss of generality by Lemma \ref{reflection}.
-Let $X = \llb 0,n \rrb \setminus \{k,\ell\}$; we wish to show that $\{0,c\}$ divides $X$.
-
-We begin first by ruling out the cases when $k>1$ and $\ell-k > 2$, where we can see that $X$ is divisible by $\{0,1\}$.
-The leftover possibilities are that $k=1$ or $\ell - k \le 2$.
-
-\noindent\underline{Case 1A}: If $k = 1$ and $\ell \le 5$, one can see that $\{0,\ell+1\}$ divides $X$ by Lemma \ref{first-third}. \\
-\underline{Case 1B}: If $k = 1$ and $6 \le \ell \le n-4$, $\{0,2\}$ divides $X$. \\
-\underline{Case 1C}: If $k = 1$ and $n-3 \le \ell \le n-1$, the cases $\ell = n-3, n-2$, and $n-1$ can be handled by $c = 4,2$, and $2$, respectively.
-
-\noindent\underline{Case 2A}: If $\ell - k =1$ and $k>1$ then $\{0,1\}$ divides $X$. \\
-\underline{Case 2B}: If $k=1$ and $\ell=2$ then $\{0,3\}$ divides $X$. \\
-\underline{Case 2C}: If $\ell-k = 2$ and $k\ge 4$, $\{0,c\}$ divides $X$. \\ 
-\underline{Case 2D}: If $\{k,\ell\} =\{2,4\}$ or $\{3,5\}$, one can see that $\{0,5\}$ and $\{0,6\}$ divide $X$, respectively (by Lemma \ref{first-third}).
-In particular, the latter of these cases forces the requirement that $n\ge 18$.
-\end{eg}
-This example shows us a small sample of the ways in which removing a small set $S$ of points from $\llb 0,n \rrb$ can thwart the divisibility of $\llb 0,n \rrb\setminus S$ by $\{0,c\}$ for all small values of $c$, if the points of $S$ are chosen carefully.  
-In what lies ahead, we seek to anticipate all ``worst possible" configurations of $S$ to work toward our conjecture.
-
-In addition to determining the threshold value of $n$ beyond which $\llb 0,n \rrb\setminus S$ is divisible by some $\{0,c\}$ for a fixed $|S|$, we might also benefit from investigating the values of $c$ which are viable as divisors of $\llb 0,n \rrb\setminus S$.
-To aid in this, we define some constants.
+%\section{Non-Atomicity of Near Intervals in the Natural Power Monoid} \label{sec:near intervals}
+%
+%%%%%%%
+%%%%%%%
+%
+%We have seen that intervals are, in some sense, as far as possible from being atoms.
+%Every set, including atoms, can be realized as an interval with some (possibly many) points removed.  
+%Thus we expect that $\llb 0,n \rrb \setminus S$ ``loses" factorizations as $S$ is allowed to become larger.  
+%We would like to understand certain thresholds in this process of varying $S$; for instance, how large does $S$ need to become for $\llb 0,n \rrb \setminus S$ to become an atom?  
+%From here, we pivot to a slightly different question with the same underlying theme: given $n$, is it possible that $\llb 0,n \rrb \setminus S$ always factors nontrivially for $|S|$ sufficiently small?
+%Our goal is to formalize this question and make some progress toward determining the answer.
+%
+%\begin{conj}
+%There is a function $s:\NN \to \NN$ such that, for any subset $S\subseteq \llb 0,n \rrb$ with $|S| \le s(n)$, $\llb 0,n \rrb \setminus S$ factors nontrivially in $\PN$.
+%\end{conj}
+%
+%The following lemma represents many of the ``easy cases" when the set $S$ to be removed from the interval is concentrated in a small segment of the interval.
+%
+%\begin{lemma}\label{first-third}
+%Let $n\in \NN$ and let $S\subseteq \NN$ with $3(\max(S)+1)< n$.
+%Then $\llb 0,n \rrb \setminus S$ factors nontrivially and is divisible by $\{0,\max(S)+1\}$.
+%\end{lemma}
+%
+%\begin{proof}
+%Let $c =  \max(S)+1$ and $X = \llb 0, n \rrb \setminus S$.
+%By Proposition \ref{prop:cofactors}, it is sufficient to show that $X \subseteq \{0,c\} + X\cap (X-c)$.
+%Suppose $x\in X$; if $x \le n-c$ then $x + c \le n$, so that $x+c\in X$ and $x = 0 + x \in \{0,c\} + X\cap(X-c)$.
+%If $x \ge n - c$ then $x - c \ge n - c  \ge c$ by assumption, meaning that $\max(S) + 1 \le x - c \le n$, so $x-c\in X$.
+%Thus $x-c\in X\cap (X-c)$ and we have $x = c + (x-c) \in \{0,c\} + X\cap (X-c)$, which is what we needed to show.
+%\end{proof}
+%
+%\begin{lemma}\label{reflection}
+%Let $r:\PN \to \PN$ be given by $r(X) = \max(X) - X$.
+%Then, for any $X\in \PN$, $r$ induces a bijection $\Z_\PN(X) \to \Z_\PN(r(X))$.
+%In particular, $X$ is divisible by some $\{0,c\}$ if and only if $\max(X) - X$ is also divisible by $\{0,c\}$.
+%\end{lemma}
+%
+%\begin{proof}
+%We will prove that $X = Y + Z$ if and only if $r(X) = r(Y) + r(Z)$.
+%This will imply that $X$ is an atom if and only if so is $r(X)$ and, by an inductive extension of the argument, will imply the desired result.
+%Actually it will suffice to show only one implication, since $r(r(X)) = \max(X) - (\max(X) -X) = \max(X) - \max(X) + X = X$.
+%
+%Suppose $X = Y+Z$ for some $Y,Z\in \PN$. 
+%Then
+%\[ r(X) = \max(X) - X = (\max(Y) + \max(Z)) - (Y+Z) = \max(Y) -Y + \max(Z) -Z = r(Y) + r(Z) \]
+%which is all we needed to see.
+%\end{proof}
+%
+%Now we will see some examples in support of the conjecture made at the beginning of this section, which will motivate our work going forward.  
+%These will also demonstrate how we wish to use the above lemmas.
+%
+%\begin{eg}
+%\begin{enumerate}[(i)]
+%\item If $n\ge 6$ then $\llb 0, n \rrb \setminus \{ k \}$ is divisible by some $\{0,c\}$ for any $k \in \llb 1,n-1 \rrb$.
+%\item If $n\ge 18$ then $\llb 0,n \rrb \setminus \{ k , \ell \}$ is divisible by some $\{0,c\}$ for any $k\in \llb 1, n-1 \rrb$.
+%\end{enumerate}
+%Example (i) is easy enough to verify by hand; since (ii) takes a little more effort, we give an outline here.
+%For convenience, suppose $1 \le k < \ell < n - k$, where the very last inequality comes at no loss of generality by Lemma \ref{reflection}.
+%Let $X = \llb 0,n \rrb \setminus \{k,\ell\}$; we wish to show that $\{0,c\}$ divides $X$.
+%
+%We begin first by ruling out the cases when $k>1$ and $\ell-k > 2$, where we can see that $X$ is divisible by $\{0,1\}$.
+%The leftover possibilities are that $k=1$ or $\ell - k \le 2$.
+%
+%\noindent\underline{Case 1A}: If $k = 1$ and $\ell \le 5$, one can see that $\{0,\ell+1\}$ divides $X$ by Lemma \ref{first-third}. \\
+%\underline{Case 1B}: If $k = 1$ and $6 \le \ell \le n-4$, $\{0,2\}$ divides $X$. \\
+%\underline{Case 1C}: If $k = 1$ and $n-3 \le \ell \le n-1$, the cases $\ell = n-3, n-2$, and $n-1$ can be handled by $c = 4,2$, and $2$, respectively.
+%
+%\noindent\underline{Case 2A}: If $\ell - k =1$ and $k>1$ then $\{0,1\}$ divides $X$. \\
+%\underline{Case 2B}: If $k=1$ and $\ell=2$ then $\{0,3\}$ divides $X$. \\
+%\underline{Case 2C}: If $\ell-k = 2$ and $k\ge 4$, $\{0,c\}$ divides $X$. \\ 
+%\underline{Case 2D}: If $\{k,\ell\} =\{2,4\}$ or $\{3,5\}$, one can see that $\{0,5\}$ and $\{0,6\}$ divide $X$, respectively (by Lemma \ref{first-third}).
+%In particular, the latter of these cases forces the requirement that $n\ge 18$.
+%\end{eg}
+%This example shows us a small sample of the ways in which removing a small set $S$ of points from $\llb 0,n \rrb$ can thwart the divisibility of $\llb 0,n \rrb\setminus S$ by $\{0,c\}$ for all small values of $c$, if the points of $S$ are chosen carefully.  
+%In what lies ahead, we seek to anticipate all ``worst possible" configurations of $S$ to work toward our conjecture.
+%
+%In addition to determining the threshold value of $n$ beyond which $\llb 0,n \rrb\setminus S$ is divisible by some $\{0,c\}$ for a fixed $|S|$, we might also benefit from investigating the values of $c$ which are viable as divisors of $\llb 0,n \rrb\setminus S$.
+%To aid in this, we define some constants.
 
 
 
@@ -1367,5 +1566,8 @@ To aid in this, we define some constants.
 \nocite{*}
 \bibliography{bib}
 \bibliographystyle{plain}
+
+
+
 
 \end{document}
