@@ -11,8 +11,8 @@
 \contentsline {chapter}{\numberline {3}Power Monoids of Natural Lattices}{16}{chapter.3}% 
 \contentsline {section}{\numberline {3.1}Passage to Other Monoids}{16}{section.3.1}% 
 \contentsline {section}{\numberline {3.2}Independence Arguments in the Lattice}{20}{section.3.2}% 
-\contentsline {section}{\numberline {3.3}Length Sets in High-Dimensional Lattices}{22}{section.3.3}% 
-\contentsline {chapter}{\numberline {4}Partition Type of Factorizations in the Natural Power Monoid}{26}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Bad Partition Types for Intervals}{26}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Good Partition Types for Intervals}{29}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}Partition Subsums and Near Intervals}{33}{section.4.3}% 
+\contentsline {section}{\numberline {3.3}Length Sets in High-Dimensional Lattices}{23}{section.3.3}% 
+\contentsline {chapter}{\numberline {4}Partition Type of Factorizations in the Natural Power Monoid}{30}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Bad Partition Types for Intervals}{30}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Good Partition Types for Intervals}{33}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Partition Subsums and Near Intervals}{37}{section.4.3}% 
