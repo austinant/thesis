@@ -3,44 +3,46 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Thesis.aux
 The style file: plain.bst
 Database file #1: bib.bib
-You've used 20 entries,
+Warning--I didn't find a database entry for "Gor1980"
+You've used 22 entries,
             2118 wiz_defined-function locations,
-            639 strings with 7376 characters,
-and the built_in function-call counts, 7079 in all, are:
-= -- 732
-> -- 258
+            655 strings with 7606 characters,
+and the built_in function-call counts, 7617 in all, are:
+= -- 786
+> -- 278
 < -- 9
-+ -- 109
-- -- 82
-* -- 488
-:= -- 1118
-add.period$ -- 66
-call.type$ -- 20
-change.case$ -- 97
++ -- 117
+- -- 88
+* -- 522
+:= -- 1210
+add.period$ -- 72
+call.type$ -- 22
+change.case$ -- 106
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 300
-empty$ -- 576
-format.name$ -- 82
-if$ -- 1518
+cite$ -- 22
+duplicate$ -- 323
+empty$ -- 623
+format.name$ -- 88
+if$ -- 1630
 int.to.chr$ -- 0
-int.to.str$ -- 20
-missing$ -- 25
-newline$ -- 105
-num.names$ -- 40
-pop$ -- 99
+int.to.str$ -- 22
+missing$ -- 28
+newline$ -- 115
+num.names$ -- 44
+pop$ -- 109
 preamble$ -- 1
-purify$ -- 81
+purify$ -- 88
 quote$ -- 0
-skip$ -- 220
+skip$ -- 234
 stack$ -- 0
-substring$ -- 522
-swap$ -- 88
+substring$ -- 551
+swap$ -- 90
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 70
+type$ -- 76
 warning$ -- 0
-while$ -- 71
-width$ -- 22
-write$ -- 231
+while$ -- 77
+width$ -- 24
+write$ -- 253
+(There was 1 warning)
