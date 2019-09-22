@@ -1,0 +1,224 @@
+\chapter{Introduction}
+Factorization theory pursues a full understanding of how complex objects decompose into their simplest constituent parts.  
+Depending on the algebraic structure in question, the difficulty of gaining such an understanding can vary wildly. 
+Some objects can be broken down in exactly one way, while others exhibit more exotic behavior and are able to be broken down into many combinations of simpler parts.
+Among our tasks are to test the bounds of this behavior, and to completely classify the circumstances under which it can occur.
+In the present work, we bring our attention to a fairly new class of algebraic objects -- the titular ``power monoids" --  which possess many characteristics that make their study difficult, hence interesting.
+
+%%%%%%
+%%%%%%
+\section{History and Motivation}
+%%%%%%
+%%%%%%
+
+The most elementary setting in which we study factorizations is the set $\ZZ$ of integers.
+It is well known (as the Fundamental Theorem of Arithmetic) that every integer (other than $-1$, $0$, and $1$) factors uniquely as a product of prime integers.
+For instance, $12$ can be written as $2\cdot 2\cdot 3$.
+Of course, 12 can also be written as either of the products $2\cdot 3\cdot 2$ or $(-3)\cdot 2\cdot (-2)$, but we consider these factorizations to be fundamentally the same.  
+This tells us that, in addition to identifying the prime factors involved, there should also be an equivalence of factorizations in play.
+Making these ideas rigorous is one of the challenges of extending this familiar example to a more general theory.
+
+
+There are many settings other than the integers in which it is reasonable to decompose elements into atoms. 
+However, most will not share the familiar unique factorization of the integers.  
+Historically, one of the greatest examples comes from the ring of integers of an algebraic number field; namely, $\ZZ[\sqrt{-5}]$.
+Consider $6$ as an element of this ring: $6=2\cdot3$, but we also have $6 = (1+\sqrt{-5})(1-\sqrt{-5})$.
+It is not a hard exercise to show that these two factorizations are not equivalent (meaning that $2$ and $3$ are not associate to $1\pm\sqrt{-5}$), so $6$ has more than one type of factorization into irreducibles.
+
+%For an example, one doesn't need to migrate too far from the integers: consider the subset of integers which can be obtained as a sum of any number of copies of $4$, $9$, or $11$.
+%The list of such integers begins: $\{0, 4, 8, 9, 11, 12, 13, 15, 16, 17, ... \}$.
+%Here, it is necessary to determine which integers will appear in the list (one can show that every integer after $15$ will appear), but we will be more interested in the questions of how many ways integers can be written just using $4$, $9$, and $11$.
+%As an example, $22$ can be written as $11+11$ or as $9+9+4$; so $22$ can be decomposed into two atoms or into three.
+%This is an instance of an element whose factorizations aren't unique, but a fairly tame one relative to the sort of phenomena that can arise within the study of non-unique factorizations.
+
+Much of the field has taken place in the setting of monoids which are not only commutative (satisfying $ab = ba$) but also cancellative, meaning that $ab = ac$ implies $b = c$.
+It is true that monoids of ideals in commutative rings and monoids of modules naturally give rise to examples of non-cancellative settings in which it is reasonable to study factorization properties. 
+Our goal here is to explore a relatively new class of monoids which are non-cancellative, exhibit many rich properties, and yet are rooted in a simple and natural combinatorial construction.
+
+
+%%%%%%
+%%%%%%
+\section{Plan and Main Results}
+%%%%%%
+%%%%%%
+We will conclude this chapter by defining and recalling some preliminary notions which are necessary to move forward with our discussion, including the formal language we will use to encode the data of factorizations and some notions which capture the varying degrees of non-unique factorization.
+
+Chapter \ref{ch:power monoids} will introduce the main object of this paper: the power monoid.  
+In brief, for any monoid $H$, let $\P_\fin(H)$ be the collection of finite, nonempty subsets of $H$ with the operation of setwise multiplication given by $X\cdot Y = \{xy: x\in X, y\in Y\}$.  
+This forms a monoid which can behave wildly.
+However, the submonoid $\P_\fun(H)$ of subsets containing $1$ is more feasible for study, and yields some meaningful results which can be lifted back to the full monoid $\P_\fin(H)$.
+We will see in Section \ref{sec:atomicity} when it is reasonable to study factorizations in $\P_\fun(H)$.
+As it turns out, this monoid is atomic exactly when $H$ has no nontrivial idempotents or elements of order $2$ (Theorem \ref{th:atomicity}).
+Moreover, $\P_\fun(H)$ has bounded factorization lengths if and only if $H$ is torsion-free (Theorem \ref{thm:BF-torsion}).
+
+When $H$ is not torsion-free, the usual tools for measuring non-uniqueness of factorization in $\P_\fun(H)$ become degenerate.
+To compensate for this, we introduce the notion of \textit{minimal factorizations} in a general monoid.
+We then classify the circumstances under which $\P_\fun(H)$ satisfies minimal versions of the usual factorization properties (Factoriality, Half-Factoriality, FF-ness, BF-ness).  
+Finally, we move to the specific case when $H = \ZZ/n\ZZ$ is a finite cyclic group to exercise this new notion of minimal factorization and recover analogues of some results which are known for $\PN$.
+Namely, each interval $\llb 2,k \rrb$ for $k\le n-1$ occurs as a set of lengths in $\P_\fon(\ZZ/n\ZZ)$.
+
+Chapter \ref{ch:partitions} focuses on the specific case of $\PN$.
+In this setting we can leverage the linear ordering of $\NN$ to introduce the partition type of a given factorization.  
+We consider the set of partition types of factorizations of a given element (by analogy with the more familiar set of lengths).
+This is a new measure by which we can assess the degree to which an element fails to factor uniquely.  
+In keeping with our previous findings, the intervals $\llb 0,n \rrb$ realizes all but $4$ possible partition types (Theorem \ref{thm:good types}), making them quantifiably the elements farthest from factoring uniquely.
+Continuing to view $\PN$ through the lens of integer partitions, we also find another sharp bifurcation in factorization behavior between intervals and non-intervals: any non-interval $X$ satisfies $\max(\mathsf{L}_{\PN}(X) )\le \max(X)/2$.
+
+Chapter \ref{ch:applications} first establishes an intimate connection between the arithmetic of $\PN$ and $\P_\fon(\NN^d)$, for $d>1$; namely, these monoids share essentially the same factorization behavior.  
+While it is clear that all phenomena encountered in $\PN$ can be found in $\P_\fon(\NN^d)$, the reverse is true as well.  
+This affords us the opportunity to use higher-dimensional geometric intuition to attack problems in $\PN$.
+Ruminations in this vein bear the fruit of some new methods for understanding factorizations in $\P_\fon(\NN^d)$.
+This line of thought also allows us to recover known results in $\PN$; namely, that, for any $n\ge 2$, $\{n\}$ and $\{2,n+1\}$ occur as sets of factorization lengths.
+Furthermore, we can push these methods to obtain Theorem \ref{thm:int-point-construction}, which states that, for any $n\ge 2$ and $m\ge 1$, $\llb 2,m+2 \rrb \cup \{m+n+1\}$ occurs as a set of lengths.
+
+
+
+
+
+%%%%%%
+%%%%%%
+\section{Preliminaries}
+%%%%%%
+%%%%%%
+\subsection{Notation and Conventions} \label{subsec:generalities}
+
+$\NN = \{0,1,2,3,\dots\}$, $\ZZ = \{0,\pm 1, \pm 2,\dots\}$, and $\RR$ denote the sets of natural numbers, integers, and real numbers, respectively.
+In general, unless otherwise specified, lowercase letter will usually refer to elements of a monoid; ordinary uppercase letters to sets and subsets; script or calligraphic uppercase letters to collections of subsets.
+Specifically, $i$, $j$, $k$, $\ell$, $m$, and $n$ will usually stand for non-negative integers.
+For $a, b\in \RR\cup\{\infty\}$, $\llb a,b \rrb = \{ n\in \ZZ : a \le n \le b \}$ shall denote the (integer) interval from $a$ to $b$.
+
+The \textit{free monoid} on some generating set $S$ will be denoted by $\F^*(S)$.  
+This monoid should be thought of as the set of formal words whose letters belong to $S$.
+Its operation, denoted by $*$ to avoid confusion where another multiplicationmis present, is meant to be interpreted as the concatenation of words.
+The elements of $\F^*(S)$ will usually be represented by the fraktur letters $\aa$, $\bb$, and so on.  
+The \textit{length} of a word $\mathfrak{s}= s_1 * \cdots * s_\ell  \in \F^*(S)$, where each $s_i\in S$ and $| \mathfrak{s} | := \ell$.
+The empty word $\emptyset$ is said to have length zero.
+
+If $S$ is a set and $\E$ is an equivalence relation on $S$, the equivalence class of some $x\in S$ shall be denoted by $[x]_\E$.
+The subscript may be removed in situations where the implied equivalence is clear.
+
+\subsection{Fundamental Notions of Factorization Theory} \label{subsec:factorizations}
+\begin{defn}
+A monoid is a pair $(H,\cdot)$, where $H$ is a set and $\cdot $ is a binary operation (called multiplication in the absence of any other name) on $H$, satisfying
+\begin{enumerate}
+\item Associativity: for every $x,y,z \in H$, $(x\cdot y)\cdot z = x\cdot (y\cdot z)$
+\item Identity: there is an element $1_H\in H$ such that $1\cdot x = x\cdot 1 = x$ for all $x\in H$
+\end{enumerate}
+Often, the operation will be omitted when no confusion can arise; it is standard practice to write $xy$ instead of $x \cdot y$.
+Similarly, the identity $1_H$ will usually be written as $1$.
+
+A map $\varphi: H \to K$ between monoids is a \textbf{homomorphism} if $\varphi(1_H) = 1_K$ and $\varphi(xy) = \varphi(x)\varphi(y)$.
+\end{defn}
+
+
+
+\begin{defn}
+Let $H$ be a monoid.
+\begin{enumerate}
+\item $u\in H$ is a \textbf{unit} if there is $v\in H$ with $uv = vu = 1$.  
+The set of units of $H$ is denoted by $H^\times$.  
+$H$ is called \textit{reduced} if $H^\times = \{1\}$.
+\item $a\in H\setminus H^\times$ is an \textbf{atom} if, whenever $a = xy$, either $x\in H^\times$ or $y\in H^\times$. The set of atoms of $H$ is denoted by $\A(H)$.
+\item $x,y\in H$ are \textbf{associates} if there are units $u,v\in H^\times$ so that $x = uyv$. In this case, we write $x \sim y$.
+\item $x\in H$ is \textbf{idompotent} (or \textbf{an idempotent}) if $x^2 = x$.
+\end{enumerate}
+\end{defn}
+
+Note that $a$ is an atom if and only if every divisor of $a$ is either an associate of $a$ or a unit in $H$.
+This may be taken as a definition of an atom, or used as a starting point for generalized notions of an atom, as in [RANTHONY REFERENCE FOR DIFFERENT NOTIONS OF ASSOCIATE/ATOMS].
+
+\begin{prop}
+Let $H$ be a monoid, let $a\in \A(H)$, and let $u,v\in H^\times$.
+Then $uav \in \A(H)$.
+\end{prop}
+
+\begin{defn}
+Let $H$ be a monoid.
+The \textbf{factorization homomorphism} of $H$ is the unique homomorphism $\pi_H: \F^*(H) \to H$ satisfying $\pi_H(x) = x$ for all $x\in H$.
+
+The \textbf{factorization monoid} of $H$ is the free monoid $\F^*(\A(H))$ generated by the atoms of $H$.
+Its elements are referred to as \textit{factorizations}.
+
+If $x\in H$ is a non-unit, then the \textbf{set of factorizations} of $x$ is
+\[ \Z_H(x) := \{ \aa\in \F^*(\A(H)) : \pi_H(\aa) = x \} = \F^*(\A(H)) \cap \pi_H^{-1}(x) \]
+The subscript ``$H$" may be omitted for brevity if the ambient monoid in which the factorization is being considered is clear from context.
+
+For a non-empty word $\aa\in \Z_H(x)$, if we write $\aa = a_1*\cdots*a_k$, the atoms $a_i$ are said to be \textit{factors} of $x$.
+\end{defn}
+
+\begin{defn}
+Let $H$ be a monoid, $x\in H$ be a non-unit, and $\aa,\bb \in \F^*(\A(H))$.
+We will say that $\aa$ is \textbf{equivalent} to $\bb$ if, writing $\aa = a_1*\cdots * a_k$ and $\bb = b_1*\cdots * b_\ell$,
+\begin{enumerate}
+\item $k = \ell$.
+\item The factors in $\bb$ are permuted associates of the factors of $\aa$; that is, there is a permutation $\sigma\in S_n$ (where $S_n$ is the symmetric group on $\llb 1,n \rrb$) such that $b_i \sim a_{\sigma(i)}$ for all $i\in \llb 1,k \rrb$.
+\item $\aa$ and $\bb$ have the same product; i.e., $\pi_H(\aa) = \pi_H(\bb)$.
+\end{enumerate}
+\end{defn}
+
+It is not difficult to check that the relation defined here is indeed an equivalence relation on $\F^*(\A(H))$.
+
+\begin{defn}
+Let $H$ be a monoid and $x\in H\setminus H^\times$.
+The \textbf{set of factorization classes} of $x$ is
+\[ \mathsf{Z}_H(x) := \{ [\aa]: \aa\in \Z_H(x) \} = \Z_H(x)/\sim \]
+and the \textbf{set of (factorization) lengths} of $x$ is
+\[ \mathsf{L}_H(x) := \{ |\aa| : [\aa] \in \mathsf{Z}_H(x) \}. \]
+\end{defn}
+
+\begin{defn}
+Let $H$ be a monoid.
+Here we define some properties to measure the degree of uniqueness of factorization in $H$.
+\begin{itemize}
+\item $H$ has \textbf{unique factorization (UF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{Z}_H(x)| = 1$.
+\item $H$ is \textbf{half factorial (HF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{L}_H(x)| = 1$.
+\item $H$ has \textbf{finite factorization (FF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{Z}_H(x)| <\infty$.
+\item $H$ has \textbf{bounded factorization (BF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{L}_H(x)| < \infty$.
+\item $H$ is \textbf{atomic} if, for all $x\in H\setminus H^\times$, $\mathsf{Z}_H(x) \neq \emptyset$.
+\end{itemize}
+\end{defn}
+
+\begin{prop}
+We have the following logical implications among the properties defined just above:
+\[\begin{tikzcd}[arrows = Rightarrow]
+ & \text{HF} \arrow{dr}&  &  \\
+\text{UF} \arrow{ur}\arrow{dr}  &  & \text{BF} \arrow{r}& \text{Atomic} \\
+ & \text{FF} \arrow{ur} &  & 
+\end{tikzcd}\]
+\end{prop}
+
+
+
+\begin{eg}
+It is helpful to see some examples or non-examples of each of these properties.
+\begin{enumerate}[label={\rm (\roman{*})}]
+\item $\ZZ\setminus \{0\}$ is a unique factorization monoid (this is the Fundamental Theorem of Arithmetic).
+\item Let $\mathbb{P} \subseteq \NN$ be the set of primes, and let $M = \gen{\mathbb{P}\times \mathbb{P}}$ be the monoid generated by pairs of primes under multiplication.  
+Then, for any pair $(m,n)\in M$, it is clear that any factorization of $(m,n)$ has length equal to the number of primes (counted with multiplicity) dividing $m$ or $n$.
+However, this is not a UF monoid; we have, for instance, that $(2,2)(3,3)(2,3) = (12,18) = (2,3)(2,3)(3,2)$.
+\item Most examples we will encounter from here onward will be FF, so it is perhaps more useful to see a non-example of an FF monoid.
+Let $R = \mathbb{R} + x \mathbb{C}[x]$ be the ring of polynomials with complex coefficients and real constant term.
+Then, for all nonzero $r\in \mathbb{R}$, we have
+\[ x^2 = ((r+i)x)\left(\frac{1}{r+i}\,x\right). \]
+Since $r+i\notin R$ for $r\neq0$, each $r+i$ is a non-unit of $R$, so we have found infinitely many factorizations of $x^2$.
+However, any element of $R\setminus \{0\}$ has only finitely many factorization \textit{lengths} by a degree argument.
+Thus the monoid $R\setminus \mathbb{Z}$ is BF but not FF.
+\item Some of the richest factorization behavior is encountered in BF monoids.  
+Here we mention some highly studied classes of BF monoids without going into too much detail, on the promise that we will discuss a new class of examples in heavy detail later.
+\begin{itemize}
+\item \textit{Numerical monoids}: proper subsets $H \subsetneqq \NN$ with finite complement which are closed under addition. \textcolor{red}{[CITE SOME PAPERS]}
+\item \textit{Monoids of zero-sum sequences}: for a finite abelian group $G$, this monoid consists of formal words or ``sequences" in the elements of $G$ whose sums are equal to $0$.  
+%This monoid can be written as $\F(G) \cap \sigma^{-1}(0)$, where $\F(G)$ is the free \textit{abelian} monoid in which words are unordered and $\sigma: \F(G) \to G$ is the unique homomorphism sending $g \mapsto g$ (compare with our product map $\pi_H: \F^*(H) \to H$).
+The interest in these monoids can be traced back to the study of the class group of a Dedekind domain (usually a ring of integers of a number field).  \textcolor{red}{[CITE SOME PAPERS]}
+
+\item \textit{Integer-valued polynomials}: let $D$ be a domain with field of fractions $K$; then $\operatorname{Int}(D) := \{f(x) \in K[x]: f(D) \subseteq D \}$ is the ring of integer-valued polynomials of $D$.
+In addition to the rich theory developed around understanding the prime ideal structure of this ring, it is amenable to the study of factorization behavior, and exhibits some surprising behaviors.  
+For example, any finite subset of $\NN_{\ge2}$ can be realized as the set of factorization lengths of some polynomial $f(x)\in \operatorname{Int}(D)$.
+Additionally, one can pose similar questions regarding the ring $\operatorname{Int}^\text{R}(D)$ of integer-valued rational functions. \textcolor{red}{[CITE SOME PAPERS]}
+\end{itemize}
+\item Since we will usually be looking at atomic monoids, we offer a non-example here; consider the set $Q = \mathbb{Q}_{\ge 0}$ of non-negative rational numbers under addition.
+$Q$ is reduced (its only unit is the identity, $0$) and we have, for any non-zero element $x\in Q$, that $x = \frac{x}{2} + \frac{x}{2}$.
+This is a decomposition of $x$ into two non-zero (hence non-unit) elements, so $x$ is not an atom.
+Thus we learn that $Q$ not only fails to have factorizations into atoms, but also to have atoms at all.
+\end{enumerate}
+\end{eg}

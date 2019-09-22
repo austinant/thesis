@@ -1,0 +1,413 @@
+\chapter{Partition Type of Factorizations in the Natural Power Monoid} \label{ch:partitions}
+\section{Bad Partition Types for Intervals} \label{sec:partitions}
+%%%%%%
+%%%%%%
+
+
+%One can see that the intervals $\llb 0,n \rrb$ have overwhelmingly many factorizations in $\P_{\fin,0}(\NN)$.
+%Any subset of $\NN$ can be obtained by removing points from such an interval, and we know that arbitrary subsets may exhibit all sorts of factorization behavior.  
+%As such, it may be interesting to try and observe gradual changes in this behavior as we remove points from $\llb 0,n \rrb$.
+%At the opposite extreme of the extremely flexible factorization behavior of $\llb 0,n \rrb$, we have the subsets with the most behavior: the atoms.
+%We would like to determine whether there is a distinct threshold for the number of points we are required to remove from $\llb 0,n \rrb$ to obtain an atom.
+
+The length set realization Theorems \ref{thm:ind-atoms} and \ref{thm:2n-length-set} show that some subsets of $\NN$ have very well-controlled sets of factorization.
+On the other hand, there are subsets with comparatively ``wild" set of factorizations; the intervals $\llb 0,n \rrb$ are a simple class examples which demonstrate this since, for instance, we have $\mathsf{L}(\llb0,n\rrb) = \llb 2,n \rrb$ \cite[Proposition 4.8]{fan-tringali18}.
+However, observe that any subset $X$ can be obtained by deleting points from the interval $\llb 0,\max(X) \rrb$.
+If $X$ has relatively tame factorization behavior and we imagine this process of deleting points from $\llb 0,\max(X)\rrb$, then the subsets between the full interval and $X$ experience a transition between ``wild" and ``tame" factorization behavior.
+In what follows, we seek to more rigorously quantify what is meant by ``wild" factorization behavior and to investigate the nature of this transition.
+
+Since we will be thinking of elements of $\PN$ as subsets of the intervals $\llb 0,n \rrb$, it will be convenient to have some notation to help us filter $\NN$.
+
+
+\begin{defn} \label{def:filtration}
+	For $n\ge 0$, we distinguish the following collections of subsets:
+	\begin{align*}
+	\P_n &= \{ X \subseteq \llb 0,n \rrb : 0,n\in X \} \\
+	\mathcal{A}_n &= \mathcal{A}(\PN) \cap \P_n  \\
+	\mathcal{N}_n &= \P_n \setminus \mathcal{A}_n 
+	\end{align*}
+	%Here we are just filtering the subsets, atoms, and non-atoms (respectively) in accordance with the intuitive grading on subsets of $\NN$.
+\end{defn}
+
+
+%\begin{defn}
+%Define a function $z:\NN \to \NN$ by
+%\[ z(n) := \Z_{\P_{\fin,0}(\NN)}(\llb 0,n \rrb) \]
+%\end{defn}
+%This function measures the number of factorizations of an interval into atoms of $\P_{\fin,0}(\NN)$.
+%Our goal in the coming pages will be to describe the behavior (especially growth) of this function. 
+%In so doing, we should glean some insight into the most flexibly factorable elements of the natural power monoid.
+
+In any monoid, we can distinguish different factorizations of an element $x$ by their lengths; that is, we know that if $\aa,\bb\in \Z(x)$ with $|\aa| \neq |\bb|$, then $\aa$ and $\bb$ are not equivalent.
+In $\PN$, we have some additional leverage which comes from integer partitions; we make some definitions to facilitate this leverage now.
+
+\begin{defn}
+	Let $n\ge 1$. A \textit{partition of $n$} is $P = (m_1,\dots, m_k)$, where $m_1 \ge \dots \ge m_k \ge 1$ and $m_1+\cdots + m_k = n$. 
+	Each $m_i$ is said to be a \textit{part} of $P$, and $k$ is said to be the \textit{length} or number of parts of $P$.
+	For brevity, we occasionally write $P \vdash n$.
+	
+	For $X \in \PN$ and for any partition $P = (m_1,\dots, m_k)$ of $\max(X)$, we define the \textbf{set of factorizations of $X$ of (partition) type $P$} to be
+	\[ \Z^P(X) := \{ A_1*\cdots * A_k \in \Z(X) : A_i \in \mathcal{A}_{m_i} \textrm{ for } i\in \llb 1,k \rrb \}. \]
+	We also define the \textbf{set of (partition) types of $X$} to be
+	\[ \mathsf{T}(X) :=  \{ P \vdash \max(X) : \Z^P(X) \neq \emptyset \}. \]
+\end{defn}
+
+\begin{rk}
+	There are some elementary observations to be made which connect factorization behavior with partition type.
+	Say $X \in \PN$ with $n = \max(X)$.
+	\begin{enumerate}[label={\rm (\roman{*})}]
+		\item $\Z(X) = \bigsqcup_{P} \Z^P(X)$, a disjoint union taken over all partitions $P$ of $n$.
+		\item $\Z^{(n)}(X) = \emptyset$ if and only if $X$ is not an atom.
+	\end{enumerate}
+	Though the disjoint union in (i) is not too hard to see, it is not clear that each $\Z^P(X)$ is nonempty.
+	In fact, we will soon see evidence to the contrary.
+\end{rk}
+
+
+%Here, we have demonstrated that each $\Z^P(\llb 0,n \rrb)$ is nonempty when $\min(P) = 1$.  
+%However, as with other aspects of the set of factorizations of $\llb 0,n \rrb$, we hope this indicates that intervals have \textit{many} factorizations of each such type $P$.
+%On the other hand, some types can never admit factorizations; we shall see some examples of this soon.
+
+\begin{prop} \label{prop:2-elt factor/cofactor}
+	Let $X\in \PN$.
+	\begin{enumerate}[label={\rm (\roman{*})}]
+		\item Let $n = \max(X) + b$. $X + \{0,b\} = \llb 0,n \rrb$ if and only if $X \cap \{k,k-b\} \neq \emptyset$ for every $k\in \llb 0,n \rrb$.
+		\item For any $c\ge 1$, $X + \{0,2c\} = \llb 0,\max(X)+2c \rrb$ implies that $\{0,c\}$ divides $X$.
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	For (i), we first prove the ``only if" direction.  
+	Suppose $k\in \llb 0,n \rrb$; then $k\in X + \{0,b\}$.
+	We must have that $k\in X + 0$ or that $k \in X + b$, which is the same as saying $k\in X$ or $k-b\in X$.
+	
+	Conversely, suppose that $k\in \llb 0,n \rrb$.
+	If $k\in X \subseteq X + \{0,b\}$, we are done.
+	If $k\notin X$, then we have by assumption that $k-b\in X$, meaning $k\in X +b \subseteq X+ \{0,b\}$.
+	We conclude that $X + \{0,b\} \supseteq \llb 0,n \rrb$, and the other inclusion is clear since $\max(X+\{0,b\}) = \max(X) + b = n$.
+	
+	For (ii), we use Proposition \ref{prop:cofactors}.
+	Let $Y = X\:\{0,c\} = X\cap (X-c)$; we know that $\{0,c\} + Y \subseteq X$, so we just need to show the other inclusion.
+	Suppose $X \supsetneqq \{0,c\} + Y$; then there is $x\in X$ with $x\notin \{0,c\} + Y$.
+	This means that $x\notin X \cap (X-c)$ and $x \notin X \cap (X-c)$; all together, this means $x+c,x-c\notin X$.
+	However, this contradicts part (i), taking $b = 2c$ and $k = x+c$.
+	Thus we must have $X = \{0,c\} + X\:\{0,c\}$.
+\end{proof}
+
+\begin{prop} \label{prop:bad types}
+	Let $n\ge 1$.
+	\begin{enumerate}[label={\rm (\roman{*})}]
+		\item For $n\ge 4$, $\Z^{(n-2,2)}(\llb 0,n \rrb) = \emptyset$.
+		\item For even $n\ge 4$, $\Z^{(2,\dots,2)}(\llb 0,n \rrb) = \emptyset$.
+		\item For odd $n\ge 5$, $\Z^{(3,2,\dots, 2)}(\llb 0,n \rrb) = \emptyset$.
+		\item For even $n\ge 6$, $\Z^{(4,2,\dots, 2)}(\llb 0,n \rrb) = \emptyset$.
+		\item For odd $n\ge 7$, $\Z^{(5,2,\dots, 2)}(\llb 0,n \rrb) = \emptyset$.
+	\end{enumerate}
+\end{prop}
+\begin{proof}
+	For (i), we can use the second part of Lemma \ref{prop:2-elt factor/cofactor} with $c = 1$ to see that there can be no atom $A$ with $A+\{0,2\} = \llb 0,n \rrb$.
+	
+	It is easy to see (ii) because $\{0,2\}$ is the only atom in $\mathcal{A}_2$, and no sum of the form $\{0,2\} +\dots +\{0,2\}$ can contain $1$, let alone a whole interval.
+	
+	For (iii), write $n = 2m+1$.
+	We note that $\mathcal{A}_3 = \{\{0,2,3\}, \{0,1,3\} \}$.
+	Since $1$ belongs to the interval, if $\llb 0,2m+1 \rrb$ is to have a factorization of partition type $(3,2,\dots,2)$, then that factorization must include $\{0,1,3\}$.
+	However, we see that 
+	\[ \{0,1,3\} + (m-1)\{0,2\}  = \{0,1,3\} + \{0,2,\dots, 2m-2\} = \llb 0, 2m-1 \rrb \cup \{2m+1\} \]
+	which does not contain $2m = n-1$, so $\llb 0,2m+1\rrb$ cannot have a factorization of type $(3,2,\dots,2)$.
+	
+	The arguments for the remaining parts proceed along similar lines.
+	For (iv), we note that the only atoms in $\mathcal{A}_4$ which contain $1$ are $\{0,1,4\}$ and $\{0,1,2,4\}$.
+	However, if $n = 2m$, we have
+	\[ \{0,1,2,4\} + (m-2)\{0,2\} = \{0,1,4\} + \{0,2,\dots, 2m-4\} = \llb 0, 2m-2 \rrb \cup \{2m\} \]
+	which again fails to contain $n-1$.
+	
+	Finally, we turn to (v).
+	We similarly begin by observing that the only atoms in $\mathcal{A}_5$ which contain $1$ are $\{0,1,5\}$, $\{0,1,2,5\}$, and $\{0,1,3,5\}$.
+	Let $n = 2m+1$.
+	By calculations similar to those above, one can see that $n-2 \notin \{0,1,2,5\} +(m-2)\{0,2\}$ and $n-1\notin \{0,1,3,5\} + (m-2)\{0,2\}$.
+\end{proof}
+
+%%%%%%
+%%%%%%
+\section{Good Partition Types for Intervals}
+%%%%%%
+%%%%%%
+
+As we have just seen above, several partition types fail to appear because of the limited number of atoms available in $\mathcal{A}_N$ for small $N$.
+Even in $\mathcal{A}_5$, where there are a few choices of atoms containing $1$, there is no atom which contains both $1$ as well as enough ``comparably larger'' elements closer to $5$.
+However, this issue does not seem to arise for atoms with larger maximum; indeed, in $\mathcal{A}_7$ we have several choices which fit this requirement: for example, $\{0, 1, 2, 4, 6, 7\}$, and $\{0, 1, 3, 5, 6, 7\}$ seem promising if one hopes to produce factorizations of type $(7,2,\dots, 2)$. 
+Indeed, the problems that occur for atoms of sizes between $2$ and $5$ do not persist, for we have the following.
+
+Our goal now will be to verify that intervals have factorizations of various partition types.  
+To aid in this, we will need a few classes of specifically structured ``large atoms" to populate the sets $\mathcal{A}_N$.
+
+\begin{prop} \label{prop:2-congruence atoms}
+	Each of the following sets is an atom of $\PN$ for the given values of the parameter $h$.
+	\begin{enumerate}[label={\rm (\roman{*})}]
+		\item $B_{2h-1} := \{0,1,3,\dots, 2h-1\}$ for $h\ge 1$.
+		\item $B_{2h} := \{0,1,3,\dots, 2h-1,2h\}$ for $h \ge 3$.
+		\item $C_{2h} := \{0,2,4,\dots,2h\}\cup\{1\}$ for $h\ge 2$.
+		\item $C_{2h+1} := \{0,2,4,\dots, 2h\}\cup\{1,2h+1\}$ for $h\ge 3$.
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	Beginning with (i), we suppose that there are $X,Y\in \PN$ so that $B_{2h-1} = X + Y$.
+	Without loss of generality, $1\in X$.
+	Then $Y\subseteq B_{2h-1}$ cannot contain any nonzero elements; if $y\in Y\setminus\{0\}$ then $1+y\in B_{2h-1}$ is even, a contradiction.
+	Thus $Y = \{0\}$ and $B_{2h-1}$ is an atom.
+	
+	For (ii), we start similarly by assuming that $B_{2h} = X + Y$ and that $1\in X$.
+	If $y\in Y \setminus\{0\}$, then $1+y\in B_{2h}$ is even, meaning that $y = 2h-1$.
+	We now have that $Y = \{0\}$ or $Y = \{0,2h-1\}$.
+	In the first case, we are done; but we are nearly done in the second case as well.  
+	Since $\max(X) + \max(Y) = 2h$, it must be that $X = \{0,1\}$, so $B_{2h} = X+Y = \{0,1\} + \{0,2h-1\} = \{0,1,2h-1,2h\}$.
+	However, this is impossible since we have assumed that $h\ge 3$.
+	
+	Turning to (iii), suppose that $C_{2h} = X + Y$ and that $1\in X$.
+	We know that if $Y$ has a nonzero even element then $C_{2h} = X + Y$ contains the odd element $y+1 > 1$.
+	Thus $Y \subseteq \{0,1\}$; but then $C_{2h} \subseteq \{0,1\} + \{0,1\} = \{0,1,2\}$, which is incompatible with the assumption that $h\ge 2$.
+	
+	Finally, for (iv), let $X$ and $Y$ be subsets such that $C_{2h+1} = X + Y$, and say $1\in X$.
+	Similarly to (iii), we see that $Y$ can have no nonzero even elements $y$ \textit{unless} $y=2h$.
+	This means that the only possibilities are $Y = \{0\}$ (in which case we are done), $Y = \{0,1\}$, or $\max(Y) = 2h$.
+	These last two cases are symmetric, so suppose $\max(Y) = 2h$.
+	Then $X = \{0,1\}$ and $Y \subseteq \{0,1,2h\}$, so $C_{2h+1} \subseteq \{0,1\} + \{0,1,2h\} = \{0,1,2,2h,2h+1\}$.
+	This last inequality is seen to be infeasible by recalling that $h\ge 3$.
+\end{proof}
+
+We will see that the above constructions are helpful because sums of small numbers of these atoms will be able to form relatively large intervals.
+
+\begin{lemma} \label{lem:two-part types}
+	If $q\ge r \ge 3$ then $\llb 0, q+r \rrb \in \A_q + \A_r$; that is, there are atoms $A_q\in \A_q$ and $A'_r\in \A_r$ such that $A_q + A'_r = \llb 0,q+r \rrb$.
+\end{lemma}
+
+\begin{proof}
+	There are several cases to consider; roughly, these amount to when both, one of, or none of $q$ and $r$ is large.
+	
+	\underline{Case 1}: $q,r \ge 6$. 
+	
+	\underline{Subcase 1.a}: $q = 2s$ and $r = 2t+1$.
+	Then 
+	\begin{align*}
+	B_{2s} + C_{2t+1} 
+	&\supseteq \{0,1\}\cup\{2s-1,2s\} + \{0,1,2,4,\dots, ,2t,2t+1\} \\
+	&= \llb 0, 2t+2 \rrb \cup \llb 2s-1,2s+2t+1 \rrb
+	\end{align*}
+	and, switching the roles of $s$ and $t$ in the calculation we just saw, we also have 
+	\[B_{2s}+C_{2t+1} \supseteq \llb 0,2s+1 \rrb \cup \llb 2t,2s+2t+1 \rrb.\]
+	Thus we conclude that $\llb 0,2s+2t+1 \rrb \subseteq B_{2s}+C_{2t+1} \subseteq \llb 0,2s+2t+1 \rrb$ and so $B_r + C_q = \llb 0,q+r \rrb$.
+	
+	\underline{Subcase 1.b}: $q = 2s+1$ and $r = 2t$.
+	Because the above computation does not depend on which of $q$ and $r$ is smaller, we may recycle that argument to see that $C_q + B_r = \llb 0,q+r \rrb$.
+	
+	\underline{Subcase 1.c}: $q = 2s+1$ and $r = 2t+1$.\\
+	One can show that $C_q + C_r = \llb 0,q+r \rrb$ by a calculation similar to the one above.
+	
+	\underline{Subcase 1.d}: $q = 2s$ and $r = 2t+1$. \\
+	Again, similar methods will tell us that $B_q + C_r = \llb 0,q+r \rrb$.
+	
+	\underline{Case 2}: $3 \le r \le 5 < q$.\\
+	There are only a few possibilities here.
+	Let $A_3 = \{0,1,3\}$, $A_4 = \{0,2,3,4\}$, and $A_5 = \{0,2,4,5\}$; then we can see that $B_q +A_r = \llb 0,q+r \rrb$ when $q$ is even and $C_q + A_r = \llb 0,q+r \rrb$ when $q$ is odd.
+	
+	\underline{Case 3}: $3\le r\le q \le 5$.\\
+	This leaves only a handful of $(q,r)$ pairs to check; namely $(3,3)$, $(4,3)$, $(5,3)$, $(4,4)$, $(5,4)$, and $(5,5)$.
+	By judicious choice of atoms like $A_3$, $A_4$, and $A_5$ in the previous case, the result can be realized for each of these pairs.
+\end{proof}
+
+\begin{prop} \label{prop:3-congruence atoms}
+	For $h\ge 2$, each of the following subsets of $\NN$ is an atom in $\PN$:
+	\begin{enumerate}[label={\rm (\roman{*})}]
+		\item $D_{3h} := \{0,3,6,\dots, 3h\} \cup \{ 1, 3h-1 \}$.
+		\item $D_{3h+1} := \{0,3,6,\dots, 3h\} \cup \{ 1, 3h+1 \}$.
+		\item $D_{3h+1} := \{0,3,6,\dots, 3h\} \cup \{ 1, 3h+1, 3h+2 \}$.
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	The arguments for each are similar, but (i) and (ii) are comparatively easier than (iii), so we will just prove (iii).
+	Suppose that there are $X$ and $Y$ so that $D_{3h+2} = X + Y$.
+	We may freely suppose that $1\in X$ this implies that $Y \subseteq \{0,3h,3h+1\}$.
+	We cannot have $\max(Y) = 3h$, for then $\max(X) = 3h+2 - \max(Y) = 2$.
+	This is impossible since $2\notin D_{3h+2}$.
+	
+	If $\max(Y) = 3h+1$ then $X = \{0,1\}$, so $D_{3h+2} \subseteq \{0,1\} + \{0,3h,3h+1\} = \{0,1,3h,3h+1,3h+2\}$.
+	However, this cannot be the case since $3,6\in D_{3h+2}$.
+	The only remaining possibility is that $Y = \{0\}$, which implies that $D_{3h+2}$ is an atom, as we wished.
+\end{proof}
+
+These atoms will help us obtain more decompositions of intervals, with the following rough justification: we know that $3\NN + 2\NN = \NN \setminus\{1\}$. 
+We hope to mimic this for finite subsets by adding a truncated (and slightly modified) copy of $3\NN$ to a truncated copy of $2\NN$.
+To make this precise, we have the following lemma.
+
+\begin{lemma} \label{lemma:many 2s types}
+	For $q \ge 6$ and $t\ge 2$, there is an atom $A\in \A_q$ with $A + t\{0,2\} = \llb 0, q+2t \rrb$.
+\end{lemma}
+
+\begin{proof}
+	This essentially depends on the congruence class of $q$ modulo $6$.
+	In the spirit of the argument from the preceding proposition, we demonstrate the result for the most representatively difficult of these cases.
+	
+	Suppose $q \equiv 0 \mod 6$, so $q = 3h$ for some even $h$.
+	We first note that
+	\begin{align*}
+	D_{3h} + t\{0,2\} 
+	&\supseteq \{0,6,\dots, 3h\} + \{0,2,4,\dots, 2t\} \\
+	& = \{0,2,4,\dots, 3h+2t \}
+	\end{align*}
+	and similarly that
+	\begin{align*}
+	D_{3h} + t\{0,2\}
+	&\supseteq \{3,9,\dots, 3(h-1) \}\cup\{1,3h-1\} + \{0,2,4,\dots, 2t \} \\
+	&= \{3,5,\dots, 3h-3 + 2t \}\cup \{1,3h-1 + 2t \} \\
+	&= \{1,3,5,\dots, 3h+2t-1 \}
+	\end{align*}
+	Putting these together, we see that $D_{3h} + t\{0,2\} = \llb 0,3h+2t \rrb$.
+\end{proof}
+
+\begin{rk}
+	The most important details that make this argument work are
+	\begin{enumerate}[label={\rm (\roman{*})}]
+		\item $1,q-1\in D_q$
+		\item $\{0,2,4\} \subseteq t\{0,2\}$
+	\end{enumerate}
+	Point (i) enables us to ``perturb" $t\{0,2\}$ in a way which ensures that the points near the ends of the desired interval are included.
+	Point (ii) is significant because it allows us to include the middle portion of the interval by covering it with ``patches" of length $6$.
+	This is also a comforting constraint in light of Proposition \ref{prop:bad types}, which says that $D_q + \{0,2\}$ cannot be an interval since $D_q$ is an atom.
+\end{rk}
+
+
+\begin{thm} \label{thm:good types}
+	Let $n\ge 1$ and suppose $P$ is a partition of $n$ with $P \notin \{(n-2,2)\} \cup \{ (m,2\dots,2) : 2\le m \le 5\}$.
+	Then $\Z^P(\llb 0,n \rrb) \neq \emptyset$.
+	In particular, $|\mathsf{T}(\llb 0,n \rrb)| = p(n)-4$, where $p(n)$ is the number of integer partitions of $n$.
+\end{thm}
+
+\begin{proof}
+	It is helpful to first classify the ways in which $P$ can avoid being a partition not of the types prescribed above.  
+	We have several possibilities.
+	
+	
+	\underline{Case 1}: $P = (q,2,\dots, 2)$ with $m\ge 6$.
+	
+	Here, Lemma \ref{lemma:many 2s types} implies that $\Z^P(\llb 0,n \rrb) \neq \emptyset$.
+	
+	\underline{Case 2}: $P$ has two parts, both of which are larger than $2$.
+	
+	The content of Lemma \ref{lem:two-part types} is exactly that $\Z^P(\llb 0,n \rrb) \neq \emptyset$ for any such partition.
+	
+	\underline{Case 3}: $P = (m_1,\dots, m_k)$ with $k\ge 3$ and $m_1\ge m_2 \ge 3$.
+	
+	To resolve this possibility, we proceed by induction.
+	The constraints on $P$ imply that $n\ge 8$.  
+	Enumerating the factorizations of $\llb 0,8 \rrb$ by hand (or, preferably, by computer) is not prohibitively difficult and indeed confirms that $\llb 0,8 \rrb$ has factorizations of every type other than those excluded in the statement of the theorem.
+	
+	Suppose now that $n > 8$ and, for $8\le m < n$, $\llb 0,m \rrb$ has factorizations of each type fitting the description in (iii).
+	Consider $P' = (m_1,\dots, m_{k-1})$.
+	If $k=3$ then $P'=(m_1,m_2)$ is a partition of $n-m_k$ as described in case 2, and if $k>3$ then $P'$ is as in case 3.  
+	In any event, either by the result from case 2 or by our inductive assumption, we know that $\Z^{P'}(\llb 0,n-m_k \rrb) \neq \emptyset$.
+	Taking $\aa' \in \Z^{P'}(\llb 0,n-m_k \rrb)$, we have that $\aa := \aa' * \{0,m_k\} \in \Z^P(\llb 0,n \rrb)$.
+	
+	\underline{Case 4}: $P$ has smallest part equal to $1$.
+	
+	Finally, we have the partitions described in (iv): those with smallest part equal to 1.
+	The result is reasonable to check by hand for $n=1,2,3$.
+	We proceed by induction on $n$, assuming that $n>3$ and that the proposition is true for $m<n$.
+	Let us write $P = (m_1,\dots, m_k, 1)$.
+	
+	If $k=1$, we can see that $C_{n-1}*\{0,1\}\in \Z^P(\llb 0,n \rrb)$, where $C_{n-1}$ is one of the atoms constructed in Proposition \ref{prop:2-congruence atoms}.
+	Similarly, if $k=2$ we have by Lemma \ref{lem:two-part types} that there are atoms $A\in \A_{m_1}$ and $A'\in \A_{m_2}$ with $A+A' = \llb 0,m_1+m_2 \rrb$, so $A*A'* \{0,1\}\in \Z^P(\llb 0,n \rrb)$.
+	
+	Now assume that $k>2$ and write $P' = (m_1,\dots, m_k)$.
+	If $m_k=1$, then there is some $\aa'\in \Z^{P'}(\llb 0,n-1 \rrb)$ by induction, so that $\aa = \aa' * \{0,1\}\in \Z^P(\llb 0,n \rrb)$.
+	However, if $m_k > 1$, set $Q = (m_1,\dots, m_{k-1}, 1)$ (a partition of $n-m_k$).
+	Again, we have by induction that there is some $\bb \in \Z^Q(\llb 0, n-m_k \rrb)$.
+	Since $k>2$ and $m_k \le m_i$ for all $i\ge 1$, we also have that $m_k < n/2$ and so $n-m_k > m_k$.
+	This allows us to conclude that $\aa = \bb * \{0,m_k\} \in \Z^P(\llb 0,n \rrb)$, proving what we wished.
+\end{proof}
+
+\section{Partition Subsums and Near Intervals}
+We have just seen that intervals of the form $\llb 0,n \rrb$ have factorizations of most partition types.
+There is a very sharp dichotomy between the wildly varied factorization behavior of intervals and that of any other subset of $\NN$, which we will see presently.  
+
+\begin{defn}
+	Let $m_1,\dots, m_k$ be integers.
+	We will refer to $S = (m_1,\dots, m_k)$ as a \textit{sequence} of integers.
+	Define the \textbf{set of subsums of S} to be $\Sigma(S) := \left\{ \sum_{i\in I} m_i : I\subseteq \llb 1,k \rrb \right\}$.
+\end{defn}
+
+\begin{rk}
+	The notion of ``set of subsums" of a sequence can be compared with the similar notion which appears in much of the literature on zero-sum problems in finite abelian groups \textcolor{red}{[CITE SOME PAPERS]}.  
+	Ours is nearly identical, except for its inclusion of the empty sum.
+	Since we are not focused on the appearance of zero sums, including the empty sum does not put us at any disadvantage in our setting.
+	To the contrary, it is convenient for us as it allows us to express the set of subsums of $S = (m_1,\dots, m_k)$ as a sum in $\P_\fon(\ZZ)$: $\Sigma(S)  = \{0,m_1\} + \cdots +\{0,m_k\}$.
+\end{rk}
+
+\begin{lemma} \label{lem:long-partitions}
+	Let $m_1,\dots, m_k$ be positive integers with $m_1\ge \cdots \ge m_k \ge 1$ and let $n = m_1 + \cdots + m_k$.
+	If $k> n/2$ then $\Sigma(m_1,\dots, m_k) = \llb 0,n \rrb$.
+\end{lemma}
+
+\begin{proof}
+	To prove this, we will induct on $k$; if $k=1 > n/2$, then $n \le 1$ and the result is trivial.
+	Now suppose $k > 1$ and that, for any sequence $T$ consisting of $\ell < k$ terms satisfying $\ell > \max(\Sigma(T))/2$, $\Sigma(T) = \llb 0, \max(\Sigma(T)) \rrb$.
+	
+	First observe that the maximum term of $S$ is at least the average of the terms of $S$; that is, $m_1 \ge \frac{n}{k}$.
+	From here, we have
+	\[ \frac{m_2+\cdots + m_k}{k-1} = \frac{n-m_1}{k-1} \le \frac{n-n/k}{k-1} = \frac{n}{k} < 2 \]
+	Thus $k - 1 > \frac{m_2+\cdots+m_k}{2}$ and we can apply the inductive hypothesis to $T := (m_2,\dots, m_k)$.
+	Now we have $\Sigma(T) = \llb 0, n-m_1 \rrb$, so $\Sigma(S) = \{0,m_1\} + \llb 0,n-m_1 \rrb = \llb 0,n-m_1 \rrb \cup \llb m_1,n \rrb$.
+	This union of intervals is equal to $\llb 0,n \rrb$ if $m_1 \le m_2 + \cdots + m_k +1$, so all that remains is to verify this last inequality.
+	
+	From our assumption that $k > n/2$, we have $k-1 \ge (n-1)/2$, so 
+	\[m_2 + \cdots + m_k \ge 1 +\cdots + 1 = k-1 \ge \frac{n-1}{2}.\]
+	Using this inequality twice, we have that
+	\[m_1 = n - (m_2 + \cdots + m_k) \le n - \frac{n-1}{2} = \frac{n+1}{2} \le m_2 + \cdots + m_k + 1,\]
+	exactly as we wished.
+\end{proof}
+
+\begin{lemma} \label{lem:n/2-partitions}
+	Let $n$ be even and let $P$ be a partition into $n/2$ parts.
+	Then one of the following holds:
+	\begin{itemize}
+		\item $\Sigma(P) = \llb 0, n \rrb$.
+		\item $\Sigma(P) = \llb 0,n \rrb\setminus\{n/2\}$ and $P = (n/2+1,1,\dots,1)$.
+		\item $\Sigma(P) = 2\cdot \llb 0, n/2 \rrb$ and $P = (2,\dots, 2)$
+	\end{itemize}
+\end{lemma}
+
+\begin{proof}
+	Let $P = (m_1,\dots, m_k)$ with $k=n/2$ and $m_1\ge \cdots \ge m_k \ge 1$.
+	Note that the average size of the parts of $P$ is $(m_1+\cdots+m_k)/k = n/(n/2) = 2$.
+	Thus the smallest part $m_k$ satisfies $m_k \le 2$.
+	
+	If $m_k = 2$ then $m_1 = n - (m_2+\cdots+m_k) \le n - (k-1)(2) = n - (n/2-1)2 = 2$.
+	Thus we have $m_1 = \cdots = m_k = 2$ and so $\Sigma(P) = \{0,2\}+\cdots+\{0,2\} = \{0,2,\dots,n\} = 2\cdot\llb0,n/2\rrb$ (recalling that $2\cdot X = \{2x: x\in X\}$, as opposed to $2X = X+X$).
+	
+	Suppose now that $m_k=1$.
+	Then, since the average of the parts $m_i$ is equal to $2$, we must have that the greatest part $m_1 > 2$.
+	As a result, 
+	\[\frac{m_2+\cdots+m_k}{k-1} = \frac{n-m_1}{n/2-1} < \frac{n-2}{n/2-1} = 2, \]
+	so $k-1 > (m_2 + \cdots + m_k)/2$; by Lemma \ref{lem:long-partitions}, $\Sigma(m-2,\dots,m_k) = \llb 0, n-m_1 \rrb$.
+	
+	Now we have $\Sigma(P) = \{0,m_1\} + \llb 0,n-m_1\rrb = \llb 0,n-m_1 \rrb \cup \llb m_1, n\rrb$, so $\Sigma(P) = \llb 0,n \rrb$ provided $2m_1 < n+1$.
+	If not, then $2m_1 \ge n+2$, so $m_1 \ge \frac{n+2}{2}$.
+	From this, it follows that 
+	\[m_2 +\cdots+m_k = n-m_1 \le n - \frac{n+2}{2} = \frac{n}{2}-1 = k-1.\]
+	Since each $m_i \ge 1$, we must have $m_2 = \cdots = m_k = 1$, so $P = (n/2+1, 1,\dots, 1)$ and $\Sigma(P) = \llb 0,n/2-1 \rrb \cup \llb n/2+1,n\rrb$.
+\end{proof}
+
+\begin{thm}
+	Let $X \in \PN$ and suppose that there is $k\in \mathsf{L}(X)$ with $k > \max(X)/2$.
+	Then $X = \llb 0, \max(X) \rrb$.
+\end{thm}
+
+\begin{proof}
+	Let $n = \max(X)$ and let $\aa\in\Z(X)$ be a factorization with length $|\aa| = k$.
+	Then there are integers $m_1\ge\cdots \ge m_k \ge 1$ and atoms $A_i\in \A_{m_i}$ with $\aa = A_1*\cdots*A_k$.
+	The result is immediate from Lemma \ref{lem:long-partitions}, since we have
+	\[ X = A_1 + \cdots + A_k \supseteq \{0,m_1\} + \cdots + \{0,m_k\} = \Sigma(m_1,\cdots,m_k) = \llb 0,n \rrb \]
+	and we know $X \subseteq \llb 0,\max(X) \rrb = \llb 0, n \rrb$.
+\end{proof}

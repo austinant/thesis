@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  22 SEP 2019 02:34
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  22 SEP 2019 12:18
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -24,6 +24,10 @@ File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
+\@input{preamble.aux}
+\openout2 = `preamble.aux'.
+
+(./preamble.tex
 (/usr/local/texlive/2019/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2018/04/16 v5.8 Page Geometry
 
@@ -256,7 +260,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip49
 ))
-Package hyperref Info: Option `colorlinks' set `true' on input line 12.
+Package hyperref Info: Option `colorlinks' set `true' on input line 10.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/02/04 v3.8 Customized lists
@@ -609,23 +613,24 @@ File: pgflibraryarrows.meta.code.tex 2019/02/02 v3.1.1 (3.1.1)
 \pgfarrowlinewidth=\dimen176
 )))
 \c@defn=\count138
- (./Thesis.aux)
+) (./Thesis.aux (./chap-intro.aux) (./chap-power-monoids.aux)
+(./chap-partitions.aux) (./chap-applications.aux))
 \openout1 = `Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 65.
-LaTeX Font Info:    ... okay on input line 65.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
@@ -662,7 +667,7 @@ LaTeX Font Info:    ... okay on input line 65.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box42
-Package hyperref Info: Link coloring ON on input line 65.
+Package hyperref Info: Link coloring ON on input line 10.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -671,33 +676,35 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count139
 )
-LaTeX Info: Redefining \ref on input line 65.
-LaTeX Info: Redefining \pageref on input line 65.
-LaTeX Info: Redefining \nameref on input line 65.
+LaTeX Info: Redefining \ref on input line 10.
+LaTeX Info: Redefining \pageref on input line 10.
+LaTeX Info: Redefining \nameref on input line 10.
 
 (./Thesis.out) (./Thesis.out)
 \@outlinefile=\write4
 \openout4 = `Thesis.out'.
 
  ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 67.
+LaTeX Font Info:    Try loading font information for U+msa on input line 12.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 67.
+LaTeX Font Info:    Try loading font information for U+msb on input line 12.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 67.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 12.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 67.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 12.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
+
+
 
 ]
 (./Thesis.toc)
@@ -707,79 +714,77 @@ LaTeX Font Info:    Try loading font information for U+stmry on input line 67.
  [1
 
 ]
+\openout2 = `chap-intro.aux'.
+
+ (./chap-intro.tex
 Chapter 1.
 [2
 
+
 ] [3]
-LaTeX Font Info:    Try loading font information for U+euf on input line 168.
+LaTeX Font Info:    Try loading font information for U+euf on input line 94.
  (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 )
 [4] [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 248.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 174.
 
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 248.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 174.
  [6]
-[7] [8]
+[7]) [8]
+\openout2 = `chap-power-monoids.aux'.
+
+ (./chap-power-monoids.tex
 Chapter 2.
 [9
 
-] [10] [11] [12] [13] [14] [15] [16] [17]
 
-LaTeX Warning: Reference `sec:factorizations' on page 18 undefined on input lin
-e 676.
 
-[18] [19] [20] [21]
+] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21] [22] [23]
+[24] [25] [26] [27] [28] [29]) [30]
+\openout2 = `chap-partitions.aux'.
 
-LaTeX Warning: Reference `subsec:generalities' on page 22 undefined on input li
-ne 854.
-
-[22] [23] [24]
-
-LaTeX Warning: Citation `Gor1980' on page 25 undefined on input line 970.
-
-[25]
-
-LaTeX Warning: Reference `subsec:generalities' on page 26 undefined on input li
-ne 997.
-
-[26] [27] [28] [29]
+ (./chap-partitions.tex
 Chapter 3.
-[30
+[31
 
-] [31] [32] [33] [34] [35] [36] [37] [38] [39]
+
+
+] [32] [33] [34] [35] [36] [37] [38] [39]) [40]
+\openout2 = `chap-applications.aux'.
+
+ (./chap-applications.tex
 Chapter 4.
-[40
+[41
 
-] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54]
-[55] (./Thesis.bbl [56
 
-]) [57]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 2394.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 2394.
- (./Thesis.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 2394.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 2394.
 
+] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55])
+[56] (./Thesis.bbl [57
+
+
+]) [58]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 32.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 32.
+ (./Thesis.aux (./chap-intro.aux)
+(./chap-power-monoids.aux) (./chap-partitions.aux) (./chap-applications.aux))
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 32.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 32.
 Package rerunfilecheck Info: File `Thesis.out' has not changed.
-(rerunfilecheck)             Checksum: D409B30653861F7E10B53D79B7977A87;1391.
-
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 2394.
+(rerunfilecheck)             Checksum: 76791ABD23756EF055EB087776E64227;1566.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 32.
  ) 
 Here is how much of TeX's memory you used:
- 17871 strings out of 492624
- 347109 string characters out of 6129578
- 436408 words of memory out of 5000000
- 21452 multiletter control sequences out of 15000+600000
+ 17908 strings out of 492624
+ 347794 string characters out of 6129578
+ 438215 words of memory out of 5000000
+ 21458 multiletter control sequences out of 15000+600000
  18106 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 61i,16n,85p,924b,1046s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 65i,16n,87p,955b,1044s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Thesis.dvi (58 pages, 431520 bytes).
+Output written on Thesis.dvi (59 pages, 439796 bytes).

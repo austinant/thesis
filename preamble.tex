@@ -1,0 +1,61 @@
+\usepackage[left=1in, right=1in, top=1in, bottom=1in]{geometry}
+\usepackage[doublespacing]{setspace}
+\usepackage{amsmath,amsthm,amssymb,mathrsfs}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{colorlinks,%
+	citecolor=blue,%
+	filecolor=black,%
+	linkcolor=black,%
+	urlcolor=blue
+}
+\usepackage{enumitem}
+%\usepackage{enumerate}
+\usepackage{stmaryrd}
+\usepackage{tikz-cd}
+
+
+%MathBB, Mathcal, Mathfrak shortcuts
+\newcommand{\A}{\mathcal{A}}
+\renewcommand{\aa}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\NN}{\mathbb{N}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\Z}{\mathcal{Z}}
+
+%%Delimiter commands
+
+\newcommand{\gen}[1]{\langle #1 \rangle}
+\newcommand{\llb}{\llbracket}
+\newcommand{\rrb}{\rrbracket}
+
+%%Text subscripts and operators
+
+\newcommand{\fin}{\textrm{fin}}
+\newcommand{\funt}{{\textrm{fin}, \times}}
+\newcommand{\fun}{{\textrm{fin}, 1}}
+\newcommand{\fon}{{\textrm{fin}, 0}}
+\newcommand{\m}{{\mathsf{m}}}
+\newcommand{\ord}{{\operatorname{ord}}}
+
+\renewcommand{\:}{\text{:}}
+
+\newcommand{\PN}{{\P_{\fin,0}(\NN)}}
+
+
+%%Environments
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{cor}[defn]{Corollary}
+\newtheorem{rk}[defn]{Remark}
+\newtheorem{eg}[defn]{Example}
+\newtheorem{conj}[defn]{Conjecture}
