@@ -1,0 +1,93 @@
+
+%%%%%%
+%%%%%%
+
+
+
+
+%Now we know that $\llb 0,n\rrb$ has factorizations of most partition types.  
+%In many cases, the existence of one factorization of a given type seems to indicate the possible presence of others.
+%In what follows, we will try to determine the extent to which that is true.
+
+%%%%%%
+%%%%%%
+
+%\section{Non-Atomicity of Near Intervals in the Natural Power Monoid} \label{sec:near intervals}
+%
+%%%%%%%
+%%%%%%%
+%
+%We have seen that intervals are, in some sense, as far as possible from being atoms.
+%Every set, including atoms, can be realized as an interval with some (possibly many) points removed.  
+%Thus we expect that $\llb 0,n \rrb \setminus S$ ``loses" factorizations as $S$ is allowed to become larger.  
+%We would like to understand certain thresholds in this process of varying $S$; for instance, how large does $S$ need to become for $\llb 0,n \rrb \setminus S$ to become an atom?  
+%From here, we pivot to a slightly different question with the same underlying theme: given $n$, is it possible that $\llb 0,n \rrb \setminus S$ always factors nontrivially for $|S|$ sufficiently small?
+%Our goal is to formalize this question and make some progress toward determining the answer.
+%
+%\begin{conj}
+%There is a function $s:\NN \to \NN$ such that, for any subset $S\subseteq \llb 0,n \rrb$ with $|S| \le s(n)$, $\llb 0,n \rrb \setminus S$ factors nontrivially in $\PN$.
+%\end{conj}
+%
+%The following lemma represents many of the ``easy cases" when the set $S$ to be removed from the interval is concentrated in a small segment of the interval.
+%
+%\begin{lemma}\label{first-third}
+%Let $n\in \NN$ and let $S\subseteq \NN$ with $3(\max(S)+1)< n$.
+%Then $\llb 0,n \rrb \setminus S$ factors nontrivially and is divisible by $\{0,\max(S)+1\}$.
+%\end{lemma}
+%
+%\begin{proof}
+%Let $c =  \max(S)+1$ and $X = \llb 0, n \rrb \setminus S$.
+%By Proposition \ref{prop:cofactors}, it is sufficient to show that $X \subseteq \{0,c\} + X\cap (X-c)$.
+%Suppose $x\in X$; if $x \le n-c$ then $x + c \le n$, so that $x+c\in X$ and $x = 0 + x \in \{0,c\} + X\cap(X-c)$.
+%If $x \ge n - c$ then $x - c \ge n - c  \ge c$ by assumption, meaning that $\max(S) + 1 \le x - c \le n$, so $x-c\in X$.
+%Thus $x-c\in X\cap (X-c)$ and we have $x = c + (x-c) \in \{0,c\} + X\cap (X-c)$, which is what we needed to show.
+%\end{proof}
+%
+%\begin{lemma}\label{reflection}
+%Let $r:\PN \to \PN$ be given by $r(X) = \max(X) - X$.
+%Then, for any $X\in \PN$, $r$ induces a bijection $\Z_\PN(X) \to \Z_\PN(r(X))$.
+%In particular, $X$ is divisible by some $\{0,c\}$ if and only if $\max(X) - X$ is also divisible by $\{0,c\}$.
+%\end{lemma}
+%
+%\begin{proof}
+%We will prove that $X = Y + Z$ if and only if $r(X) = r(Y) + r(Z)$.
+%This will imply that $X$ is an atom if and only if so is $r(X)$ and, by an inductive extension of the argument, will imply the desired result.
+%Actually it will suffice to show only one implication, since $r(r(X)) = \max(X) - (\max(X) -X) = \max(X) - \max(X) + X = X$.
+%
+%Suppose $X = Y+Z$ for some $Y,Z\in \PN$. 
+%Then
+%\[ r(X) = \max(X) - X = (\max(Y) + \max(Z)) - (Y+Z) = \max(Y) -Y + \max(Z) -Z = r(Y) + r(Z) \]
+%which is all we needed to see.
+%\end{proof}
+%
+%Now we will see some examples in support of the conjecture made at the beginning of this section, which will motivate our work going forward.  
+%These will also demonstrate how we wish to use the above lemmas.
+%
+%\begin{eg}
+%\begin{enumerate}[(i)]
+%\item If $n\ge 6$ then $\llb 0, n \rrb \setminus \{ k \}$ is divisible by some $\{0,c\}$ for any $k \in \llb 1,n-1 \rrb$.
+%\item If $n\ge 18$ then $\llb 0,n \rrb \setminus \{ k , \ell \}$ is divisible by some $\{0,c\}$ for any $k\in \llb 1, n-1 \rrb$.
+%\end{enumerate}
+%Example (i) is easy enough to verify by hand; since (ii) takes a little more effort, we give an outline here.
+%For convenience, suppose $1 \le k < \ell < n - k$, where the very last inequality comes at no loss of generality by Lemma \ref{reflection}.
+%Let $X = \llb 0,n \rrb \setminus \{k,\ell\}$; we wish to show that $\{0,c\}$ divides $X$.
+%
+%We begin first by ruling out the cases when $k>1$ and $\ell-k > 2$, where we can see that $X$ is divisible by $\{0,1\}$.
+%The leftover possibilities are that $k=1$ or $\ell - k \le 2$.
+%
+%\noindent\underline{Case 1A}: If $k = 1$ and $\ell \le 5$, one can see that $\{0,\ell+1\}$ divides $X$ by Lemma \ref{first-third}. \\
+%\underline{Case 1B}: If $k = 1$ and $6 \le \ell \le n-4$, $\{0,2\}$ divides $X$. \\
+%\underline{Case 1C}: If $k = 1$ and $n-3 \le \ell \le n-1$, the cases $\ell = n-3, n-2$, and $n-1$ can be handled by $c = 4,2$, and $2$, respectively.
+%
+%\noindent\underline{Case 2A}: If $\ell - k =1$ and $k>1$ then $\{0,1\}$ divides $X$. \\
+%\underline{Case 2B}: If $k=1$ and $\ell=2$ then $\{0,3\}$ divides $X$. \\
+%\underline{Case 2C}: If $\ell-k = 2$ and $k\ge 4$, $\{0,c\}$ divides $X$. \\ 
+%\underline{Case 2D}: If $\{k,\ell\} =\{2,4\}$ or $\{3,5\}$, one can see that $\{0,5\}$ and $\{0,6\}$ divide $X$, respectively (by Lemma \ref{first-third}).
+%In particular, the latter of these cases forces the requirement that $n\ge 18$.
+%\end{eg}
+%This example shows us a small sample of the ways in which removing a small set $S$ of points from $\llb 0,n \rrb$ can thwart the divisibility of $\llb 0,n \rrb\setminus S$ by $\{0,c\}$ for all small values of $c$, if the points of $S$ are chosen carefully.  
+%In what lies ahead, we seek to anticipate all ``worst possible" configurations of $S$ to work toward our conjecture.
+%
+%In addition to determining the threshold value of $n$ beyond which $\llb 0,n \rrb\setminus S$ is divisible by some $\{0,c\}$ for a fixed $|S|$, we might also benefit from investigating the values of $c$ which are viable as divisors of $\llb 0,n \rrb\setminus S$.
+%To aid in this, we define some constants.
+

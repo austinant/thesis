@@ -8,12 +8,11 @@
 \contentsline {section}{\numberline {2.1}Conditions for Atomicity and Bounded Factorization Lengths}{10}{section.2.1}% 
 \contentsline {section}{\numberline {2.2}Minimal factorizations and conditions for bounded minimal lengths}{17}{section.2.2}% 
 \contentsline {section}{\numberline {2.3}Cyclic monoids and interval length sets}{26}{section.2.3}% 
-\contentsline {chapter}{\numberline {3}Partition Type of Factorizations in the Natural Power Monoid}{31}{chapter.3}% 
-\contentsline {section}{\numberline {3.1}Bad Partition Types for Intervals}{31}{section.3.1}% 
-\contentsline {section}{\numberline {3.2}Good Partition Types for Intervals}{34}{section.3.2}% 
-\contentsline {section}{\numberline {3.3}Partition Subsums and Near Intervals}{38}{section.3.3}% 
-\contentsline {chapter}{\numberline {4}Techniques in Abelian Groups and Applications}{41}{chapter.4}% 
-\contentsline {section}{\numberline {4.1}Passage Between Power Monoids}{41}{section.4.1}% 
-\contentsline {section}{\numberline {4.2}Algorithmic Approaches to Factorization}{44}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}Independence Arguments in the Natural Lattice}{46}{section.4.3}% 
-\contentsline {section}{\numberline {4.4}Length Sets in High-Dimensional Lattices}{52}{section.4.4}% 
+\contentsline {chapter}{\numberline {3}Integer Partitions and the Natural Power Monoid}{31}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Algorithmic Approaches and Partition Type}{31}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Admissible and Forbidden Types for Intervals}{35}{section.3.2}% 
+\contentsline {section}{\numberline {3.3}Subsums and Near Intervals}{41}{section.3.3}% 
+\contentsline {chapter}{\numberline {4}Techniques in Abelian Groups and Applications}{44}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Passage Between Power Monoids}{44}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Independence Arguments in the Natural Lattice}{47}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Length Sets in High-Dimensional Lattices}{52}{section.4.3}% 

@@ -1,7 +1,15 @@
-\chapter{Partition Type of Factorizations in the Natural Power Monoid} \label{ch:partitions}
-\section{Bad Partition Types for Intervals} \label{sec:partitions}
-%%%%%%
-%%%%%%
+\chapter{Integer Partitions and the Natural Power Monoid} \label{ch:partitions}
+
+
+In \cite[Section 4]{fan-tringali18}, Fan and Tringali took a thorough look at $\PN$.
+They established, among other things, some significant results on which sets may occur as sets of lengths of elements of $\PN$.  
+Several of their results (which will be addressed further in Chapter \ref{ch:applications}) specify some elements of $\PN$ with very well-controlled sets of factorizations.
+To contrast with this, they also proved \cite[Proposition 4.8]{fan-tringali18}, which says that $\mathsf{L}_\PN(\llb 0,n \rrb) = \llb 2,n \rrb$ for every $n\ge 2$.
+In essence, the intervals $\llb 0,n \rrb\in \PN$ seem to have the most wild factorization behavior.
+However, as points are removed from $\llb 0,n \rrb$, one expects a transition to relative tameness as the set of factorizations becomes smaller.
+In this chapter, we formulate some additional ways of understanding and quantifying the differences between wild and tame factorization behavior.
+
+%As a first step in leveraging the structure of $\PN$, we introduce some notation to highlight the intuitive grading on subsets of $\NN$.
 
 
 %One can see that the intervals $\llb 0,n \rrb$ have overwhelmingly many factorizations in $\P_{\fin,0}(\NN)$.
@@ -10,14 +18,136 @@
 %At the opposite extreme of the extremely flexible factorization behavior of $\llb 0,n \rrb$, we have the subsets with the most behavior: the atoms.
 %We would like to determine whether there is a distinct threshold for the number of points we are required to remove from $\llb 0,n \rrb$ to obtain an atom.
 
-The length set realization Theorems \ref{thm:ind-atoms} and \ref{thm:2n-length-set} show that some subsets of $\NN$ have very well-controlled sets of factorization.
-On the other hand, there are subsets with comparatively ``wild" set of factorizations; the intervals $\llb 0,n \rrb$ are a simple class examples which demonstrate this since, for instance, we have $\mathsf{L}(\llb0,n\rrb) = \llb 2,n \rrb$ \cite[Proposition 4.8]{fan-tringali18}.
-However, observe that any subset $X$ can be obtained by deleting points from the interval $\llb 0,\max(X) \rrb$.
-If $X$ has relatively tame factorization behavior and we imagine this process of deleting points from $\llb 0,\max(X)\rrb$, then the subsets between the full interval and $X$ experience a transition between ``wild" and ``tame" factorization behavior.
-In what follows, we seek to more rigorously quantify what is meant by ``wild" factorization behavior and to investigate the nature of this transition.
+%The length set realization Theorems \ref{thm:ind-atoms} and \ref{thm:2n-length-set} show that some subsets of $\NN$ have very well-controlled sets of factorization.
+%On the other hand, there are subsets with comparatively ``wild" set of factorizations; the intervals $\llb 0,n \rrb$ are a simple class examples which demonstrate this since, for instance, we have $\mathsf{L}(\llb0,n\rrb) = \llb 2,n \rrb$ \cite[Proposition 4.8]{fan-tringali18}.
+%However, observe that any subset $X$ can be obtained by deleting points from the interval $\llb 0,\max(X) \rrb$.
+%If $X$ has relatively tame factorization behavior and we imagine this process of deleting points from $\llb 0,\max(X)\rrb$, then the subsets between the full interval and $X$ experience a transition between ``wild" and ``tame" factorization behavior.
+%In what follows, we seek to more rigorously quantify what is meant by ``wild" factorization behavior and to investigate the nature of this transition.
 
-Since we will be thinking of elements of $\PN$ as subsets of the intervals $\llb 0,n \rrb$, it will be convenient to have some notation to help us filter $\NN$.
+%Since we will be thinking of elements of $\PN$ as subsets of the intervals $\llb 0,n \rrb$, it will be convenient to have some notation to help us filter $\NN$.
 
+
+
+
+%In this section, we wish to develop some tools for making arguments about factorizations of subsets inside an abelian group.  
+%We also wish to lay out some practical procedures for the benefit of those who wish to approach power monoids from a computational point of view.
+
+%Throughout this section, we will assume $G$ is an abelian group and that $H\subseteq G$ is a monoid such that, for all $x\in H\setminus\{1\}$, $x^2 \notin\{1,x\}$ (by Theorem \ref{th:atomicity}, this means exactly that $\P_\fon)
+%The prototypical example of this situtation is the case when $G = \ZZ^d$ and $H = \NN^d$.
+%Unless otherwise specified, all subsets of $H$ instantiated are assumed to be finite and to contain $0$.  That is, they are assumed to be elements of $\P_\fon(H)$.
+
+
+%First and foremost, we can take advantage of the setting of an abelian group to develop an inductive approach to factorization in $\P_\fon(H)$, when $H$ is a submonoid of an abelian group $G$.
+
+\section{Algorithmic Approaches and Partition Type}
+
+In this section, we hope to indicate some practical methods that can be implemented to assist in computational approaches to factorization in $\PN$.
+Specifically, we will outline some inductive approaches (i.e., recursive algorithms) for exhaustively finding all factorizations of a subset into atoms.
+
+Consider the following algorithm for finding the prime factorization of an element $n\in \NN$:
+\begin{itemize}
+	\item For every prime $p \le \sqrt{n}$, check if $p$ divides $n$.
+	\begin{itemize}
+		\item If no such $p$ divides $n$ then $n$ is a prime; return the factorization $n$.
+		\item If some $p$ does divide $n$, find a factorization $\aa$ of $n/p$ and return $p * \aa$.
+	\end{itemize}
+\end{itemize}
+One might wish to imitate this algorithm in $\PN$.
+We would begin, for a given $X \in \PN$, whether there is some irreducible $A$ which divides $X$.
+If $A$ divides $X$, then there exists some $Y$ with $A + Y = X$; however, since $\PN$ is not cancellative, there is not a unique such $Y$.
+This is part of what derails an initial attempt at a factorization algorithm.
+%Given $A\in \PN$, we often wish to determine whether $A$ divides $X$; that is, whether there is $Y$ so that $X = A+Y$.
+%Due to the non-cancellative nature of power monoids, there is not a canonical choice for such a $Y$.
+%In general, there may be many such $Y$.
+To make the best of our situation, we have the following definition and proposition. 
+
+\begin{defn} \label{def:cofactor}
+	Let $G$ be an abelian group, let $H \subseteq G$ be a monoid, and let $X,A\in \P_{\fin,0}(H)$.
+	We define the \textbf{saturated cofactor of $A$ in $X$} by
+	\[ X\:A := \bigcap_{a\in A} (X-a) \]
+\end{defn}
+
+$X\:A$ is the largest possible set $Y$ such that $X = A + Y$, in the sense of the following proposition.
+
+\begin{prop} \label{prop:cofactors}
+	Let $X,A \in \P_\fon(H)$. 
+	\begin{enumerate}[label={\rm (\roman{*})}]
+		\item $A + X\:A \subseteq X$.
+		\item If $X = A + Y$ then $Y \subseteq X\:A$.
+		\item If $A$ divides $X$ if and only if $A + X\:A = X$.
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	Point (i) is straightforward to see; suppose $a\in A$ and $x\in X\:A$.
+	Then, by construction, $x\in X-a$ so that $x+a \in (X-a) +a = X$.
+	
+	For (ii), suppose $y\in Y$ and $a\in A$.
+	Then $a+y \in A + Y = X$, so $y \in X-a$; this was true for any $a\in A$, so $y\in \bigcap_{a\in A} (X-a) = X\:A$.
+	
+	To see (iii), first suppose that $A$ divides $X$; then there is some $Y$ so that $A + Y = X$.
+	Then, using (ii) and then (i), we have that $X = A+Y \subseteq A+ (X\:A) \subseteq X$, whence all the inclusions are equalities.
+\end{proof}
+
+Now, if $A$ divides $X$, $Y := X\:A$ is a somewhat canonical choice satisfying $A + Y = X$.
+With this in hand, we can make another attempt at an algorithm for factoring in $\PN$:
+
+\begin{itemize}
+	\item For every atom $A \subsetneqq X$, check if $A$ divides $X$ (that is, whether $A + X\:A = X$).
+	\begin{itemize}
+		\item If no such $A$ divides $X$ then $X$ is an atom; return $X$.
+		\item If $A$ divides $X$, return the set $\{A * \aa: \aa\in \Z_{\P_\fon(H)}(X) \}$.
+	\end{itemize}
+\end{itemize}
+This algorithm comes up short since it fails in general to obtain the entire set of factorizations of $X$, as we will see now.
+
+\begin{eg}
+	Let $H = \NN$ and take $X := \llb 0,n \rrb$ for some odd $n \ge 11$.
+	We can show that $A := \{0,1,3\}$ and $B := \{0,1,3,\dots,n-2,n-3\}$ are both atoms, and that $X = A + B$ (so $A*B$ is a factorization of $X$).
+	However, $X\:A = \llb 0,n \rrb \cap \llb -1,n-1 \rrb \cap \llb -3,n-3 \rrb = \llb 0,n-3 \rrb \neq B$ and $X\: B \neq A$.
+	Thus the above algorithm will find factorizations of the form $A*\bb$ for $\bb$ a factorization of $\llb 0,n-3 \rrb$ (and similarly $B*\aa$ for $\aa$ a factorization of $\llb 0,3 \rrb$), but it will fail to find $A*B$.
+\end{eg} 
+
+This example suggests an adjustment to the algorithm presented just above.
+
+\begin{defn} \label{def:fac algorithm}
+	We define the function $\mathbf{fac}$ which assigns to a given $X$ a set of factorizations of $X$ (which we will later assert is the entire set of factorizations of $X$).
+	Given any $X\in \P_\fon(H)$,
+	\begin{itemize}
+		\item[(1)] Start with $\mathbf{fac}(X) = \emptyset$.
+		\item[(2)] If $X = \{0\}$, return $\mathbf{fac}(X) = \emptyset$.
+		\item[(3)] If $X$ is an atom, return $\mathbf{fac}(X) = \{X\}$. 
+		\item[(4)] For each atom $A \subseteq X$, if $A + X\:A = X$,
+		\begin{itemize}
+			\item[(5)] For every subset $Y \subseteq X\:A$ with $\max(Y) = \max(X\:A)$, if $A+Y = X$,
+			\begin{itemize}
+				\item[(6)] For every $\bb\in \mathbf{fac}(Y)$, add $A*\bb$ to $\mathbf{fac}(X)$.
+			\end{itemize}
+		\end{itemize}
+		\item[(7)] Return $\mathbf{fac}(X)$.
+	\end{itemize}
+\end{defn}
+
+\begin{prop}
+	For any $X\in \PN$, $\mathbf{fac}(X) = \Z_{\PN}(X)$.
+\end{prop}
+
+\begin{proof}
+We can prove this by inducting on the size of $X$.
+If $|X|=1$ then $X = \{1\}$ and $\Z_{\P_\fon(H)}(X) = \emptyset = \mathbf{fac}(X)$ (in accordance with step (2) in the definition of $\mathbf{fac}$).
+If $|X| = 2$ then, since $H$ is reduced and contains no nontrivial idempotents (as it lies inside $G$), $X$ is an atom by Lemma \ref{lem:2-elt-atoms}.
+Hence $\Z_{\P_\fon(H)}(X) = \{X\} = \mathbf{fac}(X)$ by step (3).
+	
+It is apparent by construction that $\mathbf{fac}(X) \subseteq \Z_{\P_\fon(H)}(X)$, so we only need to show that the other inclusion holds.
+Suppose $A_1*\cdots*A_k \in \Z_{\P_\fon(H)}$.
+Then $A_1 + (A_2 + \cdots + A_k) = X$, so Proposition \ref{prop:cofactors}(iii) implies that $A_1 + (X\:A_1) = X$.
+At this point, step (5) of the procedure for generating $\mathbf{fac}(X)$ will find $Y:=A_2+\cdots+A_k$ in its search of all subsets of $X\:A_1$.
+By induction, we have that $A_2*\cdots*A_k \in \Z_{\P_\fon(X)}(Y) = \mathbf{fac}(Y)$.
+Thus $A_1 * \cdots * A_k \in \mathbf{fac}(X)$, as we wished.
+\end{proof}
+
+This algorithm still proceeds by brute force, and can be computationally cumbersome.  
+There are several refinements that we can make by taking advantage of the specific situation of factoring inside $\PN$.
 
 \begin{defn} \label{def:filtration}
 	For $n\ge 0$, we distinguish the following collections of subsets:
@@ -29,19 +159,24 @@ Since we will be thinking of elements of $\PN$ as subsets of the intervals $\llb
 	%Here we are just filtering the subsets, atoms, and non-atoms (respectively) in accordance with the intuitive grading on subsets of $\NN$.
 \end{defn}
 
+\begin{rk}
+Note that 
+\begin{itemize}
+	\item $\PN = \bigsqcup_{n=0}^\infty \P_n$.
+	\item For any $m,n\ge 0$, $\P_m + \P_n \subseteq \P_{m+n}$.
+\end{itemize}
+From this we see that the sets $\P_n$ give a grading of our monoid.
+\end{rk}
 
-%\begin{defn}
-%Define a function $z:\NN \to \NN$ by
-%\[ z(n) := \Z_{\P_{\fin,0}(\NN)}(\llb 0,n \rrb) \]
-%\end{defn}
-%This function measures the number of factorizations of an interval into atoms of $\P_{\fin,0}(\NN)$.
-%Our goal in the coming pages will be to describe the behavior (especially growth) of this function. 
-%In so doing, we should glean some insight into the most flexibly factorable elements of the natural power monoid.
+For any nonunit $x$ in a monoid $H$, the set $\Z_H(x)$ houses the full data of the factorization behavior of $x$. 
+Since it is sometimes a tall order to understand all of the information of $\Z_H(x)$ at once, we can consider the set $\mathsf{L}_H(x)$ to gain an incomplete yet often adequate understanding of $\Z_H(x)$.
+With the following definition, we aim to leverage the structure of $\PN$ to formulate an invariant which contains more data than the set of lengths.
+This will help us in our endeavor to develop a more effecient algorithm for factoring in $\PN$, and also in our larger goal to quanitfy the ``wildness" of factorizations of $\llb 0,n\rrb$.
 
-In any monoid, we can distinguish different factorizations of an element $x$ by their lengths; that is, we know that if $\aa,\bb\in \Z(x)$ with $|\aa| \neq |\bb|$, then $\aa$ and $\bb$ are not equivalent.
-In $\PN$, we have some additional leverage which comes from integer partitions; we make some definitions to facilitate this leverage now.
+%In any monoid, we can distinguish different factorizations of an element $x$ by their lengths; that is, we know that if $\aa,\bb\in \Z(x)$ with $|\aa| \neq |\bb|$, then $\aa$ and $\bb$ are not equivalent.
+%In $\PN$, we have some additional leverage which comes from integer partitions; we make some definitions to facilitate this leverage now.
 
-\begin{defn}
+\begin{defn} \label{def:partition type}
 	Let $n\ge 1$. A \textit{partition of $n$} is $P = (m_1,\dots, m_k)$, where $m_1 \ge \dots \ge m_k \ge 1$ and $m_1+\cdots + m_k = n$. 
 	Each $m_i$ is said to be a \textit{part} of $P$, and $k$ is said to be the \textit{length} or number of parts of $P$.
 	For brevity, we occasionally write $P \vdash n$.
@@ -60,13 +195,46 @@ In $\PN$, we have some additional leverage which comes from integer partitions; 
 		\item $\Z^{(n)}(X) = \emptyset$ if and only if $X$ is not an atom.
 	\end{enumerate}
 	Though the disjoint union in (i) is not too hard to see, it is not clear that each $\Z^P(X)$ is nonempty.
-	In fact, we will soon see evidence to the contrary.
+	In fact, we will soon see evidence to the contrary in Section \ref{sec:partitions and intervals}.
 \end{rk}
+
+
+To conclude this section, we suggest an outline of another algorithm for calculating sets of factorizations in $\PN$.
+In contrast with $\mathsf{fac}$ from Definition \ref{def:fac algorithm}, this one will proceed constructively rather than inductively.
+It also supposes that one has found the sets $\A_m$ for $m < \max(X)$.
+This is a computational endeavor in its own right, but removes some of the labor from the process of finding all factorizations of a given set $X$.
+
+First define, for $X\in \PN$ and $P = (m_1,\dots,m_k)$ a partition of $\max(X)$, $\mathsf{fac\_of\_type}(X,P)$ in the following way:
+For every $(A_1,\dots,A_k)\in \A_{m_1}\times\cdots\times\A_{m_k}$, if $A_1 + \cdots + A_k = X$, then add $A_1 * \cdots * A_k$ to $\mathbf{fac\_of\_type}(X,P)$.
+
+After this, we can define a new function, $\mathbf{fac\_by\_type}(X)$.
+The end result is an algorithm of the following form:
+\begin{itemize}
+	\item[(1)] Start with $\mathbf{fac\_by\_type}(X) = \emptyset$.
+	\item[(2)] For each partition $P=(m_1,\dots, m_k)$ of $\max(X)$, if $\{0,m_1\}+\cdots+\{0,m_k\} \subseteq X$,
+	\begin{itemize}
+		\item[(3)] Add $\mathbf{facs_\_of\_type}(X,P)$ to $\mathbf{fac\_by\_type}(P)$.
+	\end{itemize}
+	\item[(4)] Return $\mathbf{fac\_by\_type}(X)$.
+\end{itemize}
+
+Though this procedure for generating $\mathsf{fac\_by\_type}(X)$ still relies on brute force, it does work fast relative to $\mathsf{fac}$---especially for ``small" subsets $X\subseteq \NN$.
+It also affords some opportunities for unnecessary calculations; for instance, step (2) identifies which partition types are feasible by examining the subsums $\Sigma(P)$ of $P$.
+We will have more to say about subsums in Section \ref{sec:subsums}.
+
+
+
+\section{Admissible and Forbidden Types for Intervals} \label{sec:partitions and intervals}
+%%%%%%
+%%%%%%
 
 
 %Here, we have demonstrated that each $\Z^P(\llb 0,n \rrb)$ is nonempty when $\min(P) = 1$.  
 %However, as with other aspects of the set of factorizations of $\llb 0,n \rrb$, we hope this indicates that intervals have \textit{many} factorizations of each such type $P$.
 %On the other hand, some types can never admit factorizations; we shall see some examples of this soon.
+
+
+
 
 \begin{prop} \label{prop:2-elt factor/cofactor}
 	Let $X\in \PN$.
@@ -130,7 +298,6 @@ In $\PN$, we have some additional leverage which comes from integer partitions; 
 
 %%%%%%
 %%%%%%
-\section{Good Partition Types for Intervals}
 %%%%%%
 %%%%%%
 
@@ -328,7 +495,7 @@ To make this precise, we have the following lemma.
 	This allows us to conclude that $\aa = \bb * \{0,m_k\} \in \Z^P(\llb 0,n \rrb)$, proving what we wished.
 \end{proof}
 
-\section{Partition Subsums and Near Intervals}
+\section{Subsums and Near Intervals} \label{sec:subsums}
 We have just seen that intervals of the form $\llb 0,n \rrb$ have factorizations of most partition types.
 There is a very sharp dichotomy between the wildly varied factorization behavior of intervals and that of any other subset of $\NN$, which we will see presently.  
 
