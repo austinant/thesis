@@ -12,6 +12,7 @@ In the same spirit, we will also discuss the asymptotic density of irreducible e
 
 In this section we shift to a discussion of polynomials which is entirely independent of the subset arithmetic.
 In particular, we will focus on rings constructed from numerical monoids, which have already been studied extensively [REFERENCES FOR NUMERICAL MONOIDS].  
+We aim to prove that the proportion of atoms of a fixed degree $n$ in any numerical monoid ring approaches $0$ as $n\to\infty$.
 
 \begin{defn}
 A numerical monoid is an additive submonoid $H \le \NN$ such that $\NN\setminus H$ is a finite set.  
@@ -30,8 +31,6 @@ Let $H$ be a numerical monoid and let $K$ be a field.
 Then the \textit{numerical monoid ring of over $K$ associated to $H$} is $K[H] := K[x^h : h\in H]$.
 
 Note that, if $H = \gen{S}$, then we may of course write $K[H] = K[x^s: s\in S]$.
-
-
 \end{defn}
 
 
@@ -51,14 +50,18 @@ For any $n\in \NN$, we define
 \[a_q^H(n) := \#\{f\in \Fq[H]^{(n)}: f \textrm{ is irreducible in } \Fq[H] \}\]
 to be the number of irreducibles in $\Fq[H]$ of degree $n$.
 For convenience, we also write $\rho_q^H(n) := a_q^H(n)/|\Fq[H]^{(n)}|$ for the proportion of degree-$n$ elements of $\Fq[H]$ which are irreducible.
+The function $\rho_q^H$ is called the \textit{atomic density} of $\Fq[H]$.
 %Finally, we set $\rho_q^H := \lim\limits_{n\to\infty} \rho_q^H(n)$.
 %This limit, if it exists, is the \textit{atomic density} of $\Fq[H]$.
 For the special case when $H = \NN$, we let $a_q(n) := a_q^\NN(n)$ and $\rho_q(n) := \rho_q^\NN(n)$.
 \end{defn}
 
+The following can be considered the ``classical case" of the main result of this section.
+It follows from standard facts about finite fields and has been proved in several places [REFERENCES??], so we will not include the proof here.
+
 \begin{prop}\label{prop:atoms in Fqx}
 Let $q$ be a prime power and let $n\in \NN$.
-Then the number of irreducibles in $\Fq[x]$ satisfies $a_q^\NN(n) \le \frac{q^n}{n}$.
+Then the number $a_q(n)$ of degree-$n$ irreducibles in $\Fq[x]$ satisfies $a_q(n) \le \frac{q^n}{n}$.
 In particular, $\rho_q(n) \to 0$ as $n\to\infty$.
 \end{prop}
 
@@ -67,33 +70,8 @@ This can be argued by counting the irreducible elements of $\FF_{q^n}$ and then 
 A complete proof of this is outlined in [DUMMIT AND FOOTE, OTHER FINITE FIELDS BOOK.  CHECK THAT PROOF WORKS FOR $q=p^n$ AND NOT JUST $p$]
 \end{proof}
 
-\begin{lemma}\label{lem:srpp log bound}
-Let $n\in \NN$ and let $k\ge 1$. 
-Then
-\[\sum_{m_1,\dots,m_k} \frac{1}{m_1\cdots m_k} \le \frac{\log^{k-1}(n)}{n}, \]
-where the sum is taken over partitions $(m_1,\cdots,m_k)$ of $n$ into $k$ parts.
-\end{lemma}
-
-\begin{proof}
-We will prove this by induction on $k$.
-For $k=1$, the result is trivial as there is only one partition of $n$ into $1$ part.
-Now suppose, for some $k\ge 1$, that $\sum_{m_1+\cdots+m_k=n} \frac{1}{m_1\cdots m_k} \le \frac{\log^{k-1}(n)}{n}$.
-Then we calculate
-\begin{align*}
-\sum_{m_1,\dots,m_{k+1}} \frac{1}{m_1\cdots m_k} 
-&= \sum_{m=1}^{\lfloor n/(k+1) \rfloor} \frac{1}{m} \sum_{m_1,\dots,m_k} \frac{1}{m_1\cdots m_k} \tag{inner sum taken over partitions of $n-m$}\\
-&\le \sum_{m=1}^{\lfloor n/(k+1)\rfloor} \frac{1}{m} \left( \frac{\log^{k-1}(n-m)}{n-m} \right) \\
-&\le \underbrace{\log^k(n) \sum_{m=1}^{\lfloor n/(k+1)} \frac{1}{m(n-m)}}_{S:=}
-\end{align*}
-Now, because $\frac{1}{x(n-x)}$ is decreasing on the interval $(0,n/2)$, a right Riemann sum of width-$1$ rectangles is an under-approximation of the area under the graph of $\frac{1}{x(n-x)}$.
-That is, we may replace the sum in the last line with an integral and continue with
-\[
-S \le \log^k(n) \int_1^{n/(k+1)} \frac{1}{x(n-x)} \, dx 
-\le \log^k(n) \left(\frac{\log(n)}{n}\right) 
-\]
-where the last integral was evaluated by first finding the partial fraction decomposition of the integrand.
-This proves the inequality we wanted to show for the inductive step, completing the proof.
-\end{proof}
+%We seek to understand the atoms of $\Fq[H]$, for an arbitrary numerical monoid $H$, in terms of the irreducibles of $\Fq[x]$.
+%This next lemma will aid us in doing so.
 
 \begin{lemma}\label{lem:coefficient gap boosting}
 Let $q$ be a prime power, let $N\in\NN$ be positive, and let $r \ge q^{N-1}$.
@@ -119,6 +97,8 @@ Then $\sum_{i=s+1}^ta_i = \sum_{i=1}^t a_i - \sum_{i=1}^s a_i = 0$, so we have t
 In either case, we have found an $h\in \Fq + x^{N+1}\Fq[x]$ such that $h | g_1\cdots g_q | f_1\cdots f_k$, as we wished.
 \end{proof}
 
+With the previous lemma, we can now give a characterization of the irreducibles of $\Fq[H]$ in terms of those of $\Fq[x]$.
+
 \begin{prop}\label{prop:num ring atom classification}
 Let $H$ be a numerical monoid and let $f\in \Fq[H]$ be irreducible.
 Then $f$ is of one of the following types:
@@ -126,6 +106,7 @@ Then $f$ is of one of the following types:
 	\item There are $k< q^{F(H)}$ and irreducibles $f_1,\dots,f_k\in \Fq[x]$ with $f = f_1\cdots f_k$.
 	\item There are $m < 2(F(H)+1)$, $k < q^{F(H)}$, and irreducibles $f_1,\dots, f_k\in \Fq[x]$ with $f = x^m f_1\cdots f_k$.
 \end{enumerate}
+\end{prop}
 
 \begin{proof}
 For our later convenience, we will let $N = F(H)+1$.
@@ -152,8 +133,35 @@ However, since $g (x^m h) = f \in \Fq[H]$, we can argue this in the same manner 
 This yields a contradiction and we conclude, as in the previous case, that $k< q$.
 \end{proof}
 
-\end{prop}
+Before finally reaching our main goal for the section, we need one more auxiliary result.
 
+\begin{lemma}\label{lem:srpp log bound}
+	Let $n\in \NN$ and let $k\ge 1$. 
+	Then
+	\[\sum_{m_1,\dots,m_k} \frac{1}{m_1\cdots m_k} \le \frac{\log^{k-1}(n)}{n}, \]
+	where the sum is taken over partitions $(m_1,\cdots,m_k)$ of $n$ into $k$ parts.
+\end{lemma}
+
+\begin{proof}
+	We will prove this by induction on $k$.
+	For $k=1$, the result is trivial as there is only one partition of $n$ into $1$ part.
+	Now suppose, for some $k\ge 1$, that $\sum_{m_1+\cdots+m_k=n} \frac{1}{m_1\cdots m_k} \le \frac{\log^{k-1}(n)}{n}$.
+	Then we calculate
+	\begin{align*}
+	\sum_{m_1,\dots,m_{k+1}} \frac{1}{m_1\cdots m_k} 
+	&= \sum_{m=1}^{\lfloor n/(k+1) \rfloor} \frac{1}{m} \sum_{m_1,\dots,m_k} \frac{1}{m_1\cdots m_k} \tag{inner sum taken over partitions of $n-m$}\\
+	&\le \sum_{m=1}^{\lfloor n/(k+1)\rfloor} \frac{1}{m} \left( \frac{\log^{k-1}(n-m)}{n-m} \right) \\
+	&\le \underbrace{\log^{k-1}(n) \sum_{m=1}^{\lfloor n/(k+1)\rfloor} \frac{1}{m(n-m)}}_{=:S}
+	\end{align*}
+	Now, because $\frac{1}{x(n-x)}$ is decreasing on the interval $(0,n/2)$, a right Riemann sum of width-$1$ rectangles is an under-approximation of the area under the graph of $\frac{1}{x(n-x)}$.
+	That is, we may replace the sum in the last line with an integral and continue with
+	\[
+	S \le \log^{k-1}(n) \int_1^{n/(k+1)} \frac{1}{x(n-x)} \, dx 
+	\le \log^{k-1}(n) \left(\frac{\log(n)}{n}\right),
+	\]
+	where the last integral was evaluated by first finding the partial fraction decomposition of the integrand.
+	This completes the inductive step and proves the inequality we wanted to show.
+\end{proof}
 
 \begin{thm}
 Let $H$ be a numerical monoid and let $q$ be a prime power.

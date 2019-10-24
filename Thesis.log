@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  24 OCT 2019 02:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  24 OCT 2019 02:41
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -775,7 +775,7 @@ Chapter 5.
 
 
 ]
-Overfull \hbox (6.2558pt too wide) in paragraph at lines 51--57
+Overfull \hbox (6.2558pt too wide) in paragraph at lines 50--57
 []\OT1/cmr/m/n/10 to be the num-ber of ir-re-ducibles in $\U/msb/m/n/10 F[]\OT1
 /cmr/m/n/10 [\OML/cmm/m/it/10 H\OT1/cmr/m/n/10 ]$ of de-gree $\OML/cmm/m/it/10 
 n$\OT1/cmr/m/n/10 . For con-ve-nience, we also write $\OML/cmm/m/it/10 ^^Z[]\OT
@@ -809,4 +809,4 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  65i,16n,87p,955b,1044s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Thesis.dvi (64 pages, 472236 bytes).
+Output written on Thesis.dvi (64 pages, 473204 bytes).
