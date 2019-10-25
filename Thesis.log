@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  24 OCT 2019 02:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  25 OCT 2019 11:26
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -788,25 +788,25 @@ cmsy/m/n/10 j$
 [58] [59] [60]) [61] (./Thesis.bbl [62
 
 
-]) [63]
+] [63]) [64]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 32.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 32.
- (./Thesis.aux (./chap-intro.aux)
-(./chap-power-monoids.aux) (./chap-partitions.aux) (./chap-applications.aux)
-(./chap-polynomials.aux))
+ (./Thesis.aux
+(./chap-intro.aux) (./chap-power-monoids.aux) (./chap-partitions.aux)
+(./chap-applications.aux) (./chap-polynomials.aux))
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 32.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 32.
 Package rerunfilecheck Info: File `Thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 6C5CCC0DBA8A81B10532AE3E6CD0E8AE;1697.
+(rerunfilecheck)             Checksum: FA26DC0DC39FF742377E2ADA7028C744;1614.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 32.
  ) 
 Here is how much of TeX's memory you used:
- 17928 strings out of 492624
- 348160 string characters out of 6129578
- 438982 words of memory out of 5000000
- 21471 multiletter control sequences out of 15000+600000
+ 17931 strings out of 492624
+ 348219 string characters out of 6129578
+ 439028 words of memory out of 5000000
+ 21474 multiletter control sequences out of 15000+600000
  18106 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  65i,16n,87p,955b,1044s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Thesis.dvi (64 pages, 473204 bytes).
+Output written on Thesis.dvi (65 pages, 475048 bytes).

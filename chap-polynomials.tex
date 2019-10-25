@@ -1,17 +1,17 @@
 \chapter{Polynomial Rings}
 
-In this chapter we will connect the arithmetic of subsets of $\NN$ to the study of polynomials, with a view toward understanding the distribution of atoms inside $\PN$.
-In the same spirit, we will also discuss the asymptotic density of irreducible elements in numerical monoid rings over finite fields.
+%In this chapter we will connect the arithmetic of subsets of $\NN$ to the study of polynomials, with a view toward understanding the distribution of atoms inside $\PN$.
+%In the same spirit, we will also discuss the asymptotic density of irreducible elements in numerical monoid rings over finite fields.
 
-\section{Identifying Subsets with Polynomials}
+%\section{Identifying Subsets with Polynomials}
 
 
 
 
 \section{Atomic Density in Numerical Monoid Rings}
 
-In this section we shift to a discussion of polynomials which is entirely independent of the subset arithmetic.
-In particular, we will focus on rings constructed from numerical monoids, which have already been studied extensively [REFERENCES FOR NUMERICAL MONOIDS].  
+In this section we shift to a discussion of polynomials which is entirely independent of subset arithmetic.
+In particular, we will focus on rings constructed from numerical monoids, which have already been studied extensively (see, for instance, \cite{oneill-pelayo17,chapman-oneill18} and the references therein).
 We aim to prove that the proportion of atoms of a fixed degree $n$ in any numerical monoid ring approaches $0$ as $n\to\infty$.
 
 \begin{defn}
@@ -57,7 +57,6 @@ For the special case when $H = \NN$, we let $a_q(n) := a_q^\NN(n)$ and $\rho_q(n
 \end{defn}
 
 The following can be considered the ``classical case" of the main result of this section.
-It follows from standard facts about finite fields and has been proved in several places [REFERENCES??], so we will not include the proof here.
 
 \begin{prop}\label{prop:atoms in Fqx}
 Let $q$ be a prime power and let $n\in \NN$.
@@ -67,7 +66,7 @@ In particular, $\rho_q(n) \to 0$ as $n\to\infty$.
 
 \begin{proof}
 This can be argued by counting the irreducible elements of $\FF_{q^n}$ and then applying the M\"{o}bius inversion formula.
-A complete proof of this is outlined in [DUMMIT AND FOOTE, OTHER FINITE FIELDS BOOK.  CHECK THAT PROOF WORKS FOR $q=p^n$ AND NOT JUST $p$]
+We do not include the proof here, as it has already been presented well in \cite[Section 14.3]{dummit-foote91} and \cite[Section 2.3]{lidl-niederreiter97}.
 \end{proof}
 
 %We seek to understand the atoms of $\Fq[H]$, for an arbitrary numerical monoid $H$, in terms of the irreducibles of $\Fq[x]$.

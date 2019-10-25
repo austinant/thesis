@@ -33,6 +33,11 @@ Scott~T. Chapman and Ulrich Krause.
 \newblock In {\em Progress in commutative algebra 2}, pages 301--315. Walter de
   Gruyter, Berlin, 2012.
 
+\bibitem{chapman-oneill18}
+Scott~T. Chapman and Chris O'Neill.
+\newblock Factoring in the {C}hicken {M}c{N}ugget monoid.
+\newblock {\em Math. Mag.}, 91(5):323--336, 2018.
+
 \bibitem{cziszter-al16}
 K\'{a}lm\'{a}n Cziszter, M\'{a}ty\'{a}s Domokos, and Alfred Geroldinger.
 \newblock The interplay of invariant theory with multiplicative ideal theory
@@ -40,6 +45,11 @@ K\'{a}lm\'{a}n Cziszter, M\'{a}ty\'{a}s Domokos, and Alfred Geroldinger.
 \newblock In {\em Multiplicative ideal theory and factorization theory}, volume
   170 of {\em Springer Proc. Math. Stat.}, pages 43--95. Springer, [Cham],
   2016.
+
+\bibitem{dummit-foote91}
+David~S. Dummit and Richard~M. Foote.
+\newblock {\em Abstract algebra}.
+\newblock Prentice Hall, Inc., Englewood Cliffs, NJ, 1991.
 
 \bibitem{fan-al17}
 Yushuang Fan, Alfred Geroldinger, Florian Kainrath, and Salvatore Tringali.
@@ -116,10 +126,24 @@ David~J. Grynkiewicz.
   Mathematics}.
 \newblock Springer, Cham, 2013.
 
+\bibitem{lidl-niederreiter97}
+Rudolf Lidl and Harald Niederreiter.
+\newblock {\em Finite fields}, volume~20 of {\em Encyclopedia of Mathematics
+  and its Applications}.
+\newblock Cambridge University Press, Cambridge, second edition, 1997.
+\newblock With a foreword by P. M. Cohn.
+
 \bibitem{cahen-loper98}
 Alan Loper and Paul-Jean Cahen.
 \newblock Rings of integer-valued rational functions.
 \newblock {\em J. Pure Appl. Algebra}, 131(2):179--193, 1998.
+
+\bibitem{oneill-pelayo17}
+Christopher O'Neill and Roberto Pelayo.
+\newblock Factorization invariants in numerical monoids.
+\newblock In {\em Algebraic and geometric methods in discrete mathematics},
+  volume 685 of {\em Contemp. Math.}, pages 231--249. Amer. Math. Soc.,
+  Providence, RI, 2017.
 
 \bibitem{tringali18}
 Salvatore {Tringali}.
