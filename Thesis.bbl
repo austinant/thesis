@@ -1,5 +1,15 @@
 \begin{thebibliography}{10}
 
+\bibitem{chun-anderson11}
+Dan Anderson and Sangmin Chun.
+\newblock Irreducible elements in commutative rings with zero-divisors.
+\newblock {\em Houston Journal of Mathematics}, 37, 01 2011.
+
+\bibitem{axtell-et-al03}
+Michael Axtell, Sylvia Forman, Nick Roersma, and Joe Stickles.
+\newblock Properties of u-factorizations.
+\newblock {\em International Journal of Commutative Rings}, 2, 01 2003.
+
 \bibitem{cahen-chabert97}
 Paul-Jean Cahen and Jean-Luc Chabert.
 \newblock {\em Integer-valued polynomials}, volume~48 of {\em Mathematical
@@ -38,13 +48,10 @@ Scott~T. Chapman and Chris O'Neill.
 \newblock Factoring in the {C}hicken {M}c{N}ugget monoid.
 \newblock {\em Math. Mag.}, 91(5):323--336, 2018.
 
-\bibitem{cziszter-al16}
-K\'{a}lm\'{a}n Cziszter, M\'{a}ty\'{a}s Domokos, and Alfred Geroldinger.
-\newblock The interplay of invariant theory with multiplicative ideal theory
-  and with arithmetic combinatorics.
-\newblock In {\em Multiplicative ideal theory and factorization theory}, volume
-  170 of {\em Springer Proc. Math. Stat.}, pages 43--95. Springer, [Cham],
-  2016.
+\bibitem{chun-anderson-vl11}
+Sangmin Chun, D.~D. Anderson, and Silvia Valdez-Leon.
+\newblock Reduced factorizations in commutative rings with zero divisors.
+\newblock {\em Communications in Algebra}, 39(5):1583--1594, 2011.
 
 \bibitem{dummit-foote91}
 David~S. Dummit and Richard~M. Foote.
@@ -62,6 +69,12 @@ Yushuang Fan and Salvatore Tringali.
 \newblock Power monoids: a bridge between factorization theory and arithmetic
   combinatorics.
 \newblock {\em J. Algebra}, 512:252--294, 2018.
+
+\bibitem{fletcher69}
+C.~R. Fletcher.
+\newblock Unique factorization rings.
+\newblock {\em Mathematical Proceedings of the Cambridge Philosophical
+  Society}, 65(3):579–583, 1969.
 
 \bibitem{frisch13}
 Sophie Frisch.
@@ -151,7 +164,7 @@ Salvatore {Tringali}.
   factorization theory}.
 \newblock {\em arXiv e-prints}, page arXiv:1706.03525, Jun 2017.
 
-\bibitem{whitelaw}
+\bibitem{Whitelaw}
 Thomas~A. Whitelaw.
 \newblock {\em Introduction to abstract algebra}.
 \newblock Blackie, Glasgow, 2nd ed. edition, 1988.

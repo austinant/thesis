@@ -1,26 +1,91 @@
-\documentclass{report}
+\documentclass[10pt]{book}
+%\usepackage[doublespacing]{setspace}
+%For centering chapters
+\usepackage[explicit]{titlesec}
+\titleformat{\chapter}[display]{\bfseries\centering}{\LARGE Chapter \thechapter}{1mm}{\LARGE #1}
 
+%For including macros/commands you have pre-defined
 \include{preamble}
-
-\title{Subset Decompositions: Factorization in Power Monoids}
-\author{Austin A. Antoniou}
-\date{\today}
 
 
 \begin{document}
-\maketitle
+\frontmatter
+
+\begin{titlepage}
+\begin{center}
+	{\LARGE \bf On Sum Decompositions of Sets: \\ \vspace{3mm}
+		
+		The Factorization Theory of Power Monoids}
+
+\
+
+	Dissertation
+
+\
+	
+	Presented in Partial Fulfillment of the Requirements 
+	
+	for the Degree Doctor of Philosophy 
+	
+	in the Graduate School of The Ohio State University
+
+\
+		
+	By 
+	
+	{\large Austin Alan Antoniou, M.S. 
+	
+	Graduate Program in Mathematics}
+
+\
+	
+	The Ohio State University
+	
+	2020
+
+\
+
+	{\large {\bf Dissertation Committee:}
+	
+	K. Alan Loper
+	
+	Ivo Herzog
+	
+	HOPEFULLY SOMEBODY ELSE}
+\end{center}
+
+\end{titlepage}
+\hspace{0pt}
+\vfill
+\begin{center}
+Copyright by Austin Alan Antoniou
+
+2020
+\end{center}
+\vfill
+\pagestyle{empty}
+\chapter*{Abstract}
+
+\chapter*{Acknowledgements}
+
+\chapter*{Vita}
+
 
 \tableofcontents
 
+
+\mainmatter
+
 \include{chap-intro}
 
-\include{chap-power-monoids}
+\include{chap-PMA}
 
 \include{chap-partitions}
 
 \include{chap-applications}
 
-\include{chap-polynomials}
+%\include{chap-asymptotics}
+
 \newpage
 \nocite{*}
 \bibliography{bib}

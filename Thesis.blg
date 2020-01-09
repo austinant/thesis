@@ -2,50 +2,54 @@ This is BibTeX, Version 0.99d (TeX Live 2019)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Thesis.aux
 A level-1 auxiliary file: chap-intro.aux
-A level-1 auxiliary file: chap-power-monoids.aux
+A level-1 auxiliary file: chap-PMA.aux
 A level-1 auxiliary file: chap-partitions.aux
 A level-1 auxiliary file: chap-applications.aux
-A level-1 auxiliary file: chap-polynomials.aux
 The style file: plain.bst
 Database file #1: bib.bib
-You've used 26 entries,
+I was expecting an "="---line 146 of file bib.bib
+ : @incollection 
+ :               {cziszter-al16,
+I'm skipping whatever remains of this entry
+You've used 29 entries,
             2118 wiz_defined-function locations,
-            685 strings with 8320 characters,
-and the built_in function-call counts, 8971 in all, are:
-= -- 923
-> -- 330
-< -- 12
-+ -- 137
-- -- 104
-* -- 613
-:= -- 1423
-add.period$ -- 86
-call.type$ -- 26
-change.case$ -- 125
+            704 strings with 8651 characters,
+and the built_in function-call counts, 9720 in all, are:
+= -- 991
+> -- 373
+< -- 10
++ -- 153
+- -- 118
+* -- 672
+:= -- 1570
+add.period$ -- 94
+call.type$ -- 29
+change.case$ -- 141
 chr.to.int$ -- 0
-cite$ -- 26
-duplicate$ -- 384
-empty$ -- 737
-format.name$ -- 104
-if$ -- 1925
+cite$ -- 29
+duplicate$ -- 403
+empty$ -- 790
+format.name$ -- 118
+if$ -- 2064
 int.to.chr$ -- 0
-int.to.str$ -- 26
-missing$ -- 34
-newline$ -- 136
-num.names$ -- 52
-pop$ -- 134
+int.to.str$ -- 29
+missing$ -- 37
+newline$ -- 151
+num.names$ -- 58
+pop$ -- 140
 preamble$ -- 1
-purify$ -- 104
+purify$ -- 117
 quote$ -- 0
-skip$ -- 275
+skip$ -- 291
 stack$ -- 0
-substring$ -- 628
-swap$ -- 107
-text.length$ -- 12
+substring$ -- 672
+swap$ -- 101
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 88
+type$ -- 100
 warning$ -- 0
-while$ -- 90
-width$ -- 28
-write$ -- 301
+while$ -- 95
+width$ -- 31
+write$ -- 332
+(There was 1 error message)
