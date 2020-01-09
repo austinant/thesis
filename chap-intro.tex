@@ -83,55 +83,73 @@ Furthermore, we can push these methods to obtain Theorem \ref{thm:int-point-cons
 %%%%%%
 \subsection{Notation and Conventions} \label{subsec:generalities}
 
-$\NN = \{0,1,2,3,\dots\}$, $\ZZ = \{0,\pm 1, \pm 2,\dots\}$, and $\RR$ denote the sets of natural numbers, integers, and real numbers, respectively.
-In general, unless otherwise specified, lowercase letter will usually refer to elements of a monoid; ordinary uppercase letters to sets and subsets; script or calligraphic uppercase letters to collections of subsets.
-Specifically, $i$, $j$, $k$, $\ell$, $m$, and $n$ will usually stand for non-negative integers.
-For $a, b\in \RR\cup\{\infty\}$, $\llb a,b \rrb = \{ n\in \ZZ : a \le n \le b \}$ shall denote the (integer) interval from $a$ to $b$.
+\begin{itemize}
+	\item $\NN = \{0,1,2,3,\dots\}$, $\ZZ = \{0,\pm 1, \pm 2,\dots\}$, and $\RR$ denote the sets of natural numbers, integers, and real numbers, respectively.
+	Here we adopt the French convention that $0\in \NN$ so that $\NN$ is a monoid.
+	\item In general, unless otherwise specified, lowercase letters ($a$, $b$, $x$, $y$, etc.) will usually refer to elements of a monoid; ordinary uppercase letters to sets and subsets ($A$, $B$, $X$, $Y$, etc.); script or calligraphic uppercase letters ($\A$, $\C$, $\F$, $\P$) to collections of subsets; math fraktur letters ($\aa$, $\bb$, etc.) to words in a free monoid over a given generating set (see the remainder of this section for more details on free monoids).
+	\item Specifically, $i$, $j$, $k$, $\ell$, $m$, and $n$ will usually stand for non-negative integers. 
+	$H$ will stand for a monoid, $G$ for a group, and $R$ for a ring.
+	\item In general, we will refer to the operation of a not necessarily commutative monoid $(H,\cdot)$ as ``multiplication''.
+	We will often adopt the practice of suppressing the symbol ``$\cdot$'' when no confusion is likely to arise; that is, we will write $xy$ instead of $x\cdot y$.
+	\item The identity of a multiplicative monoid $(H,\cdot)$ will be called $1$; the identity of an additive monoid $(H,+)$ will be called $0$.
+	\item For $a, b\in \RR\cup\{\infty\}$, $\llb a,b \rrb = \{ n\in \ZZ : a \le n \le b \}$ shall denote the (integer) interval from $a$ to $b$.
+	\item For a $k\in \NN$ and objects $x_i$ for $i\in [1,k]$, we will often write the family $X:=\{x_i: i\in [1,k]\}$ in ``long form'' as $x_1,\dots,x_k$.
+	If $X$ is a subset of a monoid $(H,\cdot)$, we will write the ordered product of the elements of $X$ as $x_1\cdots x_k$.
+	In particular, if $k$ happens to be $0$, this product is empty and we set the convention $x_1\cdots x_k = 1$ to avoid any confusion or ill-definedness.
+	\item If $S$ is a set and $\E$ is an equivalence relation on $S$, the equivalence class of some $x\in S$ shall be denoted by $[x]_\E$.
+	The subscript may be removed in situations where the implied equivalence is clear.
+\end{itemize}
 
-The \textit{free monoid} on some generating set $S$ will be denoted by $\F^*(S)$.  
-This monoid should be thought of as the set of formal words whose letters belong to $S$.
-Its operation, denoted by $*$ to avoid confusion where another multiplicationmis present, is meant to be interpreted as the concatenation of words.
-The elements of $\F^*(S)$ will usually be represented by the fraktur letters $\aa$, $\bb$, and so on.  
-The \textit{length} of a word $\mathfrak{s}= s_1 * \cdots * s_\ell  \in \F^*(S)$, where each $s_i\in S$ and $| \mathfrak{s} | := \ell$.
-The empty word $\emptyset$ is said to have length zero.
-
-If $S$ is a set and $\E$ is an equivalence relation on $S$, the equivalence class of some $x\in S$ shall be denoted by $[x]_\E$.
-The subscript may be removed in situations where the implied equivalence is clear.
+%The \textit{free monoid} on some generating set $S$ will be denoted by $\F^*(S)$.  
+%As a set, 
+%\[\F^*(S) := \{s_1*\cdots*s_\ell: \ell\in \NN \textrm{ and } s_i\in S \textrm{ for each } i\in [1,\ell] \}. \]
+%This monoid should be thought of as the set of formal words whose letters belong to $S$.
+%Its operation, denoted by $*$ to avoid confusion where another multiplication is present, is meant to be interpreted as the concatenation of words.
+%The elements of $\F^*(S)$ will usually be represented by the fraktur letters $\aa$, $\bb$, and so on.  
+%The \textit{length} of a word $\mathfrak{s}= s_1 * \cdots * s_\ell  \in \F^*(S)$, where each $s_i\in S$ and $| \mathfrak{s} | := \ell$.
+%The empty word $\varepsilon_S$ is said to have length zero.
 
 \subsection{Fundamental Notions of Factorization Theory} \label{subsec:factorizations}
-\begin{defn}
-A monoid is a pair $(H,\cdot)$, where $H$ is a set and $\cdot $ is a binary operation (called multiplication in the absence of any other name) on $H$, satisfying
-\begin{enumerate}
-\item Associativity: for every $x,y,z \in H$, $(x\cdot y)\cdot z = x\cdot (y\cdot z)$
-\item Identity: there is an element $1_H\in H$ such that $1\cdot x = x\cdot 1 = x$ for all $x\in H$
-\end{enumerate}
-Often, the operation will be omitted when no confusion can arise; it is standard practice to write $xy$ instead of $x \cdot y$.
-Similarly, the identity $1_H$ will usually be written as $1$.
-
-A map $\varphi: H \to K$ between monoids is a \textbf{homomorphism} if $\varphi(1_H) = 1_K$ and $\varphi(xy) = \varphi(x)\varphi(y)$.
-\end{defn}
 
 
-
-\begin{defn}
+\begin{defn} \label{defn:atom}
 Let $H$ be a monoid.
 \begin{enumerate}
 \item $u\in H$ is a \textbf{unit} if there is $v\in H$ with $uv = vu = 1$.  
 The set of units of $H$ is denoted by $H^\times$.  
 $H$ is called \textit{reduced} if $H^\times = \{1\}$.
-\item $a\in H\setminus H^\times$ is an \textbf{atom} if, whenever $a = xy$, either $x\in H^\times$ or $y\in H^\times$. The set of atoms of $H$ is denoted by $\A(H)$.
 \item $x,y\in H$ are \textbf{associates} if there are units $u,v\in H^\times$ so that $x = uyv$. In this case, we write $x \sim y$.
+\item $a\in H\setminus H^\times$ is an \textbf{atom} if, whenever $a = xy$, either $x\in H^\times$ or $y\in H^\times$. The set of atoms of $H$ is denoted by $\A(H)$.
 \item $x\in H$ is \textbf{idompotent} (or \textbf{an idempotent}) if $x^2 = x$.
 \end{enumerate}
 \end{defn}
 
-Note that $a$ is an atom if and only if every divisor of $a$ is either an associate of $a$ or a unit in $H$.
-This may be taken as a definition of an atom, or used as a starting point for generalized notions of an atom, as in [RANTHONY REFERENCE FOR DIFFERENT NOTIONS OF ASSOCIATE/ATOMS].
+%Note that $a$ is an atom if and only if every divisor of $a$ is either an associate of $a$ or a unit in $H$.
+%This may be taken as a definition of an atom, or used as a starting point for generalized notions of an atom, as in [RANTHONY REFERENCE FOR DIFFERENT NOTIONS OF ASSOCIATE/ATOMS].
+The existing body of work on factorization theory contains several reasonable definitions of ``associate'' and ``atom'' which are not always equivalent.
+Here, we have chosen one such set of definitions; this choice has consequences on the definitions to be laid out in the remainder of this section, and on the nature of the results one may prove.
+Fortunately, previous entries in the literature have taken care to compare some of these alternative notions.
+Look to Section \ref{sub:other-factorizations} for more a more detailed digression on different definitions of ``associate'' and ``atom'' and how they relate to one another.
 
-\begin{prop}
-Let $H$ be a monoid, let $a\in \A(H)$, and let $u,v\in H^\times$.
-Then $uav \in \A(H)$.
-\end{prop}
+\begin{defn}
+Let $S$ be a set.
+The \textbf{free monoid} on $S$ is the set
+\[\F^*(S) := \{s_1*\cdots*s_\ell: \ell\in \NN \textrm{ and } s_i\in S \textrm{ for each } i\in [1,\ell] \} \]
+of formal words whose letters belong to $S$.
+Its operation, denoted by $*$, is called \textbf{concatenation}.
+
+Let $\mathfrak{s}= s_1 * \cdots * s_\ell  \in \F^*(S)$, where each $s_i\in S$.
+The \textbf{length} of $\mathfrak{s}$ is $| \mathfrak{s} | := \ell$.
+(The empty word $\varepsilon_S$ is said to have length zero).
+
+The elements $s_1,\dots,s_\ell$ are called the \textbf{factors} of $\mathfrak{s}$. 
+A word $\mathfrak{t}\in \F^*(S)$ is said to be a \textbf{subword} of $\mathfrak{s}$ if there are $1\le i_1 < \dots < i_k \le \ell$ such that $\mathfrak{t} = s_{i_1}*\cdots*s_{i_k}$.
+\end{defn}
+
+
+We will use the language of free monoids heavily throughout as a convenient way of precisely describing information about factorizations of elements.  
+This method of bookkeeping is borrowed from \cite{fan-tringali18}, which is in turn based on the usage of free abelian monoids in \cite{geroldinger-hk06} and much of the subsequent literature on factorization theory as studied from the monoid point of view.
+
 
 \begin{defn}
 Let $H$ be a monoid.
@@ -171,7 +189,7 @@ and the \textbf{set of (factorization) lengths} of $x$ is
 Let $H$ be a monoid.
 Here we define some properties to measure the degree of uniqueness of factorization in $H$.
 \begin{itemize}
-\item $H$ has \textbf{unique factorization (UF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{Z}_H(x)| = 1$.
+\item $H$ has \textbf{unique factorization (UF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{Z}_H(x)| = 1$ (we may also say $H$ is \textit{factorial}).
 \item $H$ is \textbf{half factorial (HF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{L}_H(x)| = 1$.
 \item $H$ has \textbf{finite factorization (FF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{Z}_H(x)| <\infty$.
 \item $H$ has \textbf{bounded factorization (BF)} if, for all $x\in H\setminus H^\times$, $|\mathsf{L}_H(x)| < \infty$.
@@ -183,7 +201,7 @@ Here we define some properties to measure the degree of uniqueness of factorizat
 We have the following logical implications among the properties defined just above:
 \[\begin{tikzcd}[arrows = Rightarrow]
  & \text{HF} \arrow{dr}&  &  \\
-\text{UF} \arrow{ur}\arrow{dr}  &  & \text{BF} \arrow{r}& \text{Atomic} \\
+\text{UF} \arrow{ur}\arrow{dr}  &  & \text{BF} \arrow{r}& \text{atomic} \\
  & \text{FF} \arrow{ur} &  & 
 \end{tikzcd}\]
 \end{prop}
@@ -223,3 +241,39 @@ This is a decomposition of $x$ into two non-zero (hence non-unit) elements, so $
 Thus we learn that $Q$ not only fails to have factorizations into atoms, but also to have atoms at all.
 \end{enumerate}
 \end{eg}
+
+\subsection{Literature and Comparing Alternate Definitions}
+\label{sub:other-factorizations}
+%
+Our approach to factorization in possibly non-cancellative or non-commutative monoids is borrowed from \cite{fan-tringali18}, where one can read thoroughly about differences and similarities with 
+the classical approach to factorization in commutative and cancellative monoids (and hence in integral domains) pursued by A. Geroldinger and F. Halter-Koch in \cite{geroldinger-hk06}, and with the much more recent approach to factorization in cancellative but possibly non-commutative monoids set forth by N.R. Baeth and D. Smertnig in \cite{baeth-smertnig15}; in particular, see \cite[Remarks 2.6 and 2.7]{fan-tringali18}.
+
+This said, there are many previous entries in the literature that have treated (mainly algebraic) aspects of factorization theory in commutative (unital) rings with non-trivial zero divisors. Most notably, D.D. Anderson and collaborators have extensively studied factorizations in commutative rings corresponding to notions of ``associate'' and ``irreducible'' other than the ones adopted in the present paper, see e.g. \cite{AndMar85a,AndMar85b,AnVL96,AnVL97,AgAnVL01,ChunAnd11,ChAnVLe11}. Below we review these alternative definitions and contrast them with our approach. 
+
+To start with, let $R$ be a commutative ring and denote by $R^\times$ the group of units of the multiplicative monoid of $R$. Given $x, y \in R$, we say in the parlance of \cite[Definition 2.1]{AnVL96} that 
+\begin{itemize}
+	\item $x$ is \emph{associate} to $y$ (in $R$), written $x \sim_R y$, if $xR = yR$;
+	\item $x$ is \emph{strongly associate} to $y$, written $x \approx_R y$, if $x \in yR^\times$ (by Proposition \ref{prop:unit-adjust}\ref{it:prop:unit-adjust(0)}, this is equivalent to $x$ being associate (as per Definition \ref{defn:atom}) to $y$ in the multiplicative monoid of $R$);
+	\item $x$ is \emph{very strongly associate} to $y$, written $x \cong_R y$, if $x \sim_R y$ and one of the following holds:
+	\begin{enumerate}[label = {\rm (\roman{*})}] 
+		\item $x = y = 0_R$ (where $0_R$ is the zero of $R$);
+		\item $x \neq 0_R$ and if $x = yz$ for some $z \in R$ then $z \in R^\times$.
+	\end{enumerate}
+\end{itemize}
+%
+Accordingly, one has three notions of ``irreducible'', see \cite[Definition 2.4]{AnVL96}. To wit, an element $a \in R$ is 
+\begin{itemize}
+	\item \emph{irreducible} if $a \notin R^\times$ and $a=xy$ for some $x, y \in R$ implies that $a \sim_R x$ or $a \sim_R y$;
+	\item \emph{strongly irreducible} if $a \notin R^\times$ and $a=xy$ for some $x, y \in R$ implies that $a \approx_R x$ or $a \approx_R y$;
+	\item \emph{very strongly irreducible} if $a \notin R^\times$ and $a=xy$ for some $x, y \in R$ implies that $a \cong_R x$ or $a \cong_R y$.
+\end{itemize}
+It is obvious that very strongly irreducible elements of $R$ are strongly irreducible, and strongly irreducible elements are irreducible. In general, none of these implications can be reversed, see the paragraph after the proof of Theorem 2.12 in \cite{AnVL96}. However, we get by \cite[Theorem 2.2(3)]{AnVL96} that the three notions coincide when $R$ is \emph{pr\'esimplifiable} in the sense of \cite{Bou74a}, meaning that if $xy = x$ for some $x, y \in R$ then $x = 0_R$ or $y \in R^\times$ (e.g., this is the case when $R$ is an integral domain). Moreover, \cite[Theorem 2.5]{AnVL96} yields that a \emph{non-zero} element of $R$ is strongly irreducible if and only if it is an atom of the multiplicative monoid of $R$.
+
+Putting it all together, we thus see that the ring $R$ is \emph{very strongly atomic} in the sense of \cite[Definition 3.1]{AnVL96} if and only if one of the following holds:
+\begin{enumerate}[label={(\small{A}\arabic{*})}]
+	\item\label{it:condition(A1)} $R$ has non-trivial zero divisors and the multiplicative monoid of $R$ is atomic (as per \S{ }\ref{subsec:factorizations});
+	\item\label{it:condition(A2)} $R$ is an integral domain and $R \setminus \{0_R\}$ is an atomic monoid under multiplication.
+\end{enumerate}
+Similarly, $R$ is a \emph{bounded factorization ring} in the sense of \cite[Definition 3.8]{AnVL96}, a \emph{half-factorial ring} in the sense of \cite[p. 87]{AxFoRoSt03}, a \emph{finite factorization ring} in the sense of \cite[Definition 6.5]{AnVL96}, or a unique factorization ring in the sense of \cite[Definition 4.3]{AnVL96} if and only if one of conditions \ref{it:condition(A1)} and \ref{it:condition(A2)} in the above is satisfied with ``atomic'' replaced, respectively, by ``BF'', ``HF'', ``FF'', or ``factorial''.
+
+As long as the scope is restricted to commutative rings, it is therefore possible to compare our approach to factorization with others based on irreducibles, strong irreducibles, or even alternative ``elementary factors'' (including the ones considered by C.R. Fletcher \cite{Fl69}, A. Bouvier \cite{Bou74a, Bou74b}, and S. Galovich \cite{Ga78}) by referring to \cite{AnVL96,ChunAnd11}, where these comparisons are worked out in great detail. (Incidentally, it appears that Galovich is \emph{tacitly} assuming ``irreducibles'' in the sense of \cite{Ga78} to be non-units.) See also \cite[Theorem 3.4 and Corollary 3.5]{BaBuMi17} for a couple of results of a more arithmetic flavor concerning lengths of factorizations into irreducibles in commutative rings of the form $D/xD$, where $D$ is a principal ideal domain and $x$ is a non-zero, non-unit element of $D$. 

@@ -11,9 +11,23 @@ I was expecting an "="---line 146 of file bib.bib
  : @incollection 
  :               {cziszter-al16,
 I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "baeth-smertnig15"
+Warning--I didn't find a database entry for "AndMar85a"
+Warning--I didn't find a database entry for "AndMar85b"
+Warning--I didn't find a database entry for "AnVL96"
+Warning--I didn't find a database entry for "AnVL97"
+Warning--I didn't find a database entry for "AgAnVL01"
+Warning--I didn't find a database entry for "ChunAnd11"
+Warning--I didn't find a database entry for "ChAnVLe11"
+Warning--I didn't find a database entry for "Bou74a"
+Warning--I didn't find a database entry for "AxFoRoSt03"
+Warning--I didn't find a database entry for "Fl69"
+Warning--I didn't find a database entry for "Bou74b"
+Warning--I didn't find a database entry for "Ga78"
+Warning--I didn't find a database entry for "BaBuMi17"
 You've used 29 entries,
             2118 wiz_defined-function locations,
-            704 strings with 8651 characters,
+            731 strings with 8855 characters,
 and the built_in function-call counts, 9720 in all, are:
 = -- 991
 > -- 373
