@@ -1,5 +1,32 @@
 \begin{thebibliography}{10}
 
+\bibitem{AgAnVL01}
+Ahmet~G. A\={g}arg\"{u}n, D.~D. Anderson, and Silvia Valdes-Leon.
+\newblock Factorization in commutative rings with zero divisors. {III}.
+\newblock {\em Rocky Mountain J. Math.}, 31(1):1--21, 2001.
+
+\bibitem{AndMar85a}
+D.~D. Anderson, David~F. Anderson, and Raj Markanda.
+\newblock The rings {$R(X)$} and {$R\langle X\rangle$}.
+\newblock {\em J. Algebra}, 95(1):96--115, 1985.
+
+\bibitem{AndMar85b}
+D.~D. Anderson and Raj Markanda.
+\newblock Unique factorization rings with zero divisors.
+\newblock {\em Houston J. Math.}, 11(1):15--30, 1985.
+
+\bibitem{AnVL96}
+D.~D. Anderson and Silvia Valdes-Leon.
+\newblock Factorization in commutative rings with zero divisors.
+\newblock {\em Rocky Mountain J. Math.}, 26(2):439--480, 1996.
+
+\bibitem{AnVL97}
+D.~D. Anderson and Silvia Valdes-Leon.
+\newblock Factorization in commutative rings with zero divisors. {II}.
+\newblock In {\em Factorization in integral domains ({I}owa {C}ity, {IA},
+  1996)}, volume 189 of {\em Lecture Notes in Pure and Appl. Math.}, pages
+  197--219. Dekker, New York, 1997.
+
 \bibitem{chun-anderson11}
 Dan Anderson and Sangmin Chun.
 \newblock Irreducible elements in commutative rings with zero-divisors.
@@ -9,6 +36,26 @@ Dan Anderson and Sangmin Chun.
 Michael Axtell, Sylvia Forman, Nick Roersma, and Joe Stickles.
 \newblock Properties of u-factorizations.
 \newblock {\em International Journal of Commutative Rings}, 2, 01 2003.
+
+\bibitem{BaBuMi17}
+Nicholas~R. Baeth, Brandon Burns, and James Mixco.
+\newblock A fundamental theorem of modular arithmetic.
+\newblock {\em Period. Math. Hungar.}, 75(2):356--367, 2017.
+
+\bibitem{baeth-smertnig15}
+Nicholas~R. Baeth and Daniel Smertnig.
+\newblock Factorization theory: from commutative to noncommutative settings.
+\newblock {\em J. Algebra}, 441:475--551, 2015.
+
+\bibitem{Bou74a}
+A.~Bouvier.
+\newblock Anneaux pr\'{e}simplifiables.
+\newblock {\em Rev. Roumaine Math. Pures Appl.}, 19:713--724, 1974.
+
+\bibitem{Bou74b}
+Alain Bouvier.
+\newblock Structure des anneaux \`a factorisation unique.
+\newblock {\em Publ. D\'{e}p. Math. (Lyon)}, 11(3):39--49, 1974.
 
 \bibitem{cahen-chabert97}
 Paul-Jean Cahen and Jean-Luc Chabert.
@@ -70,6 +117,11 @@ Yushuang Fan and Salvatore Tringali.
   combinatorics.
 \newblock {\em J. Algebra}, 512:252--294, 2018.
 
+\bibitem{Fl69}
+C.~R. Fletcher.
+\newblock Unique factorization rings.
+\newblock {\em Proc. Cambridge Philos. Soc.}, 65:579--583, 1969.
+
 \bibitem{fletcher69}
 C.~R. Fletcher.
 \newblock Unique factorization rings.
@@ -81,6 +133,11 @@ Sophie Frisch.
 \newblock A construction of integer-valued polynomials with prescribed sets of
   lengths of factorizations.
 \newblock {\em Monatsh. Math.}, 171(3-4):341--350, 2013.
+
+\bibitem{Ga78}
+Steven Galovich.
+\newblock Unique factorization rings with zero divisors.
+\newblock {\em Math. Mag.}, 51(5):276--283, 1978.
 
 \bibitem{gao-geroldinger06}
 Weidong Gao and Alfred Geroldinger.

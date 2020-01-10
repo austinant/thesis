@@ -2,68 +2,56 @@ This is BibTeX, Version 0.99d (TeX Live 2019)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Thesis.aux
 A level-1 auxiliary file: chap-intro.aux
+A level-1 auxiliary file: chap-fundamentals.aux
 A level-1 auxiliary file: chap-PMA.aux
+A level-1 auxiliary file: chap-minfac.aux
 A level-1 auxiliary file: chap-partitions.aux
-A level-1 auxiliary file: chap-applications.aux
+A level-1 auxiliary file: chap-lattices.aux
 The style file: plain.bst
 Database file #1: bib.bib
-I was expecting an "="---line 146 of file bib.bib
+I was expecting an "="---line 293 of file bib.bib
  : @incollection 
  :               {cziszter-al16,
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "baeth-smertnig15"
-Warning--I didn't find a database entry for "AndMar85a"
-Warning--I didn't find a database entry for "AndMar85b"
-Warning--I didn't find a database entry for "AnVL96"
-Warning--I didn't find a database entry for "AnVL97"
-Warning--I didn't find a database entry for "AgAnVL01"
-Warning--I didn't find a database entry for "ChunAnd11"
-Warning--I didn't find a database entry for "ChAnVLe11"
-Warning--I didn't find a database entry for "Bou74a"
-Warning--I didn't find a database entry for "AxFoRoSt03"
-Warning--I didn't find a database entry for "Fl69"
-Warning--I didn't find a database entry for "Bou74b"
-Warning--I didn't find a database entry for "Ga78"
-Warning--I didn't find a database entry for "BaBuMi17"
-You've used 29 entries,
+You've used 40 entries,
             2118 wiz_defined-function locations,
-            731 strings with 8855 characters,
-and the built_in function-call counts, 9720 in all, are:
-= -- 991
-> -- 373
-< -- 10
-+ -- 153
-- -- 118
-* -- 672
-:= -- 1570
-add.period$ -- 94
-call.type$ -- 29
-change.case$ -- 141
+            778 strings with 9936 characters,
+and the built_in function-call counts, 13400 in all, are:
+= -- 1380
+> -- 507
+< -- 12
++ -- 208
+- -- 160
+* -- 946
+:= -- 2172
+add.period$ -- 128
+call.type$ -- 40
+change.case$ -- 195
 chr.to.int$ -- 0
-cite$ -- 29
-duplicate$ -- 403
-empty$ -- 790
-format.name$ -- 118
-if$ -- 2064
+cite$ -- 40
+duplicate$ -- 538
+empty$ -- 1091
+format.name$ -- 160
+if$ -- 2826
 int.to.chr$ -- 0
-int.to.str$ -- 29
-missing$ -- 37
-newline$ -- 151
-num.names$ -- 58
-pop$ -- 140
+int.to.str$ -- 40
+missing$ -- 48
+newline$ -- 206
+num.names$ -- 80
+pop$ -- 176
 preamble$ -- 1
-purify$ -- 117
+purify$ -- 160
 quote$ -- 0
-skip$ -- 291
+skip$ -- 383
 stack$ -- 0
-substring$ -- 672
-swap$ -- 101
-text.length$ -- 10
+substring$ -- 987
+swap$ -- 123
+text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 100
+type$ -- 144
 warning$ -- 0
-while$ -- 95
-width$ -- 31
-write$ -- 332
+while$ -- 140
+width$ -- 42
+write$ -- 455
 (There was 1 error message)

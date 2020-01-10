@@ -6,7 +6,7 @@
 %
 Example \ref{unbounded-fzn} indicates that, in the presence of torsion in the ground monoid $H$, sets of lengths in $\P_\fun(H)$ blow up in a predictable fashion, with the result that most of the invariants classically studied in Factorization Theory lose their significance. 
 In the case of Example \ref{unbounded-fzn}, this phenomenon is due to the existence of non-trivial idempotents and has been previously addressed by many authors in the literature on \emph{commutative} rings and monoids (see Remarks \ref{rem:chun&anderson} and \ref{rem:geroldinger&lettl}).
-Here we strive for a ``natural approach'' that applies to \emph{arbitrary} monoids, spurring us to consider a refinement of the notions introduced in \S{ }\ref{subsec:factorizations} and to investigate some of their fundamental properties (see, in particular, Definition \ref{def:min-fac} and Proposition \ref{prop:min-equi}), before focusing on the special case of power monoids.
+Here we strive for a ``natural approach'' that applies to \emph{arbitrary} monoids, spurring us to consider a refinement of the notions introduced in Section \ref{subsec:factorizations} and to investigate some of their fundamental properties (see, in particular, Definition \ref{def:min-fac} and Proposition \ref{prop:min-equi}), before focusing on the special case of power monoids.
 
 \label{subsec:min-factorizations}
 We start with the definition of a binary relation (in fact, a preorder) on the $\A(H)$-words of a monoid $H$ that we shall use to ``filter out the redundant factors'' that may contribute to the factorizations of an element of $H$
@@ -56,7 +56,7 @@ Let $H$ be a monoid and $x \in H$. An $H$-word $\mathfrak{a}$ is a \emph{$\prece
 \quad\text{and}\quad
 \mathsf{Z}_{H}^\m(x):= \mathcal{Z}_{H}^\m(x)/\C_H
 \]
-shall denote, respectively, the set of $\preceq_H$-minimal factorizations and the set of $\preceq_H$-minimal factorization classes of $x$ (cf. the definitions from \S{ }\ref{subsec:factorizations}). In addition, we take 
+shall denote, respectively, the set of $\preceq_H$-minimal factorizations and the set of $\preceq_H$-minimal factorization classes of $x$ (cf. the definitions from Section \ref{subsec:factorizations}). In addition, we take 
 \[
 \mathsf{L}_{H}^\m(x) := \left\{ \|\mathfrak{a}\|_H : \mathfrak{a} \in \mathcal{Z}_{H}^\m(x) \right\} \subseteq \NN
 \]
@@ -82,8 +82,8 @@ To the best of our knowledge, analogues of the notions introduced in Definition 
 In detail, let $H$ be the multiplicative monoid of a (unital) ring $R$ and fix a set $\mathcal A \subseteq R$.
 We say that a non-empty $\mathcal A$-word $a_1 \ast \cdots \ast a_n$ of length $n$ is a \emph{minimal $\mathcal A$-factorization} of an element $x \in R$ if $\pi_H(\mathfrak a) = x$ but $x \ne \pi_H(\mathfrak b)$ for every non-empty $\mathcal A$-word $\mathfrak b = b_1 \ast \cdots \ast b_m$ of length $m \le n-1$ for which there exists an injection $\sigma: [ 1, m ] \to [ 1, n ]$ such that $b_i \simeq_H a_{\sigma(i)}$ for each $i \in [ 1, m ]$. 
 
-A minimal $\A(H)$-factorization of a non-unit $x \in R$ is the same as a $\preceq_H$-minimal factorization of $x$ (as per Definition \ref{def:min-fac}). Moreover, it follows from \S{ }\ref{sub:other-factorizations} and Proposition \ref{prop:unit-adjust}\ref{it:prop:unit-adjust(ii)} that, if $R$ is a \emph{commutative} ring and $x$ is not the zero of $R$, then a minimal $\A(H)$-factorization of $x$ is, in the parlance of \cite[Definition 2.1 and \S{ }3]{chun-anderson-vl11}, essentially the same as a \emph{strongly $\mu$-reduced $\mu$-factorization} of $x$ into very strongly irreducible elements of $R$. 
-Insofar as the discussion is restricted to commutative rings, one can thus refer to \cite{chun-anderson-vl11} and \cite{axtell-et-al03} for a comparison of our approach to the study of ``minimal factorizations'' with others in the literature, including the one by C.R. Fletcher \cite{fletcher69} and generalizations thereof where the set $\mathcal A$ in the above consists of various types of ``irreducible elements'' of $R$ (cf. \S{ }\ref{sub:other-factorizations}).
+A minimal $\A(H)$-factorization of a non-unit $x \in R$ is the same as a $\preceq_H$-minimal factorization of $x$ (as per Definition \ref{def:min-fac}). Moreover, it follows from Section \ref{sub:other-factorizations} and Proposition \ref{prop:unit-adjust}\ref{it:prop:unit-adjust(ii)} that, if $R$ is a \emph{commutative} ring and $x$ is not the zero of $R$, then a minimal $\A(H)$-factorization of $x$ is, in the parlance of \cite[Definition 2.1 and Section 3]{chun-anderson-vl11}, essentially the same as a \emph{strongly $\mu$-reduced $\mu$-factorization} of $x$ into very strongly irreducible elements of $R$. 
+Insofar as the discussion is restricted to commutative rings, one can thus refer to \cite{chun-anderson-vl11} and \cite{axtell-et-al03} for a comparison of our approach to the study of ``minimal factorizations'' with others in the literature, including the one by C.R. Fletcher \cite{fletcher69} and generalizations thereof where the set $\mathcal A$ in the above consists of various types of ``irreducible elements'' of $R$ (cf. Section \ref{sub:other-factorizations}).
 \end{rk}
 
 \begin{rk}\label{rem:geroldinger&lettl}
@@ -192,7 +192,7 @@ Equimorphisms have a similar compatibility with minimal factorizations, in the s
 \section{Minimal Factorizations in Power Monoids}
 \label{subsec:min-factorization-in-PMs}
 %
-Let $H$ be a monoid. Similarly as in \S{ }\ref{sec:atomicity}, we would like to simplify the study of minimal factorizations in $\P_\funt(H)$ as much as possible by passing to consideration of the reduced monoid $\P_\fun(H)$. For, it is of primary importance to make clear the nature of the relationship between minimal factorizations in $\P_\funt(H)$ and those in $\P_\fun(H)$.
+Let $H$ be a monoid. Similarly as in Section \ref{sec:atomicity}, we would like to simplify the study of minimal factorizations in $\P_\funt(H)$ as much as possible by passing to consideration of the reduced monoid $\P_\fun(H)$. For, it is of primary importance to make clear the nature of the relationship between minimal factorizations in $\P_\funt(H)$ and those in $\P_\fun(H)$.
 We shall see that this is possible under \emph{some} circumstances. 
 %
 \begin{prop}\label{prop:comm-pm}
@@ -259,7 +259,7 @@ We claim that $X := \langle r \rangle_H$ has minimal factorizations of length $p
 	
 	Indeed, let $B_i$ be, for $i \in [ 1, p-1 ]$, the image of $\{k \in [ 0, p-1 ]: r^k \in A_i\} \subseteq \bf Z$ under the canonical map $\ZZ \to \ZZ/p\ZZ$. Then $\mathfrak a$ is a minimal factorization of $X$ in $\mathcal P_{\fin,1}(H)$ only if $\mathfrak b := B_1 \ast \cdots \ast B_{p-1}$ is a minimal factorization of $\ZZ/p\ZZ$ in the reduced power monoid of $(\ZZ/p\ZZ, +)$, herein denoted by $\mathcal P_{\fin,0}(\ZZ/p\ZZ)$.
 	
-	We want to show that $\mathfrak b$ is $\preceq_{\mathcal P_{\fin,0}(H)}$-minimal only if there is a non-zero $x \in \ZZ/p\ZZ$ such that $B_i = \{\overline{0}, x\}$ or $B_i = \{\overline{0}, -x\}$, or equivalently $A_i = \{1_H, r^{\hat{x}}\}$ or $A_i = \{1_H, r^{-\hat{x}}\}$, for every $i \in [ 1, p-1 ]$ (for notation, see \S{ }\ref{subsec:generalities}). By the preceding arguments, this will suffice to conclude that $p-1 \notin \mathsf L^\m_{\mathcal P_\funt(H)}(X)$, because it implies at once that $\mathfrak a$ is $\mathcal C_{\mathcal P_\fun(H)}$-congruent to $\mathfrak a_g$ with $g := r^{\hat{x}} \in X \setminus \{1_H\}$.
+	We want to show that $\mathfrak b$ is $\preceq_{\mathcal P_{\fin,0}(H)}$-minimal only if there is a non-zero $x \in \ZZ/p\ZZ$ such that $B_i = \{\overline{0}, x\}$ or $B_i = \{\overline{0}, -x\}$, or equivalently $A_i = \{1_H, r^{\hat{x}}\}$ or $A_i = \{1_H, r^{-\hat{x}}\}$, for every $i \in [ 1, p-1 ]$ (for notation, see Section \ref{subsec:generalities}). By the preceding arguments, this will suffice to conclude that $p-1 \notin \mathsf L^\m_{\mathcal P_\funt(H)}(X)$, because it implies at once that $\mathfrak a$ is $\mathcal C_{\mathcal P_\fun(H)}$-congruent to $\mathfrak a_g$ with $g := r^{\hat{x}} \in X \setminus \{1_H\}$.
 	
 	To begin, let $K$ be a subset of $[ 1, p-1 ]$, and define $\mathcal{S}_K := \sum_{k \in K} B_k$ and $s_K := \{k \in K: |B_k| \ge 3\}$. Then we have by the Cauchy-Davenport inequality (see, e.g., \cite[Theorem 6.2]{grynkiewicz13}) that
 	%
@@ -343,7 +343,6 @@ We proceed with an analogue of Theorem \ref{thm:BF-torsion}\ref{it:thm:BF-torsio
 
 \begin{thm}\label{prop:HF-exp-3}
 	Let $H$ be a monoid. Then $\mathcal P_\fun(H)$ is \textup{HmF} if and only if $H$ is trivial or a cyclic group of order $3$.
-%
 \end{thm}
 
 \begin{proof}
@@ -380,10 +379,10 @@ However, what we have shown indicates, we believe, that the arithmetic of $\P_\f
 \section{Cyclic Monoids and Interval Length Sets}
 \label{sec:cyclic-case} 
 For those monoids $H$ with $\P_\fun(H)$ atomic, we have by Proposition \ref{lem:no-non-id-elts-of-small-order-implies-structure} that the semigroup generated by an element $x\in H$ is isomorphic either to $\ZZ/n\ZZ$ or to $\NN$ under addition.
-As such, we will concentrate throughout on factorizations in $\P_{\fin,0}(\ZZ/n\ZZ)$ and also mention some results on $\P_{\fin,0}(\NN)$ which are discussed in detail in \cite[\S{ }4]{fan-tringali18}.
+As such, we will concentrate throughout on factorizations in $\P_{\fin,0}(\ZZ/n\ZZ)$ and also mention some results on $\P_{\fin,0}(\NN)$ which are discussed in detail in \cite[Section 4]{fan-tringali18}.
 At the end we will return to the general case, where the preceding discussion will culminate in a realization result (Theorem \ref{th:interval-lengths}) for sets of minimal lengths of $\P_\fun(H)$.
 
-We invite the reader to review \S{ }\ref{subsec:generalities} before reading further. Also, note that, through the whole section, we have replaced the notation $\P_\fun(H)$ with $\P_{\fin,0}(H)$ when $H$ is written additively (cf. Example \ref{exa:strict-inclusion}).
+We invite the reader to review Section \ref{subsec:generalities} before reading further. Also, note that, through the whole section, we have replaced the notation $\P_\fun(H)$ with $\P_{\fin,0}(H)$ when $H$ is written additively (cf. Example \ref{exa:strict-inclusion}).
 
 
 \begin{defn}\label{NR-factorization}

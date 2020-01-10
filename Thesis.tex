@@ -2,81 +2,29 @@
 %\usepackage[doublespacing]{setspace}
 %For centering chapters
 \usepackage[explicit]{titlesec}
+\usepackage{multicol}
 \titleformat{\chapter}[display]{\bfseries\centering}{\LARGE Chapter \thechapter}{1mm}{\LARGE #1}
-
 %For including macros/commands you have pre-defined
 \include{preamble}
 
 
+\title{On Sum Decompositions of Sets: \\ 
+	The Factorization Theory of Power Monoids}
+
+\author{Austin Alan Antoniou}
+
+\date{\today}
+
 \begin{document}
-\frontmatter
-
-\begin{titlepage}
-\begin{center}
-	{\LARGE \bf On Sum Decompositions of Sets: \\ \vspace{3mm}
-		
-		The Factorization Theory of Power Monoids}
-
-\
-
-	Dissertation
-
-\
-	
-	Presented in Partial Fulfillment of the Requirements 
-	
-	for the Degree Doctor of Philosophy 
-	
-	in the Graduate School of The Ohio State University
-
-\
-		
-	By 
-	
-	{\large Austin Alan Antoniou, M.S. 
-	
-	Graduate Program in Mathematics}
-
-\
-	
-	The Ohio State University
-	
-	2020
-
-\
-
-	{\large {\bf Dissertation Committee:}
-	
-	K. Alan Loper
-	
-	Ivo Herzog
-	
-	HOPEFULLY SOMEBODY ELSE}
-\end{center}
-
-\end{titlepage}
-\hspace{0pt}
-\vfill
-\begin{center}
-{\Large Copyright by Austin Alan Antoniou
-
-2020}
-\end{center}
-\vfill
-\pagestyle{empty}
-\chapter*{Abstract}
-
-\chapter*{Acknowledgements}
-
-\chapter*{Vita}
-
+%\include{frontmatter}
+\maketitle
 
 \tableofcontents
-
-
 \mainmatter
 
 \include{chap-intro}
+
+\include{chap-fundamentals}
 
 \include{chap-PMA}
 
@@ -84,16 +32,20 @@
 
 \include{chap-partitions}
 
-\include{chap-applications}
+\include{chap-lattices}
 
 %\include{chap-asymptotics}
 
-\newpage
-\nocite{*}
+%\newpage
+%\nocite{*}
+%\bibliography{bib}
+%\bibliographystyle{plain}
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+\bibliographystyle{alpha}
 \bibliography{bib}
-\bibliographystyle{plain}
-
-
 
 
 \end{document}

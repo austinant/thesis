@@ -1,95 +1,52 @@
 \chapter{Power Monoids and Atomicity} \label{ch:power monoids}
 
-
-\section{Monoid Preliminaries and Subset Arithmetic}
-\label{sec:atomicity}
+\section{Subset Arithmetic} \label{sec:pm basics}
 Here we embark on the study of the (arithmetic and algebraic) structure of power monoids.
 We begin with some elementary but helpful observations we will often use without comment.
-%
-\begin{prop}\label{prop:unit-adjust}
-Let $H$ be a monoid.
-The following hold:
-\begin{enumerate}[label={\rm (\roman{*})}]
-	\item\label{it:prop:unit-adjust(0)} If $u, v \in H^\times$ then $uv \in H^\times$, and the converse holds whenever $H$ is Dedekind-finite.
-	\item\label{it:prop:unit-adjust(0b)} If $\A(H)$ is non-empty or $H$ is commutative or unit-cancellative, then $H$ is Dedekind-finite.
-\item\label{it:prop:unit-adjust(i)} If $a\in \A(H)$ and $u, v \in H^\times$, then $uav\in \A(H)$.
-\item\label{it:prop:unit-adjust(ii)} If $x\in H\setminus H^\times$ and $u, v \in H^\times$, then $\mathsf{L}_H(uxv) = \mathsf{L}_H(x)$.
-\end{enumerate}
-\end{prop}
-%
-\begin{proof}
-See \cite[parts (i), (ii), and (iv) of Lemma 2.2, and Proposition 2.30]{fan-tringali18}.
-\end{proof}
-
-\begin{defn}
-Let $H$ be a monoid with an operation $\cdot$.
-We define an operation (called \textit{setwise} $\cdot$) by, for any subsets $X,Y\subseteq H$,
-\[X\cdot Y := \{x\cdot y: x\in X \textrm{ and } y\in Y\} \]
-(as before, we will usually drop the ``$\cdot$'' and simply write $XY$ for $X\cdot Y$).
-With this operation, the following collections of subsets of $H$ become monoids:
-The \textit{power monoid} of $H$ is
-\[\P_\fin(H) := \{X\subseteq H: X\neq\emptyset \textrm{and} |X|<\infty \}; \]
-the \textit{restricted power monoid} of $H$ is
-\[\P_\funt(H) := \{X\subseteq H: X\cap H^\times \neq \emptyset \textrm{ and } |X|<\infty\}; \]
-and the \textit{reduced power monoid} of $H$ is
-\[\P_\fun(H) := \{X\subseteq H: 1_H\in X \textrm{ and } |X|<\infty\}. \]
-We may refer to $H$ as the \textit{ground monoid} of any of these power monoids.
+\begin{defn} \label{def:power monoid}
+	Let $(H,\cdot)$ be a monoid.
+	We define an operation (called \textit{setwise} $\cdot$) by, for any subsets $X,Y\subseteq H$,
+	\[X\cdot Y := \{x\cdot y: x\in X \textrm{ and } y\in Y\} \]
+	(as before, we will usually drop the ``$\cdot$'' and simply write $XY$ for $X\cdot Y$).
+	With this operation, the following collections of subsets of $H$ become monoids:
+	The \textit{power monoid} of $H$ is
+	\[\P_\fin(H) := \{X\subseteq H: X\neq\emptyset \textrm{ and } |X|<\infty \}; \]
+	the \textit{restricted power monoid} of $H$ is
+	\[\P_\funt(H) := \{X\subseteq H: X\cap H^\times \neq \emptyset \textrm{ and } |X|<\infty\}; \]
+	and the \textit{reduced power monoid} of $H$ is
+	\[\P_\fun(H) := \{X\subseteq H: 1_H\in X \textrm{ and } |X|<\infty\}. \]
+	We may refer to $H$ as the \textit{ground monoid} of any of these power monoids.
 \end{defn}
-
-\begin{prop}\label{prop:pm-arith}
-Let $H$ be a monoid. The following hold:
-	\begin{enumerate}[label={\rm (\roman{*})}]
-	\item\label{it:prop:pm-arith(i)} If $X_1,\ldots,X_n\in \P_{\fin,1}(H)$, then $X_1 \cup \cdots \cup X_n \subseteq X_1 \cdots X_n$.
-	%
-	\item\label{it:prop:pm-arith(ii)} If $u,v \in H^\times$ and $X_1,\ldots,X_n\in \P_{\fin,\times}(H)$, then $|uX_1 \cdots X_nv| = |X_1 \cdots X_n| \ge \max_{1 \le i \le n} |X_i|$.
-	%
-	\item\label{it:prop:pm-arith(iii)} If $K$ is a submonoid of $H$, then $\P_\fun(K)$ is a divisor-closed submonoid of $\P_\fun(H)$. \textup{(}Note that the conclusion is valid regardless of whether $K$ itself is divisor-closed.\textup{)}
-	%
-	\item \label{it:prop:pm-arith(iv)} $\P_\fun(H)$ is a reduced monoid and $\P_\fin(H)^\times=\P_\funt(H)^\times = \bigl\{ \{u\}: u\in H^\times\bigr\}$.
-	\item \label{it:prop:pm-arith(v)} $\A(\mathcal P_{\funt}(H)) \subseteq H^\times \A(\mathcal P_{\fun}(H)) H^\times$.
-	\end{enumerate}
-\end{prop}
-%
-\begin{proof}
-\ref{it:prop:pm-arith(i)} is trivial, upon considering that $(X \cdot 1_H) \cup (1_H \cdot Y) \subseteq XY$ for all $X, Y \in \mathcal P_\fun(H)$; \ref{it:prop:pm-arith(ii)} is a direct consequence of \ref{it:prop:pm-arith(i)} and the fact that the function $X \to H: x \mapsto uxv$ is injective for all $u, v \in H^\times$ and $X \subseteq H$; and \ref{it:prop:pm-arith(iii)} and \ref{it:prop:pm-arith(iv)} are immediate from \ref{it:prop:pm-arith(i)} and \ref{it:prop:pm-arith(ii)}.
-
-As for \ref{it:prop:pm-arith(v)}, let $A\in \A(\P_\funt(H))$.
-	Because $A$ contains a unit of $H$, there is $u\in H^\times$ such that $1_H \in uA$.
-	Then $uA$ is an element of $\P_\fun(H)$, and by Proposition \ref{prop:unit-adjust}\ref{it:prop:unit-adjust(i)} it is also an atom of $\P_\funt(H)$.
-	Thus, if $X,Y\in \P_\fun(H) \subseteq \P_\funt(H)$ and $uA = XY$, then $X$ or $Y$ is the identity of $\P_\fun(H)$.
-	This means that $uA$ is an atom of $\P_\fun(H)$, and hence $A=u^{-1}(uA)\in H^\times \A(\P_\fun(H))$, as wished.
-\end{proof}
-%
-%
 Our ultimate goal is, for an arbitrary monoid $H$, to investigate factorizations in $\P_\fin(H)$. However, this is a difficult task in general, due to a variety of ``pathological situations'' that might be hard to classify in a satisfactory way, see e.g. \cite[Remark 3.3(ii)]{fan-tringali18}.
 
 In practice, it is more convenient to start with $\P_\fun(H)$ and then lift arithmetic results from $\P_\fun(H)$ to $\P_\funt(H)$, a point of view which is corroborated by the simple consideration that $\P_\fin(H) = \P_\funt(H)$ whenever $H$ is a group (i.e., in the case of greatest interest in Arithmetic Combinatorics).
 
 In turn, we will see that studying the arithmetic of $\P_\funt(H)$ is tantamount to studying that of $\P_\fun(H)$, in a sense to be made precise presently.
 To do so in as all-encompassing a way as possible, we recall from \cite[Definition 3.2]{tringali18} a notion which formally packages the idea that, under suitable conditions, arithmetic may be transferred from one monoid to another.
-%
-\begin{defn}\label{def:equimorphism}
-Let $H$ and $K$ be monoids, and $\varphi: H\to K$ a monoid homomorphism. We denote by $\varphi^*: \F^*(H)\to\F^*(K)$ the (unique) monoid homomorphism such that $\varphi^\ast(x) = \varphi(x)$ for every $x \in H$, and we call $\varphi$ an \emph{equimorphism} if the following hold:
-\begin{enumerate}[label={({\small{E}}\arabic{*})}]
-\item\label{def:equimorphism(E1)} $\varphi^{-1}(K^\times)\subseteq H^\times$;
-\item\label{def:equimorphism(E2)} $\varphi$ is \emph{atom-preserving}, meaning that $\varphi(\A(H)) \subseteq \A(K)$;
-\item\label{def:equimorphism(E3)} If $x\in H$ and $\mathfrak{b}\in \mathcal{Z}_K(\varphi(x))$ is a non-empty $\A(K)$-word, then $\varphi^*(\mathfrak{a}) \in [ \mathfrak{b} ]_{\C_K}$ for some $\mathfrak{a}\in \mathcal{Z}_H(x)$.
-\end{enumerate}
-Moreover, we say that $\varphi$ is \emph{essentially surjective} if $K = K^\times \varphi(H)K^\times$.
-\end{defn}
-%
-\begin{prop}\label{prop:equimorphism}
-Let $H$ and $K$ be monoids and $\varphi:H\to K$ an equimorphism. The following hold:
-\begin{enumerate}[label={\rm (\roman{*})}]
-\item\label{it:prop:equimorphism(i)} $\mathsf{L}_H(x) = \mathsf{L}_K(\varphi(x))$ for all $x\in H\setminus H^\times$.
-\item\label{it:prop:equimorphism(ii)} If $\varphi$ is essentially surjective, then for all $y\in K\setminus K^\times$ there is $x\in H\setminus H^\times$ with $\mathsf{L}_K(y) = \mathsf{L}_H(x)$.
-\end{enumerate}
+\begin{prop}\label{prop:pm-arith}
+	Let $H$ be a monoid. The following hold:
+	\begin{enumerate}[label={\rm (\roman{*})}]
+		\item\label{it:prop:pm-arith(i)} If $X_1,\ldots,X_n\in \P_{\fin,1}(H)$, then $X_1 \cup \cdots \cup X_n \subseteq X_1 \cdots X_n$.
+		%
+		\item\label{it:prop:pm-arith(ii)} If $u,v \in H^\times$ and $X_1,\ldots,X_n\in \P_{\fin,\times}(H)$, then $|uX_1 \cdots X_nv| = |X_1 \cdots X_n| \ge \max_{1 \le i \le n} |X_i|$.
+		%
+		\item\label{it:prop:pm-arith(iii)} If $K$ is a submonoid of $H$, then $\P_\fun(K)$ is a divisor-closed submonoid of $\P_\fun(H)$. \textup{(}Note that the conclusion is valid regardless of whether $K$ itself is divisor-closed.\textup{)}
+		%
+		\item \label{it:prop:pm-arith(iv)} $\P_\fun(H)$ is a reduced monoid and $\P_\fin(H)^\times=\P_\funt(H)^\times = \bigl\{ \{u\}: u\in H^\times\bigr\}$.
+		\item \label{it:prop:pm-arith(v)} $\A(\mathcal P_{\funt}(H)) \subseteq H^\times \A(\mathcal P_{\fun}(H)) H^\times$.
+	\end{enumerate}
 \end{prop}
 %
 \begin{proof}
-	See \cite[Theorem 2.22(i)]{fan-tringali18} and \cite[Theorem 3.3(i)]{tringali18}.
+	\ref{it:prop:pm-arith(i)} is trivial, upon considering that $(X \cdot 1_H) \cup (1_H \cdot Y) \subseteq XY$ for all $X, Y \in \mathcal P_\fun(H)$; \ref{it:prop:pm-arith(ii)} is a direct consequence of \ref{it:prop:pm-arith(i)} and the fact that the function $X \to H: x \mapsto uxv$ is injective for all $u, v \in H^\times$ and $X \subseteq H$; and \ref{it:prop:pm-arith(iii)} and \ref{it:prop:pm-arith(iv)} are immediate from \ref{it:prop:pm-arith(i)} and \ref{it:prop:pm-arith(ii)}.
+	
+	As for \ref{it:prop:pm-arith(v)}, let $A\in \A(\P_\funt(H))$.
+	Because $A$ contains a unit of $H$, there is $u\in H^\times$ such that $1_H \in uA$.
+	Then $uA$ is an element of $\P_\fun(H)$, and by Proposition \ref{prop:unit-adjust}\ref{it:prop:unit-adjust(i)} it is also an atom of $\P_\funt(H)$.
+	Thus, if $X,Y\in \P_\fun(H) \subseteq \P_\funt(H)$ and $uA = XY$, then $X$ or $Y$ is the identity of $\P_\fun(H)$.
+	This means that $uA$ is an atom of $\P_\fun(H)$, and hence $A=u^{-1}(uA)\in H^\times \A(\P_\fun(H))$, as wished.
 \end{proof}
-%
+
 \begin{prop}\label{prop:funt&fun-have-the-same-system-of-lengths}
 	Let $H$ be a Dedekind-finite monoid. The following hold:
 	%
@@ -142,7 +99,7 @@ Let $H$ and $K$ be monoids and $\varphi:H\to K$ an equimorphism. The following h
 The next example proves that Dedekind-finiteness is, to some extent, necessary for Proposition \ref{prop:funt&fun-have-the-same-system-of-lengths}\ref{it:prop:funt&fun-have-the-same-system-of-lengths(ii)}, and hence for the subsequent conclusions. 
 %
 \begin{eg}\label{exa:no-dedekind-finiteness}
-Let $\mathcal{B}$ be the set of all binary sequences $\mathfrak{s}: \NN^+ \to \{0,1\}$, and let $H$ denote the monoid of all functions $\mathcal{B} \to \mathcal{B}$ under composition.  We will write $H$ multiplicatively; so, if $f, g \in H$ then $fg$ is the map $\mathcal{B} \to \mathcal{B}: \mathfrak{s} \mapsto f(g(\mathfrak s))$.
+Let $\mathcal{B}$ be the set of all binary sequences $\mathfrak{s}: \NN_{\ge1} \to \{0,1\}$, and let $H$ denote the monoid of all functions $\mathcal{B} \to \mathcal{B}$ under composition.  We will write $H$ multiplicatively; so, if $f, g \in H$ then $fg$ is the map $\mathcal{B} \to \mathcal{B}: \mathfrak{s} \mapsto f(g(\mathfrak s))$.
 Further, let $n\ge 5$ and consider the functions 
 \begin{align*}
 L: \mathcal{B} \to\mathcal{B}: (a_1,a_2,\dots) &\mapsto (a_2,a_3,\dots)  &\,\textrm{(left shift);}\\
@@ -161,7 +118,7 @@ Accordingly, let $P^2 \in X \setminus Y$ (the other case is analogous).
 Then $Y = \{\operatorname{id}_\mathcal{B}\}$, since one can easily check that $P^2LP, P^3R \notin A$, by noting that the action of $P^2LP$ and $P^3R$ differ from that of $A$ on the sequences $(1,1,\ldots)$ and $(1,0,1,1,\ldots)$. This makes $A$ an atom of $\P_\fun(H)$.
 \end{eg}
 
-\section{Atomicity and Bounded Factorization in Power Monoids}
+\section{Atomicity and Bounded Factorization in Power Monoids} \label{sec:atomicity}
 
 We get from Proposition \ref{prop:funt&fun-have-the-same-system-of-lengths} that studying factorization properties of $\P_\fun(H)$ is sufficient for studying corresponding properties of $\P_\funt(H)$, at least in the case when $H$ is Dedekind-finite.
 Thus, as a starting point in the investigation of the arithmetic of $\P_\fun(H)$, one might wish to give a comprehensive description of
@@ -185,7 +142,7 @@ The following hold:
 \ref{it:lem:2-elt-atoms(ii)} Suppose that $x^2 = 1_H$ or $x^2 = x$. Then the calculation above shows that $\{1_H,x\} = \{1_H,x\}^2$ and there is no other decomposition of $\{1_H,x\}$ into a product of non-unit elements of $\mathcal P_{\fin,1}(H)$. So, $\{1_H,x\}$ is a non-trivial idempotent (hence, a non-unit) and has no factorization into atoms of $\mathcal P_{\fin,1}(H)$.
 
 It remains to prove the analogous statement for $\mathcal P_{\fin,\times}(H)$.
-{Assume to the} contrary that $\{1_H,x\}$ factors into a product of $n$ atoms of $\mathcal P_{\fin,\times}(H)$ for some $n \in \NN^+$. Then $n \ge 2$, since $\{1_H, x\}$ is a non-trivial idempotent (and hence not an atom itself). Consequently, we can write $\{1_H,x\} = YZ$, where $Y$ is an atom and $Z$ a non-unit of $\mathcal P_{\fin,\times}(H)$. In particular, we get from parts \ref{it:prop:pm-arith(i)}, \ref{it:prop:pm-arith(ii)}, and \ref{it:prop:pm-arith(iv)} of Proposition \ref{prop:pm-arith} that both $Y$ and $Z$ are $2$-element sets, say, $Y = \{u, y\}$ and $Z = \{v, z\}$. It is then immediate that there are only two possibilities: $1_H$ is the product of two units from $Y$ and $Z$, or the product of two non-units from $Y$ and $Z$.
+{Assume to the} contrary that $\{1_H,x\}$ factors into a product of $n$ atoms of $\mathcal P_{\fin,\times}(H)$ for some $n \in \NN_{>0}$. Then $n \ge 2$, since $\{1_H, x\}$ is a non-trivial idempotent (and hence not an atom itself). Consequently, we can write $\{1_H,x\} = YZ$, where $Y$ is an atom and $Z$ a non-unit of $\mathcal P_{\fin,\times}(H)$. In particular, we get from parts \ref{it:prop:pm-arith(i)}, \ref{it:prop:pm-arith(ii)}, and \ref{it:prop:pm-arith(iv)} of Proposition \ref{prop:pm-arith} that both $Y$ and $Z$ are $2$-element sets, say, $Y = \{u, y\}$ and $Z = \{v, z\}$. It is then immediate that there are only two possibilities: $1_H$ is the product of two units from $Y$ and $Z$, or the product of two non-units from $Y$ and $Z$.
 Without loss of generality, we are thus reduced to considering the following cases.
 \vskip 0.1cm
 \textsc{Case 1:} $uv=1_H$. Then $uz \ne 1_H$ (or else $z = u^{-1} = v$, contradicting the fact that $Z$ is a $2$-element set). So $uz=x$, and similarly $yv=x$. Then $y = xu = uzu$ and $z = xv = vyv$, and therefore
@@ -221,7 +178,7 @@ Before proving this, it seems appropriate to point out some structural implicati
 	This is an obvious consequence of \cite[Ch. V, Exercise 4, p. 68]{Whitelaw}, according to which every finite semigroup has an idempotent.
 	The proof is short, so we give it here for the sake of self-containedness.
 	
-	Because $\gen{x}_H$ is finite, there exist $n, k \in \NN^+$ such that $x^n = x^{n+k}$, and by induction this implies that $x^n = x^{n+hk}$ for all $h \in \NN$. Therefore, we find that
+	Because $\gen{x}_H$ is finite, there exist $n, k \in \NN_{>0}$ such that $x^n = x^{n+k}$, and by induction this implies that $x^n = x^{n+hk}$ for all $h \in \NN$. Therefore, we find that
 	\[
 	(x^{nk})^2 = x^{2nk} = x^{(k+1)n}x^{(k-1)n} = x^n x^{(k-1)n} = x^{nk}.
 	\]
@@ -272,7 +229,7 @@ Now with Proposition \ref{prop:equimorphism} and Theorem \ref{th:atomicity} in h
 	Let $H$ be a monoid with an element $x$ of finite odd order $m \ge 3$, and set $X := \{x^k : k \in \NN \}$. Then it is clear that $X$ is the setwise product of $n$ copies of $\{1_H, x\}$ for every $n \ge m$. This shows that the set of lengths of $X$ relative to $\P_\fun(H)$ contains $[ m, \infty ]$ (and hence is infinite), since we know from Lemma \ref{lem:2-elt-atoms} that $\{1_H, x\}$ is an atom of $\P_\fun(H)$.
 \end{eg}
 %
-The nature of this problem is better clarified by our next result, and we will more thoroughly address it in \S{ }\ref{sec:minimal-factorizations}.
+The nature of this problem is better clarified by our next result, and we will more thoroughly address it in Section \ref{sec:minimal-factorizations}.
 %
 \begin{thm}\label{thm:BF-torsion}
 Let $H$ be a monoid. The following hold:
@@ -285,7 +242,7 @@ Let $H$ be a monoid. The following hold:
 
 \begin{proof}
 	\ref{it:thm:BF-torsion(i)}
-	Set $n := |X| \in \NN^+$, fix an integer $\ell \ge (n-1)n + 1$, and suppose for a contradiction that $X = A_1\cdots A_\ell$ for some $A_1,\dots, A_\ell\in \A(\P_\fun(H))$.
+	Set $n := |X| \in \NN_{>0}$, fix an integer $\ell \ge (n-1)n + 1$, and suppose for a contradiction that $X = A_1\cdots A_\ell$ for some $A_1,\dots, A_\ell\in \A(\P_\fun(H))$.
 	By the Pigeonhole Principle, there are an element $x\in X$ and a subset $I \subseteq [ 1,\ell ]$ such that $m := |I| \ge n$ and $x \in A_i$ for each $i\in I$.
 	So, writing $I = \{i_1,\ldots, i_m\}$, we find that $x^k \in A_{i_1} \cdots A_{i_k} \subseteq A_1\cdots A_\ell = X$ for every $k \in [ 1, m ]$, i.e., $\{1_H,x,\dots, x^m\} \subseteq X$.
 	However, since $H$ is torsion-free, each power of $x$ is distinct, and hence $n = |X| \ge m+1 > n$ (a contradiction).

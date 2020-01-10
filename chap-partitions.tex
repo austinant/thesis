@@ -3,28 +3,28 @@
 
 In \cite[Section 4]{fan-tringali18}, Fan and Tringali took a thorough look at $\PN$.
 They established, among other things, some significant results on which sets may occur as sets of lengths of elements of $\PN$.  
-Several of their results (which will be addressed further in Chapter \ref{ch:applications}) specify some elements of $\PN$ with very well-controlled sets of factorizations.
-To contrast with this, they also proved \cite[Proposition 4.8]{fan-tringali18}, which says that $\mathsf{L}_\PN(\llb 0,n \rrb) = \llb 2,n \rrb$ for every $n\ge 2$.
-In essence, the intervals $\llb 0,n \rrb\in \PN$ seem to have the most wild factorization behavior.
-However, as points are removed from $\llb 0,n \rrb$, one expects a transition to relative tameness as the set of factorizations becomes smaller.
+Several of their results (which will be addressed further in Chapter \ref{ch:lattices}) specify some elements of $\PN$ with very well-controlled sets of factorizations.
+To contrast with this, they also proved \cite[Proposition 4.8]{fan-tringali18}, which says that $\mathsf{L}_\PN([ 0,n ]) = [ 2,n ]$ for every $n\ge 2$.
+In essence, the intervals $[ 0,n ]\in \PN$ seem to have the most wild factorization behavior.
+However, as points are removed from $[ 0,n ]$, one expects a transition to relative tameness as the set of factorizations becomes smaller.
 In this chapter, we formulate some additional ways of understanding and quantifying the differences between wild and tame factorization behavior.
 
 %As a first step in leveraging the structure of $\PN$, we introduce some notation to highlight the intuitive grading on subsets of $\NN$.
 
 
-%One can see that the intervals $\llb 0,n \rrb$ have overwhelmingly many factorizations in $\P_{\fin,0}(\NN)$.
+%One can see that the intervals $[ 0,n ]$ have overwhelmingly many factorizations in $\P_{\fin,0}(\NN)$.
 %Any subset of $\NN$ can be obtained by removing points from such an interval, and we know that arbitrary subsets may exhibit all sorts of factorization behavior.  
-%As such, it may be interesting to try and observe gradual changes in this behavior as we remove points from $\llb 0,n \rrb$.
-%At the opposite extreme of the extremely flexible factorization behavior of $\llb 0,n \rrb$, we have the subsets with the most behavior: the atoms.
-%We would like to determine whether there is a distinct threshold for the number of points we are required to remove from $\llb 0,n \rrb$ to obtain an atom.
+%As such, it may be interesting to try and observe gradual changes in this behavior as we remove points from $[ 0,n ]$.
+%At the opposite extreme of the extremely flexible factorization behavior of $[ 0,n ]$, we have the subsets with the most behavior: the atoms.
+%We would like to determine whether there is a distinct threshold for the number of points we are required to remove from $[ 0,n ]$ to obtain an atom.
 
 %The length set realization Theorems \ref{thm:ind-atoms} and \ref{thm:2n-length-set} show that some subsets of $\NN$ have very well-controlled sets of factorization.
-%On the other hand, there are subsets with comparatively ``wild" set of factorizations; the intervals $\llb 0,n \rrb$ are a simple class examples which demonstrate this since, for instance, we have $\mathsf{L}(\llb0,n\rrb) = \llb 2,n \rrb$ \cite[Proposition 4.8]{fan-tringali18}.
-%However, observe that any subset $X$ can be obtained by deleting points from the interval $\llb 0,\max(X) \rrb$.
-%If $X$ has relatively tame factorization behavior and we imagine this process of deleting points from $\llb 0,\max(X)\rrb$, then the subsets between the full interval and $X$ experience a transition between ``wild" and ``tame" factorization behavior.
+%On the other hand, there are subsets with comparatively ``wild" set of factorizations; the intervals $[ 0,n ]$ are a simple class examples which demonstrate this since, for instance, we have $\mathsf{L}([0,n]) = [ 2,n ]$ \cite[Proposition 4.8]{fan-tringali18}.
+%However, observe that any subset $X$ can be obtained by deleting points from the interval $[ 0,\max(X) ]$.
+%If $X$ has relatively tame factorization behavior and we imagine this process of deleting points from $[ 0,\max(X)]$, then the subsets between the full interval and $X$ experience a transition between ``wild" and ``tame" factorization behavior.
 %In what follows, we seek to more rigorously quantify what is meant by ``wild" factorization behavior and to investigate the nature of this transition.
 
-%Since we will be thinking of elements of $\PN$ as subsets of the intervals $\llb 0,n \rrb$, it will be convenient to have some notation to help us filter $\NN$.
+%Since we will be thinking of elements of $\PN$ as subsets of the intervals $[ 0,n ]$, it will be convenient to have some notation to help us filter $\NN$.
 
 
 
@@ -102,10 +102,10 @@ With this in hand, we can make another attempt at an algorithm for factoring in 
 This algorithm comes up short since it fails in general to obtain the entire set of factorizations of $X$, as we will see now.
 
 \begin{eg}
-	Let $H = \NN$ and take $X := \llb 0,n \rrb$ for some odd $n \ge 11$.
+	Let $H = \NN$ and take $X := [ 0,n ]$ for some odd $n \ge 11$.
 	We can show that $A := \{0,1,3\}$ and $B := \{0,1,3,\dots,n-2,n-3\}$ are both atoms, and that $X = A + B$ (so $A*B$ is a factorization of $X$).
-	However, $X\:A = \llb 0,n \rrb \cap \llb -1,n-1 \rrb \cap \llb -3,n-3 \rrb = \llb 0,n-3 \rrb \neq B$ and $X\: B \neq A$.
-	Thus the above algorithm will find factorizations of the form $A*\bb$ for $\bb$ a factorization of $\llb 0,n-3 \rrb$ (and similarly $B*\aa$ for $\aa$ a factorization of $\llb 0,3 \rrb$), but it will fail to find $A*B$.
+	However, $X\:A = [ 0,n ] \cap [ -1,n-1 ] \cap [ -3,n-3 ] = [ 0,n-3 ] \neq B$ and $X\: B \neq A$.
+	Thus the above algorithm will find factorizations of the form $A*\bb$ for $\bb$ a factorization of $[ 0,n-3 ]$ (and similarly $B*\aa$ for $\aa$ a factorization of $[ 0,3 ]$), but it will fail to find $A*B$.
 \end{eg} 
 
 This example suggests an adjustment to the algorithm presented just above.
@@ -152,7 +152,7 @@ There are several refinements that we can make by taking advantage of the specif
 \begin{defn} \label{def:filtration}
 	For $n\ge 0$, we distinguish the following collections of subsets:
 	\begin{align*}
-	\P_n &= \{ X \subseteq \llb 0,n \rrb : 0,n\in X \} \\
+	\P_n &= \{ X \subseteq [ 0,n ] : 0,n\in X \} \\
 	\mathcal{A}_n &= \mathcal{A}(\PN) \cap \P_n  \\
 	\mathcal{N}_n &= \P_n \setminus \mathcal{A}_n 
 	\end{align*}
@@ -171,7 +171,7 @@ From this we see that the sets $\P_n$ give a grading of our monoid.
 For any nonunit $x$ in a monoid $H$, the set $\Z_H(x)$ houses the full data of the factorization behavior of $x$. 
 Since it is sometimes a tall order to understand all of the information of $\Z_H(x)$ at once, we can consider the set $\mathsf{L}_H(x)$ to gain an incomplete yet often adequate understanding of $\Z_H(x)$.
 With the following definition, we aim to leverage the structure of $\PN$ to formulate an invariant which contains more data than the set of lengths.
-This will help us in our endeavor to develop a more effecient algorithm for factoring in $\PN$, and also in our larger goal to quanitfy the ``wildness" of factorizations of $\llb 0,n\rrb$.
+This will help us in our endeavor to develop a more effecient algorithm for factoring in $\PN$, and also in our larger goal to quanitfy the ``wildness" of factorizations of $[ 0,n]$.
 
 %In any monoid, we can distinguish different factorizations of an element $x$ by their lengths; that is, we know that if $\aa,\bb\in \Z(x)$ with $|\aa| \neq |\bb|$, then $\aa$ and $\bb$ are not equivalent.
 %In $\PN$, we have some additional leverage which comes from integer partitions; we make some definitions to facilitate this leverage now.
@@ -182,7 +182,7 @@ This will help us in our endeavor to develop a more effecient algorithm for fact
 	For brevity, we occasionally write $P \vdash n$.
 	
 	For $X \in \PN$ and for any partition $P = (m_1,\dots, m_k)$ of $\max(X)$, we define the \textbf{set of factorizations of $X$ of (partition) type $P$} to be
-	\[ \Z^P(X) := \{ A_1*\cdots * A_k \in \Z(X) : A_i \in \mathcal{A}_{m_i} \textrm{ for } i\in \llb 1,k \rrb \}. \]
+	\[ \Z^P(X) := \{ A_1*\cdots * A_k \in \Z(X) : A_i \in \mathcal{A}_{m_i} \textrm{ for } i\in [ 1,k ] \}. \]
 	We also define the \textbf{set of (partition) types of $X$} to be
 	\[ \mathsf{T}(X) :=  \{ P \vdash \max(X) : \Z^P(X) \neq \emptyset \}. \]
 \end{defn}
@@ -229,8 +229,8 @@ We will have more to say about subsums in Section \ref{sec:subsums}.
 %%%%%%
 
 
-%Here, we have demonstrated that each $\Z^P(\llb 0,n \rrb)$ is nonempty when $\min(P) = 1$.  
-%However, as with other aspects of the set of factorizations of $\llb 0,n \rrb$, we hope this indicates that intervals have \textit{many} factorizations of each such type $P$.
+%Here, we have demonstrated that each $\Z^P([ 0,n ])$ is nonempty when $\min(P) = 1$.  
+%However, as with other aspects of the set of factorizations of $[ 0,n ]$, we hope this indicates that intervals have \textit{many} factorizations of each such type $P$.
 %On the other hand, some types can never admit factorizations; we shall see some examples of this soon.
 
 
@@ -239,20 +239,20 @@ We will have more to say about subsums in Section \ref{sec:subsums}.
 \begin{prop} \label{prop:2-elt factor/cofactor}
 	Let $X\in \PN$.
 	\begin{enumerate}[label={\rm (\roman{*})}]
-		\item Let $n = \max(X) + b$. $X + \{0,b\} = \llb 0,n \rrb$ if and only if $X \cap \{k,k-b\} \neq \emptyset$ for every $k\in \llb 0,n \rrb$.
-		\item For any $c\ge 1$, $X + \{0,2c\} = \llb 0,\max(X)+2c \rrb$ implies that $\{0,c\}$ divides $X$.
+		\item Let $n = \max(X) + b$. $X + \{0,b\} = [ 0,n ]$ if and only if $X \cap \{k,k-b\} \neq \emptyset$ for every $k\in [ 0,n ]$.
+		\item For any $c\ge 1$, $X + \{0,2c\} = [ 0,\max(X)+2c ]$ implies that $\{0,c\}$ divides $X$.
 	\end{enumerate}
 \end{prop}
 
 \begin{proof}
 	For (i), we first prove the ``only if" direction.  
-	Suppose $k\in \llb 0,n \rrb$; then $k\in X + \{0,b\}$.
+	Suppose $k\in [ 0,n ]$; then $k\in X + \{0,b\}$.
 	We must have that $k\in X + 0$ or that $k \in X + b$, which is the same as saying $k\in X$ or $k-b\in X$.
 	
-	Conversely, suppose that $k\in \llb 0,n \rrb$.
+	Conversely, suppose that $k\in [ 0,n ]$.
 	If $k\in X \subseteq X + \{0,b\}$, we are done.
 	If $k\notin X$, then we have by assumption that $k-b\in X$, meaning $k\in X +b \subseteq X+ \{0,b\}$.
-	We conclude that $X + \{0,b\} \supseteq \llb 0,n \rrb$, and the other inclusion is clear since $\max(X+\{0,b\}) = \max(X) + b = n$.
+	We conclude that $X + \{0,b\} \supseteq [ 0,n ]$, and the other inclusion is clear since $\max(X+\{0,b\}) = \max(X) + b = n$.
 	
 	For (ii), we use Proposition \ref{prop:cofactors}.
 	Let $Y = X\:\{0,c\} = X\cap (X-c)$; we know that $\{0,c\} + Y \subseteq X$, so we just need to show the other inclusion.
@@ -265,29 +265,29 @@ We will have more to say about subsums in Section \ref{sec:subsums}.
 \begin{prop} \label{prop:bad types}
 	Let $n\ge 1$.
 	\begin{enumerate}[label={\rm (\roman{*})}]
-		\item For $n\ge 4$, $\Z^{(n-2,2)}(\llb 0,n \rrb) = \emptyset$.
-		\item For even $n\ge 4$, $\Z^{(2,\dots,2)}(\llb 0,n \rrb) = \emptyset$.
-		\item For odd $n\ge 5$, $\Z^{(3,2,\dots, 2)}(\llb 0,n \rrb) = \emptyset$.
-		\item For even $n\ge 6$, $\Z^{(4,2,\dots, 2)}(\llb 0,n \rrb) = \emptyset$.
-		\item For odd $n\ge 7$, $\Z^{(5,2,\dots, 2)}(\llb 0,n \rrb) = \emptyset$.
+		\item For $n\ge 4$, $\Z^{(n-2,2)}([ 0,n ]) = \emptyset$.
+		\item For even $n\ge 4$, $\Z^{(2,\dots,2)}([ 0,n ]) = \emptyset$.
+		\item For odd $n\ge 5$, $\Z^{(3,2,\dots, 2)}([ 0,n ]) = \emptyset$.
+		\item For even $n\ge 6$, $\Z^{(4,2,\dots, 2)}([ 0,n ]) = \emptyset$.
+		\item For odd $n\ge 7$, $\Z^{(5,2,\dots, 2)}([ 0,n ]) = \emptyset$.
 	\end{enumerate}
 \end{prop}
 \begin{proof}
-	For (i), we can use the second part of Lemma \ref{prop:2-elt factor/cofactor} with $c = 1$ to see that there can be no atom $A$ with $A+\{0,2\} = \llb 0,n \rrb$.
+	For (i), we can use the second part of Lemma \ref{prop:2-elt factor/cofactor} with $c = 1$ to see that there can be no atom $A$ with $A+\{0,2\} = [ 0,n ]$.
 	
 	It is easy to see (ii) because $\{0,2\}$ is the only atom in $\mathcal{A}_2$, and no sum of the form $\{0,2\} +\dots +\{0,2\}$ can contain $1$, let alone a whole interval.
 	
 	For (iii), write $n = 2m+1$.
 	We note that $\mathcal{A}_3 = \{\{0,2,3\}, \{0,1,3\} \}$.
-	Since $1$ belongs to the interval, if $\llb 0,2m+1 \rrb$ is to have a factorization of partition type $(3,2,\dots,2)$, then that factorization must include $\{0,1,3\}$.
+	Since $1$ belongs to the interval, if $[ 0,2m+1 ]$ is to have a factorization of partition type $(3,2,\dots,2)$, then that factorization must include $\{0,1,3\}$.
 	However, we see that 
-	\[ \{0,1,3\} + (m-1)\{0,2\}  = \{0,1,3\} + \{0,2,\dots, 2m-2\} = \llb 0, 2m-1 \rrb \cup \{2m+1\} \]
-	which does not contain $2m = n-1$, so $\llb 0,2m+1\rrb$ cannot have a factorization of type $(3,2,\dots,2)$.
+	\[ \{0,1,3\} + (m-1)\{0,2\}  = \{0,1,3\} + \{0,2,\dots, 2m-2\} = [ 0, 2m-1 ] \cup \{2m+1\} \]
+	which does not contain $2m = n-1$, so $[ 0,2m+1]$ cannot have a factorization of type $(3,2,\dots,2)$.
 	
 	The arguments for the remaining parts proceed along similar lines.
 	For (iv), we note that the only atoms in $\mathcal{A}_4$ which contain $1$ are $\{0,1,4\}$ and $\{0,1,2,4\}$.
 	However, if $n = 2m$, we have
-	\[ \{0,1,2,4\} + (m-2)\{0,2\} = \{0,1,4\} + \{0,2,\dots, 2m-4\} = \llb 0, 2m-2 \rrb \cup \{2m\} \]
+	\[ \{0,1,2,4\} + (m-2)\{0,2\} = \{0,1,4\} + \{0,2,\dots, 2m-4\} = [ 0, 2m-2 ] \cup \{2m\} \]
 	which again fails to contain $n-1$.
 	
 	Finally, we turn to (v).
@@ -347,7 +347,7 @@ To aid in this, we will need a few classes of specifically structured ``large at
 We will see that the above constructions are helpful because sums of small numbers of these atoms will be able to form relatively large intervals.
 
 \begin{lemma} \label{lem:two-part types}
-	If $q\ge r \ge 3$ then $\llb 0, q+r \rrb \in \A_q + \A_r$; that is, there are atoms $A_q\in \A_q$ and $A'_r\in \A_r$ such that $A_q + A'_r = \llb 0,q+r \rrb$.
+	If $q\ge r \ge 3$ then $[ 0, q+r ] \in \A_q + \A_r$; that is, there are atoms $A_q\in \A_q$ and $A'_r\in \A_r$ such that $A_q + A'_r = [ 0,q+r ]$.
 \end{lemma}
 
 \begin{proof}
@@ -360,24 +360,24 @@ We will see that the above constructions are helpful because sums of small numbe
 	\begin{align*}
 	B_{2s} + C_{2t+1} 
 	&\supseteq \{0,1\}\cup\{2s-1,2s\} + \{0,1,2,4,\dots, ,2t,2t+1\} \\
-	&= \llb 0, 2t+2 \rrb \cup \llb 2s-1,2s+2t+1 \rrb
+	&= [ 0, 2t+2 ] \cup [ 2s-1,2s+2t+1 ]
 	\end{align*}
 	and, switching the roles of $s$ and $t$ in the calculation we just saw, we also have 
-	\[B_{2s}+C_{2t+1} \supseteq \llb 0,2s+1 \rrb \cup \llb 2t,2s+2t+1 \rrb.\]
-	Thus we conclude that $\llb 0,2s+2t+1 \rrb \subseteq B_{2s}+C_{2t+1} \subseteq \llb 0,2s+2t+1 \rrb$ and so $B_r + C_q = \llb 0,q+r \rrb$.
+	\[B_{2s}+C_{2t+1} \supseteq [ 0,2s+1 ] \cup [ 2t,2s+2t+1 ].\]
+	Thus we conclude that $[ 0,2s+2t+1 ] \subseteq B_{2s}+C_{2t+1} \subseteq [ 0,2s+2t+1 ]$ and so $B_r + C_q = [ 0,q+r ]$.
 	
 	\underline{Subcase 1.b}: $q = 2s+1$ and $r = 2t$.
-	Because the above computation does not depend on which of $q$ and $r$ is smaller, we may recycle that argument to see that $C_q + B_r = \llb 0,q+r \rrb$.
+	Because the above computation does not depend on which of $q$ and $r$ is smaller, we may recycle that argument to see that $C_q + B_r = [ 0,q+r ]$.
 	
 	\underline{Subcase 1.c}: $q = 2s+1$ and $r = 2t+1$.\\
-	One can show that $C_q + C_r = \llb 0,q+r \rrb$ by a calculation similar to the one above.
+	One can show that $C_q + C_r = [ 0,q+r ]$ by a calculation similar to the one above.
 	
 	\underline{Subcase 1.d}: $q = 2s$ and $r = 2t+1$. \\
-	Again, similar methods will tell us that $B_q + C_r = \llb 0,q+r \rrb$.
+	Again, similar methods will tell us that $B_q + C_r = [ 0,q+r ]$.
 	
 	\underline{Case 2}: $3 \le r \le 5 < q$.\\
 	There are only a few possibilities here.
-	Let $A_3 = \{0,1,3\}$, $A_4 = \{0,2,3,4\}$, and $A_5 = \{0,2,4,5\}$; then we can see that $B_q +A_r = \llb 0,q+r \rrb$ when $q$ is even and $C_q + A_r = \llb 0,q+r \rrb$ when $q$ is odd.
+	Let $A_3 = \{0,1,3\}$, $A_4 = \{0,2,3,4\}$, and $A_5 = \{0,2,4,5\}$; then we can see that $B_q +A_r = [ 0,q+r ]$ when $q$ is even and $C_q + A_r = [ 0,q+r ]$ when $q$ is odd.
 	
 	\underline{Case 3}: $3\le r\le q \le 5$.\\
 	This leaves only a handful of $(q,r)$ pairs to check; namely $(3,3)$, $(4,3)$, $(5,3)$, $(4,4)$, $(5,4)$, and $(5,5)$.
@@ -410,7 +410,7 @@ We hope to mimic this for finite subsets by adding a truncated (and slightly mod
 To make this precise, we have the following lemma.
 
 \begin{lemma} \label{lemma:many 2s types}
-	For $q \ge 6$ and $t\ge 2$, there is an atom $A\in \A_q$ with $A + t\{0,2\} = \llb 0, q+2t \rrb$.
+	For $q \ge 6$ and $t\ge 2$, there is an atom $A\in \A_q$ with $A + t\{0,2\} = [ 0, q+2t ]$.
 \end{lemma}
 
 \begin{proof}
@@ -431,7 +431,7 @@ To make this precise, we have the following lemma.
 	&= \{3,5,\dots, 3h-3 + 2t \}\cup \{1,3h-1 + 2t \} \\
 	&= \{1,3,5,\dots, 3h+2t-1 \}
 	\end{align*}
-	Putting these together, we see that $D_{3h} + t\{0,2\} = \llb 0,3h+2t \rrb$.
+	Putting these together, we see that $D_{3h} + t\{0,2\} = [ 0,3h+2t ]$.
 \end{proof}
 
 \begin{rk}
@@ -448,8 +448,8 @@ To make this precise, we have the following lemma.
 
 \begin{thm} \label{thm:good types}
 	Let $n\ge 1$ and suppose $P$ is a partition of $n$ with $P \notin \{(n-2,2)\} \cup \{ (m,2\dots,2) : 2\le m \le 5\}$.
-	Then $\Z^P(\llb 0,n \rrb) \neq \emptyset$.
-	In particular, $|\mathsf{T}(\llb 0,n \rrb)| = p(n)-4$, where $p(n)$ is the number of integer partitions of $n$.
+	Then $\Z^P([ 0,n ]) \neq \emptyset$.
+	In particular, $|\mathsf{T}([ 0,n ])| = p(n)-4$, where $p(n)$ is the number of integer partitions of $n$.
 \end{thm}
 
 \begin{proof}
@@ -459,23 +459,23 @@ To make this precise, we have the following lemma.
 	
 	\underline{Case 1}: $P = (q,2,\dots, 2)$ with $m\ge 6$.
 	
-	Here, Lemma \ref{lemma:many 2s types} implies that $\Z^P(\llb 0,n \rrb) \neq \emptyset$.
+	Here, Lemma \ref{lemma:many 2s types} implies that $\Z^P([ 0,n ]) \neq \emptyset$.
 	
 	\underline{Case 2}: $P$ has two parts, both of which are larger than $2$.
 	
-	The content of Lemma \ref{lem:two-part types} is exactly that $\Z^P(\llb 0,n \rrb) \neq \emptyset$ for any such partition.
+	The content of Lemma \ref{lem:two-part types} is exactly that $\Z^P([ 0,n ]) \neq \emptyset$ for any such partition.
 	
 	\underline{Case 3}: $P = (m_1,\dots, m_k)$ with $k\ge 3$ and $m_1\ge m_2 \ge 3$.
 	
 	To resolve this possibility, we proceed by induction.
 	The constraints on $P$ imply that $n\ge 8$.  
-	Enumerating the factorizations of $\llb 0,8 \rrb$ by hand (or, preferably, by computer) is not prohibitively difficult and indeed confirms that $\llb 0,8 \rrb$ has factorizations of every type other than those excluded in the statement of the theorem.
+	Enumerating the factorizations of $[ 0,8 ]$ by hand (or, preferably, by computer) is not prohibitively difficult and indeed confirms that $[ 0,8 ]$ has factorizations of every type other than those excluded in the statement of the theorem.
 	
-	Suppose now that $n > 8$ and, for $8\le m < n$, $\llb 0,m \rrb$ has factorizations of each type fitting the description in (iii).
+	Suppose now that $n > 8$ and, for $8\le m < n$, $[ 0,m ]$ has factorizations of each type fitting the description in (iii).
 	Consider $P' = (m_1,\dots, m_{k-1})$.
 	If $k=3$ then $P'=(m_1,m_2)$ is a partition of $n-m_k$ as described in case 2, and if $k>3$ then $P'$ is as in case 3.  
-	In any event, either by the result from case 2 or by our inductive assumption, we know that $\Z^{P'}(\llb 0,n-m_k \rrb) \neq \emptyset$.
-	Taking $\aa' \in \Z^{P'}(\llb 0,n-m_k \rrb)$, we have that $\aa := \aa' * \{0,m_k\} \in \Z^P(\llb 0,n \rrb)$.
+	In any event, either by the result from case 2 or by our inductive assumption, we know that $\Z^{P'}([ 0,n-m_k ]) \neq \emptyset$.
+	Taking $\aa' \in \Z^{P'}([ 0,n-m_k ])$, we have that $\aa := \aa' * \{0,m_k\} \in \Z^P([ 0,n ])$.
 	
 	\underline{Case 4}: $P$ has smallest part equal to $1$.
 	
@@ -484,25 +484,25 @@ To make this precise, we have the following lemma.
 	We proceed by induction on $n$, assuming that $n>3$ and that the proposition is true for $m<n$.
 	Let us write $P = (m_1,\dots, m_k, 1)$.
 	
-	If $k=1$, we can see that $C_{n-1}*\{0,1\}\in \Z^P(\llb 0,n \rrb)$, where $C_{n-1}$ is one of the atoms constructed in Proposition \ref{prop:2-congruence atoms}.
-	Similarly, if $k=2$ we have by Lemma \ref{lem:two-part types} that there are atoms $A\in \A_{m_1}$ and $A'\in \A_{m_2}$ with $A+A' = \llb 0,m_1+m_2 \rrb$, so $A*A'* \{0,1\}\in \Z^P(\llb 0,n \rrb)$.
+	If $k=1$, we can see that $C_{n-1}*\{0,1\}\in \Z^P([ 0,n ])$, where $C_{n-1}$ is one of the atoms constructed in Proposition \ref{prop:2-congruence atoms}.
+	Similarly, if $k=2$ we have by Lemma \ref{lem:two-part types} that there are atoms $A\in \A_{m_1}$ and $A'\in \A_{m_2}$ with $A+A' = [ 0,m_1+m_2 ]$, so $A*A'* \{0,1\}\in \Z^P([ 0,n ])$.
 	
 	Now assume that $k>2$ and write $P' = (m_1,\dots, m_k)$.
-	If $m_k=1$, then there is some $\aa'\in \Z^{P'}(\llb 0,n-1 \rrb)$ by induction, so that $\aa = \aa' * \{0,1\}\in \Z^P(\llb 0,n \rrb)$.
+	If $m_k=1$, then there is some $\aa'\in \Z^{P'}([ 0,n-1 ])$ by induction, so that $\aa = \aa' * \{0,1\}\in \Z^P([ 0,n ])$.
 	However, if $m_k > 1$, set $Q = (m_1,\dots, m_{k-1}, 1)$ (a partition of $n-m_k$).
-	Again, we have by induction that there is some $\bb \in \Z^Q(\llb 0, n-m_k \rrb)$.
+	Again, we have by induction that there is some $\bb \in \Z^Q([ 0, n-m_k ])$.
 	Since $k>2$ and $m_k \le m_i$ for all $i\ge 1$, we also have that $m_k < n/2$ and so $n-m_k > m_k$.
-	This allows us to conclude that $\aa = \bb * \{0,m_k\} \in \Z^P(\llb 0,n \rrb)$, proving what we wished.
+	This allows us to conclude that $\aa = \bb * \{0,m_k\} \in \Z^P([ 0,n ])$, proving what we wished.
 \end{proof}
 
 \section{Subsums and Near Intervals} \label{sec:subsums}
-We have just seen that intervals of the form $\llb 0,n \rrb$ have factorizations of most partition types.
+We have just seen that intervals of the form $[ 0,n ]$ have factorizations of most partition types.
 There is a very sharp dichotomy between the wildly varied factorization behavior of intervals and that of any other subset of $\NN$, which we will see presently.  
 
 \begin{defn}
 	Let $m_1,\dots, m_k$ be integers.
 	We will refer to $S = (m_1,\dots, m_k)$ as a \textit{sequence} of integers.
-	Define the \textbf{set of subsums of S} to be $\Sigma(S) := \left\{ \sum_{i\in I} m_i : I\subseteq \llb 1,k \rrb \right\}$.
+	Define the \textbf{set of subsums of S} to be $\Sigma(S) := \left\{ \sum_{i\in I} m_i : I\subseteq [ 1,k ] \right\}$.
 \end{defn}
 
 \begin{rk}
@@ -514,19 +514,19 @@ There is a very sharp dichotomy between the wildly varied factorization behavior
 
 \begin{lemma} \label{lem:long-partitions}
 	Let $m_1,\dots, m_k$ be positive integers with $m_1\ge \cdots \ge m_k \ge 1$ and let $n = m_1 + \cdots + m_k$.
-	If $k> n/2$ then $\Sigma(m_1,\dots, m_k) = \llb 0,n \rrb$.
+	If $k> n/2$ then $\Sigma(m_1,\dots, m_k) = [ 0,n ]$.
 \end{lemma}
 
 \begin{proof}
 	To prove this, we will induct on $k$; if $k=1 > n/2$, then $n \le 1$ and the result is trivial.
-	Now suppose $k > 1$ and that, for any sequence $T$ consisting of $\ell < k$ terms satisfying $\ell > \max(\Sigma(T))/2$, $\Sigma(T) = \llb 0, \max(\Sigma(T)) \rrb$.
+	Now suppose $k > 1$ and that, for any sequence $T$ consisting of $\ell < k$ terms satisfying $\ell > \max(\Sigma(T))/2$, $\Sigma(T) = [ 0, \max(\Sigma(T)) ]$.
 	
 	First observe that the maximum term of $S$ is at least the average of the terms of $S$; that is, $m_1 \ge \frac{n}{k}$.
 	From here, we have
 	\[ \frac{m_2+\cdots + m_k}{k-1} = \frac{n-m_1}{k-1} \le \frac{n-n/k}{k-1} = \frac{n}{k} < 2 \]
 	Thus $k - 1 > \frac{m_2+\cdots+m_k}{2}$ and we can apply the inductive hypothesis to $T := (m_2,\dots, m_k)$.
-	Now we have $\Sigma(T) = \llb 0, n-m_1 \rrb$, so $\Sigma(S) = \{0,m_1\} + \llb 0,n-m_1 \rrb = \llb 0,n-m_1 \rrb \cup \llb m_1,n \rrb$.
-	This union of intervals is equal to $\llb 0,n \rrb$ if $m_1 \le m_2 + \cdots + m_k +1$, so all that remains is to verify this last inequality.
+	Now we have $\Sigma(T) = [ 0, n-m_1 ]$, so $\Sigma(S) = \{0,m_1\} + [ 0,n-m_1 ] = [ 0,n-m_1 ] \cup [ m_1,n ]$.
+	This union of intervals is equal to $[ 0,n ]$ if $m_1 \le m_2 + \cdots + m_k +1$, so all that remains is to verify this last inequality.
 	
 	From our assumption that $k > n/2$, we have $k-1 \ge (n-1)/2$, so 
 	\[m_2 + \cdots + m_k \ge 1 +\cdots + 1 = k-1 \ge \frac{n-1}{2}.\]
@@ -539,9 +539,9 @@ There is a very sharp dichotomy between the wildly varied factorization behavior
 	Let $n$ be even and let $P$ be a partition into $n/2$ parts.
 	Then one of the following holds:
 	\begin{itemize}
-		\item $\Sigma(P) = \llb 0, n \rrb$.
-		\item $\Sigma(P) = \llb 0,n \rrb\setminus\{n/2\}$ and $P = (n/2+1,1,\dots,1)$.
-		\item $\Sigma(P) = 2\cdot \llb 0, n/2 \rrb$ and $P = (2,\dots, 2)$
+		\item $\Sigma(P) = [ 0, n ]$.
+		\item $\Sigma(P) = [ 0,n ]\setminus\{n/2\}$ and $P = (n/2+1,1,\dots,1)$.
+		\item $\Sigma(P) = 2\cdot [ 0, n/2 ]$ and $P = (2,\dots, 2)$
 	\end{itemize}
 \end{lemma}
 
@@ -551,30 +551,30 @@ There is a very sharp dichotomy between the wildly varied factorization behavior
 	Thus the smallest part $m_k$ satisfies $m_k \le 2$.
 	
 	If $m_k = 2$ then $m_1 = n - (m_2+\cdots+m_k) \le n - (k-1)(2) = n - (n/2-1)2 = 2$.
-	Thus we have $m_1 = \cdots = m_k = 2$ and so $\Sigma(P) = \{0,2\}+\cdots+\{0,2\} = \{0,2,\dots,n\} = 2\cdot\llb0,n/2\rrb$ (recalling that $2\cdot X = \{2x: x\in X\}$, as opposed to $2X = X+X$).
+	Thus we have $m_1 = \cdots = m_k = 2$ and so $\Sigma(P) = \{0,2\}+\cdots+\{0,2\} = \{0,2,\dots,n\} = 2\cdot[0,n/2]$ (recalling that $2\cdot X = \{2x: x\in X\}$, as opposed to $2X = X+X$).
 	
 	Suppose now that $m_k=1$.
 	Then, since the average of the parts $m_i$ is equal to $2$, we must have that the greatest part $m_1 > 2$.
 	As a result, 
 	\[\frac{m_2+\cdots+m_k}{k-1} = \frac{n-m_1}{n/2-1} < \frac{n-2}{n/2-1} = 2, \]
-	so $k-1 > (m_2 + \cdots + m_k)/2$; by Lemma \ref{lem:long-partitions}, $\Sigma(m-2,\dots,m_k) = \llb 0, n-m_1 \rrb$.
+	so $k-1 > (m_2 + \cdots + m_k)/2$; by Lemma \ref{lem:long-partitions}, $\Sigma(m-2,\dots,m_k) = [ 0, n-m_1 ]$.
 	
-	Now we have $\Sigma(P) = \{0,m_1\} + \llb 0,n-m_1\rrb = \llb 0,n-m_1 \rrb \cup \llb m_1, n\rrb$, so $\Sigma(P) = \llb 0,n \rrb$ provided $2m_1 < n+1$.
+	Now we have $\Sigma(P) = \{0,m_1\} + [ 0,n-m_1] = [ 0,n-m_1 ] \cup [ m_1, n]$, so $\Sigma(P) = [ 0,n ]$ provided $2m_1 < n+1$.
 	If not, then $2m_1 \ge n+2$, so $m_1 \ge \frac{n+2}{2}$.
 	From this, it follows that 
 	\[m_2 +\cdots+m_k = n-m_1 \le n - \frac{n+2}{2} = \frac{n}{2}-1 = k-1.\]
-	Since each $m_i \ge 1$, we must have $m_2 = \cdots = m_k = 1$, so $P = (n/2+1, 1,\dots, 1)$ and $\Sigma(P) = \llb 0,n/2-1 \rrb \cup \llb n/2+1,n\rrb$.
+	Since each $m_i \ge 1$, we must have $m_2 = \cdots = m_k = 1$, so $P = (n/2+1, 1,\dots, 1)$ and $\Sigma(P) = [ 0,n/2-1 ] \cup [ n/2+1,n]$.
 \end{proof}
 
 \begin{thm}
 	Let $X \in \PN$ and suppose that there is $k\in \mathsf{L}(X)$ with $k > \max(X)/2$.
-	Then $X = \llb 0, \max(X) \rrb$.
+	Then $X = [ 0, \max(X) ]$.
 \end{thm}
 
 \begin{proof}
 	Let $n = \max(X)$ and let $\aa\in\Z(X)$ be a factorization with length $|\aa| = k$.
 	Then there are integers $m_1\ge\cdots \ge m_k \ge 1$ and atoms $A_i\in \A_{m_i}$ with $\aa = A_1*\cdots*A_k$.
 	The result is immediate from Lemma \ref{lem:long-partitions}, since we have
-	\[ X = A_1 + \cdots + A_k \supseteq \{0,m_1\} + \cdots + \{0,m_k\} = \Sigma(m_1,\cdots,m_k) = \llb 0,n \rrb \]
-	and we know $X \subseteq \llb 0,\max(X) \rrb = \llb 0, n \rrb$.
+	\[ X = A_1 + \cdots + A_k \supseteq \{0,m_1\} + \cdots + \{0,m_k\} = \Sigma(m_1,\cdots,m_k) = [ 0,n ] \]
+	and we know $X \subseteq [ 0,\max(X) ] = [ 0, n ]$.
 \end{proof}

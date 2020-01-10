@@ -1,22 +1,25 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.1.1}{History and Motivation}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.1}{A Brief History and Motivation}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{Plan and Main Results}{chapter.1}% 3
-\BOOKMARK [1][-]{section.1.3}{Preliminaries}{chapter.1}% 4
-\BOOKMARK [2][-]{subsection.1.3.1}{Notation and Conventions}{section.1.3}% 5
-\BOOKMARK [2][-]{subsection.1.3.2}{Fundamental Notions of Factorization Theory}{section.1.3}% 6
-\BOOKMARK [2][-]{subsection.1.3.3}{Literature and Comparing Alternate Definitions}{section.1.3}% 7
-\BOOKMARK [0][-]{chapter.2}{Power Monoids and Atomicity}{}% 8
-\BOOKMARK [1][-]{section.2.1}{Monoid Preliminaries and Subset Arithmetic}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.2}{Atomicity and Bounded Factorization in Power Monoids}{chapter.2}% 10
-\BOOKMARK [0][-]{chapter.3}{Minimal Factorizations and Applications to Power Monoids}{}% 11
-\BOOKMARK [1][-]{section.3.1}{Fundamentals of Minimal Factorizations}{chapter.3}% 12
-\BOOKMARK [1][-]{section.3.2}{Minimal Factorizations in Power Monoids}{chapter.3}% 13
-\BOOKMARK [1][-]{section.3.3}{Cyclic Monoids and Interval Length Sets}{chapter.3}% 14
-\BOOKMARK [0][-]{chapter.4}{Integer Partitions and the Natural Power Monoid}{}% 15
-\BOOKMARK [1][-]{section.4.1}{Algorithmic Approaches and Partition Type}{chapter.4}% 16
-\BOOKMARK [1][-]{section.4.2}{Admissible and Forbidden Types for Intervals}{chapter.4}% 17
-\BOOKMARK [1][-]{section.4.3}{Subsums and Near Intervals}{chapter.4}% 18
-\BOOKMARK [0][-]{chapter.5}{Subsets of Integer Lattices}{}% 19
-\BOOKMARK [1][-]{section.5.1}{Passage Between Power Monoids}{chapter.5}% 20
-\BOOKMARK [1][-]{section.5.2}{Independence Arguments in the Natural Lattice}{chapter.5}% 21
-\BOOKMARK [1][-]{section.5.3}{Length Sets in High-Dimensional Lattices}{chapter.5}% 22
+\BOOKMARK [1][-]{section.1.3}{Notation and Conventions}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{Monoids and Factorizations}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Fundamentals of Factorization Theory}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{Examples and Non-Examples}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.3}{Monoid and Equimorphism Basics}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.4}{Literature and Comparing Alternate Definitions}{chapter.2}% 9
+\BOOKMARK [0][-]{chapter.3}{Power Monoids and Atomicity}{}% 10
+\BOOKMARK [1][-]{section.3.1}{Subset Arithmetic}{chapter.3}% 11
+\BOOKMARK [1][-]{section.3.2}{Atomicity and Bounded Factorization in Power Monoids}{chapter.3}% 12
+\BOOKMARK [0][-]{chapter.4}{Minimal Factorizations and Applications to Power Monoids}{}% 13
+\BOOKMARK [1][-]{section.4.1}{Fundamentals of Minimal Factorizations}{chapter.4}% 14
+\BOOKMARK [1][-]{section.4.2}{Minimal Factorizations in Power Monoids}{chapter.4}% 15
+\BOOKMARK [1][-]{section.4.3}{Cyclic Monoids and Interval Length Sets}{chapter.4}% 16
+\BOOKMARK [0][-]{chapter.5}{Integer Partitions and the Natural Power Monoid}{}% 17
+\BOOKMARK [1][-]{section.5.1}{Algorithmic Approaches and Partition Type}{chapter.5}% 18
+\BOOKMARK [1][-]{section.5.2}{Admissible and Forbidden Types for Intervals}{chapter.5}% 19
+\BOOKMARK [1][-]{section.5.3}{Subsums and Near Intervals}{chapter.5}% 20
+\BOOKMARK [0][-]{chapter.6}{Subsets of Integer Lattices}{}% 21
+\BOOKMARK [1][-]{section.6.1}{Passage Between Power Monoids}{chapter.6}% 22
+\BOOKMARK [1][-]{section.6.2}{Independence Arguments in the Natural Lattice}{chapter.6}% 23
+\BOOKMARK [1][-]{section.6.3}{Length Sets in High-Dimensional Lattices}{chapter.6}% 24
+\BOOKMARK [0][-]{section*.9}{Bibliography}{}% 25
