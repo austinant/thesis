@@ -1,0 +1,87 @@
+\chapter{Atoms and Intervals in the Natural Power Monoid}
+
+Our goal in this chapter is to construct some families of atoms as a means of helping to give a lower bound on the number of factorizations in $\PN$ of an interval of the form $[0,n]$.
+
+
+\section{Construction of Residually Concentrated Atoms}
+
+As one finds when studying $\PN$, determining whether a given subset of $\NN$ is an atom can be difficult.
+We will see later in Section \ref{sec:algorithms} some ways of thinking about subset arithmetic which make this task simpler.
+A separate challenge is to systematically generate large collections of atoms; this is our primary undertaking in this section.
+
+\begin{defn} \label{def:resid concentrated}
+Let $m\ge 2$, $r\in [0,m-1]$, and $R\subseteq \NN m +r $ be a finite, nonempty set with $0\notin R$.
+Suppose $B\subseteq \NN \setminus (\NN m + r)$ with $0\notin B$.
+We will say $\{0\}\cup R \cup B$ is \textbf{$r$-concentrated (modulo $m$)} if
+\[|\{b\in B: b\equiv c \mod m\}| \le 1 \quad \textrm{for all } c\in [0,m-1] \tag{$*$} \]
+(Of course, we already have $\{b\in B: b\equiv r \mod m\}=\emptyset$).
+
+For our later convenience, let $\mathcal{X}_{m,r}$ be the collection of all $\{0\}\cup R \cup B$ with $R$ and $B$ as above, i.e., the collection of all subsets of $\NN$ which are $r$-concentrated modulo $m$.
+\end{defn}
+
+We claim that, under suitable conditions on $R$ and $B$, many elements of the collection $\mathcal{X}_{m,r}$ are atoms.  
+Toward proving this, we give the following lemmas.
+
+\begin{lemma} \label{lem:other summand small}
+Let $Z := \{0\}\cup R \cup B\in \mathcal{X}_{m,r}$ and suppose that $Z = X+Y$.
+If there is $x\in X$ with $x\not\equiv 0 \mod m$ then $|Y\cap R| \le 1$.
+\end{lemma}
+
+\begin{proof}
+If $Y\cap R=\emptyset$ then the result is trivial, so suppose $y,y'\in Y\cap R$.
+Then $x+y \equiv x+y' \not\equiv r \mod m$ so, by the $r$-concentratedness of $Z$ (condition ($*$) in Definition \ref{def:resid concentrated}), $x+y = x+y'$.
+From here it is clear that $y=y'$ and the result follows.
+\end{proof}
+
+The next lemma amounts to a mere unpacking of a sum decomposition of an $r$-concentrated set, but a special case of this result will serve us several times in constructing atoms out of members of $\mathcal{X}_{m,r}$.
+
+\begin{lemma} \label{lem:both summands small}
+Let $Z := \{0\}\cup R \cup B\in \mathcal{X}_{m,r}$ and suppose that $Z = X + Y$.
+If $|X\cap R| \le n_1$ and $|Y\cap R|\le n_2$ then 
+\[|R| \le (1+\delta_{\bar{0}}(Y))n_1 + (1+\delta_{\bar{0}}(X))n_2 + \delta_{\bar{0}}(R)n_1n_2 + |2B \cap R|,\]
+where 
+\[\delta_{\bar{0}}(S) = 
+\begin{cases}
+1& \textrm{if $S$ has an element $s \equiv 0 \mod m$} \\
+0& \textrm{otherwise}.
+\end{cases}\]
+\end{lemma}
+
+\begin{proof}
+First observe that $X = \{0\}\cup (X\cap R) \cup (X\cap B)$ and $Y = \{0\}\cup (Y\cap R) \cup (Y\cap B)$.
+Then, since each of $X$ and $Y$ is the union of $3$ sets, $X+Y$ can be written as a union of $9$ sets; namely, the sums of each pair chosen from $\{\{0\}, X\cap R, X\cap B\} \times \{ \{0\}, Y\cap R, Y\cap B\}$, as in
+\begin{align*}
+X+Y &= \{0\}\cup (X\cap R) \cup (X\cap B) + \{0\} \cup (Y\cap R) \cup (Y\cap B) \\
+&= \{0\}\cup (X\cap R) \cup (X\cap B) \cup (Y\cap R) \cup (Y\cap B) \cup (X\cap R + Y\cap B) \cup (X\cap B + Y\cap R)\\
+& \hspace{7.5cm} \hfill \cup (X\cap B + Y\cap B) \cup (X\cap R + Y\cap R).
+\end{align*}
+To bound the size of $R = R\cap (X+Y)$, we will look at the intersection of $R$ with each of these $9$ sets.  
+Fortunately, it is easy to see that $\{0\}$, $X\cap B$, and $Y\cap B$ have trivial intersection with $R$ and that $X\cap R$ and $Y\cap R$ are already subsets of $R$.
+In total, these contribute $|X\cap R| + |Y\cap R| = n_1+n_2$ to our running estimate for $|R|$.
+
+We turn toward examining the remaining sets; first look at $R \cap (X\cap R + Y\cap B)$.
+If $x\in X\cap R$ and $y\in Y\cap B$ with $x+y\in R$ then we must have $y\equiv 0 \mod m$.
+There is at most one such $y\in Y\cap B$, so $|R\cap (X\cap R + Y\cap B)| =\delta_{\bar{0}}(Y)|X\cap R|=\delta_{\bar{0}}(Y)n_1$.
+Similarly, $|R\cap (X\cap B + Y\cap R)| = \delta_{\bar{0}}(X)n_2$.
+
+If $r\not\equiv 0 \mod m$ then $R \cap (X\cap R + Y\cap R) =\emptyset$; on the other hand, if $r\equiv 0 \mod m$ then $(X\cap R+Y\cap R)\subseteq R$, so we may say that $|R\cap (X\cap R + Y\cap R)| \le \delta_{\bar{0}}(R) n_1n_2$.
+Finally, we may note that $R\cap (X\cap B + Y\cap B) \subseteq R\cap 2B$.
+
+Putting all of these observations together, we obtain our desired estimate that $|R| \le (1+\delta_{\bar{0}}(Y))n_1 + (1+\delta_{\bar{0}}(X))n_2 + \delta_{\bar{0}}(R)n_1n_2 + |2B \cap R|$.
+\end{proof}
+$X\cap R$ and $Y\cap R$
+
+\begin{prop}
+Let $m\ge 2$, $r\in [0,m-1]$, and let $A := \{0\}\cup R \cup B \in \mathcal{X}_{m,r}$.
+If 
+\begin{enumerate}[label={\rm (\arabic{*})}]
+	\item $B\neq \emptyset$ or $r\neq 0$,
+	\item $|R| > 5 + |R\cap 2B|$, and
+	\item $R \neq \{a\}$ with $a\equiv 0 \mod m$ such that $\{0,a\}$ divides $A$,
+\end{enumerate}
+then $A$ is an atom in $\PN$.
+\end{prop}
+
+\begin{proof}
+
+\end{proof}

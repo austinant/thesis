@@ -6,9 +6,47 @@ Some objects can be broken down in exactly one way, while others exhibit more ex
 Among our tasks are to test the bounds of this behavior, and to completely classify the circumstances under which it can occur.
 In the present work, we bring our attention to a fairly new class of algebraic objects -- the titular ``power monoids" --  which possess many characteristics that make their study difficult, hence interesting.
 
+\section{Plan and Main Results}
 %%%%%%
 %%%%%%
-\section{A Brief History and Motivation}
+%We will conclude this chapter by defining and recalling some preliminary notions which are necessary to move forward with our discussion, including the formal language we will use to encode the data of factorizations and some notions which capture the varying degrees of non-unique factorization.
+In the remainder of this chapter, we will tell (some of) the story of factorization theory up to this point, by way of motivating the chapters to come.  
+We will also set some notation and conventions to be used.
+
+Chapter \ref{ch:fundamentals} begins by formulating the definitions necessary to have a detailed discussion of factorizations, including definitions which capture the various degrees to which a monoid may fail to have uniqueness of factorization (the conditions UF, HF, FF, BF).
+Following this is a discussion of some examples of these concepts.
+From here, we outline a few more general monoid concepts needed for later, and close with a comparison of the present framework to the existing body of work on factorization theory and the alternative definitions therein.
+
+Chapter \ref{ch:power monoids} will introduce our main object of study: the power monoid.  
+In brief, for any monoid $H$, let $\P_\fin(H)$ be the collection of finite, nonempty subsets of $H$ with the operation of setwise multiplication given by $X\cdot Y = \{xy: x\in X, y\in Y\}$.  
+This forms a monoid which can behave wildly with respect to questions of factorization.
+However, the submonoid $\P_\fun(H)$ of subsets containing $1$ is more feasible for study, and yields some meaningful results which can be lifted back to the full monoid $\P_\fin(H)$ in some circumstances (for instance, when $H$ is a group).
+%We will see in Section \ref{sec:atomicity} when it is reasonable to study factorizations in $\P_\fun(H)$.
+As it turns out, $\P_\fun(H)$ is atomic exactly when $H$ has no nontrivial idempotents or elements of order $2$ (Theorem \ref{th:atomicity}).
+Moreover, $\P_\fun(H)$ has bounded factorization lengths if and only if $H$ is torsion-free (Theorem \ref{thm:BF-torsion}).
+
+When $H$ is not torsion-free, the usual tools for measuring non-uniqueness of factorization in $\P_\fun(H)$ become degenerate.
+In Chapter \ref{ch:minimal factorizations}, we seek compensate for this by introducing the notion of \textit{minimal factorizations} in a general (non-cancellative) monoid.
+We then classify the circumstances under which $\P_\fun(H)$ satisfies minimal versions of the usual factorization properties (Factoriality, Half-Factoriality, FF-ness, BF-ness) in Theorems \ref{BmF-char} and \ref{prop:HF-exp-3} and Corollary \ref{cor:when-reduced-pm-is-minimally-factorial}.
+Finally, we move to the specific case when $H = \ZZ/n\ZZ$ is a finite cyclic group to exercise this new notion of minimal factorization and recover analogues of some results which are known for $\PN$.
+Namely, each interval $[ 2,k ]$ for $k\le n-1$ occurs as a set of lengths in $\P_\fon(\ZZ/n\ZZ)$ (Theorem \ref{th:interval-lengths}).
+
+Chapter \ref{ch:partitions} focuses on the specific case of $\PN$.
+In this setting we can leverage the linear ordering of $\NN$ to introduce the partition type of a given factorization.  
+We consider the set of partition types of factorizations of a given element (by analogy with the more familiar set of lengths).
+This is a new measure by which we can assess the degree to which an element fails to factor uniquely.  
+In keeping with our previous findings, the intervals $[ 0,n ]$ realizes all but $4$ possible partition types (Theorem \ref{thm:good types}), making them quantifiably the elements farthest from factoring uniquely.
+Continuing to view $\PN$ through the lens of integer partitions, we also find another sharp bifurcation in factorization behavior between intervals and non-intervals: any non-interval $X$ satisfies $\max(\mathsf{L}_{\PN}(X) )\le \max(X)/2$.
+
+Chapter \ref{ch:lattices} first establishes an intimate connection between the arithmetic of $\PN$ and $\P_\fon(\NN^d)$, for $d>1$; 
+while it is clear that all phenomena encountered in $\PN$ can be found in $\P_\fon(\NN^d)$, the reverse is true as well (Theorem \ref{thm:passage-to-Nd}).  
+This affords us the opportunity to use higher-dimensional geometric intuition to attack problems in $\PN$ and leads us to develop some new methods for understanding factorizations in $\P_\fon(\NN^d)$.
+In turn, this line of thought allows us to recover known results in $\PN$; namely, that, for any $n\ge 2$, $\{n\}$ and $\{2,n+1\}$ occur as sets of factorization lengths (Theorems \ref{thm:ind-atoms} and \ref{thm:2n-length-set}, respectively).
+Finally, we push these methods further to obtain a new realization result for a family of length sets; namely, Theorem \ref{thm:int-point-construction}, which states that, for any $n\ge 2$ and $m\ge 1$, $[ 2,m+2 ] \cup \{m+n+1\}$ occurs as a set of lengths.
+
+%%%%%%
+%%%%%%
+\section{Brief History and Motivation}
 %%%%%%
 %%%%%%
 
@@ -39,44 +77,7 @@ Our goal here is to explore a relatively new class of monoids which are non-canc
 
 %%%%%%
 %%%%%%
-\section{Plan and Main Results}
-%%%%%%
-%%%%%%
-%We will conclude this chapter by defining and recalling some preliminary notions which are necessary to move forward with our discussion, including the formal language we will use to encode the data of factorizations and some notions which capture the varying degrees of non-unique factorization.
-In the remainder of this section, we will tell (some of) the story of factorization theory up to this point, by way of motivating the chapters to come.  
-We will also set some notation and conventions to be used.
 
-Chapter \ref{ch:fundamentals} begins by formulating the definitions necessary to have a detailed discussion of factorizations, including definitions which capture the various degrees to which a monoid may fail to have uniqueness of factorization.  
-Following this is a discussion of some examples of these concepts.
-From here, we outline a few more general monoid concepts needed for later, and close with a comparison of the present work to some previous entries in the literature and the alternate factorization theory notions therein.
-
-Chapter \ref{ch:power monoids} will introduce our main object of study: the power monoid.  
-In brief, for any monoid $H$, let $\P_\fin(H)$ be the collection of finite, nonempty subsets of $H$ with the operation of setwise multiplication given by $X\cdot Y = \{xy: x\in X, y\in Y\}$.  
-This forms a monoid which can behave wildly.
-However, the submonoid $\P_\fun(H)$ of subsets containing $1$ is more feasible for study, and yields some meaningful results which can be lifted back to the full monoid $\P_\fin(H)$ in some circumstances.
-We will see in Section \ref{sec:atomicity} when it is reasonable to study factorizations in $\P_\fun(H)$.
-As it turns out, this monoid is atomic exactly when $H$ has no nontrivial idempotents or elements of order $2$ (Theorem \ref{th:atomicity}).
-Moreover, $\P_\fun(H)$ has bounded factorization lengths if and only if $H$ is torsion-free (Theorem \ref{thm:BF-torsion}).
-
-When $H$ is not torsion-free, the usual tools for measuring non-uniqueness of factorization in $\P_\fun(H)$ become degenerate.
-In Chapter \ref{ch:minimal factorizations}, we seek compensate for this by introducing the notion of \textit{minimal factorizations} in a general (non-cancellative) monoid.
-We then classify the circumstances under which $\P_\fun(H)$ satisfies minimal versions of the usual factorization properties (Factoriality, Half-Factoriality, FF-ness, BF-ness) in Theorems \ref{BmF-char} and \ref{prop:HF-exp-3} and Corollary \ref{cor:when-reduced-pm-is-minimally-factorial}.
-Finally, we move to the specific case when $H = \ZZ/n\ZZ$ is a finite cyclic group to exercise this new notion of minimal factorization and recover analogues of some results which are known for $\PN$.
-Namely, each interval $\llb 2,k \rrb$ for $k\le n-1$ occurs as a set of lengths in $\P_\fon(\ZZ/n\ZZ)$ (Theorem \ref{th:interval-lengths}).
-
-Chapter \ref{ch:partitions} focuses on the specific case of $\PN$.
-In this setting we can leverage the linear ordering of $\NN$ to introduce the partition type of a given factorization.  
-We consider the set of partition types of factorizations of a given element (by analogy with the more familiar set of lengths).
-This is a new measure by which we can assess the degree to which an element fails to factor uniquely.  
-In keeping with our previous findings, the intervals $\llb 0,n \rrb$ realizes all but $4$ possible partition types (Theorem \ref{thm:good types}), making them quantifiably the elements farthest from factoring uniquely.
-Continuing to view $\PN$ through the lens of integer partitions, we also find another sharp bifurcation in factorization behavior between intervals and non-intervals: any non-interval $X$ satisfies $\max(\mathsf{L}_{\PN}(X) )\le \max(X)/2$.
-
-Chapter \ref{ch:lattices} first establishes an intimate connection between the arithmetic of $\PN$ and $\P_\fon(\NN^d)$, for $d>1$; 
-while it is clear that all phenomena encountered in $\PN$ can be found in $\P_\fon(\NN^d)$, the reverse is true as well (Theorem \ref{thm:passage-to-Nd}).  
-This affords us the opportunity to use higher-dimensional geometric intuition to attack problems in $\PN$.
-Ruminations in this vein bear the fruit of some new methods for understanding factorizations in $\P_\fon(\NN^d)$.
-This line of thought also allows us to recover known results in $\PN$; namely, that, for any $n\ge 2$, $\{n\}$ and $\{2,n+1\}$ occur as sets of factorization lengths (Theorems \ref{thm:ind-atoms} and \ref{thm:2n-length-set}, respectively).
-Finally, we push these methods further to obtain Theorem \ref{thm:int-point-construction}, which states that, for any $n\ge 2$ and $m\ge 1$, $\llb 2,m+2 \rrb \cup \{m+n+1\}$ occurs as a set of lengths.
 
 \section{Notation and Conventions} \label{subsec:generalities}
 

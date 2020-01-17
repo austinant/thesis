@@ -7,51 +7,51 @@ A level-1 auxiliary file: chap-PMA.aux
 A level-1 auxiliary file: chap-minfac.aux
 A level-1 auxiliary file: chap-partitions.aux
 A level-1 auxiliary file: chap-lattices.aux
-The style file: plain.bst
+The style file: alpha.bst
 Database file #1: bib.bib
 I was expecting an "="---line 293 of file bib.bib
  : @incollection 
  :               {cziszter-al16,
 I'm skipping whatever remains of this entry
-You've used 40 entries,
-            2118 wiz_defined-function locations,
-            778 strings with 9936 characters,
-and the built_in function-call counts, 13400 in all, are:
-= -- 1380
-> -- 507
-< -- 12
-+ -- 208
-- -- 160
-* -- 946
-:= -- 2172
-add.period$ -- 128
-call.type$ -- 40
-change.case$ -- 195
-chr.to.int$ -- 0
-cite$ -- 40
-duplicate$ -- 538
-empty$ -- 1091
-format.name$ -- 160
-if$ -- 2826
-int.to.chr$ -- 0
-int.to.str$ -- 40
-missing$ -- 48
-newline$ -- 206
-num.names$ -- 80
-pop$ -- 176
+You've used 22 entries,
+            2543 wiz_defined-function locations,
+            721 strings with 7462 characters,
+and the built_in function-call counts, 8705 in all, are:
+= -- 900
+> -- 355
+< -- 14
++ -- 118
+- -- 114
+* -- 626
+:= -- 1410
+add.period$ -- 68
+call.type$ -- 22
+change.case$ -- 127
+chr.to.int$ -- 20
+cite$ -- 22
+duplicate$ -- 368
+empty$ -- 637
+format.name$ -- 145
+if$ -- 1783
+int.to.chr$ -- 3
+int.to.str$ -- 0
+missing$ -- 26
+newline$ -- 114
+num.names$ -- 66
+pop$ -- 98
 preamble$ -- 1
-purify$ -- 160
+purify$ -- 151
 quote$ -- 0
-skip$ -- 383
+skip$ -- 315
 stack$ -- 0
-substring$ -- 987
-swap$ -- 123
-text.length$ -- 12
-text.prefix$ -- 0
+substring$ -- 544
+swap$ -- 70
+text.length$ -- 14
+text.prefix$ -- 9
 top$ -- 0
-type$ -- 144
+type$ -- 160
 warning$ -- 0
-while$ -- 140
-width$ -- 42
-write$ -- 455
+while$ -- 87
+width$ -- 26
+write$ -- 292
 (There was 1 error message)
