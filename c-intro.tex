@@ -84,17 +84,28 @@ Our goal here is to explore a relatively new class of monoids which are non-canc
 \begin{itemize}
 	\item $\NN = \{0,1,2,3,\dots\}$, $\ZZ = \{0,\pm 1, \pm 2,\dots\}$, and $\RR$ denote the sets of natural numbers, integers, and real numbers, respectively.
 	Here we adopt the French convention that $0\in \NN$ so that $\NN$ is a monoid.
-	\item For $k\in \NN$, we set the notation $\NN_{>k} := \{n\in \NN: n>k\}$ and $\NN_{\ge k} := \{n\in \NN: n\ge k\}$.
-	\item In general, unless otherwise specified, lowercase letters ($a$, $b$, $x$, $y$, etc.) will usually refer to elements of a monoid; ordinary uppercase letters to sets and subsets ($A$, $B$, $X$, $Y$, etc.); script or calligraphic uppercase letters ($\A$, $\C$, $\F$, $\P$) to collections of subsets; math fraktur letters ($\aa$, $\bb$, etc.) to words in a free monoid over a given generating set (see the remainder of this section for more details on free monoids).
+	
+	\item For a subset $S\subseteq \RR$ and $k\in \NN$, we set the notation $S_{>k} := \{n\in S: n>k\}$ and $S_{\ge k} := \{n\in S: n\ge k\}$.
+	
+	\item In general, unless otherwise specified, lowercase letters ($a$, $b$, $x$, $y$, etc.) will usually refer to elements of a monoid; ordinary uppercase letters to sets and subsets ($A$, $B$, $X$, $Y$, etc.); script or calligraphic uppercase letters ($\A$, $\C$, $\F$, $\P$) to collections of subsets; math fraktur letters ($\aa$, $\bb$, etc.) to words in a free monoid over a given generating set (see Section \ref{subsec:factorizations} for more details on free monoids).
+	
 	\item Specifically, $i$, $j$, $k$, $\ell$, $m$, and $n$ will usually stand for non-negative integers. 
 	$H$ will stand for a monoid, $G$ for a group, and $R$ for a ring.
+	
+	\item For integers $m,n$ with $m>1$, $n \mod m$ (or $\bar{n}$, when the modulus $m$ is understood from context) will refer to the residue class of $n$ modulo $m$.
+	
 	\item In general, we will refer to the operation of a not necessarily commutative monoid $(H,\cdot)$ as ``multiplication''.
 	We will often adopt the practice of suppressing the symbol ``$\cdot$'' when no confusion is likely to arise; that is, we will write $xy$ instead of $x\cdot y$.
+	
 	\item The identity of a multiplicative monoid $(H,\cdot)$ will be called $1$; the identity of an additive monoid $(H,+)$ will be called $0$.
+	
 	\item $X\subseteq Y$ will mean that $X$ is a subset of $Y$; $X\subsetneqq Y$ will mean that $X\subseteq$ but $X\neq Y$; $K\le H$ will mean that $K$ is a submonoid of $H$.
+	
 	\item If $S$ is a set and $\E$ is an equivalence relation on $S$, the equivalence class of some $x\in S$ shall be denoted by $[x]_\E$.
 	The subscript may be removed in situations where the implied equivalence is clear.
+	
 	\item For $a, b\in \RR\cup\{\infty\}$, $[ a,b ] = \{ n\in \ZZ : a \le n \le b \}$ shall denote the (integer) interval from $a$ to $b$.
+	
 	\item For a $k\in \NN$ and objects $x_i$ for $i\in [1,k]$, we will often write the family $X:=\{x_i: i\in [1,k]\}$ in ``long form'' as $x_1,\dots,x_k$.
 	If $X$ is a subset of a monoid $(H,\cdot)$, we will write the ordered product of the elements of $X$ as $x_1\cdots x_k$.
 	In particular, if $k$ happens to be $0$, this product is empty and we set the convention $x_1\cdots x_k = 1$ to avoid any confusion or ill-definedness.

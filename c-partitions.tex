@@ -152,9 +152,9 @@ There are several refinements that we can make by taking advantage of the specif
 \begin{defn} \label{def:filtration}
 	For $n\ge 0$, we distinguish the following collections of subsets:
 	\begin{align*}
-	\P_n &= \{ X \subseteq [ 0,n ] : 0,n\in X \} \\
-	\mathcal{A}_n &= \mathcal{A}(\PN) \cap \P_n  \\
-	\mathcal{N}_n &= \P_n \setminus \mathcal{A}_n 
+	\P^{(n)} &= \{ X \subseteq [ 0,n ] : 0,n\in X \} \\
+	\mathcal{A}^{(n)} &= \mathcal{A}(\PN) \cap \A^{(n)}  \\
+	\mathcal{N}^{(n)} &= \P^{(n)} \setminus \mathcal{A}^{(n)} 
 	\end{align*}
 	%Here we are just filtering the subsets, atoms, and non-atoms (respectively) in accordance with the intuitive grading on subsets of $\NN$.
 \end{defn}
@@ -162,8 +162,8 @@ There are several refinements that we can make by taking advantage of the specif
 \begin{rk}
 Note that 
 \begin{itemize}
-	\item $\PN = \bigsqcup_{n=0}^\infty \P_n$.
-	\item For any $m,n\ge 0$, $\P_m + \P_n \subseteq \P_{m+n}$.
+	\item $\PN = \bigsqcup_{n=0}^\infty \P^{(n)}$.
+	\item For any $m,n\ge 0$, $\P^{(m)} + \P^{(n)} \subseteq \P^{(m+n)}$.
 \end{itemize}
 From this we see that the sets $\P_n$ give a grading of our monoid.
 \end{rk}
@@ -182,7 +182,7 @@ This will help us in our endeavor to develop a more effecient algorithm for fact
 	For brevity, we occasionally write $P \vdash n$.
 	
 	For $X \in \PN$ and for any partition $P = (m_1,\dots, m_k)$ of $\max(X)$, we define the \textbf{set of factorizations of $X$ of (partition) type $P$} to be
-	\[ \Z^P(X) := \{ A_1*\cdots * A_k \in \Z(X) : A_i \in \mathcal{A}_{m_i} \textrm{ for } i\in [ 1,k ] \}. \]
+	\[ \Z^P(X) := \{ A_1*\cdots * A_k \in \Z(X) : A_i \in \mathcal{A}^{(m_i)} \textrm{ for } i\in [ 1,k ] \}. \]
 	We also define the \textbf{set of (partition) types of $X$} to be
 	\[ \mathsf{T}(X) :=  \{ P \vdash \max(X) : \Z^P(X) \neq \emptyset \}. \]
 \end{defn}
@@ -201,11 +201,11 @@ This will help us in our endeavor to develop a more effecient algorithm for fact
 
 To conclude this section, we suggest an outline of another algorithm for calculating sets of factorizations in $\PN$.
 In contrast with $\mathsf{fac}$ from Definition \ref{def:fac algorithm}, this one will proceed constructively rather than inductively.
-It also supposes that one has found the sets $\A_m$ for $m < \max(X)$.
+It also supposes that one has found the sets $\A^{(m)}$ for $m < \max(X)$.
 This is a computational endeavor in its own right, but removes some of the labor from the process of finding all factorizations of a given set $X$.
 
 First define, for $X\in \PN$ and $P = (m_1,\dots,m_k)$ a partition of $\max(X)$, $\mathsf{fac\_of\_type}(X,P)$ in the following way:
-For every $(A_1,\dots,A_k)\in \A_{m_1}\times\cdots\times\A_{m_k}$, if $A_1 + \cdots + A_k = X$, then add $A_1 * \cdots * A_k$ to $\mathbf{fac\_of\_type}(X,P)$.
+For every $(A_1,\dots,A_k)\in \A^{(m_1)}\times\cdots\times\A^{(m_k)}$, if $A_1 + \cdots + A_k = X$, then add $A_1 * \cdots * A_k$ to $\mathbf{fac\_of\_type}(X,P)$.
 
 After this, we can define a new function, $\mathbf{fac\_by\_type}(X)$.
 The end result is an algorithm of the following form:
@@ -275,23 +275,23 @@ We will have more to say about subsums in Section \ref{sec:subsums}.
 \begin{proof}
 	For (i), we can use the second part of Lemma \ref{prop:2-elt factor/cofactor} with $c = 1$ to see that there can be no atom $A$ with $A+\{0,2\} = [ 0,n ]$.
 	
-	It is easy to see (ii) because $\{0,2\}$ is the only atom in $\mathcal{A}_2$, and no sum of the form $\{0,2\} +\dots +\{0,2\}$ can contain $1$, let alone a whole interval.
+	It is easy to see (ii) because $\{0,2\}$ is the only atom in $\mathcal{A}^{(2)}$, and no sum of the form $\{0,2\} +\dots +\{0,2\}$ can contain $1$, let alone a whole interval.
 	
 	For (iii), write $n = 2m+1$.
-	We note that $\mathcal{A}_3 = \{\{0,2,3\}, \{0,1,3\} \}$.
+	We note that $\mathcal{A}^{(3)} = \{\{0,2,3\}, \{0,1,3\} \}$.
 	Since $1$ belongs to the interval, if $[ 0,2m+1 ]$ is to have a factorization of partition type $(3,2,\dots,2)$, then that factorization must include $\{0,1,3\}$.
 	However, we see that 
 	\[ \{0,1,3\} + (m-1)\{0,2\}  = \{0,1,3\} + \{0,2,\dots, 2m-2\} = [ 0, 2m-1 ] \cup \{2m+1\} \]
 	which does not contain $2m = n-1$, so $[ 0,2m+1]$ cannot have a factorization of type $(3,2,\dots,2)$.
 	
 	The arguments for the remaining parts proceed along similar lines.
-	For (iv), we note that the only atoms in $\mathcal{A}_4$ which contain $1$ are $\{0,1,4\}$ and $\{0,1,2,4\}$.
+	For (iv), we note that the only atoms in $\mathcal{A}^{(4)}$ which contain $1$ are $\{0,1,4\}$ and $\{0,1,2,4\}$.
 	However, if $n = 2m$, we have
 	\[ \{0,1,2,4\} + (m-2)\{0,2\} = \{0,1,4\} + \{0,2,\dots, 2m-4\} = [ 0, 2m-2 ] \cup \{2m\} \]
 	which again fails to contain $n-1$.
 	
 	Finally, we turn to (v).
-	We similarly begin by observing that the only atoms in $\mathcal{A}_5$ which contain $1$ are $\{0,1,5\}$, $\{0,1,2,5\}$, and $\{0,1,3,5\}$.
+	We similarly begin by observing that the only atoms in $\mathcal{A}^{(5)}$ which contain $1$ are $\{0,1,5\}$, $\{0,1,2,5\}$, and $\{0,1,3,5\}$.
 	Let $n = 2m+1$.
 	By calculations similar to those above, one can see that $n-2 \notin \{0,1,2,5\} +(m-2)\{0,2\}$ and $n-1\notin \{0,1,3,5\} + (m-2)\{0,2\}$.
 \end{proof}
@@ -301,13 +301,13 @@ We will have more to say about subsums in Section \ref{sec:subsums}.
 %%%%%%
 %%%%%%
 
-As we have just seen above, several partition types fail to appear because of the limited number of atoms available in $\mathcal{A}_N$ for small $N$.
-Even in $\mathcal{A}_5$, where there are a few choices of atoms containing $1$, there is no atom which contains both $1$ as well as enough ``comparably larger'' elements closer to $5$.
-However, this issue does not seem to arise for atoms with larger maximum; indeed, in $\mathcal{A}_7$ we have several choices which fit this requirement: for example, $\{0, 1, 2, 4, 6, 7\}$, and $\{0, 1, 3, 5, 6, 7\}$ seem promising if one hopes to produce factorizations of type $(7,2,\dots, 2)$. 
+As we have just seen above, several partition types fail to appear because of the limited number of atoms available in $\mathcal{A}^{(N)}$ for small $N$.
+Even in $\mathcal{A}^{(5)}$, where there are a few choices of atoms containing $1$, there is no atom which contains both $1$ as well as enough ``comparably larger'' elements closer to $5$.
+However, this issue does not seem to arise for atoms with larger maximum; indeed, in $\mathcal{A}^{(7)}$ we have several choices which fit this requirement: for example, $\{0, 1, 2, 4, 6, 7\}$, and $\{0, 1, 3, 5, 6, 7\}$ seem promising if one hopes to produce factorizations of type $(7,2,\dots, 2)$. 
 Indeed, the problems that occur for atoms of sizes between $2$ and $5$ do not persist, for we have the following.
 
 Our goal now will be to verify that intervals have factorizations of various partition types.  
-To aid in this, we will need a few classes of specifically structured ``large atoms" to populate the sets $\mathcal{A}_N$.
+To aid in this, we will need a few classes of specifically structured ``large atoms" to populate the sets $\mathcal{A}^{(N)}$.
 
 \begin{prop} \label{prop:2-congruence atoms}
 	Each of the following sets is an atom of $\PN$ for the given values of the parameter $h$.
@@ -347,7 +347,7 @@ To aid in this, we will need a few classes of specifically structured ``large at
 We will see that the above constructions are helpful because sums of small numbers of these atoms will be able to form relatively large intervals.
 
 \begin{lemma} \label{lem:two-part types}
-	If $q\ge r \ge 3$ then $[ 0, q+r ] \in \A_q + \A_r$; that is, there are atoms $A_q\in \A_q$ and $A'_r\in \A_r$ such that $A_q + A'_r = [ 0,q+r ]$.
+	If $q\ge r \ge 3$ then $[ 0, q+r ] \in \A^{(q)} + \A^{(r)}$; that is, there are atoms $A_q\in \A^{(q)}$ and $A'_r\in \A^{(q)}$ such that $A_q + A'_r = [ 0,q+r ]$.
 \end{lemma}
 
 \begin{proof}
@@ -410,7 +410,7 @@ We hope to mimic this for finite subsets by adding a truncated (and slightly mod
 To make this precise, we have the following lemma.
 
 \begin{lemma} \label{lemma:many 2s types}
-	For $q \ge 6$ and $t\ge 2$, there is an atom $A\in \A_q$ with $A + t\{0,2\} = [ 0, q+2t ]$.
+	For $q \ge 6$ and $t\ge 2$, there is an atom $A\in \A^{(q)}$ with $A + t\{0,2\} = [ 0, q+2t ]$.
 \end{lemma}
 
 \begin{proof}
@@ -485,7 +485,7 @@ To make this precise, we have the following lemma.
 	Let us write $P = (m_1,\dots, m_k, 1)$.
 	
 	If $k=1$, we can see that $C_{n-1}*\{0,1\}\in \Z^P([ 0,n ])$, where $C_{n-1}$ is one of the atoms constructed in Proposition \ref{prop:2-congruence atoms}.
-	Similarly, if $k=2$ we have by Lemma \ref{lem:two-part types} that there are atoms $A\in \A_{m_1}$ and $A'\in \A_{m_2}$ with $A+A' = [ 0,m_1+m_2 ]$, so $A*A'* \{0,1\}\in \Z^P([ 0,n ])$.
+	Similarly, if $k=2$ we have by Lemma \ref{lem:two-part types} that there are atoms $A\in \A^{(m_1)}$ and $A'\in \A^{(m_2)}$ with $A+A' = [ 0,m_1+m_2 ]$, so $A*A'* \{0,1\}\in \Z^P([ 0,n ])$.
 	
 	Now assume that $k>2$ and write $P' = (m_1,\dots, m_k)$.
 	If $m_k=1$, then there is some $\aa'\in \Z^{P'}([ 0,n-1 ])$ by induction, so that $\aa = \aa' * \{0,1\}\in \Z^P([ 0,n ])$.
@@ -573,7 +573,7 @@ There is a very sharp dichotomy between the wildly varied factorization behavior
 
 \begin{proof}
 	Let $n = \max(X)$ and let $\aa\in\Z(X)$ be a factorization with length $|\aa| = k$.
-	Then there are integers $m_1\ge\cdots \ge m_k \ge 1$ and atoms $A_i\in \A_{m_i}$ with $\aa = A_1*\cdots*A_k$.
+	Then there are integers $m_1\ge\cdots \ge m_k \ge 1$ and atoms $A_i\in \A^{(m_i)}$ with $\aa = A_1*\cdots*A_k$.
 	The result is immediate from Lemma \ref{lem:long-partitions}, since we have
 	\[ X = A_1 + \cdots + A_k \supseteq \{0,m_1\} + \cdots + \{0,m_k\} = \Sigma(m_1,\cdots,m_k) = [ 0,n ] \]
 	and we know $X \subseteq [ 0,\max(X) ] = [ 0, n ]$.

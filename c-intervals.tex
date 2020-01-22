@@ -10,11 +10,20 @@ We will see later in Section \ref{sec:algorithms} some ways of thinking about su
 A separate challenge is to systematically generate large collections of atoms; this is our primary undertaking in this section.
 
 \begin{defn} \label{def:resid concentrated}
-Let $m\ge 2$, $r\in [0,m-1]$, and $R\subseteq \NN m +r $ be a finite, nonempty set with $0\notin R$.
-Suppose $B\subseteq \NN \setminus (\NN m + r)$ with $0\notin B$.
-We will say $\{0\}\cup R \cup B$ is \textbf{$r$-concentrated (modulo $m$)} if
-\[|\{b\in B: b\equiv c \mod m\}| \le 1 \quad \textrm{for all } c\in [0,m-1] \tag{$*$} \]
-(Of course, we already have $\{b\in B: b\equiv r \mod m\}=\emptyset$).
+Let $m\ge 2$, $r\in [0,m-1]$.
+We will say that $S\in \PN$ is \textbf{$r$-concentrated (modulo $m$)} if
+\[|\{s\in S_{>0}: s\equiv t \mod m\}|\le 1 \quad \textrm{for all $t\in [0,m-1]\setminus\{r\}$.}  \tag{$*$}\]
+Equivalently, if $S$ is $r$-concentrated, then there are (unique) $R,B\subseteq \NN$ such that
+\begin{itemize}
+	\item $0\notin R \subseteq \NN m + r$;
+	\item $0\notin B \subseteq \NN \setminus (\NN m + r)$;
+	\item $S = \{0\} \cup R \cup B$;
+	\item For each $b\in B$ and $s\in S_{>0}$, $s\equiv b \mod m$ implies that $s = b$.
+\end{itemize}
+%Suppose $B\subseteq \NN \setminus (\NN m + r)$ with $0\notin B$.
+%We will say $\{0\}\cup R \cup B$ is \textbf{$r$-concentrated (modulo $m$)} if
+%\[|\{b\in B: b\equiv c \mod m\}| \le 1 \quad \textrm{for all } c\in [0,m-1] \tag{$*$} \]
+%(Of course, we already have $\{b\in B: b\equiv r \mod m\}=\emptyset$).
 
 For our later convenience, let $\mathcal{X}_{m,r}$ be the collection of all $\{0\}\cup R \cup B$ with $R$ and $B$ as above, i.e., the collection of all subsets of $\NN$ which are $r$-concentrated modulo $m$.
 \end{defn}
@@ -36,24 +45,27 @@ From here it is clear that $y=y'$ and the result follows.
 The next lemma amounts to a mere unpacking of a sum decomposition of an $r$-concentrated set, but a special case of this result will serve us several times in constructing atoms out of members of $\mathcal{X}_{m,r}$.
 
 \begin{lemma} \label{lem:both summands small}
-Let $Z := \{0\}\cup R \cup B\in \mathcal{X}_{m,r}$ and suppose that $Z = X + Y$.
-If $|X\cap R| \le n_1$ and $|Y\cap R|\le n_2$ then 
-\[|R| \le (1+\delta_{\bar{0}}(Y))n_1 + (1+\delta_{\bar{0}}(X))n_2 + \delta_{\bar{0}}(R)n_1n_2 + |2B \cap R|,\]
+Let $Z := \{0\}\cup R \cup B\in \mathcal{X}_{m,r}$, suppose that $Z = X + Y$, and say $n_1 = |X\cap R|$ and $n_2 = |Y\cap R|$.
+\begin{enumerate}[label={\rm (\roman{*})}]
+\item Then 
+\[|R| \le (1+\delta_{\bar{0}}(Y\cap B))n_1 + (1+\delta_{\bar{0}}(X\cap B))n_2 + \delta_{\bar{0}}(R)n_1n_2 + |2B \cap R|,\]
 where 
 \[\delta_{\bar{0}}(S) = 
 \begin{cases}
 1& \textrm{if $S$ has an element $s \equiv 0 \mod m$} \\
 0& \textrm{otherwise}.
 \end{cases}\]
+\item If $n_1,n_2 \le 1$ then $|R| \le 3 + |2B\cap R|$.
+\end{enumerate}
 \end{lemma}
 
 \begin{proof}
-First observe that $X = \{0\}\cup (X\cap R) \cup (X\cap B)$ and $Y = \{0\}\cup (Y\cap R) \cup (Y\cap B)$.
+For (i): first observe that $X = \{0\}\cup (X\cap R) \cup (X\cap B)$ and $Y = \{0\}\cup (Y\cap R) \cup (Y\cap B)$.
 Then, since each of $X$ and $Y$ is the union of $3$ sets, $X+Y$ can be written as a union of $9$ sets; namely, the sums of each pair chosen from $\{\{0\}, X\cap R, X\cap B\} \times \{ \{0\}, Y\cap R, Y\cap B\}$, as in
 \begin{align*}
 X+Y &= \{0\}\cup (X\cap R) \cup (X\cap B) + \{0\} \cup (Y\cap R) \cup (Y\cap B) \\
 &= \{0\}\cup (X\cap R) \cup (X\cap B) \cup (Y\cap R) \cup (Y\cap B) \cup (X\cap R + Y\cap B) \cup (X\cap B + Y\cap R)\\
-& \hspace{7.5cm} \hfill \cup (X\cap B + Y\cap B) \cup (X\cap R + Y\cap R).
+& \hspace{7.5cm} \hfill \cup (X\cap R + Y\cap R) \cup (X\cap B + Y\cap B).
 \end{align*}
 To bound the size of $R = R\cap (X+Y)$, we will look at the intersection of $R$ with each of these $9$ sets.  
 Fortunately, it is easy to see that $\{0\}$, $X\cap B$, and $Y\cap B$ have trivial intersection with $R$ and that $X\cap R$ and $Y\cap R$ are already subsets of $R$.
@@ -61,27 +73,140 @@ In total, these contribute $|X\cap R| + |Y\cap R| = n_1+n_2$ to our running esti
 
 We turn toward examining the remaining sets; first look at $R \cap (X\cap R + Y\cap B)$.
 If $x\in X\cap R$ and $y\in Y\cap B$ with $x+y\in R$ then we must have $y\equiv 0 \mod m$.
-There is at most one such $y\in Y\cap B$, so $|R\cap (X\cap R + Y\cap B)| =\delta_{\bar{0}}(Y)|X\cap R|=\delta_{\bar{0}}(Y)n_1$.
-Similarly, $|R\cap (X\cap B + Y\cap R)| = \delta_{\bar{0}}(X)n_2$.
+There is at most one such $y\in Y\cap B$, so $|R\cap (X\cap R + Y\cap B)| =\delta_{\bar{0}}(Y\cap B)|X\cap R|=\delta_{\bar{0}}(Y\cap B)n_1$.
+Similarly, $|R\cap (X\cap B + Y\cap R)| = \delta_{\bar{0}}(X\cap B)n_2$.
 
 If $r\not\equiv 0 \mod m$ then $R \cap (X\cap R + Y\cap R) =\emptyset$; on the other hand, if $r\equiv 0 \mod m$ then $(X\cap R+Y\cap R)\subseteq R$, so we may say that $|R\cap (X\cap R + Y\cap R)| \le \delta_{\bar{0}}(R) n_1n_2$.
 Finally, we may note that $R\cap (X\cap B + Y\cap B) \subseteq R\cap 2B$.
 
 Putting all of these observations together, we obtain our desired estimate that $|R| \le (1+\delta_{\bar{0}}(Y))n_1 + (1+\delta_{\bar{0}}(X))n_2 + \delta_{\bar{0}}(R)n_1n_2 + |2B \cap R|$.
+
+We can see (ii) by using what we have just proved, and by showing that at most one of $\delta_{\bar{0}}(X\cap B)$, $\delta_{\bar{0}}(Y\cap B)$, and $\delta_{\bar{0}}(R)$ is nonzero.
+Firstly, $\delta_{\bar{0}}(R) = 1$ if and only if $r = 0$.
+By construction, $B$ and $R$ don't share any residue classes modulo $m$, so $B$ cannot have any elements congruent to $0$ if $R$ does (and vice-versa).  
+All that remains is to see that $X\cap B$ and $Y\cap B$ cannot both have an element congruent to $0$; if they do then there is a single $b \equiv 0 \mod m$ with $b\in X\cap Y \cap B$.
+However, we immediately see that this is impossible because we would have that $2b \in X+Y$, but $2b \equiv b$, which contradicts the $r$-concentratedness of $X+Y$.
+Thus $\delta_{\bar{0}}(X\cap B) + \delta_{\bar{0}}(Y\cap B) + \delta_{\bar{0}}(R) \le 1$ and the inequality from (i) reduces to $|R| \le (1+\delta_{\bar{0}}(Y\cap B)+ (1+\delta_{\bar{0}}(X\cap B)) + \delta_{\bar{0}}(R) + |2B\cap R| \le 3 + |2B \cap R|$.
 \end{proof}
-$X\cap R$ and $Y\cap R$
 
 \begin{prop}
-Let $m\ge 2$, $r\in [0,m-1]$, and let $A := \{0\}\cup R \cup B \in \mathcal{X}_{m,r}$.
+Let $m\ge 2$, $r\in [0,m-1]$, and let $A := \{0\}\cup R \cup B$ with $R$ and $B$ as in Definition \ref{def:resid concentrated}.
 If 
 \begin{enumerate}[label={\rm (\arabic{*})}]
 	\item $B\neq \emptyset$ or $r\neq 0$,
-	\item $|R| > 5 + |R\cap 2B|$, and
-	\item $R \neq \{a\}$ with $a\equiv 0 \mod m$ such that $\{0,a\}$ divides $A$,
+	\item $|R| > 3 + |R\cap 2B|$, and
+	\item $R \neq \{b\}$ with $b\equiv 0 \mod m$ such that $\{0,b\}$ divides $A$,
 \end{enumerate}
 then $A$ is an atom in $\PN$.
 \end{prop}
 
 \begin{proof}
+Suppose $A = X + Y$ with $X,Y\neq\{0\}$.
 
+\noindent \underline{Case 1}: $\max(A)\in B$.
+
+Then there exist $x\in X_{>0}$ and $y\in Y_{>0}$ such that $x+y = \max(A)$.
+Since, by $r$-concentratedness, $\max(A)$ is the only element of $A$ of its residue class modulo $m$, $x,y\not\equiv 0 \mod m$.
+Now, by two applications of Lemma \ref{lem:other summand small}, $|X\cap R|, |Y\cap R|\le 1$.
+Using Lemma \ref{lem:both summands small}, we see that $|R| \le 3 + |R\cap 2B| < |R|$, a contradiction.
+
+\noindent \underline{Case 2}: $\max(A) \in R$.
+
+\noindent \underline{Subcase 2A}: There are $x\in X\cap B$ and $y\in Y\cap B$ so that $x+y = \max(A)$.
+
+Then $x,y\not\equiv \max(A) \mod m$, so $x,y\not\equiv 0 \mod m$ and we may proceed as in the preceding case.
+
+\noindent \underline{Subcase 2B}: There are $x\in X\cap R$ and $y\in Y\cap R$ so that $x+y = \max(A)$.
+
+Now we have that $r+r\equiv r \mod m$, so $r = 0$.
+Since $B\subseteq A = X+Y$ but $R+R \subseteq \NN m$, we must have $B \subseteq X \cup Y$.
+However, if $b\in B\cap X$ then $b+y \equiv b \mod m$, which is a violation of the $r$-concentratedness of $A$ (since $y\neq 0$ and so $b+y\neq b$).
+It must be that $X\cap B = \emptyset$ (and similarly, $Y\cap B = \emptyset$).
+Now $A = X+Y = \{0\}\cup (X\cap R) + \{0\}\cup (Y\cap R) \subseteq \NN m$, from which we conclude that $B = \emptyset$.
+This is a contradiction to condition (2) in the statment of the proposition.
+
+\noindent \underline{Subcase 2C}: There are $b\in X\cap B$ and $y\in Y\cap R$ such that $b + y = \max(A)$.
+
+Immediately, we have that $b + r \equiv r \mod m$, so $b \equiv 0 \mod m$ and $r \neq 0$.
+By Lemma \ref{lem:other summand small}, $|X\cap R| \le 1$.
+If $x\in X\setminus \{0,a\}$ then $x\not\equiv 0\mod m$ and so we also have $|Y\cap R| \le 1$, whence we may finish by using Lemma \ref{lem:both summands small} as in Case 1.
+
+Let us suppose, instead, that $X = \{0,b\}$.
+If $c\in Y\cap B$ then $b+c \equiv c \mod m$, which violates $r$-concentratedness.
+Thus $Y\cap B = \emptyset$ and we now have $A = X+Y = \{0,b\} + \{0\}\cup (Y\cap R) = \{0,b\} \cup (Y\cap R) \cup (b+ Y\cap R)$.
+From this, we deduce that $R = \{b\}$; since we know that $b\equiv 0 \mod m$ and $X = \{0,b\}$ is a factor of $A$, this yields a contradiction of condition (3), finishing the proof.
 \end{proof}
+
+\begin{defn} \label{def:maxgap}
+Let $S = \{s_0,\dots, s_k\} \subseteq \NN$ be a nonempty subset with $s_0 < \dots < s_k$.
+We will say that, for each $i\in [1,k]$, $s_{i-1}$ and $s_i$ are \textbf{consecutive} elements of $S$, and we define the maximum gap of $S$ $\maxgap(S) := \max \{s_i - s_{i-1} : i\in [1,k]\}$ to be the largest distance between consecutive elements of $S$.
+
+For a fixed $h\ge 1$, let $\mathcal{G}_h := \{S\subseteq \NN: \maxgap(S) \le h\}$.
+\end{defn}
+
+For the sake of noting some concrete examples, we have $\maxgap([0,n]) = 1$ for every $n$, $\maxgap(\{0,2,4,6\}) = 2$, and $\maxgap(\{0,1,2,4,8\}) = 4$.
+This is meant to be a rudimentary measure of how sparse a set $S$ is.
+
+Our next goal, for a fixed $n$ and $h$, is to estimate the number of atoms with $\max(A) = n$ and $\maxgap(A) \le h$; that is, the size of the set $\A^{(n)}\cap \mathcal{G}_h$.
+We have just shown the existence of a fairly sizable class of atoms (the residually concentrated atoms).  
+Let $\A_{m,r}^{(n)} := \mathcal{A}^{(n)} \cap \mathcal{X}_{m,r}$ be the set of $r$-concentrated atoms (modulo $m$) with maximum equal to $n$.
+For our purposes, it will suffice to give an asymptotic lower bound for the size of $\mathcal{A}_{m,r}^{(n)}\cap \mathcal{G}_h$.
+
+We begin be estimating the size of $\mathcal{X}_{m,r}\cap \mathcal{G}_h$, with the intent of later estimating how many members of this collection are atoms.
+
+\begin{lemma} \label{lem:concentration to tuples}
+Let $m\ge 2$, $r\in [0,m-1]$, and $h\ge 2$.
+Then the number $|\mathcal{P}^{(n)}\cap \mathcal{X}_{m,r}\cap \mathcal{G}_h|$ of sets $S$ which are $r$-concentrated (modulo $m$) with $\max(S) = n$ and $\maxgap(S)\le h$ is at least $|\mathcal{E}(\lfloor n/m \rfloor, \lfloor h/m \rfloor)|$, where
+\[ \mathcal{E}(N,t) := \{ \vec{\e}\in \{0,1\}^{N+1}: \vec{\e} \textrm{ has no more than $t$ consecutive zeros}\}. \]
+\end{lemma}
+\begin{proof}
+Given $S\in \mathcal{P}^{(n)}\cap \mathcal{X}_{m,r}$, we may write $S = \{0\}\cup R \cup B$, where $R \subseteq [1,n]\cap (\NN m+r)$ and $B\subseteq \NN\setminus (\NN m + r)$.
+We first observe that if $\maxgap(R)\le h$ then $\maxgap(S)\le h$.
+This is because the consecutive elements of $S$ are at least as close as the consecutive elements of $R$, since $R,S\subseteq [0,n]$ and $R\subseteq S$.
+Thus, to find a lower bound on the number of possible $S\in \mathcal{P}^{(n)}\cap \mathcal{X}_{m,r}\cap \mathcal{G}_h$, it suffices to find a lower bound on the number of possible $R$ arising from such $S$.
+We pivot now to characterizing such $R$ to answer this question.
+
+We may write $R$ as $R = \{ \e_k(km+r): k\in [0,\lfloor n/m \rfloor] \}$ for some $\vec{\e}_R = (\e_0,\dots,\e_{\lfloor n/m \rfloor}) \in \{0,1\}^{\lfloor n/m \rfloor+1}$ (here we are essentially associating to $R$ an ``indicator function'').
+
+\underline{Claim}: if $\vec{\e}_R$ does not have more than $\lfloor h/m \rfloor$ consecutive zeros, then $\maxgap(R) \le h$.
+
+Suppose that $\vec{\e}_R$ does not have any string of more than $\lfloor h/m \rfloor$ zeros.
+If this is the case, then any consecutive elements of $R$ may be written as $km+r$ and $(k+t)m+r$, where $t\le h/m$.
+Then we have that $(k+t)m+r - (km+r) = tm \le \lfloor h/m \rfloor m \le h$, as we wished.
+
+Thus $R$ corresponds via $\vec{\e}_R$ to an element of $\mathcal{E}(\lfloor n/m \rfloor+1,\lfloor h/m \rfloor)$.
+Given another $R'\subseteq [1,n]\cap (\NN m+ r)$ and a similarly chosen $\vec{\e}_{R'}\in \mathcal{E}(\lfloor n/m \rfloor+1,\lfloor h/m \rfloor)$, it is not too difficult to see that $\vec{\e}_R = \vec{\e}_{R'}$ only if $R=R'$, so this correspondence is one-to-one.
+Thus we have that 
+\[ |\mathcal{P}^{(n)}\cap \mathcal{X}_{m,r}\cap \mathcal{G}_h| 
+\ge |\{ R\subseteq [1,n]\cap (\NN m + r): \maxgap(R)\le h\}| 
+\ge |\mathcal{E}(\lfloor n/m \rfloor, \lfloor h/m \rfloor)|, \]
+which is what we set out to show.
+\end{proof}
+
+\begin{lemma} \label{lem:counting tuples}
+Let $\mathcal{E}(N,t)$ be as in Lemma \ref{lem:concentration to tuples} and let $f_t(N):= |\mathcal{E}(N,t)|$.
+Then $f_t(N) = 2^{N+1}$ for each $N\le t$ and, for $N> t$, $f_t(N)$ satisfies the recurrence relation
+\[ f_t(N) = f_t(N-1) + \cdots + f_t(N-t-1). \]
+(The sequence $(f_1(N))$ is known as the \textit{Fibonacci numbers}, and we will call $(f_t(N))$ the \textit{$t$-nacci numbers}).
+%In particular, $f_t(N)$ grows exponentially in $N$.
+\end{lemma}
+\begin{proof}
+For $N\le t$, any sequence $\vec{\e}\in \{0,1\}^{N+1}$ trivially satisfies the condition of having no more than $t$ consecutive zeros, so we see easily that $f_t(N) = 2^{N+1}$.  
+All that remains is to verify the recurrence relation.  
+We set the notation, for each $s \in [0,t]$, that $\mathcal{E}_s(N,t) := \{\vec{\e}\in \mathcal{E}(N,t): \e_s = 1 \textrm{ and } \e_i = 0 \textrm{ for all $i\in [0,s-1]$} \}$ (note that these sets are all well-defined, for we adopt the convention that our sequences $\vec{\e}$ are zero-indexed; that is, of the form $\vec{\e} = (\e_0,\e_1,\dots, \e_N)$).
+
+We can see that $\mathcal{E}(N,t) = \bigsqcup_{s=0}^t \mathcal{E}_s(N,t)$ for, given any $\vec{\e}\in \mathcal{E}(N,t)$, the number of leading zeros in $\vec{\e}$ is $s\le t$ (this shows the left-to-right inclusion, and the other is clear by construction).
+To show the recurrence from here, we merely need to determine $|\mathcal{E}_s(N,t)|$.
+We have that $\vec{\e}\in \mathcal{E}_s(N,t)$ if and only if 
+\[\vec{\e} = (\underbrace{\e_0,\dots,e_{s-1}}_{s \textrm{ leading zeros}}, 1, \vec{\e}_*),\]
+ where $\vec{\e}_*$ has length $N+1 - (s+1)$, so $\vec{\e}_*\in \mathcal{E}(N-s-1,t)$.
+ Thus $|\mathcal{E}_s(N,t)| = |\mathcal{E}(N-s-1,t)|=f_t(N-s-1)$ which, with the disjoint union above, implies the recurrence $f_t(N) = f_t(N-1) + \cdots + f_t(N-t-1)$.
+\end{proof}
+
+Now we are in a position to give a lower estimate for the number of \textit{atoms} which are $r$-concentrated modulo $m$ and have fixed maximum and maximum gap.  
+
+\begin{lemma} \label{lem:counting concentrated atoms}
+Let $m\ge 2$, $r\in [0,m-1]$, $R\subseteq \NN m + r$, and $B \subseteq \NN \setminus (\NN m + r)$ such that, for all $b,b'\in B$, $b\equiv b' \mod m$ only if $b=b'$.
+Set $A := \{0\}\cup R \cup B$ and say that $n:=\max(A)$.
+If $\maxgap(R) \le h$, $|B|\ge 2$, and $n\ge ...$
+\end{lemma}

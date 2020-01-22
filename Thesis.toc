@@ -16,12 +16,12 @@
 \contentsline {section}{\numberline {4.3}Cyclic Monoids and Interval Length Sets}{31}{section.4.3}% 
 \contentsline {chapter}{\numberline {5}Atoms and Intervals in the Natural Power Monoid}{37}{chapter.5}% 
 \contentsline {section}{\numberline {5.1}Construction of Residually Concentrated Atoms}{37}{section.5.1}% 
-\contentsline {chapter}{\numberline {6}Integer Partitions and the Natural Power Monoid}{41}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Algorithmic Approaches and Partition Type}{41}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Admissible and Forbidden Types for Intervals}{45}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}Subsums and Near Intervals}{50}{section.6.3}% 
-\contentsline {chapter}{\numberline {7}Subsets of Integer Lattices}{53}{chapter.7}% 
-\contentsline {section}{\numberline {7.1}Passage Between Power Monoids}{53}{section.7.1}% 
-\contentsline {section}{\numberline {7.2}Independence Arguments in the Natural Lattice}{56}{section.7.2}% 
-\contentsline {section}{\numberline {7.3}Length Sets in High-Dimensional Lattices}{61}{section.7.3}% 
-\contentsline {chapter}{Bibliography}{67}{section*.10}% 
+\contentsline {chapter}{\numberline {6}Integer Partitions and the Natural Power Monoid}{43}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Algorithmic Approaches and Partition Type}{43}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Admissible and Forbidden Types for Intervals}{47}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}Subsums and Near Intervals}{52}{section.6.3}% 
+\contentsline {chapter}{\numberline {7}Subsets of Integer Lattices}{55}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}Passage Between Power Monoids}{55}{section.7.1}% 
+\contentsline {section}{\numberline {7.2}Independence Arguments in the Natural Lattice}{58}{section.7.2}% 
+\contentsline {section}{\numberline {7.3}Length Sets in High-Dimensional Lattices}{63}{section.7.3}% 
+\contentsline {chapter}{Bibliography}{69}{section*.10}% 
