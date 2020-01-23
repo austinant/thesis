@@ -89,7 +89,7 @@ However, we immediately see that this is impossible because we would have that $
 Thus $\delta_{\bar{0}}(X\cap B) + \delta_{\bar{0}}(Y\cap B) + \delta_{\bar{0}}(R) \le 1$ and the inequality from (i) reduces to $|R| \le (1+\delta_{\bar{0}}(Y\cap B)+ (1+\delta_{\bar{0}}(X\cap B)) + \delta_{\bar{0}}(R) + |2B\cap R| \le 3 + |2B \cap R|$.
 \end{proof}
 
-\begin{prop}
+\begin{prop} \label{prop:resid concentrated atoms}
 Let $m\ge 2$, $r\in [0,m-1]$, and let $A := \{0\}\cup R \cup B$ with $R$ and $B$ as in Definition \ref{def:resid concentrated}.
 If 
 \begin{enumerate}[label={\rm (\arabic{*})}]
@@ -137,35 +137,47 @@ Thus $Y\cap B = \emptyset$ and we now have $A = X+Y = \{0,b\} + \{0\}\cup (Y\cap
 From this, we deduce that $R = \{b\}$; since we know that $b\equiv 0 \mod m$ and $X = \{0,b\}$ is a factor of $A$, this yields a contradiction of condition (3), finishing the proof.
 \end{proof}
 
+\section{Counting Sets with Bounded Maximum Gap}
+
 \begin{defn} \label{def:maxgap}
 Let $S = \{s_0,\dots, s_k\} \subseteq \NN$ be a nonempty subset with $s_0 < \dots < s_k$.
-We will say that, for each $i\in [1,k]$, $s_{i-1}$ and $s_i$ are \textbf{consecutive} elements of $S$, and we define the maximum gap of $S$ $\maxgap(S) := \max \{s_i - s_{i-1} : i\in [1,k]\}$ to be the largest distance between consecutive elements of $S$.
+We will say that, for each $i\in [1,k]$, $s_{i-1}$ and $s_i$ are \textit{consecutive} elements of $S$, and we define the \textbf{maximum gap} of $S$ $\maxgap(S) := \max \{s_i - s_{i-1} : i\in [1,k]\}$ to be the largest distance between consecutive elements of $S$.
 
 For a fixed $h\ge 1$, let $\mathcal{G}_h := \{S\subseteq \NN: \maxgap(S) \le h\}$.
 \end{defn}
 
-For the sake of noting some concrete examples, we have $\maxgap([0,n]) = 1$ for every $n$, $\maxgap(\{0,2,4,6\}) = 2$, and $\maxgap(\{0,1,2,4,8\}) = 4$.
+For the sake of noting some concrete examples: we have $\maxgap([0,n]) = 1$ for every $n$, $\maxgap(\{0,2,4,6\}) = 2$, and $\maxgap(\{0,1,2,4,8\}) = 4$.
 This is meant to be a rudimentary measure of how sparse a set $S$ is.
 
 Our next goal, for a fixed $n$ and $h$, is to estimate the number of atoms with $\max(A) = n$ and $\maxgap(A) \le h$; that is, the size of the set $\A^{(n)}\cap \mathcal{G}_h$.
-We have just shown the existence of a fairly sizable class of atoms (the residually concentrated atoms).  
-Let $\A_{m,r}^{(n)} := \mathcal{A}^{(n)} \cap \mathcal{X}_{m,r}$ be the set of $r$-concentrated atoms (modulo $m$) with maximum equal to $n$.
-For our purposes, it will suffice to give an asymptotic lower bound for the size of $\mathcal{A}_{m,r}^{(n)}\cap \mathcal{G}_h$.
+We have just shown the existence of a fairly sizable class of atoms (the residually concentrated atoms) with a specific structure.  
+Our next step is to exploit this structure to gain a lower bound on the number of these atoms.
+Specifically, we would like to give a lower estimate for the number of elements of $\mathcal{A}^{(n)}\cap \mathcal{X}_{m,r} \cap \mathcal{G}_h$, the collection of atoms with maximum equal to $n$, which are $r$-concentrated (modulo $m$), and have a maximum gap of at most $h$.
 
-We begin be estimating the size of $\mathcal{X}_{m,r}\cap \mathcal{G}_h$, with the intent of later estimating how many members of this collection are atoms.
-
-\begin{lemma} \label{lem:concentration to tuples}
-Let $m\ge 2$, $r\in [0,m-1]$, and $h\ge 2$.
-Then the number $|\mathcal{P}^{(n)}\cap \mathcal{X}_{m,r}\cap \mathcal{G}_h|$ of sets $S$ which are $r$-concentrated (modulo $m$) with $\max(S) = n$ and $\maxgap(S)\le h$ is at least $|\mathcal{E}(\lfloor n/m \rfloor, \lfloor h/m \rfloor)|$, where
-\[ \mathcal{E}(N,t) := \{ \vec{\e}\in \{0,1\}^{N+1}: \vec{\e} \textrm{ has no more than $t$ consecutive zeros}\}. \]
-\end{lemma}
-\begin{proof}
-Given $S\in \mathcal{P}^{(n)}\cap \mathcal{X}_{m,r}$, we may write $S = \{0\}\cup R \cup B$, where $R \subseteq [1,n]\cap (\NN m+r)$ and $B\subseteq \NN\setminus (\NN m + r)$.
-We first observe that if $\maxgap(R)\le h$ then $\maxgap(S)\le h$.
-This is because the consecutive elements of $S$ are at least as close as the consecutive elements of $R$, since $R,S\subseteq [0,n]$ and $R\subseteq S$.
+Given $A\in \mathcal{A}^{(n)}\cap \mathcal{X}_{m,r}$, we may write $A = \{0\}\cup R \cup B$, where $R \subseteq [1,n]\cap (\NN m+r)$ and $B\subseteq \NN\setminus (\NN m + r)$.
+We first observe that if $\maxgap(R)\cup\{0,n\}\le h$ then $\maxgap(A)\le h$. 
+This is because the consecutive elements of $A$ are at least as close as the consecutive elements of $R$, since $R\subseteq A\subseteq [0,n]$.
 Thus, to find a lower bound on the number of possible $S\in \mathcal{P}^{(n)}\cap \mathcal{X}_{m,r}\cap \mathcal{G}_h$, it suffices to find a lower bound on the number of possible $R$ arising from such $S$.
 We pivot now to characterizing such $R$ to answer this question.
 
+%As a starting point, we will estimate the number of sets $R\subseteq \NN m+ r$ which have bounded maximum and maximum gap.
+
+%Let $\A_{m,r}^{(n)} := \mathcal{A}^{(n)} \cap \mathcal{X}_{m,r}$ be the set of $r$-concentrated atoms (modulo $m$) with maximum equal to $n$.
+%For our purposes, it will suffice to give an asymptotic lower bound for the size of $\mathcal{A}_{m,r}^{(n)}\cap \mathcal{G}_h$.
+
+%We begin by estimating the size of $\mathcal{X}_{m,r}\cap \mathcal{G}_h$, with the intent of later estimating how many members of this collection are atoms.
+
+
+
+
+
+\begin{lemma} \label{lem:concentration to tuples}
+Let $m\ge 2$, $r\in [0,m-1]$, and $h\ge 2$.
+Then the number of subsets $R\subseteq [1,n]\cap (\NN m +r)$ which satisfy $\maxgap(\{0,n\}\cup R) \le h$ is at least $|\mathcal{E}(N,t)|$, where
+%Then the number $|\mathcal{P}^{(n)}\cap \mathcal{X}_{m,r}\cap \mathcal{G}_h|$ of sets $S$ which are $r$-concentrated (modulo $m$) with $\max(S) = n$ and $\maxgap(S)\le h$ is at least $|\mathcal{E}(\lfloor n/m \rfloor, \lfloor h/m \rfloor)|$, where
+\[ \mathcal{E}(N,t) := \{ \vec{\e}\in \{0,1\}^{N+1}: \vec{\e} \textrm{ has no more than $t$ consecutive zeros}\}. \]
+\end{lemma}
+\begin{proof}
 We may write $R$ as $R = \{ \e_k(km+r): k\in [0,\lfloor n/m \rfloor] \}$ for some $\vec{\e}_R = (\e_0,\dots,\e_{\lfloor n/m \rfloor}) \in \{0,1\}^{\lfloor n/m \rfloor+1}$ (here we are essentially associating to $R$ an ``indicator function'').
 
 \underline{Claim}: if $\vec{\e}_R$ does not have more than $\lfloor h/m \rfloor$ consecutive zeros, then $\maxgap(R) \le h$.
@@ -175,21 +187,20 @@ If this is the case, then any consecutive elements of $R$ may be written as $km+
 Then we have that $(k+t)m+r - (km+r) = tm \le \lfloor h/m \rfloor m \le h$, as we wished.
 
 Thus $R$ corresponds via $\vec{\e}_R$ to an element of $\mathcal{E}(\lfloor n/m \rfloor+1,\lfloor h/m \rfloor)$.
-Given another $R'\subseteq [1,n]\cap (\NN m+ r)$ and a similarly chosen $\vec{\e}_{R'}\in \mathcal{E}(\lfloor n/m \rfloor+1,\lfloor h/m \rfloor)$, it is not too difficult to see that $\vec{\e}_R = \vec{\e}_{R'}$ only if $R=R'$, so this correspondence is one-to-one.
+Given another $R'\subseteq [1,n]\cap (\NN m+ r)$ and a similarly chosen $\vec{\e}_{R'}\in \mathcal{E}(\lfloor n/m \rfloor,\lfloor h/m \rfloor)$, it is not too difficult to see that $\vec{\e}_R = \vec{\e}_{R'}$ only if $R=R'$, so this correspondence is one-to-one.
 Thus we have that 
-\[ |\mathcal{P}^{(n)}\cap \mathcal{X}_{m,r}\cap \mathcal{G}_h| 
-\ge |\{ R\subseteq [1,n]\cap (\NN m + r): \maxgap(R)\le h\}| 
+\[ |\{ R\subseteq [1,n]\cap (\NN m + r): \maxgap(R)\le h\}| 
 \ge |\mathcal{E}(\lfloor n/m \rfloor, \lfloor h/m \rfloor)|, \]
 which is what we set out to show.
 \end{proof}
 
-\begin{lemma} \label{lem:counting tuples}
+\begin{prop} \label{lem:nacci numbers}
 Let $\mathcal{E}(N,t)$ be as in Lemma \ref{lem:concentration to tuples} and let $f_t(N):= |\mathcal{E}(N,t)|$.
 Then $f_t(N) = 2^{N+1}$ for each $N\le t$ and, for $N> t$, $f_t(N)$ satisfies the recurrence relation
 \[ f_t(N) = f_t(N-1) + \cdots + f_t(N-t-1). \]
 (The sequence $(f_1(N))$ is known as the \textit{Fibonacci numbers}, and we will call $(f_t(N))$ the \textit{$t$-nacci numbers}).
 %In particular, $f_t(N)$ grows exponentially in $N$.
-\end{lemma}
+\end{prop}
 \begin{proof}
 For $N\le t$, any sequence $\vec{\e}\in \{0,1\}^{N+1}$ trivially satisfies the condition of having no more than $t$ consecutive zeros, so we see easily that $f_t(N) = 2^{N+1}$.  
 All that remains is to verify the recurrence relation.  
@@ -198,15 +209,54 @@ We set the notation, for each $s \in [0,t]$, that $\mathcal{E}_s(N,t) := \{\vec{
 We can see that $\mathcal{E}(N,t) = \bigsqcup_{s=0}^t \mathcal{E}_s(N,t)$ for, given any $\vec{\e}\in \mathcal{E}(N,t)$, the number of leading zeros in $\vec{\e}$ is $s\le t$ (this shows the left-to-right inclusion, and the other is clear by construction).
 To show the recurrence from here, we merely need to determine $|\mathcal{E}_s(N,t)|$.
 We have that $\vec{\e}\in \mathcal{E}_s(N,t)$ if and only if 
-\[\vec{\e} = (\underbrace{\e_0,\dots,e_{s-1}}_{s \textrm{ leading zeros}}, 1, \vec{\e}_*),\]
+\[\vec{\e} = (\!\!\!\!\!\underbrace{0,\dots,0}_{s \textrm{ leading zeros}}\!\!\!\!\!, 1, \vec{\e}_*),\]
  where $\vec{\e}_*$ has length $N+1 - (s+1)$, so $\vec{\e}_*\in \mathcal{E}(N-s-1,t)$.
  Thus $|\mathcal{E}_s(N,t)| = |\mathcal{E}(N-s-1,t)|=f_t(N-s-1)$ which, with the disjoint union above, implies the recurrence $f_t(N) = f_t(N-1) + \cdots + f_t(N-t-1)$.
 \end{proof}
 
-Now we are in a position to give a lower estimate for the number of \textit{atoms} which are $r$-concentrated modulo $m$ and have fixed maximum and maximum gap.  
-
-\begin{lemma} \label{lem:counting concentrated atoms}
-Let $m\ge 2$, $r\in [0,m-1]$, $R\subseteq \NN m + r$, and $B \subseteq \NN \setminus (\NN m + r)$ such that, for all $b,b'\in B$, $b\equiv b' \mod m$ only if $b=b'$.
-Set $A := \{0\}\cup R \cup B$ and say that $n:=\max(A)$.
-If $\maxgap(R) \le h$, $|B|\ge 2$, and $n\ge ...$
+\begin{lemma}
+	Let $m\ge 2$, $r\in[0,m-1]$ and $R\subseteq \NN m + r$.
+	Suppose $n \ge \max(R)$ and $\maxgap(\{0,n\}\cup R) \le h$.
+	If $n \ge kh$ then $|R| \ge k$.
 \end{lemma}
+
+\begin{proof}
+First observe that $\max(R) \ge \lfloor n/m \rfloor m$ and $\min(R) \le m$.
+Now we note that $R$ has $|R|-1$ pairs of consecutive elements, each of which is has a difference no larger than $h$.
+Thus we get
+\[ \lfloor n/m \rfloor m - m \le \max(R) - \min(R) \le (|R|-1)\maxgap(R) \le (|R|-1)h, \]
+which in turn yields that 
+\[|R|-1 \ge \frac{(\lfloor n/m \rfloor -1)m}{h} = \frac{\lfloor n/m \rfloor -1}{h/m} \ge \frac{n/m-2}{h/m} = \frac{n-2/m}{h},\]
+so $|R| \ge \frac{n}{h} \ge k$.
+\end{proof}
+
+
+Now we are in a position to give a lower estimate for the number of \textit{atoms} which are $r$-concentrated modulo $m$ and have fixed maximum and bounded maximum gap.  
+
+\begin{lemma} \label{lem:bounded gap but many elements}
+Let $m\ge 2$, $r\in [0,m-1]$, $R\subseteq [1,n]\cap (\NN m + r)$, and $B \subseteq \NN \setminus (\NN m + r)$ such that, for all $b,b'\in B$, $b\equiv b' \mod m$ only if $b=b'$.
+Set $A := \{0\}\cup R \cup B$ and say that $n:=\max(A)$.
+If $\maxgap(R) \le h$, $|B|\ge 2$, and $n > (|B|+3)h$ then $A$ is an atom.
+\end{lemma}
+
+\begin{proof}
+By construction, $A$ is $r$-concentrated (modulo $m$). 
+We can see that the assumption $|B|\ge 2$ satisfies conditions (1) and (3) of Proposition \ref{prop:resid concentrated atoms}.
+To guarantee that $A$ is an atom, we need to show that $|R| > 3 + |R\cap 2B|$.
+
+Here, we note that $R\cap 2B \subseteq (\NN m + r) \cap 2B$, so it suffices to estimate the number of possible pairs $(a,b)\in B\times B$ such that $a+b\equiv r\mod m$.
+Because of the assumption that $B$ only has at most one element of each congruence class modulo $m$, for any $a\in B$ there is at most a single $b\in B$ with $a+b\equiv r$.  
+Thus we have $|(\NN m + r)\cap 2B | \le |B|$ and so
+\[|R| > |B|+3 \ge |(\NN m + r) \cap 2B| \ge |R\cap 2B| + 3,\]
+where the first inequality follows from applying Lemma \ref{lem:bounded gap but many elements} and our assumption that $n\ge (|B|+3)h$.
+\end{proof}
+
+\begin{prop}
+Let $n,h\ge 2$.
+Then the number $|\mathcal{A}^{(n)}\cap \mathcal{G}_h|$ of atoms with maximum equal to $n$ and maximum gap bounded by $h$ grows exponentially with $n$.
+\end{prop}
+
+\begin{prop}
+Let $n\ge 2$.
+Then the number $|\mathsf{Z}([0,n])|$ of factorizations of the interval $[0,n]$ into atoms of $\PN$ grows exponentially with $n$.
+\end{prop}

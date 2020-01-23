@@ -16,6 +16,7 @@
 \contentsline {section}{\numberline {4.3}Cyclic Monoids and Interval Length Sets}{31}{section.4.3}% 
 \contentsline {chapter}{\numberline {5}Atoms and Intervals in the Natural Power Monoid}{37}{chapter.5}% 
 \contentsline {section}{\numberline {5.1}Construction of Residually Concentrated Atoms}{37}{section.5.1}% 
+\contentsline {section}{\numberline {5.2}Counting Sets with Bounded Maximum Gap}{40}{section.5.2}% 
 \contentsline {chapter}{\numberline {6}Integer Partitions and the Natural Power Monoid}{43}{chapter.6}% 
 \contentsline {section}{\numberline {6.1}Algorithmic Approaches and Partition Type}{43}{section.6.1}% 
 \contentsline {section}{\numberline {6.2}Admissible and Forbidden Types for Intervals}{47}{section.6.2}% 
