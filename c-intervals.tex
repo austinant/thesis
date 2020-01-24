@@ -137,7 +137,7 @@ Thus $Y\cap B = \emptyset$ and we now have $A = X+Y = \{0,b\} + \{0\}\cup (Y\cap
 From this, we deduce that $R = \{b\}$; since we know that $b\equiv 0 \mod m$ and $X = \{0,b\}$ is a factor of $A$, this yields a contradiction of condition (3), finishing the proof.
 \end{proof}
 
-\section{Counting Sets with Bounded Maximum Gap}
+\section{Nacci Numbers and Sets with Bounded Maximum Gap}
 
 \begin{defn} \label{def:maxgap}
 Let $S = \{s_0,\dots, s_k\} \subseteq \NN$ be a nonempty subset with $s_0 < \dots < s_k$.
@@ -173,7 +173,7 @@ We pivot now to characterizing such $R$ to answer this question.
 
 \begin{lemma} \label{lem:concentration to tuples}
 Let $m\ge 2$, $r\in [0,m-1]$, and $h\ge 2$.
-Then the number of subsets $R\subseteq [1,n]\cap (\NN m +r)$ which satisfy $\maxgap(\{0,n\}\cup R) \le h$ is at least $|\mathcal{E}(N,t)|$, where
+Then the number of subsets $R\subseteq [1,n]\cap (\NN m +r)$ which satisfy $\maxgap(\{0,n\}\cup R) \le h$ is at least $|\mathcal{E}(\lfloor n/m \rfloor,\lfloor h/m \rfloor)|$, where
 %Then the number $|\mathcal{P}^{(n)}\cap \mathcal{X}_{m,r}\cap \mathcal{G}_h|$ of sets $S$ which are $r$-concentrated (modulo $m$) with $\max(S) = n$ and $\maxgap(S)\le h$ is at least $|\mathcal{E}(\lfloor n/m \rfloor, \lfloor h/m \rfloor)|$, where
 \[ \mathcal{E}(N,t) := \{ \vec{\e}\in \{0,1\}^{N+1}: \vec{\e} \textrm{ has no more than $t$ consecutive zeros}\}. \]
 \end{lemma}
@@ -194,16 +194,25 @@ Thus we have that
 which is what we set out to show.
 \end{proof}
 
-\begin{prop} \label{lem:nacci numbers}
-Let $\mathcal{E}(N,t)$ be as in Lemma \ref{lem:concentration to tuples} and let $f_t(N):= |\mathcal{E}(N,t)|$.
-Then $f_t(N) = 2^{N+1}$ for each $N\le t$ and, for $N> t$, $f_t(N)$ satisfies the recurrence relation
-\[ f_t(N) = f_t(N-1) + \cdots + f_t(N-t-1). \]
-(The sequence $(f_1(N))$ is known as the \textit{Fibonacci numbers}, and we will call $(f_t(N))$ the \textit{$t$-nacci numbers}).
-%In particular, $f_t(N)$ grows exponentially in $N$.
+\begin{defn} \label{def:nacci numbers}
+Let $t\ge 1$.
+We will define a function $f_t: \NN \to \NN$ by $f_t(N) = 2^{N+1}$ if $N\le t$ and 
+\[ f_t(N) = f_t(N-1) + \cdots + f_t(N-t-1) \]
+for all $N>t$.
+We shall call $f_t(1), f_t(2),\dots$ the sequence of \textbf{$t$-nacci numbers} (as $f_1$ produces the familiar sequence of \textit{Fibonacci numbers}).
+\end{defn}
+Comparing with the recurrences studied in \cite{wolfram98}, we see that our notation differs from that of Wolfram.
+For instance, in his notation, $k=2$ corresponds to the ordinary Fibonacci numbers, leading us to conclude that our $t$ is the same as his $k+1$.
+Our initial values are also different; in particular, the first few terms of ``traditional'' nacci sequences may be zero, with the first nonzero term being equal to $1$. 
+Thus our $t$-nacci numbers are the same, up to some offset of indices, as the usual $k+1$-nacci numbers.
+We keep our choice of notation here for the way in which it assists in counting binary sequences which avoid long strings of $0$s, which we will make precise now.
+
+\begin{prop} \label{lem:nacci numbers count tuples}
+Let $\mathcal{E}(N,t)$ be as in Lemma \ref{lem:concentration to tuples}. Then $|\mathcal{E}(N,t)| = f_t(N)$ (with $f_t$ as above).
 \end{prop}
 \begin{proof}
-For $N\le t$, any sequence $\vec{\e}\in \{0,1\}^{N+1}$ trivially satisfies the condition of having no more than $t$ consecutive zeros, so we see easily that $f_t(N) = 2^{N+1}$.  
-All that remains is to verify the recurrence relation.  
+For $N\le t$, any sequence $\vec{\e}\in \{0,1\}^{N+1}$ trivially satisfies the condition of having no more than $t$ consecutive zeros, so we see easily that $|\mathcal{E}(N,t)| = 2^{N+1} = f_t(N)$.  
+All that remains is to verify that $|\mathcal{E}(N,t)|$ satisfies the same recurrence relation as $f_t(N)$.
 We set the notation, for each $s \in [0,t]$, that $\mathcal{E}_s(N,t) := \{\vec{\e}\in \mathcal{E}(N,t): \e_s = 1 \textrm{ and } \e_i = 0 \textrm{ for all $i\in [0,s-1]$} \}$ (note that these sets are all well-defined, for we adopt the convention that our sequences $\vec{\e}$ are zero-indexed; that is, of the form $\vec{\e} = (\e_0,\e_1,\dots, \e_N)$).
 
 We can see that $\mathcal{E}(N,t) = \bigsqcup_{s=0}^t \mathcal{E}_s(N,t)$ for, given any $\vec{\e}\in \mathcal{E}(N,t)$, the number of leading zeros in $\vec{\e}$ is $s\le t$ (this shows the left-to-right inclusion, and the other is clear by construction).
@@ -211,10 +220,29 @@ To show the recurrence from here, we merely need to determine $|\mathcal{E}_s(N,
 We have that $\vec{\e}\in \mathcal{E}_s(N,t)$ if and only if 
 \[\vec{\e} = (\!\!\!\!\!\underbrace{0,\dots,0}_{s \textrm{ leading zeros}}\!\!\!\!\!, 1, \vec{\e}_*),\]
  where $\vec{\e}_*$ has length $N+1 - (s+1)$, so $\vec{\e}_*\in \mathcal{E}(N-s-1,t)$.
- Thus $|\mathcal{E}_s(N,t)| = |\mathcal{E}(N-s-1,t)|=f_t(N-s-1)$ which, with the disjoint union above, implies the recurrence $f_t(N) = f_t(N-1) + \cdots + f_t(N-t-1)$.
+ Thus $|\mathcal{E}_s(N,t)| = |\mathcal{E}(N-s-1,t)|=f_t(N-s-1)$ which, with the disjoint union above, implies that $|\mathcal{E}(N,t)| = f_t(N-1) + \cdots + f_t(N-t-1) = f_t(N)$.
 \end{proof}
 
-\begin{lemma}
+Now that we have shown the atoms we are concerned with are counted (in part) by $t$-nacci numbers, we borrow some general facts from \cite{wolfram98} about the rate of growth in $N$ of $f_t(N)$.
+
+\begin{prop} \label{prop:nacci growth}
+Let $t\ge 1$.
+\begin{enumerate}[label = {(\roman{*})}]
+	\item The limit $r_t = \lim\limits_{N\to\infty} \frac{f_t(N+1)}{f_t(N)}$ exists;
+	\item $2-2^{-t} < r_t < 2$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Both of these facts (and others) are proved in \cite[Lemma 3.6, Corollary 3.7]{wolfram98}.
+\end{proof}
+
+\section{Lower Bounds for Numbers of Atoms and Factorizations}
+
+Here we return to our main task of determining lower bounds for (1) the number of atoms with a given maximum and (2) the number of factorizations of an interval. 
+
+
+\begin{lemma} \label{lem:bounded gap but many elements}
 	Let $m\ge 2$, $r\in[0,m-1]$ and $R\subseteq \NN m + r$.
 	Suppose $n \ge \max(R)$ and $\maxgap(\{0,n\}\cup R) \le h$.
 	If $n \ge kh$ then $|R| \ge k$.
@@ -222,18 +250,17 @@ We have that $\vec{\e}\in \mathcal{E}_s(N,t)$ if and only if
 
 \begin{proof}
 First observe that $\max(R) \ge \lfloor n/m \rfloor m$ and $\min(R) \le m$.
-Now we note that $R$ has $|R|-1$ pairs of consecutive elements, each of which is has a difference no larger than $h$.
+Now we note that $R$ has $|R|-1$ pairs of consecutive elements, each of which has a difference no larger than $h$.
 Thus we get
 \[ \lfloor n/m \rfloor m - m \le \max(R) - \min(R) \le (|R|-1)\maxgap(R) \le (|R|-1)h, \]
 which in turn yields that 
-\[|R|-1 \ge \frac{(\lfloor n/m \rfloor -1)m}{h} = \frac{\lfloor n/m \rfloor -1}{h/m} \ge \frac{n/m-2}{h/m} = \frac{n-2/m}{h},\]
-so $|R| \ge \frac{n}{h} \ge k$.
+\[|R| \ge \frac{(\lfloor n/m \rfloor -1)m}{h}+1 = \frac{\lfloor n/m \rfloor -1}{h/m}+1 \ge \frac{n/m-2}{h/m}+1 = \frac{n-2/m}{h}+1 \ge \frac{n}{h} \ge k.\qedhere\]
 \end{proof}
 
 
 Now we are in a position to give a lower estimate for the number of \textit{atoms} which are $r$-concentrated modulo $m$ and have fixed maximum and bounded maximum gap.  
 
-\begin{lemma} \label{lem:bounded gap but many elements}
+\begin{lemma} \label{lem:R and B for atoms}
 Let $m\ge 2$, $r\in [0,m-1]$, $R\subseteq [1,n]\cap (\NN m + r)$, and $B \subseteq \NN \setminus (\NN m + r)$ such that, for all $b,b'\in B$, $b\equiv b' \mod m$ only if $b=b'$.
 Set $A := \{0\}\cup R \cup B$ and say that $n:=\max(A)$.
 If $\maxgap(R) \le h$, $|B|\ge 2$, and $n > (|B|+3)h$ then $A$ is an atom.
@@ -252,11 +279,59 @@ where the first inequality follows from applying Lemma \ref{lem:bounded gap but 
 \end{proof}
 
 \begin{prop}
-Let $n,h\ge 2$.
-Then the number $|\mathcal{A}^{(n)}\cap \mathcal{G}_h|$ of atoms with maximum equal to $n$ and maximum gap bounded by $h$ grows exponentially with $n$.
+Let $h\ge 2$.
+Then, for sufficiently large $n$, the number $|\mathcal{A}^{(n)}\cap \mathcal{G}_h|$ of atoms with maximum equal to $n$ and maximum gap bounded by $h$ grows exponentially with $n$.
 \end{prop}
+
+\begin{proof}
+First fix $m\in [2,\lfloor h/2 \rfloor]$ and $r\in [0,m-1]$.
+We can count the members of $\mathcal{A}^{(n)}\cap \mathcal{X}_{m,r}\cap \mathcal{G}_h$, which will in turn give a lower bound for $|\mathcal{A}^{(n)}\cap \mathcal{G}_h|$.
+To enumerate members of the former, we have discovered (via Lemma \ref{lem:R and B for atoms}) that it is sufficient to count the number of 
+\begin{itemize}
+	\item subsets $B\subseteq [1,n]\setminus(\NN m + r)$ such that $|B\cap (\NN m + s)| \le 1$ for all $s\in [0,m-1]$ and
+	\item subsets $R\subseteq [1,n]\cap (\NN m +r)$ such that $\maxgap(\{0,n\} \cup R) \le h$ and $|R| > |B|+3$.
+\end{itemize}
+To guarantee that the atoms we enumerate have maximum equal to $n$, let us also impose the restriction that $n\in R\cup B$.
+Whether $n\in R$ or $n\in B$ depends on if $n\equiv r \mod m$, but in either case we may always ensure that $n\in R\cup B$.
+
+Let us start by determining the number of feasible $B$.
+Since $|B\cap (\NN m + s)|\le 1$ for all $s\in [0,m-1]$, we have $|[1,n]\cap (\NN m + s)| \ge \lfloor n/m \rfloor$ choices for each $s$.
+Assuming (in the worst case) that $n\not\equiv r\mod m$, one of these choices is not free and we are forced to choose $n\in B$.
+This still leaves at least $\lfloor n/m \rfloor ^{m-2}$ choices for $B$.
+
+Now we turn to count the subsets $R$ fitting the specifications above.
+Assume $n \ge (m+3)h$.
+If $R\subseteq [1,n]\cap (\NN m + r)$ such that $\maxgap(\{0,n\}\cup R)\le h$ then Lemma \ref{lem:bounded gap but many elements} yields that $|R| > m+2 \ge |B| + 3$ (where the second inequality follows from the restriction that $B$ may have at most one element of any residue class $\not\equiv r$ modulo $m$).
+This ensures, by Lemma \ref{lem:R and B for atoms}, that $A:= \{0\}\cup R \cup B$ is an atom.  
+
+The number of such $R$ as specified above is at least $|\mathcal{E}(\lfloor n/m \rfloor,\lfloor h/m\rfloor)| = f_{\lfloor h/m \rfloor}(\lfloor n/m \rfloor)$ (Lemmas \ref{lem:concentration to tuples} and \ref{lem:nacci numbers count tuples}), whence Proposition \ref{prop:nacci growth} implies that the number of such $R$ grows exponentially as $n$ increases.
+That is, there is some absolute constant $C$ which depends possibly on $m$ and $h$ (but not on $n$) such that 
+\[|\{R\subseteq [1,n]\cap (\NN m +r): \maxgap(\{0,n\}\cup R)\}| \ge f_{\lfloor h/m \rfloor}(\lfloor n/m\rfloor) \ge C (2-2^{-\lfloor h/m\rfloor})^{\lfloor n/m \rfloor}. \]
+We conclude then that $|\mathcal{A}^{(n)}\cap \mathcal{G}_h| \ge C(2-2^{-\lfloor h/m \rfloor})^{\lfloor n/m \rfloor}$, so $|\mathcal{A}^{(n)}\cap \mathcal{G}_h|$ has an exponential growth rate of at least $(2-2^{-\lfloor h/m\rfloor})^{1/m}$.
+One can further maximize this quantity by choosing $m=2$ to obtain a growth factor of at least $\sqrt{(2-2^{-\lfloor h/2 \rfloor})}$.
+\end{proof}
+
+As a consequence of this, we may now produce many distinct factorizations of intervals into atoms.
 
 \begin{prop}
 Let $n\ge 2$.
 Then the number $|\mathsf{Z}([0,n])|$ of factorizations of the interval $[0,n]$ into atoms of $\PN$ grows exponentially with $n$.
 \end{prop}
+
+\begin{proof}
+Let $P = (m_1,\dots, m_k)$ be a partition of $n$ such that $m_1 > m_2$.
+For notational hygiene, set $m:= m_1$ and let $Q = (m_2,\dots, m_k)$ be the partition of $n-m$ obtained by removing the first part of $P$.
+
+Observe that, if $A\in \mathcal{A}^{(m)}\cap \mathcal{G}_{n-m}$ and $\aa\in \Z^Q([0,n-m])$, then $A*\aa\in \Z^P([0,n])$.
+Indeed, we can write $A = \{a_0,a_1,\dots, a_k\}$ with $0 =a_0 < a_1 <\dots < a_k = m$ such that $a_i - a_{i-1} \le n-m$ for all $i\in[1,k]$.
+Then 
+\[\pi_\PN(A*\aa) = A + [0,n-m] = \bigcup_{i=0}^k ([a_i,a_i+n-m]) = [0,n], \]
+where the last inequality follows since $a_i \le a_{i-1} + n-m$ for each $i\in [1,k]$, by the assumption that $\maxgap(A) \le n-m$.
+
+Also, suppose $A,B\in \A^{(m)}$ and $\aa,\bb\in \Z^Q([0,n-m])$.
+Then, since $m > m_2 \ge \cdots \ge m_k$, none of the factors in $\bb$ is equal to $A$ (and similarly, none of the factors in $\aa$ is equal to $B$).
+Thus $A*\aa$ is equivalent to $B*\bb$ as a factorization in $\PN$ if and only if $A=B$, and $\aa$ and $\bb$ are equivalent factorizations. 
+From this it follows that
+\[ \Z^{P}([0,n]) \ge |\A^{(m)}\cap \mathcal{G}_{n-m}| \cdot |\Z^Q([0,n-m])| \ge C\left(\sqrt{2-2^{-n-m}}\right)^m \cdot |\Z^Q([0,n-m])|.\]
+If we more specifically chose $P$ such that $m\ge n/2$ and $Q = (m_2,\dots,m_k)$ is a partition of $n-m$ with $\Z^Q([0,n-m])\neq \emptyset$, then the above string of inequalities reduces to $\Z^{P}([0,n])\ge C\left(\sqrt{2-2^{-n-m}}\right)^{n/2}$, showing that $|Z^{P}([0,n])|$ does indeed grow exponentially.
+\end{proof}

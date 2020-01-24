@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  22 JAN 2020 19:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  23 JAN 2020 17:13
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -846,35 +846,35 @@ OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 4\OML/cmm/m/it/10 ; \OT1/cmr
 /m/n/10 6\OMS/cmsy/m/n/10 g\OT1/cmr/m/n/10 ) =
  []
 
-[40] [41]) [42]
+[40] [41] [42] [43]) [44]
 \openout2 = `c-partitions.aux'.
 
  (./c-partitions.tex
 Chapter 6.
-[43
+[45
 
 
 
-] [44] [45] [46] [47] [48]
+] [46] [47] [48] [49] [50]
 Underfull \vbox (badness 1584) has occurred while \output is active []
 
- [49]
-[50] [51] [52] [53]) [54]
+ [51]
+[52] [53] [54] [55]) [56]
 \openout2 = `c-lattices.aux'.
 
  (./c-lattices.tex
 Chapter 7.
-[55
+[57
 
 
 
-] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65] [66]) [67] [68
+] [58] [59] [60] [61] [62] [63] [64] [65] [66] [67] [68]) [69] [70
 
 
 ]
-(./Thesis.bbl [69
+(./Thesis.bbl [71
 
-]) [70]
+]) [72]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 53.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 53.
  (./Thesis.aux (./c-intro.aux) (./c-fundamentals.aux)
@@ -883,16 +883,16 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 53.
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 53.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 53.
 Package rerunfilecheck Info: File `Thesis.out' has not changed.
-(rerunfilecheck)             Checksum: A3A8D51472B97CC75C7F59D6B0625E32;2178.
+(rerunfilecheck)             Checksum: 0F1F5BE2A344A40DCF07711CB427DE16;2286.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 53.
  ) 
 Here is how much of TeX's memory you used:
- 18353 strings out of 492624
- 353861 string characters out of 6129578
- 450925 words of memory out of 5000000
- 21873 multiletter control sequences out of 15000+600000
+ 18358 strings out of 492624
+ 353959 string characters out of 6129578
+ 451182 words of memory out of 5000000
+ 21878 multiletter control sequences out of 15000+600000
  17247 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  65i,16n,87p,930b,1044s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Thesis.dvi (74 pages, 529748 bytes).
+Output written on Thesis.dvi (76 pages, 544748 bytes).

@@ -1,57 +1,58 @@
 This is BibTeX, Version 0.99d (TeX Live 2019)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: Thesis.aux
-A level-1 auxiliary file: chap-intro.aux
-A level-1 auxiliary file: chap-fundamentals.aux
-A level-1 auxiliary file: chap-PMA.aux
-A level-1 auxiliary file: chap-minfac.aux
-A level-1 auxiliary file: chap-partitions.aux
-A level-1 auxiliary file: chap-lattices.aux
+A level-1 auxiliary file: c-intro.aux
+A level-1 auxiliary file: c-fundamentals.aux
+A level-1 auxiliary file: c-atomicity.aux
+A level-1 auxiliary file: c-minfac.aux
+A level-1 auxiliary file: c-intervals.aux
+A level-1 auxiliary file: c-partitions.aux
+A level-1 auxiliary file: c-lattices.aux
 The style file: alpha.bst
 Database file #1: bib.bib
 I was expecting an "="---line 293 of file bib.bib
  : @incollection 
  :               {cziszter-al16,
 I'm skipping whatever remains of this entry
-You've used 22 entries,
+You've used 23 entries,
             2543 wiz_defined-function locations,
-            721 strings with 7462 characters,
-and the built_in function-call counts, 8705 in all, are:
-= -- 900
-> -- 355
+            730 strings with 7551 characters,
+and the built_in function-call counts, 8782 in all, are:
+= -- 898
+> -- 363
 < -- 14
-+ -- 118
-- -- 114
-* -- 626
-:= -- 1410
-add.period$ -- 68
-call.type$ -- 22
-change.case$ -- 127
-chr.to.int$ -- 20
-cite$ -- 22
-duplicate$ -- 368
-empty$ -- 637
-format.name$ -- 145
-if$ -- 1783
++ -- 120
+- -- 116
+* -- 659
+:= -- 1456
+add.period$ -- 71
+call.type$ -- 23
+change.case$ -- 132
+chr.to.int$ -- 21
+cite$ -- 23
+duplicate$ -- 350
+empty$ -- 655
+format.name$ -- 149
+if$ -- 1765
 int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 26
-newline$ -- 114
-num.names$ -- 66
+missing$ -- 27
+newline$ -- 119
+num.names$ -- 69
 pop$ -- 98
 preamble$ -- 1
-purify$ -- 151
+purify$ -- 157
 quote$ -- 0
-skip$ -- 315
+skip$ -- 278
 stack$ -- 0
-substring$ -- 544
-swap$ -- 70
+substring$ -- 560
+swap$ -- 38
 text.length$ -- 14
-text.prefix$ -- 9
+text.prefix$ -- 10
 top$ -- 0
-type$ -- 160
+type$ -- 168
 warning$ -- 0
-while$ -- 87
-width$ -- 26
-write$ -- 292
+while$ -- 92
+width$ -- 28
+write$ -- 305
 (There was 1 error message)
