@@ -62,6 +62,12 @@ Sangmin Chun, D.~D. Anderson, and Silvia Valdez-Leon.
 \newblock Reduced factorizations in commutative rings with zero divisors.
 \newblock {\em Communications in Algebra}, 39(5):1583--1594, 2011.
 
+\bibitem[Erd42]{erdos42}
+P.~Erd\"{o}s.
+\newblock On an elementary proof of some asymptotic formulas in the theory of
+  partitions.
+\newblock {\em Ann. of Math. (2)}, 43:437--450, 1942.
+
 \bibitem[Fle69a]{Fl69}
 C.~R. Fletcher.
 \newblock Unique factorization rings.
@@ -106,6 +112,21 @@ David~J. Grynkiewicz.
 \newblock {\em Structural additive theory}, volume~30 of {\em Developments in
   Mathematics}.
 \newblock Springer, Cham, 2013.
+
+\bibitem[HR00]{hardy-ram18}
+G.~H. Hardy and S.~Ramanujan.
+\newblock Asymptotic formul\ae in combinatory analysis [{P}roc. {L}ondon
+  {M}ath. {S}oc. (2) {\bf 17} (1918), 75--115].
+\newblock In {\em Collected papers of {S}rinivasa {R}amanujan}, pages 276--309.
+  AMS Chelsea Publ., Providence, RI, 2000.
+
+\bibitem[Nat02]{nathanson02}
+M.~B. Nathanson.
+\newblock On {E}rd\H{o}s's elementary method in the asymptotic theory of
+  partitions.
+\newblock In {\em Paul {E}rd\H{o}s and his mathematics, {I} ({B}udapest,
+  1999)}, volume~11 of {\em Bolyai Soc. Math. Stud.}, pages 515--531. J\'{a}nos
+  Bolyai Math. Soc., Budapest, 2002.
 
 \bibitem[Tri19]{tringali18}
 Salvatore Tringali.

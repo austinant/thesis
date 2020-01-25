@@ -1,18 +1,23 @@
-\chapter{Atoms and Intervals in the Natural Power Monoid}
+%\chapter{Atoms and Intervals in the Natural Power Monoid}
+\chapter{Enumerating Factorizations of Intervals}
 
-Our goal in this chapter is to construct some families of atoms as a means of helping to give a lower bound on the number of factorizations in $\PN$ of an interval of the form $[0,n]$.
+This chapter will continue to focus on the natural power monoid $\PN$ and on the intervals $[0,n]$.
+We saw in Theorem \ref{thm:good types} that intervals have factorizations of almost every partition type, which already implies the cardinality of $\Z_\PN([0,n])$ is at least about as large as $p(n)$, which is asmpytotic to $\frac{1}{4n\sqrt{3}} \exp\left(\pi\sqrt{\frac{2n}{3}}\right)$ (see \cite{hardy-ram18}, \cite{erdos42}, or \cite{nathanson02}).
+Thus the cardinality of $\Z_\PN([0,n])$ grows at least sub-exponentially in $n$; we show here that it in fact grows exponentially (Theorem \ref{thm:exponential intervals}).
+We will build toward this goal in several steps, beginning with the construction of a large and easily parameterizable family of atoms.
 
 
 \section{Construction of Residually Concentrated Atoms}
 
 As one finds when studying $\PN$, determining whether a given subset of $\NN$ is an atom can be difficult.
-We will see later in Section \ref{sec:algorithms} some ways of thinking about subset arithmetic which make this task simpler.
+Section \ref{sec:algorithms} indicates some ways of thinking about subset arithmetic which make this task simpler when given a particular subset.  
 A separate challenge is to systematically generate large collections of atoms; this is our primary undertaking in this section.
 
 \begin{defn} \label{def:resid concentrated}
 Let $m\ge 2$, $r\in [0,m-1]$.
 We will say that $S\in \PN$ is \textbf{$r$-concentrated (modulo $m$)} if
-\[|\{s\in S_{>0}: s\equiv t \mod m\}|\le 1 \quad \textrm{for all $t\in [0,m-1]\setminus\{r\}$.}  \tag{$*$}\]
+\[ |S_{>0} \cap (\NN m + t)| \le 1 \textrm{ for all $t\in [0,m-1]\setminus\{r\}$.} \tag{$*$} \]
+%\[|\{s\in S_{>0}: s\equiv t \mod m\}|\le 1 \quad \textrm{for all $t\in [0,m-1]\setminus\{r\}$.}  \tag{$*$}\]
 Equivalently, if $S$ is $r$-concentrated, then there are (unique) $R,B\subseteq \NN$ such that
 \begin{itemize}
 	\item $0\notin R \subseteq \NN m + r$;
@@ -313,10 +318,10 @@ One can further maximize this quantity by choosing $m=2$ to obtain a growth fact
 
 As a consequence of this, we may now produce many distinct factorizations of intervals into atoms.
 
-\begin{prop}
+\begin{thm} \label{thm:exponential intervals}
 Let $n\ge 2$.
 Then the number $|\mathsf{Z}([0,n])|$ of factorizations of the interval $[0,n]$ into atoms of $\PN$ grows exponentially with $n$.
-\end{prop}
+\end{thm}
 
 \begin{proof}
 Let $P = (m_1,\dots, m_k)$ be a partition of $n$ such that $m_1 > m_2$.
