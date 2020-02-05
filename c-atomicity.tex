@@ -1,8 +1,15 @@
 \chapter{Power Monoids and Atomicity} \label{ch:power monoids}
 
-\section{Subset Arithmetic} \label{sec:pm basics}
 Here we embark on the study of the (arithmetic and algebraic) structure of power monoids.
 These objects were first introduced and studied by Y. Fan and S. Tringali in \cite{fan-tringali18}.
+They encode a very natural combinatorial construction: the collection of finite subsets of a monoid.  
+Historically, combinatorial thinkers have been concerned primarily with subsets of abelian groups, or even just cycic groups.  
+Throughout the remainder of this work, we will see that the prior concentration of the literature on the case of abelian groups has been well-founded: 
+this is a very tractible and robust area of research, with many questions which are yet unanswered.
+However, we will also see that the phenomena which occur in subsets of a general monoid present vast challenges of their own, and are certainly deserving of attention.
+
+\section{Subset Arithmetic} \label{sec:pm basics}
+
 \begin{defn} \label{def:power monoid}
 	Let $(H,\cdot)$ be a monoid.
 	We define an operation (called \textit{setwise} $\cdot$) by, for any subsets $X,Y\subseteq H$,

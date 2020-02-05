@@ -1,4 +1,3 @@
-%\chapter{Integer Partitions and the Natural Power Monoid}
 \chapter{Partitions and Intervals in the Natural Power Monoid} \label{ch:partitions}
 
 
@@ -10,35 +9,6 @@ In essence, the intervals $[ 0,n ]\in \PN$ seem to have the most wild factorizat
 However, as points are removed from $[ 0,n ]$, one expects a transition to relative tameness as the set of factorizations becomes smaller.
 In this chapter, we formulate some additional ways of understanding and quantifying the differences between wild and tame factorization behavior.
 
-%As a first step in leveraging the structure of $\PN$, we introduce some notation to highlight the intuitive grading on subsets of $\NN$.
-
-
-%One can see that the intervals $[ 0,n ]$ have overwhelmingly many factorizations in $\P_{\fin,0}(\NN)$.
-%Any subset of $\NN$ can be obtained by removing points from such an interval, and we know that arbitrary subsets may exhibit all sorts of factorization behavior.  
-%As such, it may be interesting to try and observe gradual changes in this behavior as we remove points from $[ 0,n ]$.
-%At the opposite extreme of the extremely flexible factorization behavior of $[ 0,n ]$, we have the subsets with the most behavior: the atoms.
-%We would like to determine whether there is a distinct threshold for the number of points we are required to remove from $[ 0,n ]$ to obtain an atom.
-
-%The length set realization Theorems \ref{thm:ind-atoms} and \ref{thm:2n-length-set} show that some subsets of $\NN$ have very well-controlled sets of factorization.
-%On the other hand, there are subsets with comparatively ``wild" set of factorizations; the intervals $[ 0,n ]$ are a simple class examples which demonstrate this since, for instance, we have $\mathsf{L}([0,n]) = [ 2,n ]$ \cite[Proposition 4.8]{fan-tringali18}.
-%However, observe that any subset $X$ can be obtained by deleting points from the interval $[ 0,\max(X) ]$.
-%If $X$ has relatively tame factorization behavior and we imagine this process of deleting points from $[ 0,\max(X)]$, then the subsets between the full interval and $X$ experience a transition between ``wild" and ``tame" factorization behavior.
-%In what follows, we seek to more rigorously quantify what is meant by ``wild" factorization behavior and to investigate the nature of this transition.
-
-%Since we will be thinking of elements of $\PN$ as subsets of the intervals $[ 0,n ]$, it will be convenient to have some notation to help us filter $\NN$.
-
-
-
-
-%In this section, we wish to develop some tools for making arguments about factorizations of subsets inside an abelian group.  
-%We also wish to lay out some practical procedures for the benefit of those who wish to approach power monoids from a computational point of view.
-
-%Throughout this section, we will assume $G$ is an abelian group and that $H\subseteq G$ is a monoid such that, for all $x\in H\setminus\{1\}$, $x^2 \notin\{1,x\}$ (by Theorem \ref{th:atomicity}, this means exactly that $\P_\fon)
-%The prototypical example of this situtation is the case when $G = \ZZ^d$ and $H = \NN^d$.
-%Unless otherwise specified, all subsets of $H$ instantiated are assumed to be finite and to contain $0$.  That is, they are assumed to be elements of $\P_\fon(H)$.
-
-
-%First and foremost, we can take advantage of the setting of an abelian group to develop an inductive approach to factorization in $\P_\fon(H)$, when $H$ is a submonoid of an abelian group $G$.
 
 \section{Algorithmic Approaches and Partition Type} \label{sec:algorithms}
 
@@ -616,3 +586,206 @@ In particular, $X$ has no factorizations of partition type $P$ for any $P$ with 
 \begin{proof}
 This is immediate, as it is the contrapositive of Theorem \ref{thm:long factorization implies interval}.
 \end{proof}
+
+
+\section{An Aside on Asymptotic Density in Numerical Monoid Rings} \label{sec:numerical monoid ring density}
+
+To complete our discussion of partition types, we show an application of the idea of partition types to an area seemingly unrelated to power monoids.  
+Rather than being a direct application of the concepts and techniques we have formulated, it represents a more abstract ideological connection to the type of thinking employed in the previous sections.  
+An optimist might hope that the success found in the techniques employed here can be extended far beyond the present scope.
+
+The particular problem addressed here is directly inspired and informed by the work of S. Talbott, C. O'Neill, R. Edmonds, and B. Kubik in [CITATION].
+We show that the \textit{atomic density} in any numerical monoid polynomial ring is asymptotically zero.
+This is the first of hopefully many questions along these lines in what promises to be a meaningful expansion on the study of numrical monoids.
+All necessary definitions to formally pose and resolve this problem will appear soon.  
+
+
+
+\begin{defn}
+	A numerical monoid is an additive submonoid $H \le \NN$ such that $\NN\setminus H$ is a finite set.  
+	
+	We set $G(H) := \NN \setminus H$. 
+	The elements of this set are called the \textit{gaps} of $H$, and $g(H) := |G(H)|$ is called the \textit{genus} of $H$.
+	Moreover, since $G(H)$ is finite, it has a maximum; $F(H) := \max(G(H))$ is called the \textit{Frobenius number} of $H$.
+	Finally, for a finite set $S = \{s_1,\dots, s_r\}\subseteq \NN$, we will denote the \textit{numerical monoid generated by $S$} by $\gen{s_1,\dots,s_r}$.
+\end{defn}
+
+
+We wish to study a family of polynomial rings constructed from numerical monoids [REFERENCES??].
+
+\begin{defn}
+	Let $H$ be a numerical monoid and let $K$ be a field.
+	Then the \textit{numerical monoid ring of over $K$ associated to $H$} is $K[H] := K[x^h : h\in H]$.
+	
+	Note that, if $H = \gen{S}$, then we may of course write $K[H] = K[x^s: s\in S]$.
+\end{defn}
+
+
+\begin{eg}
+	Let $H = \gen{2,3} = \NN \setminus \{1\}$ be the numerical monoid generated by $\{2,3\}$.
+	Then, for any field $K$, $K[H] = K[x^2,x^3] \subseteq K[x]$ is the ring of polynomials with coefficients in $K$ whose linear coefficient is zero.
+\end{eg}
+
+Our goal is to show that the percentage of polynomials of a given degree in any numerical monoid ring which are irreducible tends to zero as the degree becomes large.
+Before moving onward, we set some notation for some quantities which are necessary in the discussion that follows.
+
+\begin{defn}
+	Let $K$ be a field and let $n\in \NN$.
+	For any subset $S \subseteq K[x]$, let $S^{(n)} := \{f\in S: \deg(f) = n\}$.
+	
+	Let $H$ be a numerical monoid, and let $q$ be a prime power.
+	For any $n\in \NN$, we define 
+	\[a_q^H(n) := \#\{f\in \Fq[H]^{(n)}: f \textrm{ is irreducible in } \Fq[H] \}\]
+	to be the number of irreducibles in $\Fq[H]$ of degree $n$.
+	For convenience, we also write $\rho_q^H(n) := a_q^H(n)/|\Fq[H]^{(n)}|$ for the proportion of degree-$n$ elements of $\Fq[H]$ which are irreducible.
+	The function $\rho_q^H$ is called the \textit{atomic density} of $\Fq[H]$.
+	%Finally, we set $\rho_q^H := \lim\limits_{n\to\infty} \rho_q^H(n)$.
+	%This limit, if it exists, is the \textit{atomic density} of $\Fq[H]$.
+	For the special case when $H = \NN$, we let $a_q(n) := a_q^\NN(n)$ and $\rho_q(n) := \rho_q^\NN(n)$.
+\end{defn}
+
+The following can be considered the classical case of the main result of this section.
+
+\begin{prop}\label{prop:atoms in Fqx}
+	Let $q$ be a prime power and let $n\in \NN$.
+	Then the number $a_q(n)$ of degree-$n$ irreducibles in $\Fq[x]$ satisfies $a_q(n) \le \frac{q^n}{n}$.
+	In particular, $\rho_q(n) \to 0$ as $n\to\infty$.
+\end{prop}
+
+\begin{proof}
+This can be argued by counting the irreducible elements of $\FF_{q^n}$ and then applying the M\"{o}bius inversion formula.
+We do not include the proof here, as it has already been presented well in \cite[Section 14.3]{dummit-foote91} and \cite[Section 2.3]{lidl-niederreiter97}.
+\end{proof}
+
+%We seek to understand the atoms of $\Fq[H]$, for an arbitrary numerical monoid $H$, in terms of the irreducibles of $\Fq[x]$.
+%This next lemma will aid us in doing so.
+
+\begin{lemma}\label{lem:coefficient gap boosting}
+Let $q$ be a prime power, let $N\in\NN$ be positive, and let $r \ge q^{N-1}$.
+If $f_1,\dots,f_k\in \Fq[x]$ with $f_i(0)\neq 0$ then there is some $f\in \Fq + x^N \Fq[x]$ with $f | f_1\dots f_k$.
+That is, there is a sub-product of $f_1\cdots f_k$ which whose coefficients of degree $1\le d < N$ are all zero.
+\end{lemma}
+
+\begin{proof}
+	If $N=1$ then $\Fq + x^N\Fq[x] = \Fq[x]$, so the statement is trivial.
+	Suppose, by way of induction, that the statement of the lemma is true for some $N\ge 1$, and let $f_1,\dots, f_k\in \Fq[x]$ with $r \ge q^N$ and $f_i(0)\neq0$ for all $i\le r$.
+	
+	Since $r \ge q q^{N-1}$, we can inductively apply the lemma $q$ times to find $g_1,\dots,g_q\in \Fq + x^N \Fq[x]$ with $g_1\cdots g_q | f_1\cdots f_k$.
+	To be precise, we may treat the $q^N$ polynomials as $q$ separate collections of $q^{N-1}$ polynomials, applying the lemma to each collection.
+	Notice, since each $f_i(0) \neq 0$, that any factor of $f_1\cdots f_k$ -- in particular, each of the $g_i$ -- also has nonzero constant term.
+	Replacing $g_i$ with $g_i/g_i(0)$ where needed, we may assume that $g_i(0)=1$ for every $i\in [1,q]$
+	
+	Let $a_i$ be the $x^N$ coefficient of $g_i$, so that $g_i = a_i x^N + 1 \mod {x^{N+1}}$.
+	We then see, whenever $1\le s<t\le q$, that
+	\[ g_s\cdots g_t \equiv (a_s x^N + 1)\cdots(a_t x^N + 1) \equiv \left(\sum_{i=s}^t a_i\right) x^N + 1 \mod {x^{N+1}}. \]
+	Now, if one of the $q$ sums $\sum_{i=1}^t a_i$ for $t\in [1,q]$ is zero, we see that $h := g_1\cdots g_t \in \Fq + x^N\Fq[x]$.
+	On the other hand, if none of these sums is zero, then two of them must be the same; suppose, for some $s<t$, that $\sum_{i=1}^s a_i = \sum_{i=1}^t a_i$.
+	Then $\sum_{i=s+1}^ta_i = \sum_{i=1}^t a_i - \sum_{i=1}^s a_i = 0$, so we have that $h := g_{s+1}\cdots g_t$ has no $x^N$ term.
+	In either case, we have found an $h\in \Fq + x^{N+1}\Fq[x]$ such that $h | g_1\cdots g_q | f_1\cdots f_k$, as we wished.
+\end{proof}
+
+With the previous lemma, we can now give a characterization of the irreducibles of $\Fq[H]$ in terms of those of $\Fq[x]$.
+
+\begin{prop}\label{prop:num ring atom classification}
+	Let $H$ be a numerical monoid and let $f\in \Fq[H]$ be irreducible.
+	Then $f$ is of one of the following types:
+	\begin{enumerate}[label=(\rm \arabic{*})]
+		\item There are $k< q^{F(H)}$ and irreducibles $f_1,\dots,f_k\in \Fq[x]$ with $f = f_1\cdots f_k$ and $f_i(0)\neq 0$ for each $i$.
+		\item There are $m < 2(F(H)+1)$, $k < q^{F(H)}$, and irreducibles $f_1,\dots, f_k\in \Fq[x]$ with $f = x^m f_1\cdots f_k$.
+	\end{enumerate}
+\end{prop}
+
+\begin{proof}
+	For our later convenience and to match our earlier notation, we will let $N = F(H)+1$.
+	Suppose $f\in \Fq[H]$ is irreducible; if $f$ is also irreducible in $\Fq[x]$ then we are done, so suppose otherwise.  
+	
+	\underline{Case 1}: $x$ does not divide $f$.
+	Then we may write $f = f_1\cdots f_k$ for some irreducibles $f_1,\dots,f_k\in \Fq[x]$ (and $f_i(0)\neq0$ for each $i$).
+	Suppose $k\ge q^{F(H)} = q^{N-1}$; then, by Lemma \ref{lem:coefficient gap boosting}, there is a $g|f_1\dots f_k$ with $g\in \Fq+x^N \Fq[x]t$.
+	Let $h = (f_1\cdots f_k)/g$.
+	Since $gh = f_1\cdots f_k = f \in \Fq[H]$, we must have that $g(0) \neq 0$ (otherwise $f(0)=0$ and $f$ would be divisible by $x$).
+	Then we claim that $h\in \Fq[H]$; if not, then there is some $d\in G(H)$ so that the $x^d$ term of $h$ is $a x^d$ for some $a\in \Fq\setminus\{0\}$.
+	Consequently, the $x^d$ coefficient of $f = gh$ is $g(0)a \neq 0$, so $f\notin \Fq[H]$, a contradiction.
+	However, this implies that $g,h\in \Fq[H]$, which produces a contradiction to the irreducibility of $f$ in $\Fq[H]$ and implies that $k < q^{F(H)}$.
+	
+	\underline{Case 2}: The remaining case is that $f = x^m f_1\cdots f_k$, with $m$ maximal (so $x$ does not divide $f_1\cdots f_k$).
+	We need to show that $m<2(F(H)+1) = 2N$ and that $k<q$.
+	The first part is easy: if $m\ge 2N$ then we may write $f = x^{m-N} (x^N f_1\cdots f_k)$.
+	Now we have produced a factorization of $f$ in $\Fq[H]$, for $x^{m-N}, x^N (f_1\cdots f_k) \in \Fq + x^N \Fq[x] \subseteq \Fq[H]$.
+	
+	All that remains is to manage $k$; suppose $k \ge q^{N-1}$.
+	Since $x$ does not divide $f_1 \cdots f_k$, we have that $f_i(0) \neq 0$ for each $i\le r$ and, as before, Lemma \ref{lem:coefficient gap boosting} gives us a $g\in \Fq+x^N \Fq[x]$ with $g|f_1\cdots f_k$.
+	Then, choosing $h\in \Fq[x]$ so that $gh = f_1\cdots f_k$, we now wish to show that $x^m h \in \Fq[H]$.
+	However, since $g (x^m h) = f \in \Fq[H]$, we can argue this in the same manner as in Case 1 (with our $x^m h$ playing the role of $h$ from Case 1).
+	This yields a contradiction and we conclude, as in the previous case, that $k< q$.
+\end{proof}
+
+Before finally reaching our main goal for the section, we need one more auxiliary result.
+
+\begin{lemma}\label{lem:srpp log bound}
+	Let $n\in \NN$ and let $k\ge 1$. 
+	Then
+	\[\sum_{m_1,\dots,m_k} \frac{1}{m_1\cdots m_k} \le \frac{\log^{k-1}(n)}{n}, \]
+	where the sum is taken over partitions $(m_1,\cdots,m_k)$ of $n$ into $k$ parts.
+\end{lemma}
+
+\begin{proof}
+	We will prove this by induction on $k$.
+	For $k=1$, the result is trivial as there is only one partition of $n$ into $1$ part.
+	Now suppose, for some $k\ge 1$, that $\sum_{m_1+\cdots+m_k=n} \frac{1}{m_1\cdots m_k} \le \frac{\log^{k-1}(n)}{n}$.
+	Then we calculate
+	\begin{align*}
+	\sum_{m_1,\dots,m_{k+1}} \frac{1}{m_1\cdots m_k} 
+	&= \sum_{m=1}^{\lfloor n/(k+1) \rfloor} \frac{1}{m} \sum_{m_1,\dots,m_k} \frac{1}{m_1\cdots m_k} \tag{inner sum taken over partitions of $n-m$}\\
+	&\le \sum_{m=1}^{\lfloor n/(k+1)\rfloor} \frac{1}{m} \left( \frac{\log^{k-1}(n-m)}{n-m} \right) \\
+	&\le \underbrace{\log^{k-1}(n) \sum_{m=1}^{\lfloor n/(k+1)\rfloor} \frac{1}{m(n-m)}}_{=:S}
+	\end{align*}
+	Now, because $\frac{1}{x(n-x)}$ is decreasing on the interval $(0,n/2)$, a right Riemann sum of width-$1$ rectangles is an under-approximation of the area under the graph of $\frac{1}{x(n-x)}$.
+	That is, we may replace the sum in the last line with an integral and continue with
+	\[
+	S \le \log^{k-1}(n) \int_1^{n/(k+1)} \frac{1}{x(n-x)} \, dx 
+	\le \log^{k-1}(n) \left(\frac{\log(n)}{n}\right),
+	\]
+	where the last integral was evaluated by first finding the partial fraction decomposition of the integrand.
+	This completes the inductive step and proves the inequality we wanted to show.
+\end{proof}
+
+\begin{thm}
+	Let $H$ be a numerical monoid and let $q$ be a prime power.
+	Then $\lim\limits_{n\to\infty} \rho_q^H(n) = 0$.
+\end{thm}
+
+\begin{proof}
+	Let $n\in \NN$.
+	Since we wish to calculate a limit as $n\to\infty$, we may assume $n> F(H)$.
+	Any polynomial $f\in \Fq[H]^{(n)}$ has the form $f = \sum_{i=0}^n a_i x^i$, where $a_n \in \Fq\setminus\{0\}$, $a_i = 0$ for all $i\in G(H)$, and the remaining $a_i$ can be freely chosen from $\Fq$.
+	Thus $|\Fq[H]^{(n)}| = (q-1)q^{n-g(H)}$.
+	
+	Next, we can make crude estimates on the number of each of the types of irreducibles from the characterization given in Proposition \ref{prop:num ring atom classification}.
+	Let $A^1(n)$ and $A^2(n)$ denote the numbers of irreducibles of types (1) and (2) from Proposition \ref{prop:num ring atom classification}, respectively.
+	
+	Let $M := q^{F(H)}$; $A^1(n)$ is the number of degree-$n$ elements which are products of $k$ irreducibles for some $k\in [1,M-1]$.
+	This quantity is certainly no larger than the number of \textit{all} tuples of $k$ $(f_1,\dots,f_k)$ irreducibles of $\Fq[x]$ with $k\in [1,M-1]$ and $\deg(f_1\cdots f_k) = n$.
+	For any such tuple, we know that $\deg(f_1) + \cdots \deg(f_k) = n$, so we can take a sum over all partitions of $n$ into fewer than $M$ parts to help us estimate $A^1(n)$ in the following way:
+	
+	\[ A^1(n) \le 
+	\underbrace{\sum_{\substack{m_1,\dots, m_k \\ k < M}} a_q(m_1)\cdots a_q(m_k)}_{\substack{\textrm{Number of degree $n$ products} \\ \textrm{of $k$ irreducibles of $\Fq[x]$}}}
+	= \sum_{m_1,\dots,m_k} \left(\frac{q^{m_1}}{m_1}\right)\cdots \left(\frac{q^{m_k}}{m_k}\right) 
+	=  \sum_{m_1,\dots,m_k} \frac{q^n}{m_1\cdots m_k}. \tag{$*$}
+	\]
+	
+	We can handle $A^2(n)$ similarly; for an irreducible $f\in \Fq[H]$ which can be written as $f= x^m f_1\cdots f_k$ in $\Fq[x]$, we similarly observe that $\deg(m_1)+\cdots+\deg(m_k) = n-m$. 
+	Because $m$ can take on at most $2F(H)+1$ different values, we can estimate $A^2(n)$ (rather carelessly) by using the same bound we for $A^1(n)$ in ($*$) another $2F(H)+1$ times.
+	This yields that
+	\[a_q^H(n) = A^1(n) + A^2(n) \le (2F(H)+2) \sum_{\substack{m_1,\dots,m_k \\ k < M}} \frac{q^n}{m_1\cdots m_k}. \]
+	Now we are in a position to show that $\lim_{n\to\infty}\rho_q^H(n) = 0$:
+	\begin{align*}
+	\rho_q^H(n) 
+	&= \frac{a_q^H(n)}{|\Fq[H]^{(n)}|} \\
+	&\le \frac{2F(H)+2}{(q-1)q^{n-g(H)}} \sum_{\substack{m_1,\dots,m_k \\ k<M}} \frac{q^n}{m_1\cdots m_k} \\
+	&=C \sum_{k=1}^M \sum_{m_1,\dots,m_k} \frac{1}{m_1\cdots m_k} \tag{letting $C := (2F(H)+2)q^{g(H)}/(q-1)$}\\
+	&\le C \sum_{k=1}^M \frac{\log^{k-1}(n)}{n} \tag{by Lemma \ref{lem:srpp log bound}} \\
+	\end{align*}
+	From here we can see that each summand tends to $0$ as $n\to\infty$ (and the number $M$ of summands does not depend on $n$), so it follows that $\rho_q^H(n) \to 0$ as $n\to \infty$.
+\end{proof}
+

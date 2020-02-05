@@ -87,6 +87,11 @@ Scott~T. Chapman, Alan Loper, and William~W. Smith.
   polynomials determined by finite sets.
 \newblock {\em Arch. Math. (Basel)}, 78(5):372--377, 2002.
 
+\bibitem[DF91]{dummit-foote91}
+David~S. Dummit and Richard~M. Foote.
+\newblock {\em Abstract algebra}.
+\newblock Prentice Hall, Inc., Englewood Cliffs, NJ, 1991.
+
 \bibitem[Erd42]{erdos42}
 P.~Erd\"{o}s.
 \newblock On an elementary proof of some asymptotic formulas in the theory of
@@ -181,6 +186,13 @@ G.~H. Hardy and S.~Ramanujan.
   {M}ath. {S}oc. (2) {\bf 17} (1918), 75--115].
 \newblock In {\em Collected papers of {S}rinivasa {R}amanujan}, pages 276--309.
   AMS Chelsea Publ., Providence, RI, 2000.
+
+\bibitem[LN97]{lidl-niederreiter97}
+Rudolf Lidl and Harald Niederreiter.
+\newblock {\em Finite fields}, volume~20 of {\em Encyclopedia of Mathematics
+  and its Applications}.
+\newblock Cambridge University Press, Cambridge, second edition, 1997.
+\newblock With a foreword by P. M. Cohn.
 
 \bibitem[Lop97a]{loper97a}
 Alan Loper.

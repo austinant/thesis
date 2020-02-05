@@ -112,14 +112,22 @@ Our goal here is to explore a relatively new class of monoids which are non-canc
 	\item $\NN = \{0,1,2,3,\dots\}$, $\ZZ = \{0,\pm 1, \pm 2,\dots\}$, and $\RR$ denote the sets of natural numbers, integers, and real numbers, respectively.
 	Here we adopt the French convention that $0\in \NN$ so that $\NN$ is a monoid.
 	
+	\item In general, unless otherwise specified, lowercase letters ($a$, $b$, $x$, $y$, etc.) will usually refer to elements of a monoid; 
+	ordinary uppercase letters to sets and subsets ($A$, $B$, $X$, $Y$, etc.); 
+	script or calligraphic uppercase letters ($\A$, $\C$, $\F$, $\P$) to collections of subsets; 
+	math fraktur letters ($\aa$, $\bb$, etc.) to words in a free monoid over a given generating set 
+	(see Section \ref{subsec:factorizations} for more details on free monoids).
+	Specifically, $i$, $j$, $k$, $\ell$, $m$, and $n$ will usually stand for non-negative integers. 
+	$H$ will stand for a monoid, $G$ for a group, and $R$ for a ring.
+	
+	\item $X\subseteq Y$ will mean that $X$ is a subset of $Y$; $X\subsetneqq Y$ will mean that $X\subseteq Y$ but $X\neq Y$; $K\le H$ will mean that $K$ is a submonoid of $H$.
+	
 	\item For a subset $S\subseteq \RR$ and $k\in \NN$, we set the notation $S_{>k} := \{n\in S: n>k\}$ and $S_{\ge k} := \{n\in S: n\ge k\}$.
 	
 	\item For $a, b\in \RR\cup\{\infty\}$, $[ a,b ] = \{ n\in \ZZ : a \le n \le b \}$ shall denote the (integer) interval from $a$ to $b$.
 	
-	\item In general, unless otherwise specified, lowercase letters ($a$, $b$, $x$, $y$, etc.) will usually refer to elements of a monoid; ordinary uppercase letters to sets and subsets ($A$, $B$, $X$, $Y$, etc.); script or calligraphic uppercase letters ($\A$, $\C$, $\F$, $\P$) to collections of subsets; math fraktur letters ($\aa$, $\bb$, etc.) to words in a free monoid over a given generating set (see Section \ref{subsec:factorizations} for more details on free monoids).
-	
-	\item Specifically, $i$, $j$, $k$, $\ell$, $m$, and $n$ will usually stand for non-negative integers. 
-	$H$ will stand for a monoid, $G$ for a group, and $R$ for a ring.
+	\item For a real number $x$, $\lfloor x \rfloor := \max\{n\in \ZZ: n \le x\}$ (read \textit{floor of} $x$) is the greatest integer less than $x$.
+	Similarly, $\lceil x \rceil := \min\{n\in \ZZ: n\ge x\}$ (read \textit{ceiling of} $x$) is the least integer greater than $x$.
 	
 	\item If $S$ is a set and $\E$ is an equivalence relation on $S$, the equivalence class of some $x\in S$ shall be denoted by $[x]_\E$.
 	The subscript may be removed in situations where the implied equivalence is clear.
@@ -128,7 +136,7 @@ Our goal here is to explore a relatively new class of monoids which are non-canc
 	We will write $a\equiv b \mod m$ if $\bar{a} = \bar{b}$.
 	
 	\item On occasion, we will wish to lift residue classes to elements of $\NN$.  
-	If $x\in \ZZ/m\ZZ$ and $m$ is well understood from context, we will set $\hat{x} := \min(x\cap \NN) \in [0,m-1]$.
+	If $x\in \ZZ/m\ZZ$ and $m$ is well understood from context, we set $\hat{x} := \min(x\cap \NN) \in [0,m-1]$.
 	By a similar token, for a subset $X\subseteq \ZZ/m\ZZ$, we set $\hat{X} := \{\hat{x}: x\in X\}$.
 	
 	\item In general, we will refer to the operation of a not necessarily commutative monoid $(H,\cdot)$ as ``multiplication''.
@@ -136,9 +144,8 @@ Our goal here is to explore a relatively new class of monoids which are non-canc
 	
 	\item The identity of a multiplicative monoid $(H,\cdot)$ will be called $1$; the identity of an additive monoid $(H,+)$ will be called $0$.
 	
-	\item $X\subseteq Y$ will mean that $X$ is a subset of $Y$; $X\subsetneqq Y$ will mean that $X\subseteq$ but $X\neq Y$; $K\le H$ will mean that $K$ is a submonoid of $H$.
-	
-	\item For a $k\in \NN$ and objects $x_i$ for $i\in [1,k]$, we will often write the family $X:=\{x_i: i\in [1,k]\}$ in ``long form'' as $x_1,\dots,x_k$.
+	\item For a $k\in \NN$ and elements $x_i$ of some set for $i\in [1,k]$, we will often write the family $X:=\{x_i: i\in [1,k]\}$ in ``long form'' as $x_1,\dots,x_k$.
+	On the other hand, we may refer to its elements simply ``the $x_i$'' or $\{x_i\}_i$ for brevity.
 	If $X$ is a subset of a monoid $(H,\cdot)$, we will write the ordered product of the elements of $X$ as $x_1\cdots x_k$.
 	In particular, if $k$ happens to be $0$, this product is empty and we set the convention $x_1\cdots x_k = 1$ to avoid any confusion or ill-definedness.
 \end{itemize}

@@ -9,24 +9,26 @@
 \contentsline {section}{\numberline {2.1}Fundamentals of Factorization Theory}{5}{section.2.1}% 
 \contentsline {section}{\numberline {2.2}Examples and Non-Examples}{7}{section.2.2}% 
 \contentsline {section}{\numberline {2.3}Monoid and Equimorphism Basics}{9}{section.2.3}% 
-\contentsline {section}{\numberline {2.4}Literature and Comparing Alternate Definitions}{10}{section.2.4}% 
+\contentsline {section}{\numberline {2.4}Literature and Comparing Alternate Definitions}{11}{section.2.4}% 
 \contentsline {chapter}{\numberline {3}Power Monoids and Atomicity}{13}{chapter.3}% 
 \contentsline {section}{\numberline {3.1}Subset Arithmetic}{13}{section.3.1}% 
 \contentsline {section}{\numberline {3.2}Atomicity and Bounded Factorization in Power Monoids}{16}{section.3.2}% 
 \contentsline {chapter}{\numberline {4}Minimal Factorizations and Applications to Power Monoids}{21}{chapter.4}% 
 \contentsline {section}{\numberline {4.1}Fundamentals of Minimal Factorizations}{21}{section.4.1}% 
 \contentsline {section}{\numberline {4.2}Minimal Factorizations in Power Monoids}{26}{section.4.2}% 
-\contentsline {section}{\numberline {4.3}Cyclic Monoids and Interval Length Sets}{31}{section.4.3}% 
+\contentsline {section}{\numberline {4.3}Cyclic Monoids and Interval Length Sets}{32}{section.4.3}% 
 \contentsline {chapter}{\numberline {5}Partitions and Intervals in the Natural Power Monoid}{37}{chapter.5}% 
 \contentsline {section}{\numberline {5.1}Algorithmic Approaches and Partition Type}{37}{section.5.1}% 
 \contentsline {section}{\numberline {5.2}Admissible and Forbidden Types for Intervals}{41}{section.5.2}% 
 \contentsline {section}{\numberline {5.3}Subsums and Non-Intervals}{47}{section.5.3}% 
-\contentsline {chapter}{\numberline {6}Enumerating Factorizations of Intervals}{51}{chapter.6}% 
-\contentsline {section}{\numberline {6.1}Construction of Residually Concentrated Atoms}{51}{section.6.1}% 
-\contentsline {section}{\numberline {6.2}Nacci Numbers and Sets with Bounded Maximum Gap}{54}{section.6.2}% 
-\contentsline {section}{\numberline {6.3}Lower Bounds for Numbers of Atoms and Factorizations}{56}{section.6.3}% 
-\contentsline {chapter}{\numberline {7}Subsets of Integer Lattices}{61}{chapter.7}% 
-\contentsline {section}{\numberline {7.1}Passage Between Power Monoids}{61}{section.7.1}% 
-\contentsline {section}{\numberline {7.2}Independence Arguments in the Natural Lattice}{64}{section.7.2}% 
-\contentsline {section}{\numberline {7.3}Length Sets in High-Dimensional Lattices}{69}{section.7.3}% 
-\contentsline {chapter}{Bibliography}{75}{section*.14}% 
+\contentsline {section}{\numberline {5.4}An Aside on Asymptotic Density in Numerical Monoid Rings}{49}{section.5.4}% 
+\contentsline {chapter}{\numberline {6}Enumerating Factorizations of Intervals}{55}{chapter.6}% 
+\contentsline {section}{\numberline {6.1}Construction of Residually Concentrated Atoms}{55}{section.6.1}% 
+\contentsline {section}{\numberline {6.2}Nacci Numbers and Sets with Bounded Maximum Gap}{58}{section.6.2}% 
+\contentsline {section}{\numberline {6.3}Lower Bounds for Numbers of Atoms and Factorizations}{60}{section.6.3}% 
+\contentsline {chapter}{\numberline {7}Length Sets in High-Dimensional Integer Lattices}{65}{chapter.7}% 
+\contentsline {section}{\numberline {7.1}Passage Between Power Monoids}{65}{section.7.1}% 
+\contentsline {section}{\numberline {7.2}Independence Arguments in the Natural Lattice}{68}{section.7.2}% 
+\contentsline {section}{\numberline {7.3}Recovering the $\{2,n+1\}$ Realization Result}{71}{section.7.3}% 
+\contentsline {section}{\numberline {7.4}A New Family of Length Sets}{74}{section.7.4}% 
+\contentsline {chapter}{Bibliography}{79}{section*.21}% 
