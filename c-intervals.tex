@@ -1,17 +1,17 @@
 %\chapter{Atoms and Intervals in the Natural Power Monoid}
-\chapter{Enumerating Factorizations of Intervals}
+\chapter{Enumerating Factorizations of Intervals} \label{ch:intervals}
 
 This chapter will continue to focus on the natural power monoid $\PN$ and on the intervals $[0,n]$.
-We saw in Theorem \ref{thm:good types} that intervals have factorizations of almost every partition type, which already implies the cardinality of $\Z_\PN([0,n])$ is at least about as large as $p(n)$, which is asmpytotic to $\frac{1}{4n\sqrt{3}} \exp\left(\pi\sqrt{\frac{2n}{3}}\right)$ (see \cite{hardy-ram18}, \cite{erdos42}, or \cite{nathanson02}).
-Thus the cardinality of $\Z_\PN([0,n])$ grows at least sub-exponentially in $n$; we show here that it in fact grows exponentially (Theorem \ref{thm:exponential intervals}).
+We saw in Theorem \ref{thm:good types} that intervals have factorizations of almost every partition type, which already implies the cardinality of $\mathsf{Z}_\PN([0,n])$ is at least about as large as $p(n)$, which is asmpytotic to $\frac{1}{4n\sqrt{3}} \exp\left(\pi\sqrt{\frac{2n}{3}}\right)$ (see \cite{hardy-ram18}, \cite{erdos42}, or \cite{nathanson02}).
+Thus the cardinality of $\mathsf{Z}_\PN([0,n])$ grows at least sub-exponentially in $n$; we show here that it in fact grows exponentially (Theorem \ref{thm:exponential intervals}).
 We will build toward this goal in several steps, beginning with the construction of a large and easily parameterizable family of atoms.
 
 
 \section{Construction of Residually Concentrated Atoms}
 
-As one finds when studying $\PN$, determining whether a given subset of $\NN$ is an atom can be difficult.
-Section \ref{sec:algorithms} indicates some ways of thinking about subset arithmetic which make this task simpler when given a particular subset.  
-A separate challenge is to systematically generate large collections of atoms; this is our primary undertaking in this section.
+%As one finds when studying $\PN$, determining whether a given subset of $\NN$ is an atom can be difficult.
+%Section \ref{sec:algorithms} indicates some ways of thinking about subset arithmetic which make this task simpler when given a particular subset.  
+%A separate challenge is to systematically generate large collections of atoms; this is our primary undertaking in this section.
 
 \begin{defn} \label{def:resid concentrated}
 Let $m\ge 2$, $r\in [0,m-1]$.
@@ -30,11 +30,12 @@ Equivalently, if $S$ is $r$-concentrated, then there are (unique) $R,B\subseteq 
 %\[|\{b\in B: b\equiv c \mod m\}| \le 1 \quad \textrm{for all } c\in [0,m-1] \tag{$*$} \]
 %(Of course, we already have $\{b\in B: b\equiv r \mod m\}=\emptyset$).
 
-For our later convenience, let $\mathcal{X}_{m,r}$ be the collection of all $\{0\}\cup R \cup B$ with $R$ and $B$ as above, i.e., the collection of all subsets of $\NN$ which are $r$-concentrated modulo $m$.
+For our later convenience, let $\mathcal{X}_{m,r}$ be the collection of all subsets of $\NN$ which are $r$-concentrated modulo $m$.
 \end{defn}
 
-We claim that, under suitable conditions on $R$ and $B$, many elements of the collection $\mathcal{X}_{m,r}$ are atoms.  
+We claim that many elements of the collection $\mathcal{X}_{m,r}$ are atoms of $\PN$.
 Toward proving this, we give the following lemmas.
+Throughout what follows, $m$, $r$, $R$, and $B$ are all assumed to be as in Definition \ref{def:resid concentrated} unless otherwise specified.
 
 \begin{lemma} \label{lem:other summand small}
 Let $Z := \{0\}\cup R \cup B\in \mathcal{X}_{m,r}$ and suppose that $Z = X+Y$.
@@ -77,9 +78,13 @@ Fortunately, it is easy to see that $\{0\}$, $X\cap B$, and $Y\cap B$ have trivi
 In total, these contribute $|X\cap R| + |Y\cap R| = n_1+n_2$ to our running estimate for $|R|$.
 
 We turn toward examining the remaining sets; first look at $R \cap (X\cap R + Y\cap B)$.
-If $x\in X\cap R$ and $y\in Y\cap B$ with $x+y\in R$ then we must have $y\equiv 0 \mod m$.
-There is at most one such $y\in Y\cap B$, so $|R\cap (X\cap R + Y\cap B)| =\delta_{\bar{0}}(Y\cap B)|X\cap R|=\delta_{\bar{0}}(Y\cap B)n_1$.
-Similarly, $|R\cap (X\cap B + Y\cap R)| = \delta_{\bar{0}}(X\cap B)n_2$.
+Suppose $x\in X\cap R$ and $y\in Y\cap B$ with $x+y\in R$; then we must have $y\equiv 0 \mod m$.
+If $B$ has such a $y$ then
+\[|R\cap (X\cap R + Y\cap B)| \le |X\cap R + \{y\}| = |X\cap R|=n_1. \]
+Otherwise, $X\cap R + Y\cap B$ does not intersect $R$, so we have $|R\cap (X\cap R + Y\cap B)| \le  \delta_{\bar{0}}(Y\cap B) n_1$.
+
+%There is at most one such $y\in Y\cap B$, so $|R\cap (X\cap R + Y\cap B)| =\delta_{\bar{0}}(Y\cap B)|X\cap R|=\delta_{\bar{0}}(Y\cap B)n_1$.
+%Similarly, $|R\cap (X\cap B + Y\cap R)| = \delta_{\bar{0}}(X\cap B)n_2$.
 
 If $r\not\equiv 0 \mod m$ then $R \cap (X\cap R + Y\cap R) =\emptyset$; on the other hand, if $r\equiv 0 \mod m$ then $(X\cap R+Y\cap R)\subseteq R$, so we may say that $|R\cap (X\cap R + Y\cap R)| \le \delta_{\bar{0}}(R) n_1n_2$.
 Finally, we may note that $R\cap (X\cap B + Y\cap B) \subseteq R\cap 2B$.
@@ -87,9 +92,13 @@ Finally, we may note that $R\cap (X\cap B + Y\cap B) \subseteq R\cap 2B$.
 Putting all of these observations together, we obtain our desired estimate that $|R| \le (1+\delta_{\bar{0}}(Y))n_1 + (1+\delta_{\bar{0}}(X))n_2 + \delta_{\bar{0}}(R)n_1n_2 + |2B \cap R|$.
 
 We can see (ii) by using what we have just proved, and by showing that at most one of $\delta_{\bar{0}}(X\cap B)$, $\delta_{\bar{0}}(Y\cap B)$, and $\delta_{\bar{0}}(R)$ is nonzero.
-Firstly, $\delta_{\bar{0}}(R) = 1$ if and only if $r = 0$.
+Firstly, note that
+\[\delta_{\bar{0}}(R) = \begin{cases}
+1 & \textrm{if } r = 0 \\
+0 & \textrm{if } r\neq 0
+\end{cases}.\]
 By construction, $B$ and $R$ don't share any residue classes modulo $m$, so $B$ cannot have any elements congruent to $0$ if $R$ does (and vice-versa).  
-All that remains is to see that $X\cap B$ and $Y\cap B$ cannot both have an element congruent to $0$; if they do then there is a single $b \equiv 0 \mod m$ with $b\in X\cap Y \cap B$.
+All that remains is to see that $X\cap B$ and $Y\cap B$ cannot both have an element congruent to $0$; if they do, then there is a single $b \equiv 0 \mod m$ (by $r$-concentratedness) with $b\in X\cap Y \cap B$.
 However, we immediately see that this is impossible because we would have that $2b \in X+Y$, but $2b \equiv b$, which contradicts the $r$-concentratedness of $X+Y$.
 Thus $\delta_{\bar{0}}(X\cap B) + \delta_{\bar{0}}(Y\cap B) + \delta_{\bar{0}}(R) \le 1$ and the inequality from (i) reduces to $|R| \le (1+\delta_{\bar{0}}(Y\cap B)+ (1+\delta_{\bar{0}}(X\cap B)) + \delta_{\bar{0}}(R) + |2B\cap R| \le 3 + |2B \cap R|$.
 \end{proof}
@@ -100,7 +109,7 @@ If
 \begin{enumerate}[label={\rm (\arabic{*})}]
 	\item $B\neq \emptyset$ or $r\neq 0$,
 	\item $|R| > 3 + |R\cap 2B|$, and
-	\item $R \neq \{b\}$ with $b\equiv 0 \mod m$ such that $\{0,b\}$ divides $A$,
+	\item $B \neq \{b\}$ with $b\equiv 0 \mod m$ such that $\{0,b\}$ divides $A$,
 \end{enumerate}
 then $A$ is an atom in $\PN$.
 \end{prop}
@@ -134,12 +143,13 @@ This is a contradiction to condition (2) in the statment of the proposition.
 
 Immediately, we have that $b + r \equiv r \mod m$, so $b \equiv 0 \mod m$ and $r \neq 0$.
 By Lemma \ref{lem:other summand small}, $|X\cap R| \le 1$.
-If $x\in X\setminus \{0,a\}$ then $x\not\equiv 0\mod m$ and so we also have $|Y\cap R| \le 1$, whence we may finish by using Lemma \ref{lem:both summands small} as in Case 1.
+If $x\in X\setminus \{0,b\}$ then $x\not\equiv 0\mod m$ and so we also have $|Y\cap R| \le 1$, whence we may finish by using Lemma \ref{lem:both summands small} as in Case 1.
 
 Let us suppose, instead, that $X = \{0,b\}$.
 If $c\in Y\cap B$ then $b+c \equiv c \mod m$, which violates $r$-concentratedness.
-Thus $Y\cap B = \emptyset$ and we now have $A = X+Y = \{0,b\} + \{0\}\cup (Y\cap R) = \{0,b\} \cup (Y\cap R) \cup (b+ Y\cap R)$.
-From this, we deduce that $R = \{b\}$; since we know that $b\equiv 0 \mod m$ and $X = \{0,b\}$ is a factor of $A$, this yields a contradiction of condition (3), finishing the proof.
+Thus $Y\cap B = \emptyset$ and so $Y\subseteq \{0\}\cup R$.
+From this, we can deduce that since the elements of $A = X+Y$ are either $b$ or congruent to $r$, $B = \{b\}$.
+This yields a contradiction of condition (3), finishing the proof.
 \end{proof}
 
 \section{Nacci Numbers and Sets with Bounded Maximum Gap}
@@ -159,9 +169,9 @@ We have just shown the existence of a fairly sizable class of atoms (the residua
 Our next step is to exploit this structure to gain a lower bound on the number of these atoms.
 Specifically, we would like to give a lower estimate for the number of elements of $\mathcal{A}^{(n)}\cap \mathcal{X}_{m,r} \cap \mathcal{G}_h$, the collection of atoms with maximum equal to $n$, which are $r$-concentrated (modulo $m$), and have a maximum gap of at most $h$.
 
-Given $A\in \mathcal{A}^{(n)}\cap \mathcal{X}_{m,r}$, we may write $A = \{0\}\cup R \cup B$, where $R \subseteq [1,n]\cap (\NN m+r)$ and $B\subseteq \NN\setminus (\NN m + r)$.
-We first observe that if $\maxgap(R)\cup\{0,n\}\le h$ then $\maxgap(A)\le h$. 
-This is because the consecutive elements of $A$ are at least as close as the consecutive elements of $R$, since $R\subseteq A\subseteq [0,n]$.
+Given $S\in \mathcal{A}^{(n)}\cap \mathcal{X}_{m,r}$, we may write $S = \{0\}\cup R \cup B$, where $R \subseteq [1,n]\cap (\NN m+r)$ and $B\subseteq \NN\setminus (\NN m + r)$.
+We first observe that if $\maxgap(R)\cup\{0,n\}\le h$ then $\maxgap(S)\le h$. 
+This is because $R\subseteq S\subseteq [0,n]$, so the consecutive elements of $S$ are at least as close as those of $R\cup\{0,n\}$.
 Thus, to find a lower bound on the number of possible $S\in \mathcal{P}^{(n)}\cap \mathcal{X}_{m,r}\cap \mathcal{G}_h$, it suffices to find a lower bound on the number of possible $R$ arising from such $S$.
 We pivot now to characterizing such $R$ to answer this question.
 
@@ -183,21 +193,39 @@ Then the number of subsets $R\subseteq [1,n]\cap (\NN m +r)$ which satisfy $\max
 \[ \mathcal{E}(N,t) := \{ \vec{\e}\in \{0,1\}^{N+1}: \vec{\e} \textrm{ has no more than $t$ consecutive zeros}\}. \]
 \end{lemma}
 \begin{proof}
-We may write $R$ as $R = \{ \e_k(km+r): k\in [0,\lfloor n/m \rfloor] \}$ for some $\vec{\e}_R = (\e_0,\dots,\e_{\lfloor n/m \rfloor}) \in \{0,1\}^{\lfloor n/m \rfloor+1}$ (here we are essentially associating to $R$ an ``indicator function'').
+Begin by defining a map
+\begin{align*}
+\mathcal{E}(N,t)&\to\{R\subseteq[1,(N+1)m]\cap (\NN m +r): \maxgap(R\cup\{0,(N+1)m\}) \le tm\} \\
+\vec{\e} &\to R_{\vec{\e}}
+\end{align*}
+where, for any $\vec{\e} = (\e_0,\dots,\e_N) \in \mathcal{E}(N,t)$, we set $R_{\vec{\e}} := \{\e_k(km+r): k\in[0,N]\}$.
+We wish to show that this map is an injection, which will then prove the statement of the lemma when we take $N = \lfloor n/m \rfloor$ and $t = \lfloor h/m \rfloor$.
 
-\underline{Claim}: if $\vec{\e}_R$ does not have more than $\lfloor h/m \rfloor$ consecutive zeros, then $\maxgap(R) \le h$.
+%We wish to show that the map $\vec{\e}\to R_{\vec{\e}}$ is an injection from $\mathcal{E}(N,t)$ to $\{R\subseteq[1,(N+1)m]\cap (\NN m +r): \maxgap(R\cup\{0,(N+1)m\}) \le tm\}$, which will then prove the statement of the lemma when we take $N = \lfloor n/m \rfloor$ and $t = \lfloor h/m \rfloor$.
 
-Suppose that $\vec{\e}_R$ does not have any string of more than $\lfloor h/m \rfloor$ zeros.
-If this is the case, then any consecutive elements of $R$ may be written as $km+r$ and $(k+t)m+r$, where $t\le h/m$.
-Then we have that $(k+t)m+r - (km+r) = tm \le \lfloor h/m \rfloor m \le h$, as we wished.
-
-Thus $R$ corresponds via $\vec{\e}_R$ to an element of $\mathcal{E}(\lfloor n/m \rfloor+1,\lfloor h/m \rfloor)$.
-Given another $R'\subseteq [1,n]\cap (\NN m+ r)$ and a similarly chosen $\vec{\e}_{R'}\in \mathcal{E}(\lfloor n/m \rfloor,\lfloor h/m \rfloor)$, it is not too difficult to see that $\vec{\e}_R = \vec{\e}_{R'}$ only if $R=R'$, so this correspondence is one-to-one.
-Thus we have that 
-\[ |\{ R\subseteq [1,n]\cap (\NN m + r): \maxgap(R)\le h\}| 
-\ge |\mathcal{E}(\lfloor n/m \rfloor, \lfloor h/m \rfloor)|, \]
-which is what we set out to show.
+Let $\vec{\e}\in \mathcal{E}(N,t)$.
+It is immediate that $R_{\vec{\e}}\subseteq [1,(N+1)m]\cap (\NN m + r)$ since $\max(R_{\vec{\e}}) \le Nm+r$.
+To see that $\maxgap(R\cup\{0,(N+1)m\}) \le tm$, suppose that $km+r$ and $(k+\ell)m+r$ are the consecutive elements of $R_{\vec{\e}}$ which are farthest apart.
+Then, by the definition of $\mathcal{E}(N,t)$, $k\le t$, so $\maxgap(R\cup \{0,(N+1)m\})\le (k+\ell)m+r - (km+r) \le \ell m \le tm$.
+What we have just observed amounts to showing that the map $\vec{\e} \to R_{\vec{\e}}$ is well-defined and, from here, it is not too difficult to see that the map is injective.
+%
+%We may write $R$ as $R = \{ \e_k(km+r): k\in [0,\lfloor n/m \rfloor] \}$ for some $\vec{\e}_R = (\e_0,\dots,\e_{\lfloor n/m \rfloor}) \in \{0,1\}^{\lfloor n/m \rfloor+1}$ (here we are essentially associating to $R$ an ``indicator function'').
+%
+%\underline{Claim}: if $\vec{\e}_R$ does not have more than $\lfloor h/m \rfloor$ consecutive zeros, then $\maxgap(R) \le h$.
+%
+%Suppose that $\vec{\e}_R$ does not have any string of more than $\lfloor h/m \rfloor$ zeros.
+%If this is the case, then any consecutive elements of $R$ may be written as $km+r$ and $(k+t)m+r$, where $t\le h/m$.
+%Then we have that $(k+t)m+r - (km+r) = tm \le \lfloor h/m \rfloor m \le h$, as we wished.
+%
+%Thus $R$ corresponds via $\vec{\e}_R$ to an element of $\mathcal{E}(\lfloor n/m \rfloor+1,\lfloor h/m \rfloor)$.
+%Given another $R'\subseteq [1,n]\cap (\NN m+ r)$ and a similarly chosen $\vec{\e}_{R'}\in \mathcal{E}(\lfloor n/m \rfloor,\lfloor h/m \rfloor)$, it is not too difficult to see that $\vec{\e}_R = \vec{\e}_{R'}$ only if $R=R'$, so this correspondence is one-to-one.
+%Thus we have that 
+%\[ |\{ R\subseteq [1,n]\cap (\NN m + r): \maxgap(R)\le h\}| 
+%\ge |\mathcal{E}(\lfloor n/m \rfloor, \lfloor h/m \rfloor)|, \]
+%which is what we set out to show.
 \end{proof}
+
+Now that we can reframe our question in terms of counting special binary sequences, we make an aside on the natue of the growth $\mathcal{E}(N,t)$ as $N$ increases.
 
 \begin{defn} \label{def:nacci numbers}
 Let $t\ge 1$.
@@ -206,10 +234,10 @@ We will define a function $f_t: \NN \to \NN$ by $f_t(N) = 2^{N+1}$ if $N\le t$ a
 for all $N>t$.
 We shall call $f_t(1), f_t(2),\dots$ the sequence of \textbf{$t$-nacci numbers} (as $f_1$ produces the familiar sequence of \textit{Fibonacci numbers}).
 \end{defn}
-Comparing with the recurrences studied in \cite{wolfram98}, we see that our notation differs from that of Wolfram.
+One notes that our notation differs from that of D. Wolfram in \cite{wolfram98}.
 For instance, in his notation, $k=2$ corresponds to the ordinary Fibonacci numbers, leading us to conclude that our $t$ is the same as his $k+1$.
 Our initial values are also different; in particular, the first few terms of ``traditional'' nacci sequences may be zero, with the first nonzero term being equal to $1$. 
-Thus our $t$-nacci numbers are the same, up to some offset of indices, as the usual $k+1$-nacci numbers.
+Thus our $t$-nacci numbers are the same, up to some offset of indices, as the usual $(k+1)$-nacci numbers.
 We keep our choice of notation here for the way in which it assists in counting binary sequences which avoid long strings of $0$s, which we will make precise now.
 
 \begin{prop} \label{lem:nacci numbers count tuples}
@@ -224,32 +252,31 @@ We can see that $\mathcal{E}(N,t) = \bigsqcup_{s=0}^t \mathcal{E}_s(N,t)$ for, g
 To show the recurrence from here, we merely need to determine $|\mathcal{E}_s(N,t)|$.
 We have that $\vec{\e}\in \mathcal{E}_s(N,t)$ if and only if 
 \[\vec{\e} = (\!\!\!\!\!\underbrace{0,\dots,0}_{s \textrm{ leading zeros}}\!\!\!\!\!, 1, \vec{\e}_*),\]
- where $\vec{\e}_*$ has length $N+1 - (s+1)$, so $\vec{\e}_*\in \mathcal{E}(N-s-1,t)$.
+ where $\vec{\e}_*$ has length $N+1 - (s+1) = N-s$, so $\vec{\e}_*\in \mathcal{E}(N-s-1,t)$.
  Thus $|\mathcal{E}_s(N,t)| = |\mathcal{E}(N-s-1,t)|=f_t(N-s-1)$ which, with the disjoint union above, implies that $|\mathcal{E}(N,t)| = f_t(N-1) + \cdots + f_t(N-t-1) = f_t(N)$.
 \end{proof}
 
-Now that we have shown the atoms we are concerned with are counted (in part) by $t$-nacci numbers, we borrow some general facts from \cite{wolfram98} about the rate of growth in $N$ of $f_t(N)$.
+Now that we have shown the atoms we are concerned with are counted (in part) by $t$-nacci numbers, we borrow some general facts from \cite{wolfram98} about the rate of growth with respect to $N$ of $f_t(N)$.
 
 \begin{prop} \label{prop:nacci growth}
 Let $t\ge 1$.
 \begin{enumerate}[label = {(\roman{*})}]
-	\item The limit $r_t = \lim\limits_{N\to\infty} \frac{f_t(N+1)}{f_t(N)}$ exists;
+	\item The limit $r_t := \lim\limits_{N\to\infty} \frac{f_t(N+1)}{f_t(N)}$ exists;
 	\item $2-2^{-t} < r_t < 2$.
 \end{enumerate}
 \end{prop}
 
 \begin{proof}
-Both of these facts (and others) are proved in \cite[Lemma 3.6, Corollary 3.7]{wolfram98}.
+Both of these facts (and others) are proved in \cite[Lemma 3.6 and Corollary 3.7]{wolfram98}.
 \end{proof}
 
 \section{Lower Bounds for Numbers of Atoms and Factorizations}
 
 Here we return to our main task of determining lower bounds for (1) the number of atoms with a given maximum and (2) the number of factorizations of an interval. 
-
+To aid us, we begin with a lemma that makes practical use of a bounded maximum gap as a ``density'' condition.
 
 \begin{lemma} \label{lem:bounded gap but many elements}
-	Let $m\ge 2$, $r\in[0,m-1]$ and $R\subseteq \NN m + r$.
-	Suppose $n \ge \max(R)$ and $\maxgap(\{0,n\}\cup R) \le h$.
+	Let $m\ge 2$, $r\in[0,m-1]$ and $R\subseteq [1,n]\cap\NN m + r$ such that $\maxgap(\{0,n\}\cup R) \le h$.
 	If $n \ge kh$ then $|R| \ge k$.
 \end{lemma}
 
@@ -283,13 +310,13 @@ Thus we have $|(\NN m + r)\cap 2B | \le |B|$ and so
 where the first inequality follows from applying Lemma \ref{lem:bounded gap but many elements} and our assumption that $n\ge (|B|+3)h$.
 \end{proof}
 
-\begin{prop}
+\begin{prop} \label{prop:exponential atoms}
 Let $h\ge 2$.
-Then, for sufficiently large $n$, the number $|\mathcal{A}^{(n)}\cap \mathcal{G}_h|$ of atoms with maximum equal to $n$ and maximum gap bounded by $h$ grows exponentially with $n$.
+Then, for sufficiently large $n$, the number $|\mathcal{A}^{(n)}\cap \mathcal{G}_h|$ of atoms with maximum equal to $n$ and maximum gap bounded by $h$ grows exponentially with respect to $n$, with a growth rate of at least $\sqrt{(2-2^{-\lfloor h/2 \rfloor})}$.
 \end{prop}
 
 \begin{proof}
-First fix $m\in [2,\lfloor h/2 \rfloor]$ and $r\in [0,m-1]$.
+First fix $m\in [2,h]$ and $r\in [0,m-1]$.
 We can count the members of $\mathcal{A}^{(n)}\cap \mathcal{X}_{m,r}\cap \mathcal{G}_h$, which will in turn give a lower bound for $|\mathcal{A}^{(n)}\cap \mathcal{G}_h|$.
 To enumerate members of the former, we have discovered (via Lemma \ref{lem:R and B for atoms}) that it is sufficient to count the number of 
 \begin{itemize}
@@ -310,9 +337,9 @@ If $R\subseteq [1,n]\cap (\NN m + r)$ such that $\maxgap(\{0,n\}\cup R)\le h$ th
 This ensures, by Lemma \ref{lem:R and B for atoms}, that $A:= \{0\}\cup R \cup B$ is an atom.  
 
 The number of such $R$ as specified above is at least $|\mathcal{E}(\lfloor n/m \rfloor,\lfloor h/m\rfloor)| = f_{\lfloor h/m \rfloor}(\lfloor n/m \rfloor)$ (Lemmas \ref{lem:concentration to tuples} and \ref{lem:nacci numbers count tuples}), whence Proposition \ref{prop:nacci growth} implies that the number of such $R$ grows exponentially as $n$ increases.
-That is, there is some absolute constant $C$ which depends possibly on $m$ and $h$ (but not on $n$) such that 
-\[|\{R\subseteq [1,n]\cap (\NN m +r): \maxgap(\{0,n\}\cup R)\}| \ge f_{\lfloor h/m \rfloor}(\lfloor n/m\rfloor) \ge C (2-2^{-\lfloor h/m\rfloor})^{\lfloor n/m \rfloor}. \]
-We conclude then that $|\mathcal{A}^{(n)}\cap \mathcal{G}_h| \ge C(2-2^{-\lfloor h/m \rfloor})^{\lfloor n/m \rfloor}$, so $|\mathcal{A}^{(n)}\cap \mathcal{G}_h|$ has an exponential growth rate of at least $(2-2^{-\lfloor h/m\rfloor})^{1/m}$.
+That is, there is some absolute constant $C_{h,m}$ which depends possibly on $m$ and $h$ (but not on $n$) such that 
+\[|\{R\subseteq [1,n]\cap (\NN m +r): \maxgap(\{0,n\}\cup R)\}| \ge f_{\lfloor h/m \rfloor}(\lfloor n/m\rfloor) \ge C_{h,m} (2-2^{-\lfloor h/m\rfloor})^{\lfloor n/m \rfloor}. \]
+We conclude then that $|\mathcal{A}^{(n)}\cap \mathcal{G}_h| \ge C_{h,m}(2-2^{-\lfloor h/m \rfloor})^{\lfloor n/m \rfloor}$, so $|\mathcal{A}^{(n)}\cap \mathcal{G}_h|$ has an exponential growth rate of at least $(2-2^{-\lfloor h/m\rfloor})^{1/m}$.
 One can further maximize this quantity by choosing $m=2$ to obtain a growth factor of at least $\sqrt{(2-2^{-\lfloor h/2 \rfloor})}$.
 \end{proof}
 
@@ -321,22 +348,47 @@ As a consequence of this, we may now produce many distinct factorizations of int
 \begin{thm} \label{thm:exponential intervals}
 Let $n\ge 2$.
 Then the number $|\mathsf{Z}([0,n])|$ of factorizations of the interval $[0,n]$ into atoms of $\PN$ grows exponentially with $n$.
+Specifically, for every $\e>0$ there is a constant $C$  such that $|\mathsf{Z}([0,n])| \ge C \left(\sqrt[4]{2}-\e\right)^n$ for all sufficiently large $n$.
 \end{thm}
 
 \begin{proof}
 Let $P = (m_1,\dots, m_k)$ be a partition of $n$ such that $m_1 > m_2$.
-For notational hygiene, set $m:= m_1$ and let $Q = (m_2,\dots, m_k)$ be the partition of $n-m$ obtained by removing the first part of $P$.
+For notational hygiene, set $m_1$ and let $Q = (m_2,\dots, m_k)$ be the partition of $n-m$ obtained by removing the first part of $P$.
 
-Observe that, if $A\in \mathcal{A}^{(m)}\cap \mathcal{G}_{n-m}$ and $\aa\in \Z^Q([0,n-m])$, then $A*\aa\in \Z^P([0,n])$.
-Indeed, we can write $A = \{a_0,a_1,\dots, a_k\}$ with $0 =a_0 < a_1 <\dots < a_k = m$ such that $a_i - a_{i-1} \le n-m$ for all $i\in[1,k]$.
+Observe that, if $A\in \mathcal{A}^{(m_1)}\cap \mathcal{G}_{n-m_1}$ and $\aa\in \Z^Q([0,n-m_1])$, then $A*\aa\in \Z^P([0,n])$.
+Indeed, we can write $A = \{a_0,a_1,\dots, a_\ell\}$ with $0 =a_0 < a_1 <\dots < a_\ell = m_1$ such that $a_i - a_{i-1} \le n-m_1$ for all $i\in[1,\ell]$.
 Then 
-\[\pi_\PN(A*\aa) = A + [0,n-m] = \bigcup_{i=0}^k ([a_i,a_i+n-m]) = [0,n], \]
-where the last inequality follows since $a_i \le a_{i-1} + n-m$ for each $i\in [1,k]$, by the assumption that $\maxgap(A) \le n-m$.
+\[\pi_\PN(A*\aa) = A + [0,n-m_1] = \bigcup_{i=0}^\ell ([a_i,a_i+n-m_1]) = [0,n], \]
+where the last inequality follows since $a_i \le a_{i-1} + n-m_1$ for each $i\in [1,\ell]$, by the assumption that $\maxgap(A) \le n-m_1$.
 
-Also, suppose $A,B\in \A^{(m)}$ and $\aa,\bb\in \Z^Q([0,n-m])$.
-Then, since $m > m_2 \ge \cdots \ge m_k$, none of the factors in $\bb$ is equal to $A$ (and similarly, none of the factors in $\aa$ is equal to $B$).
-Thus $A*\aa$ is equivalent to $B*\bb$ as a factorization in $\PN$ if and only if $A=B$, and $\aa$ and $\bb$ are equivalent factorizations. 
-From this it follows that
-\[ \Z^{P}([0,n]) \ge |\A^{(m)}\cap \mathcal{G}_{n-m}| \cdot |\Z^Q([0,n-m])| \ge C\left(\sqrt{2-2^{-n-m}}\right)^m \cdot |\Z^Q([0,n-m])|.\]
-If we more specifically chose $P$ such that $m\ge n/2$ and $Q = (m_2,\dots,m_k)$ is a partition of $n-m$ with $\Z^Q([0,n-m])\neq \emptyset$, then the above string of inequalities reduces to $\Z^{P}([0,n])\ge C\left(\sqrt{2-2^{-n-m}}\right)^{n/2}$, showing that $|Z^{P}([0,n])|$ does indeed grow exponentially.
+Also, suppose $A,B\in \A^{(m_1)}$ and $\aa,\bb\in \Z^Q([0,n-m_1])$.
+Then, since $m_1 > m_2 \ge \cdots \ge m_k$, none of the factors in $\bb$ is equal to $A$ (and similarly, none of the factors in $\aa$ is equal to $B$).
+Thus $A*\aa$ is equivalent to $B*\bb$ as a factorization in $\PN$ if and only if $A=B$ and $\aa$ and $\bb$ are equivalent factorizations, implying that $|\mathsf{Z}^P([0,n])| \ge |\A^{(m_1)} \cap \mathcal{G}_{n-m_1}| \cdot |\mathsf{Z}^Q([0,n-m_1])|$
+
+From Proposition \ref{prop:exponential atoms} it follows that, for any $h\ge 2$, there is a constant $C_h$ such that $|\A^{(M)}\cap \mathcal{G}_h| \ge C_h \left(\sqrt{2-2^{-h/2}}\right)^M$.
+Putting our observations together and using $M := m_1$, we find that
+\[ |\mathsf{Z}^{P}([0,n])|
+\ge |\A^{(m_1)}\cap \mathcal{G}_{n-m_1}| \cdot \underbrace{|\mathsf{Z}^Q([0,n-m_1])|}_{\ge 1 \textrm{for large $n$}} 
+\ge C\left(\sqrt{2-2^{-(n-m_1)}}\right)^{m_1}. \tag{$*$}\]
+Now we may guarantee the desired rate of growth by making more specific assumptions about the partitions $P$ and $Q$ involved above.
+
+Assume $N$ is large enough that $2^{-\lfloor N/2 \rfloor} < \e$ and let $n\ge N$.
+Choose a partition $P = (m_1,\dots, m_k)$ of $n$ such that $m_1 = \lceil n/2 \rceil$; then $Q = (m_2,\dots, m_k)$ is a partition of $\lfloor n/2 \rfloor$.
+Note that $|\mathsf{Z}^Q([0,\lfloor n/2 \rfloor])|\ge1$ since $\mathsf{Z}^Q([0,\lfloor n/2\rfloor])\neq \emptyset$ by Theorem \ref{thm:good types}.
+Thus, using ($*$) above for our specific choice of $P$, we obtain that
+\[ |\mathsf{Z}([0,n])| 
+\ge |\mathsf{Z}^P([0,n])| 
+\overset{(*)}{\ge} C \left(\sqrt{2-2^{-\lfloor N/2 \rfloor}}\right)^{\lceil n/2 \rceil}
+\ge C \left( \sqrt{2 -\e} \right)^{\lceil n/2 \rceil}
+%\ge C \left(\sqrt[4]{2-\e}\right)^n 
+\ge C\left(\sqrt[4]{2}-\e\right)^n
+\]
+%We conclude that, for large enough $n$ and for any $H \le \lfloor n/2 \rfloor$,
+%\[|\mathsf{Z}([0,n])|\ge C_H\left(\sqrt{2-2^{-H}}\right)^{\lceil n/2 \rceil} \ge C_H \left(\sqrt[4]{2-2^{-H}}\right)^n,\]
+which shows that $\mathsf{Z}([0,n])$ has at least the exponential growth rate we wished to demonstrate.
 \end{proof}
+
+In the above argument, there are many choices for partitions $P$ and $Q$ which could have yielded similar growth rates.
+By the nature of partition types, different choices of $P$ or $Q$ in fact yield disjoint sets of factorizations.
+This means we could increase our lower estimate of $|\mathsf{Z}([0,n])|$, possibly significantly.
+Though we will not pursue this here, it is worth remarking that a more thorough probe into this topic and application of deeper analytic tools might yield a meaningfully higher rate of growth for $|\mathsf{Z}([0,n])|$.

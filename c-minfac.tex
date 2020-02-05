@@ -28,47 +28,47 @@ We start with the definition of a binary relation (in fact, a preorder) on the $
 The next result highlights a few basic properties of the relation introduced in Definition \ref{def:preorder}.
 %
 \begin{prop}\label{preorder-facts}
-Let $H$ be a monoid, and let $\mathfrak{a},\mathfrak{b}\in \F^*(\\A(H))$. The following hold:
+Let $H$ be a monoid, and let $\mathfrak{a},\mathfrak{b}\in \F^*(\A(H))$. The following hold:
 \begin{enumerate}[label = {\textup{(\roman{*})}}]
 %
 \item\label{it:prop:preorder-facts(0)} $\preceq_H$ is a preorder \textup{(}i.e., a reflexive and transitive binary relation\textup{)} on $\F^\ast(\A(H))$.
 %
-\item\label{it:prop:preorder-facts(ii)} If $\mathfrak{a} \preceq_H \mathfrak{b}$ then $\| \mathfrak{a} \|_H \le \| \mathfrak{b} \|_H$.
+\item\label{it:prop:preorder-facts(ii)} If $\mathfrak{a} \preceq_H \mathfrak{b}$ then $| \mathfrak{a} | \le | \mathfrak{b} |$.
 %
-\item\label{it:prop:preorder-facts(iv)} $\mathfrak{a} \preceq_H \mathfrak{b}$ and $\mathfrak{b} \preceq_H \mathfrak{a}$ if and only if $\mathfrak a \preceq_H \mathfrak b$ and $\|\mathfrak a\|_H = \|\mathfrak b\|_H$, if and only if $(\mathfrak{a},\mathfrak{b}) \in \C_H$.
+\item\label{it:prop:preorder-facts(iv)} $\mathfrak{a} \preceq_H \mathfrak{b}$ and $\mathfrak{b} \preceq_H \mathfrak{a}$ if and only if $\mathfrak a \preceq_H \mathfrak b$ and $|\mathfrak a| = |\mathfrak b|$, if and only if $\mathfrak{a}\simeq_H\mathfrak{b}$.
 \end{enumerate}
 \end{prop}
 %
 \begin{proof}
 Points \ref{it:prop:preorder-facts(0)} and \ref{it:prop:preorder-facts(ii)} are straightforward from our definitions.
 
-As for \ref{it:prop:preorder-facts(iv)}, set $h := \|\mathfrak a\|_H$ and $k := \|\mathfrak b\|_H$. 
-By part \ref{it:prop:preorder-facts(ii)}, $\mathfrak{a} \preceq_H \mathfrak{b}$ and $\mathfrak{b} \preceq_H \mathfrak{a}$ only if  $\mathfrak a \preceq_H \mathfrak b$ and $h = k$; and it is immediate to check that $(\mathfrak{a},\mathfrak{b}) \in \C_H$ implies $\mathfrak{a} \preceq_H \mathfrak{b}$ and $\mathfrak{b} \preceq_H \mathfrak{a}$. 
-So, to finish the proof, assume that $\mathfrak a \preceq_H \mathfrak b$ and $h = k$. We only need to show that $(\mathfrak a, \mathfrak b) \in \C_H$. 
+As for \ref{it:prop:preorder-facts(iv)}, set $h := |\mathfrak a|$ and $k := |\mathfrak b|$. 
+By part \ref{it:prop:preorder-facts(ii)}, $\mathfrak{a} \preceq_H \mathfrak{b}$ and $\mathfrak{b} \preceq_H \mathfrak{a}$ only if  $\mathfrak a \preceq_H \mathfrak b$ and $h = k$; and it is immediate to check that $\mathfrak{a}\simeq_H\mathfrak{b}$ implies $\mathfrak{a} \preceq_H \mathfrak{b}$ and $\mathfrak{b} \preceq_H \mathfrak{a}$. 
+So, to finish the proof, assume that $\mathfrak a \preceq_H \mathfrak b$ and $h = k$. We only need to show that $\mathfrak a\simeq_H \mathfrak b$. 
 For, we have (by definition) that $\mathfrak a \preceq_H \mathfrak b$ if and only if $\pi_H(\mathfrak a) = \pi_H(\mathfrak b)$ and there is an injection $\sigma: [ 1, h ] \to [ 1, k ]$ 
-such that $a_i \simeq_H b_{\sigma(i)}$ for every $i \in [ 1, h ]$. But $\sigma$ is actually a bijection (because $h = k$), and we can thus conclude that $(\mathfrak a, \mathfrak b) \in \C_H$.
+such that $a_i \simeq_H b_{\sigma(i)}$ for every $i \in [ 1, h ]$. But $\sigma$ is actually a bijection (because $h = k$), and we can thus conclude that $\mathfrak a \simeq_H \mathfrak b$.
 \end{proof}
 %
 \begin{defn}\label{def:min-fac}
-Let $H$ be a monoid and $x \in H$. An $H$-word $\mathfrak{a}$ is a \emph{$\preceq_H$-minimal factorization} of $x$, or simply a \emph{minimal factorization} of $x$ (in or relative to $H$), if $\mathfrak a \in \mathcal Z_H(x)$ and $\mathfrak a$ is $\preceq_H$-minimal. Accordingly, 
+Let $H$ be a monoid and $x \in H$. An $H$-word $\mathfrak{a}$ is a \textbf{$\preceq_H$-minimal factorization} of $x$, or simply a \textbf{minimal factorization} of $x$ (in $H$), if $\mathfrak a \in \mathcal Z_H(x)$ and $\mathfrak a$ is $\preceq_H$-minimal. Accordingly, 
 \[
 \mathcal{Z}_{H}^\m(x) := \left\{ \mathfrak{a}\in \mathcal{Z}_H(x): \mathfrak{a} \textrm{ is $\preceq_H$-minimal} \right\}
 \quad\text{and}\quad
-\mathsf{Z}_{H}^\m(x):= \mathcal{Z}_{H}^\m(x)/\C_H
+\mathsf{Z}_{H}^\m(x):= \mathcal{Z}_{H}^\m(x)/\simeq_H
 \]
-shall denote, respectively, the set of $\preceq_H$-minimal factorizations and the set of $\preceq_H$-minimal factorization classes of $x$ (cf. the definitions from Section \ref{subsec:factorizations}). In addition, we take 
+shall denote, respectively, the \textbf{set of $\preceq_H$-minimal factorizations} and the \textbf{set of $\preceq_H$-minimal factorization classes} of $x$ (cf. the definitions from Section \ref{subsec:factorizations}). In addition, we take 
 \[
-\mathsf{L}_{H}^\m(x) := \left\{ \|\mathfrak{a}\|_H : \mathfrak{a} \in \mathcal{Z}_{H}^\m(x) \right\} \subseteq \NN
+\mathsf{L}_{H}^\m(x) := \left\{ |\mathfrak{a}| : \mathfrak{a} \in \mathcal{Z}_{H}^\m(x) \right\} \subseteq \NN
 \]
-to be the set of \emph{$\preceq_H$-minimal factorization lengths} of $x$, and
+to be the set of \textbf{$\preceq_H$-minimal factorization lengths} of $x$, and
 \[
 	\mathcal{L}^\m(H) := \left\{ \mathsf{L}_{H}^\m(x) : x\in H \right\} \subseteq \mathcal P(\NN)
 \]
-to be the \emph{system of sets of $\preceq_H$-minimal lengths} of $H$. Lastly, we say that the monoid $H$ is
+to be the \textbf{system of sets of $\preceq_H$-minimal lengths} of $H$. Lastly, we say that the monoid $H$ is
 \begin{itemize}
-	\item \textup{BmF} or \emph{bounded-minimally-factorial} (respectively, \textup{FmF} or \emph{finite-minimally-factorial}) if $\mathsf{L}_{H}^\m(x)$ (respectively, $\mathsf{Z}_{H}^\m(x)$) is finite and non-empty for every $x\in H\setminus H^\times$;
+	\item \textbf{BmF} or \textbf{bounded-minimally-factorial} (respectively, \textbf{FmF} or \textbf{finite-minimally-factorial}) if $\mathsf{L}_{H}^\m(x)$ (respectively, $\mathsf{Z}_{H}^\m(x)$) is finite and non-empty for every $x\in H\setminus H^\times$;
 	
-	\item \textup{HmF} or \emph{half-minimally-factorial} (respectively, \emph{minimally factorial}) if $\mathsf{L}_{H}^\m(x)$ (respectively, $\mathsf{Z}_{H}^\m(x)$) is a singleton for all $x \in H \setminus H^\times$.
+	\item \textbf{HmF} or \textbf{half-minimally-factorial} (respectively, \textbf{UmF} or \textbf{minimally factorial}) if $\mathsf{L}_{H}^\m(x)$ (respectively, $\mathsf{Z}_{H}^\m(x)$) is a singleton for all $x \in H \setminus H^\times$.
 		%
 \end{itemize}
 %
@@ -107,10 +107,10 @@ It is helpful, at this juncture, to observe some fundamental features of minimal
 	Let $H$ be a monoid and let $x\in H$. The following hold:
 	%
 	\begin{enumerate}[label = {\rm (\roman{*})}]
-		\item\label{it:prop:min-basics(i)} Any $\\A(H)$-word of length $0$, $1$, or $2$ is minimal.
+		\item\label{it:prop:min-basics(i)} Any $\A(H)$-word of length $0$, $1$, or $2$ is minimal.
 		\item\label{it:prop:min-basics(ii)} $\Z_H(x) \ne \emptyset$ if and only if  $\Z_H^\m(x) \ne \emptyset$.
 		%
-		\item\label{it:prop:min-basics(iib)} If $\mathfrak a \in \mathcal Z_H^\m(x)$ and $(\mathfrak a, \mathfrak b) \in \C_H$, then $\mathfrak b \in \mathcal Z_H^\m(x)$.
+		\item\label{it:prop:min-basics(iib)} If $\mathfrak a \in \mathcal Z_H^\m(x)$ and $\mathfrak a \simeq_H \mathfrak b$, then $\mathfrak b \in \mathcal Z_H^\m(x)$.
 		%
 		\item\label{it:prop:min-basics(iii)} If $K$ is a divisor-closed submonoid of $H$ and $x \in K$, then $\Z_K^\m(x) = \Z_H^\m(x)$ and $\mathsf L_K^\m(x) = \mathsf L_H^\m(x)$.
 		\item\label{it:prop:min-basics(iv)} If $H$ is commutative and unit-cancellative, then $\Z_H^\m(x) = \Z_H(x)$, and hence $\mathsf L_H^\m(x) = \mathsf L_H(x)$.
@@ -118,7 +118,7 @@ It is helpful, at this juncture, to observe some fundamental features of minimal
 \end{prop}
 %
 \begin{proof}
-	\ref{it:prop:min-basics(i)}, \ref{it:prop:min-basics(ii)}, and \ref{it:prop:min-basics(iib)} are an immediate consequence of parts \ref{it:prop:preorder-facts(ii)}-\ref{it:prop:preorder-facts(iv)} of Proposition \ref{preorder-facts} (in particular, note that, if $\mathfrak a$  is an $\A(H)$-word of length $1$, then $\pi_H(\mathfrak a)$ is an atom of $H$, and therefore $\pi_H(\mathfrak a) \ne \pi_H(\mathfrak b)$ for every  $\A(H)$-words $\mathfrak b$ of length $\ge 2$); and \ref{it:prop:min-basics(iii)} follows at once from considering that, if $K$ is a divisor-closed submonoid of $H$ and $x \in K$, then $\mathcal Z_K(x) = \mathcal Z_H(x)$ and $\mathsf L_K(x) = \mathsf L_H(x)$, see \cite[Proposition 2.21(ii)]{fan-tringali18}.
+	\ref{it:prop:min-basics(i)}, \ref{it:prop:min-basics(ii)}, and \ref{it:prop:min-basics(iib)} are an immediate consequence of parts \ref{it:prop:preorder-facts(ii)}-\ref{it:prop:preorder-facts(iv)} of Proposition \ref{preorder-facts} (in particular, note that, if $\mathfrak a$  is an $\A(H)$-word of length $1$, then $\pi_H(\mathfrak a)$ is an atom of $H$, and therefore $\pi_H(\mathfrak a) \ne \pi_H(\mathfrak b)$ for every  $\A(H)$-word $\mathfrak b$ of length $\ge 2$); and \ref{it:prop:min-basics(iii)} follows at once from considering that, if $K$ is a divisor-closed submonoid of $H$ and $x \in K$, then $\mathcal Z_K(x) = \mathcal Z_H(x)$ and $\mathsf L_K(x) = \mathsf L_H(x)$, see \cite[Proposition 2.21(ii)]{fan-tringali18}.
 	
 	\ref{it:prop:min-basics(iv)} Assume $H$ is commutative and unit-cancellative. It suffices to check that no non-empty $\A(H)$-word has a proper subword with the same product.
 	For, suppose to the contrary that there exist  $a_1,\dots,a_n \in \A(H)$ with $\prod_{i \in I} a_i = a_1\cdots a_n$ for some $I \subsetneq [ 1, n ]$. Since $H$ is commutative, we can assume without loss of generality that $I = [ 1, k ]$ for some $k \in [ 0, n-1 ]$. Then unit-cancellativity implies $a_{k+1}\cdots a_n \in H^\times$, and we get from parts \ref{it:prop:unit-adjust(0)} and \ref{it:prop:unit-adjust(0b)} of Proposition \ref{prop:unit-adjust} that $a_{k+1},\dots,a_n \in H^\times$, which is however impossible (by definition of an atom).	
@@ -134,19 +134,18 @@ To further elucidate the behavior of minimal factorizations, we give an analogue
 \begin{proof}
 	Given $w, z \in H$ and a non-empty word $\mathfrak{z} = y_1 \ast \cdots \ast y_n \in \F^\ast(H)$ of length $n$, denote by $w\mathfrak{z}z$ the length-$n$ word $\bar{y}_1 \ast \cdots \ast \bar{y}_n \in \F^\ast(H)$ defined by taking $\bar{y}_1 := w y_1 z$ if $n = 1$, and $\bar{y}_1:= wy_1$, $\bar{y}_n := y_nz$, and $\bar{y}_i := y_i$ for all $i\in [ 2,n-1]$ otherwise. 
 	We claim that the function 
-	$$
-	f: \mathcal{Z}_H^\m(x) \to \mathcal{Z}_H^\m(uxv): \mathfrak a \mapsto u\mathfrak a v
-	$$
+	\begin{align*}
+	f: \mathcal{Z}_H^\m(x) &\to \mathcal{Z}_H^\m(uxv) \\
+	\mathfrak a &\mapsto u\mathfrak a v
+	\end{align*}
 	is a well-defined length-preserving bijection. 
 	In fact, it is sufficient to show that $f$ is well-defined, since this will in turn imply that the map $g: \mathcal{Z}_H^\m(uxv)\to\mathcal{Z}_H^\m(x):\mathfrak{b}\mapsto u^{-1}\mathfrak{b}v^{-1}$ is also well-defined (observe that $uxv \in H \setminus H^\times$ and $x = u^{-1} uxv v^{-1}$), and then it is easy to check that $g$ is the inverse of $f$.
 	
-	For the claim, let $\mathfrak a \in \mathcal{Z}_H^\m(x)$, and note that, by parts \ref{it:prop:unit-adjust(0)} and \ref{it:prop:unit-adjust(0b)} of Proposition \ref{prop:unit-adjust}, $\|\mathfrak a\|_H$ is a positive integer, so that  $\mathfrak a = a_1 \ast \cdots \ast a_n$ for some $a_1, \ldots, a_n \in \A(H)$. 
+	For the claim, let $\mathfrak a \in \mathcal{Z}_H^\m(x)$, and note that, by parts \ref{it:prop:unit-adjust(0)} and \ref{it:prop:unit-adjust(0b)} of Proposition \ref{prop:unit-adjust}, $|\mathfrak a|$ is a positive integer, so that  $\mathfrak a = a_1 \ast \cdots \ast a_n$ for some $a_1, \ldots, a_n \in \A(H)$. 
 	In view of Proposition \ref{prop:unit-adjust}\ref{it:prop:unit-adjust(i)}, $u\mathfrak{a}v$ is a factorization of $uxv$, and we only need to verify that it is also $\preceq_H$-minimal. For,
 suppose to the contrary that $\mathfrak b \prec_H u\mathfrak av$ for some $\mathfrak b \in \F^\ast(\A(H))$.
 	Then $\pi_H(\mathfrak b) = \pi_H(u\mathfrak a v) = uxv$ and, by Proposition \ref{preorder-facts}\ref{it:prop:preorder-facts(iv)},
-	$
-	k := \|\mathfrak b\|_H \in [ 1, n-1 ]
-	$
+	$k := |\mathfrak b| \in [ 1, n-1 ]$
 	(recall that $uxv \notin H^\times$). So, $\mathfrak b = b_1 \ast \cdots \ast b_k$ for some atoms  $b_1, \ldots, b_k \in H$, and there exists an injection $\sigma: [ 1, k ] \to [ 1, n ]$ such that $b_i \simeq_H a_{\sigma(i)}$ for each $i \in [ 1, k ]$.
 	Define
 	$
@@ -163,7 +162,7 @@ Equimorphisms have a similar compatibility with minimal factorizations, in the s
 \begin{prop}\label{prop:min-equi}
 	Let $H$ and $K$ be monoids and $\varphi: H\to K$ an equimorphism. The following hold: 
 	\begin{enumerate}[label={\rm (\roman{*})}]
-		\item\label{it:prop:min-equi(i)} If $x\in H \setminus H^\times$ and $\mathfrak{b}\in \mathcal{Z}_K^\m(\varphi(x))$, then there is $\mathfrak{a}\in \mathcal{Z}_H^\m(x)$ with $\varphi^*(\mathfrak{a})\in [ \mathfrak{b} ]_{\C_K}$.
+		\item\label{it:prop:min-equi(i)} If $x\in H \setminus H^\times$ and $\mathfrak{b}\in \mathcal{Z}_K^\m(\varphi(x))$, then there is $\mathfrak{a}\in \mathcal{Z}_H^\m(x)$ with $\varphi^*(\mathfrak{a})\in [ \mathfrak{b} ]_{\simeq_K}$.
 		%
 		\item\label{it:prop:min-equi(ii)} $\mathsf{L}_K^\m(\varphi(x)) \subseteq \mathsf{L}_H^\m(x)$ for every $x\in H\setminus H^\times$.
 		\item\label{it:prop:min-equi(iii)} If $\varphi$ is essentially surjective then, for all $y\in K\setminus K^\times$, there is $x\in H\setminus H^\times$ with $\mathsf{L}_K^\m(y) \subseteq \mathsf{L}_H^\m(x)$. 
@@ -172,9 +171,9 @@ Equimorphisms have a similar compatibility with minimal factorizations, in the s
 %
 \begin{proof}
 	\ref{it:prop:min-equi(i)}
-	Pick $x\in H \setminus H^\times$, and let $\mathfrak b \in \mathcal{Z}_K^\m(\varphi(x))$. Then $\mathfrak b \ne \varepsilon_{\A(K)}$, otherwise $\varphi(x) = \pi_K(\mathfrak b) = 1_K$ and, by \ref{def:equimorphism(E1)}, $x \in \varphi^{-1}(\varphi(x)) = \varphi^{-1}(1_K) \subseteq H^\times$ (a contradiction). Consequently, \ref{def:equimorphism(E3)} yields the existence of a factorization $\mathfrak{a}\in \mathcal{Z}_H(x)$ with $\varphi^*(\mathfrak{a}) \in [ \mathfrak{b} ]_{\C_K}$, and it only remains to show that $\mathfrak a$ is $\preceq_H$-minimal. 
+	Pick $x\in H \setminus H^\times$, and let $\mathfrak b \in \mathcal{Z}_K^\m(\varphi(x))$. Then $\mathfrak b \ne \varepsilon_{\A(K)}$, otherwise $\varphi(x) = \pi_K(\mathfrak b) = 1_K$ and, by \ref{def:equimorphism(E1)}, $x \in \varphi^{-1}(\varphi(x)) = \varphi^{-1}(1_K) \subseteq H^\times$ (a contradiction). Consequently, \ref{def:equimorphism(E3)} yields the existence of a factorization $\mathfrak{a}\in \mathcal{Z}_H(x)$ with $\varphi^*(\mathfrak{a}) \in [ \mathfrak{b} ]_{\simeq_K}$, and it only remains to show that $\mathfrak a$ is $\preceq_H$-minimal. 
 	
-	{Note that} $n := \|\mathfrak a\|_H = \|\varphi^\ast(\mathfrak a)\|_K = \|\mathfrak b\|_K \ge 1$, and write $\mathfrak a = a_1 \ast \cdots \ast a_n$ and $\mathfrak b = b_1 \ast \cdots \ast b_n$, with $a_1, \ldots, a_n \in \A(H)$ and $b_1, \ldots, b_n \in \A(K)$. Then suppose to the contrary that $\mathfrak a$ is not $\preceq_H$-minimal, i.e., there exist a (necessarily non-empty) $\A(H)$-word $\mathfrak{c} = c_1 \ast \cdots \ast c_m$ and an injection $\sigma: [ 1, m ] \to [ 1, n ]$ such that $\pi_H(\mathfrak c) = \pi_H(\mathfrak a) = x$ and $c_i \simeq_H a_{\sigma(i)}$ for every $i \in [ 1, m ]$. Then
+	{Note that} $n := |\mathfrak a| = |\varphi^\ast(\mathfrak a)| = |\mathfrak b| \ge 1$, and write $\mathfrak a = a_1 \ast \cdots \ast a_n$ and $\mathfrak b = b_1 \ast \cdots \ast b_n$, with $a_1, \ldots, a_n \in \A(H)$ and $b_1, \ldots, b_n \in \A(K)$. Then suppose to the contrary that $\mathfrak a$ is not $\preceq_H$-minimal, i.e., there exist a (necessarily non-empty) $\A(H)$-word $\mathfrak{c} = c_1 \ast \cdots \ast c_m$ and an injection $\sigma: [ 1, m ] \to [ 1, n ]$ such that $\pi_H(\mathfrak c) = \pi_H(\mathfrak a) = x$ and $c_i \simeq_H a_{\sigma(i)}$ for every $i \in [ 1, m ]$. Then
 	\[
 	\pi_K(\varphi^\ast(\mathfrak c)) = \varphi(c_1) \cdots \varphi(c_m) = \varphi(x)
 	\quad\text{and}\quad
@@ -183,7 +182,7 @@ Equimorphisms have a similar compatibility with minimal factorizations, in the s
 	(recall that monoid hom\-o\-mor\-phisms map units to units; so, if $u \simeq_H v$, then $\varphi(u) \simeq_K \varphi(v)$); and together with Proposition \ref{prop:min-basics}\ref{it:prop:min-basics(iib)}, this proves that 
 	$\varphi^\ast(\mathfrak c) \prec_K \mathfrak b$, contradicting the $\preceq_K$-minimality of $\mathfrak b$.
 	
-	\ref{it:prop:min-equi(ii)} Fix $x \in H \setminus H^\times$, and suppose $\mathsf{L}_K^\m(\varphi(x)) \ne \emptyset$ (otherwise there is nothing to prove). Accordingly, let $k \in \mathsf{L}_K^\m(\varphi(x))$ and $\mathfrak b \in \mathcal Z_K^\m(\varphi(x))$ such that $k = \|\mathfrak b\|_K$. It is sufficient to check that $k \in \mathsf L_H^\m(x)$, and this is straightforward: Indeed, we have by \ref{it:prop:min-equi(i)} that $\varphi^\ast(\mathfrak a)$ is $\C_K$-congruent to $\mathfrak b$ for some $\mathfrak a \in \mathcal Z_H^\m(x)$, which implies in particular that $k = \|\varphi^\ast(\mathfrak a)\|_K = \|\mathfrak a\|_H \in \mathsf L_H^\m(x)$.
+	\ref{it:prop:min-equi(ii)} Fix $x \in H \setminus H^\times$, and suppose $\mathsf{L}_K^\m(\varphi(x)) \ne \emptyset$ (otherwise there is nothing to prove). Accordingly, let $k \in \mathsf{L}_K^\m(\varphi(x))$ and $\mathfrak b \in \mathcal Z_K^\m(\varphi(x))$ such that $k = |\mathfrak b|$. It is sufficient to check that $k \in \mathsf L_H^\m(x)$, and this is straightforward: Indeed, we have by \ref{it:prop:min-equi(i)} that $\varphi^\ast(\mathfrak a)$ is $\C_K$-congruent to $\mathfrak b$ for some $\mathfrak a \in \mathcal Z_H^\m(x)$, which implies in particular that $k = |\varphi^\ast(\mathfrak a)| = |\mathfrak a| \in \mathsf L_H^\m(x)$.
 	
 	\ref{it:prop:min-equi(iii)} Assume $\varphi$ is essentially surjective, and let $y \in K \setminus K^\times$. Then $y = u \varphi(x) v$ for some $u,v\in K^\times$ and $x\in H$, and neither $x$ is a unit of $H$ nor $\varphi(x)$ is a unit of $K$ (because $\varphi(H^\times) \subseteq K^\times$ and $y \notin K^\times$). Accordingly, we have by Lemma \ref{lem:min-unit-adjust} and part \ref{it:prop:min-equi(ii)} that $\mathsf{L}_K^\m(y) = \mathsf{L}_K^\m(\varphi(x)) \subseteq \mathsf{L}_H^\m(x)$.
 \end{proof}
@@ -257,9 +256,9 @@ We claim that $X := \langle r \rangle_H$ has minimal factorizations of length $p
 	\]
 	Given that, suppose for a contradiction that $X$ has a minimal factorization $\mathfrak c$ of length $p-1$ in $\mathcal P_{\fin,\times}(H)$. Then by Propositions \ref{prop:funt&fun-have-the-same-system-of-lengths}\ref{it:prop:funt&fun-have-the-same-system-of-lengths(i)} and \ref{prop:min-equi}\ref{it:prop:min-equi(i)}, $\mathfrak c$ is $\C_{\mathcal P_{\fin,\times}(H)}$-congruent to a $\preceq_{\mathcal P_{\fin,1}(H)}$-minimal fac\-tor\-ization $\mathfrak a = A_1 \ast \cdots \ast A_{p-1}$ of $X$ of length $p-1$; and we aim to show that $\mathfrak a$ is $\C_{\mathcal P_{\fin,1}(H)}$-congruent to $\mathfrak a_g$ for some $g \in X \setminus \{1_H\}$, which is however impossible as it would mean that $\mathfrak a_g$ is a minimal factorization of $X$ in $\mathcal P_{\fin,\times}(H)$, in contradiction to what established in the above.
 	
-	Indeed, let $B_i$ be, for $i \in [ 1, p-1 ]$, the image of $\{k \in [ 0, p-1 ]: r^k \in A_i\} \subseteq \bf Z$ under the canonical map $\ZZ \to \ZZ/p\ZZ$. Then $\mathfrak a$ is a minimal factorization of $X$ in $\mathcal P_{\fin,1}(H)$ only if $\mathfrak b := B_1 \ast \cdots \ast B_{p-1}$ is a minimal factorization of $\ZZ/p\ZZ$ in the reduced power monoid of $(\ZZ/p\ZZ, +)$, herein denoted by $\mathcal P_{\fin,0}(\ZZ/p\ZZ)$.
+	Indeed, let $B_i$ be, for $i \in [ 1, p-1 ]$, the image of $\{k \in [ 0, p-1 ]: r^k \in A_i\} \subseteq \ZZ$ under the canonical map $\ZZ \to \ZZ/p\ZZ$. Then $\mathfrak a$ is a minimal factorization of $X$ in $\mathcal P_{\fin,1}(H)$ only if $\mathfrak b := B_1 \ast \cdots \ast B_{p-1}$ is a minimal factorization of $\ZZ/p\ZZ$ in the reduced power monoid of $(\ZZ/p\ZZ, +)$, herein denoted by $\mathcal P_{\fin,0}(\ZZ/p\ZZ)$.
 	
-	We want to show that $\mathfrak b$ is $\preceq_{\mathcal P_{\fin,0}(H)}$-minimal only if there is a non-zero $x \in \ZZ/p\ZZ$ such that $B_i = \{\overline{0}, x\}$ or $B_i = \{\overline{0}, -x\}$, or equivalently $A_i = \{1_H, r^{\hat{x}}\}$ or $A_i = \{1_H, r^{-\hat{x}}\}$, for every $i \in [ 1, p-1 ]$ (for notation, see Section \ref{subsec:generalities}). By the preceding arguments, this will suffice to conclude that $p-1 \notin \mathsf L^\m_{\mathcal P_\funt(H)}(X)$, because it implies at once that $\mathfrak a$ is $\mathcal C_{\mathcal P_\fun(H)}$-congruent to $\mathfrak a_g$ with $g := r^{\hat{x}} \in X \setminus \{1_H\}$.
+	We want to show that $\mathfrak b$ is $\preceq_{\mathcal P_{\fin,0}(H)}$-minimal only if there is a non-zero $x \in \ZZ/p\ZZ$ such that $B_i = \{\overline{0}, x\}$ or $B_i = \{\overline{0}, -x\}$, or equivalently $A_i = \{1_H, r^{\hat{x}}\}$ or $A_i = \{1_H, r^{-\hat{x}}\}$, for every $i \in [ 1, p-1 ]$ (recall the notation that $\hat{x}$ is the lift of the residue class $x$ to the interval $[0,p-1]$, established in Section \ref{subsec:generalities}). By the preceding arguments, this will suffice to conclude that $p-1 \notin \mathsf L^\m_{\mathcal P_\funt(H)}(X)$, because it implies at once that $\mathfrak a$ is $\mathcal C_{\mathcal P_\fun(H)}$-congruent to $\mathfrak a_g$ with $g := r^{\hat{x}} \in X \setminus \{1_H\}$.
 	
 	To begin, let $K$ be a subset of $[ 1, p-1 ]$, and define $\mathcal{S}_K := \sum_{k \in K} B_k$ and $s_K := \{k \in K: |B_k| \ge 3\}$. Then we have by the Cauchy-Davenport inequality (see, e.g., \cite[Theorem 6.2]{grynkiewicz13}) that
 	%
@@ -382,7 +381,8 @@ For those monoids $H$ with $\P_\fun(H)$ atomic, we have by Proposition \ref{lem:
 As such, we will concentrate throughout on factorizations in $\P_{\fin,0}(\ZZ/n\ZZ)$ and also mention some results on $\P_{\fin,0}(\NN)$ which are discussed in detail in \cite[Section 4]{fan-tringali18}.
 At the end we will return to the general case, where the preceding discussion will culminate in a realization result (Theorem \ref{th:interval-lengths}) for sets of minimal lengths of $\P_\fun(H)$.
 
-We invite the reader to review Section \ref{subsec:generalities} before reading further. Also, note that, through the whole section, we have replaced the notation $\P_\fun(H)$ with $\P_{\fin,0}(H)$ when $H$ is written additively (cf. Example \ref{exa:strict-inclusion}).
+We invite the reader to review the notation $\hat{x}$ and $\hat{X}$ for lifting elements and subsets of $\ZZ/n\ZZ$ to $\NN$ (as set in Section \ref{subsec:generalities}) before reading further. 
+Also, note that, through the whole section, we have replaced the notation $\P_\fun(H)$ with $\P_{\fin,0}(H)$ when $H$ is written additively (cf. Example \ref{exa:strict-inclusion}).
 
 
 \begin{defn}\label{NR-factorization}
@@ -408,7 +408,7 @@ Now, let $x \in X$ such that $\hat{x} = \max \hat{X}$. Using that $\mathfrak a$ 
 \end{equation}
 On the other hand, since $X = A_1 + \cdots + A_k$, there are $a_1 \in A_1,\dots, a_k \in A_k$ such that $a_1+\dots+ a_k = x$, from which we see that $\hat{x} \equiv \hat{a}_1 + \cdots + \hat{a}_k \bmod n$. But it follows from \eqref{equ:inequ-with-maxima} that
 $
-0 \le \hat{a}_1+\dots+ \hat{a}_k < \hat{x} < n$, and this implies $\hat{x} \not\equiv \hat{a}_1 + \cdots + \hat{a}_k \bmod n$ (recall that, by definition, $\hat{X} \subseteq [ 0, n-1 ]$). So we got a contradiction, showing that $\mathfrak a$ was minimal and completing the proof.
+0 \le \hat{a}_1+\dots+ \hat{a}_k < \hat{x} < n$, and this implies $\hat{x} \not\equiv \hat{a}_1 + \cdots + \hat{a}_k \bmod n$ (recall that, by definition, $\hat{X} \subseteq [ 0, n-1 ]$). We have found a contradiction, showing that $\mathfrak a$ was minimal and completing the proof.
 \end{proof}
 
 

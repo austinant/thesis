@@ -2,7 +2,7 @@
 
 \section{Subset Arithmetic} \label{sec:pm basics}
 Here we embark on the study of the (arithmetic and algebraic) structure of power monoids.
-We begin with some elementary but helpful observations we will often use without comment.
+These objects were first introduced and studied by Y. Fan and S. Tringali in \cite{fan-tringali18}.
 \begin{defn} \label{def:power monoid}
 	Let $(H,\cdot)$ be a monoid.
 	We define an operation (called \textit{setwise} $\cdot$) by, for any subsets $X,Y\subseteq H$,
@@ -17,12 +17,9 @@ We begin with some elementary but helpful observations we will often use without
 	\[\P_\fun(H) := \{X\subseteq H: 1_H\in X \textrm{ and } |X|<\infty\}. \]
 	We may refer to $H$ as the \textit{ground monoid} of any of these power monoids.
 \end{defn}
-Our ultimate goal is, for an arbitrary monoid $H$, to investigate factorizations in $\P_\fin(H)$. However, this is a difficult task in general, due to a variety of ``pathological situations'' that might be hard to classify in a satisfactory way, see e.g. \cite[Remark 3.3(ii)]{fan-tringali18}.
 
-In practice, it is more convenient to start with $\P_\fun(H)$ and then lift arithmetic results from $\P_\fun(H)$ to $\P_\funt(H)$, a point of view which is corroborated by the simple consideration that $\P_\fin(H) = \P_\funt(H)$ whenever $H$ is a group (i.e., in the case of greatest interest in Arithmetic Combinatorics).
+We proceed first with some elementary but helpful observations we will often use without comment.
 
-In turn, we will see that studying the arithmetic of $\P_\funt(H)$ is tantamount to studying that of $\P_\fun(H)$, in a sense to be made precise presently.
-To do so in as all-encompassing a way as possible, we recall from \cite[Definition 3.2]{tringali18} a notion which formally packages the idea that, under suitable conditions, arithmetic may be transferred from one monoid to another.
 \begin{prop}\label{prop:pm-arith}
 	Let $H$ be a monoid. The following hold:
 	\begin{enumerate}[label={\rm (\roman{*})}]
@@ -46,6 +43,12 @@ To do so in as all-encompassing a way as possible, we recall from \cite[Definiti
 	Thus, if $X,Y\in \P_\fun(H) \subseteq \P_\funt(H)$ and $uA = XY$, then $X$ or $Y$ is the identity of $\P_\fun(H)$.
 	This means that $uA$ is an atom of $\P_\fun(H)$, and hence $A=u^{-1}(uA)\in H^\times \A(\P_\fun(H))$, as wished.
 \end{proof}
+
+Our ultimate goal is, for an arbitrary monoid $H$, to investigate factorizations in $\P_\fin(H)$. However, this is a difficult task in general, due to a variety of ``pathological situations'' that might be hard to classify in a satisfactory way, see e.g. \cite[Remark 3.3(ii)]{fan-tringali18}.
+
+In practice, it is more convenient to start with $\P_\fun(H)$ and then lift arithmetic results from $\P_\fun(H)$ to $\P_\funt(H)$, a point of view which is corroborated by the simple consideration that $\P_\fin(H) = \P_\funt(H)$ whenever $H$ is a group (i.e., in the case of greatest interest in Arithmetic Combinatorics).
+
+In turn, we will see that studying the arithmetic of $\P_\funt(H)$ is tantamount to studying that of $\P_\fun(H)$, in a sense to be made precise presently.
 
 \begin{prop}\label{prop:funt&fun-have-the-same-system-of-lengths}
 	Let $H$ be a Dedekind-finite monoid. The following hold:

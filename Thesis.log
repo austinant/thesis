@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  24 JAN 2020 02:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  4 FEB 2020 22:46
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -674,25 +674,25 @@ File: pgflibraryarrows.meta.code.tex 2019/02/02 v3.1.1 (3.1.1)
 \pgfarrowlinewidth=\dimen190
 )))
 \c@defn=\count147
-) (./Thesis.aux (./c-intro.aux) (./c-fundamentals.aux)
-(./c-atomicity.aux) (./c-minfac.aux) (./c-partitions.aux) (./c-intervals.aux)
-(./c-lattices.aux))
+) (./Thesis.aux (./frontmatter.aux) (./c-intro.aux)
+(./c-fundamentals.aux) (./c-atomicity.aux) (./c-minfac.aux) (./c-partitions.aux
+) (./c-intervals.aux) (./c-lattices.aux))
 \openout1 = `Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
@@ -729,7 +729,7 @@ LaTeX Font Info:    ... okay on input line 18.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box69
-Package hyperref Info: Link coloring ON on input line 18.
+Package hyperref Info: Link coloring ON on input line 19.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -738,45 +738,63 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count148
 )
-LaTeX Info: Redefining \ref on input line 18.
-LaTeX Info: Redefining \pageref on input line 18.
-LaTeX Info: Redefining \nameref on input line 18.
+LaTeX Info: Redefining \ref on input line 19.
+LaTeX Info: Redefining \pageref on input line 19.
+LaTeX Info: Redefining \nameref on input line 19.
 
 (./Thesis.out) (./Thesis.out)
 \@outlinefile=\write4
 \openout4 = `Thesis.out'.
 
  ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for U+msa on input line 21.
+\openout2 = `frontmatter.aux'.
+
+
+(./frontmatter.tex [1
+
+
+
+
+
+
+] [1] [2
+
+]
+LaTeX Font Info:    Try loading font information for U+msa on input line 58.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 21.
+LaTeX Font Info:    Try loading font information for U+msb on input line 58.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 21.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 58.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 21.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 58.
 
-(/usr/local/texlive/2019/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
-
-
-
-
-] [2
+(/usr/local/texlive/2019/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [3] [4
 
 ]
-(./Thesis.toc [3])
+[5] [6
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 123--129
+
+ []
+
+) [7] [8
+
+
+] (./Thesis.toc [9])
 \tf@toc=\write5
 \openout5 = `Thesis.toc'.
 
- [4]
+ [10]
 \openout2 = `c-intro.aux'.
 
  (./c-intro.tex
@@ -786,13 +804,14 @@ Chapter 1.
 
 
 ] [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 85.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 112.
+
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 85.
-LaTeX Font Info:    Try loading font information for U+euf on input line 90.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
+LaTeX Font Info:    Try loading font information for U+euf on input line 119.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
@@ -806,7 +825,7 @@ Chapter 2.
 
 
 
-] [6] [7] [8] [9] [10]) [11] [12]
+] [6] [7] [8] [9] [10] [11]) [12]
 \openout2 = `c-atomicity.aux'.
 
  (./c-atomicity.tex
@@ -825,7 +844,7 @@ Chapter 3.
 ]
 Chapter 4.
 [21] [22] [23] [24] [25] [26] [27]
-Underfull \vbox (badness 1701) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [28]
 [29] [30] [31] [32] [33] [34]) [35]
@@ -837,53 +856,18 @@ Underfull \vbox (badness 1701) has occurred while \output is active []
 
 ]
 Chapter 5.
-[37]
-Overfull \hbox (10.9776pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/10 38 \OT1/cmr/m/sl/10 CHAPTER 5.  PARTITIONS AND INTERVAL FACTORI
-ZATION IN THE NATURAL POWER MONOID
- []
-
-[38] [39]
-Overfull \hbox (10.9776pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/10 40 \OT1/cmr/m/sl/10 CHAPTER 5.  PARTITIONS AND INTERVAL FACTORI
-ZATION IN THE NATURAL POWER MONOID
- []
-
-[40] [41]
-Overfull \hbox (10.9776pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/10 42 \OT1/cmr/m/sl/10 CHAPTER 5.  PARTITIONS AND INTERVAL FACTORI
-ZATION IN THE NATURAL POWER MONOID
- []
-
-[42] [43]
-Overfull \hbox (10.9776pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/10 44 \OT1/cmr/m/sl/10 CHAPTER 5.  PARTITIONS AND INTERVAL FACTORI
-ZATION IN THE NATURAL POWER MONOID
- []
-
-[44] [45]
-Overfull \hbox (10.9776pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/10 46 \OT1/cmr/m/sl/10 CHAPTER 5.  PARTITIONS AND INTERVAL FACTORI
-ZATION IN THE NATURAL POWER MONOID
- []
-
-[46] [47])
-Overfull \hbox (10.9776pt too wide) has occurred while \output is active
-\OT1/cmr/m/n/10 48 \OT1/cmr/m/sl/10 CHAPTER 5.  PARTITIONS AND INTERVAL FACTORI
-ZATION IN THE NATURAL POWER MONOID
- []
-
-[48]
+[37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48]) [49]
 \openout2 = `c-intervals.aux'.
 
- (./c-intervals.tex
+
+(./c-intervals.tex [50
+
+
+
+]
 Chapter 6.
-[49
-
-
-
-] [50] [51]
-Overfull \hbox (13.44464pt too wide) in paragraph at lines 154--156
+[51] [52] [53]
+Overfull \hbox (13.44464pt too wide) in paragraph at lines 164--166
 [][]\OT1/cmr/m/n/10 For the sake of not-ing some con-crete ex-am-ples: we have 
 $[]([0\OML/cmm/m/it/10 ; n\OT1/cmr/m/n/10 ]) = 1$ for ev-ery $\OML/cmm/m/it/10 
 n$\OT1/cmr/m/n/10 , $[](\OMS/cmsy/m/n/10 f\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; \
@@ -891,44 +875,40 @@ OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 4\OML/cmm/m/it/10 ; \OT1/cmr
 /m/n/10 6\OMS/cmsy/m/n/10 g\OT1/cmr/m/n/10 ) =
  []
 
-[52] [53] [54] [55]
-Underfull \vbox (badness 1721) has occurred while \output is active []
-
- [56])
-[57]
+[54] [55] [56] [57] [58]) [59]
 \openout2 = `c-lattices.aux'.
 
- (./c-lattices.tex [58
+ (./c-lattices.tex [60
 
 
 
 ]
 Chapter 7.
-[59] [60] [61] [62] [63] [64] [65] [66] [67] [68] [69] [70]) [71] [72
+[61] [62] [63] [64] [65] [66] [67] [68] [69] [70] [71] [72]) [73] [74
 
 
 ]
-(./Thesis.bbl [73
+(./Thesis.bbl [75
 
-]) [74]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 53.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 53.
- (./Thesis.aux (./c-intro.aux) (./c-fundamentals.aux)
-(./c-atomicity.aux) (./c-minfac.aux) (./c-partitions.aux) (./c-intervals.aux)
-(./c-lattices.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 53.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 53.
+] [76] [77]) [78]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 54.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 54.
+ (./Thesis.aux (./frontmatter.aux)
+(./c-intro.aux) (./c-fundamentals.aux) (./c-atomicity.aux) (./c-minfac.aux)
+(./c-partitions.aux) (./c-intervals.aux) (./c-lattices.aux))
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 54.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 54.
 Package rerunfilecheck Info: File `Thesis.out' has not changed.
-(rerunfilecheck)             Checksum: AE1100EC9D22DE9782100BFEF331CD45;2296.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 53.
+(rerunfilecheck)             Checksum: C4CD709A5974D7D3D6E4CCF48B5339CC;2421.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 54.
  ) 
 Here is how much of TeX's memory you used:
- 18364 strings out of 492624
- 354037 string characters out of 6129578
- 451322 words of memory out of 5000000
- 21884 multiletter control sequences out of 15000+600000
- 17247 words of font info for 69 fonts, out of 8000000 for 9000
+ 18358 strings out of 492624
+ 354144 string characters out of 6129578
+ 451746 words of memory out of 5000000
+ 21885 multiletter control sequences out of 15000+600000
+ 11129 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  65i,16n,87p,930b,1044s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Thesis.dvi (78 pages, 549932 bytes).
+Output written on Thesis.dvi (89 pages, 586620 bytes).

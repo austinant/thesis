@@ -12,7 +12,7 @@ We begin by laying out the framework in which we will study factorizations.
 		\item $u\in H$ is a \textbf{unit} if there is $v\in H$ with $uv = vu = 1$.  
 		The group of units in $H$ is denoted by $H^\times$.  
 		$H$ is called \textit{reduced} if $H^\times = \{1\}$.
-		\item $x,y\in H$ are \textbf{associates} if there are units $u,v\in H^\times$ so that $x = uyv$. In this case, we write $x \sim y$.
+		\item $x,y\in H$ are \textbf{associates} if there are units $u,v\in H^\times$ so that $x = uyv$. In this case, we write $x \simeq_H y$ (or just $x\simeq y$ if there is no chance of confusion).
 		\item $a\in H\setminus H^\times$ is an \textbf{atom} if, whenever $a = xy$, either $x\in H^\times$ or $y\in H^\times$. The set of atoms of $H$ is denoted by $\A(H)$.
 		\item $x\in H$ is \textbf{idompotent} (or \textbf{an idempotent}) if $x^2 = x$.
 	\end{itemize}
@@ -66,19 +66,23 @@ Let $H$ be a monoid, $x\in H$ be a non-unit, and $\aa,\bb \in \F^*(\A(H))$.
 We will say that $\aa$ is \textbf{equivalent} to $\bb$ if, writing $\aa = a_1*\cdots * a_k$ and $\bb = b_1*\cdots * b_\ell$,
 \begin{enumerate}
 \item $k = \ell$.
-\item The factors in $\bb$ are permuted associates of the factors of $\aa$; that is, there is a permutation $\sigma\in S_n$ (where $S_n$ is the symmetric group on $\llb 1,n \rrb$) such that $b_i \sim a_{\sigma(i)}$ for all $i\in \llb 1,k \rrb$.
+\item The factors in $\bb$ are permuted associates of the factors of $\aa$; that is, there is a permutation $\sigma\in S_n$ (where $S_n$ is the symmetric group on $[1,n]$) such that $b_i \sim a_{\sigma(i)}$ for all $i\in [1,k]$.
 \item $\aa$ and $\bb$ have the same product; i.e., $\pi_H(\aa) = \pi_H(\bb)$.
 \end{enumerate}
+In this case, we will write $\aa \simeq_H \bb$ (or just $\aa\simeq\bb$ if $H$ is clear from context).
 \end{defn}
 
-It is not difficult to check that the relation defined here is indeed an equivalence relation on $\F^*(\A(H))$.
+It is not difficult to check that $\simeq_H$ defined here is indeed an equivalence relation on $\F^*(\A(H))$.
+Note we are using the same notation for associates ($a\simeq_H b$) and for equivalence of factorizations ($\aa\simeq_H\bb$).
+This is suggestive of the close connection between the notions of associates and of factorization equivalence.
+Though they are not the same relation, context should make the meaning clear when each is being used.  
 
 \begin{defn} \label{def:set of lengths}
 Let $H$ be a monoid and $x\in H\setminus H^\times$.
 The \textbf{set of factorization classes} of $x$ is
-\[ \mathsf{Z}_H(x) := \{ [\aa]: \aa\in \Z_H(x) \} = \Z_H(x)/\sim \]
+\[ \mathsf{Z}_H(x) := \{ [\aa]_{\simeq}: \aa\in \Z_H(x) \} = \Z_H(x)/\simeq \]
 and the \textbf{set of (factorization) lengths} of $x$ is
-\[ \mathsf{L}_H(x) := \{ |\aa| : [\aa] \in \mathsf{Z}_H(x) \}. \]
+\[ \mathsf{L}_H(x) := \{ |\aa| : [\aa]_{\simeq} \in \mathsf{Z}_H(x) \}. \]
 Lastly, the \textbf{system of (sets of) lengths} of $H$ is $\mathcal{L}(H) := \{\mathsf{L}_H(x): x\in H\setminus H^\times\}$.
 \end{defn}
 
@@ -124,15 +128,17 @@ Thus the monoid $R\setminus \mathbb{Z}$ is BF but not FF.
 \item Some of the richest factorization behavior is encountered in BF monoids.  
 Here we mention some highly studied classes of BF monoids without going into too much detail, on the promise that we will discuss a new class of examples in heavy detail later.
 \begin{itemize}
-\item \textit{Numerical monoids}: proper subsets $H \subsetneqq \NN$ with finite complement which are closed under addition. \textcolor{red}{[CITE SOME PAPERS]}
+\item \textit{Numerical monoids}: proper subsets $H \subsetneqq \NN$ with finite complement which are closed under addition. 
+They exhibit a wide range of factorization behaviors and have been well studied in, among other works, \cite{oneill-pelayo17,oneill-pelayo18,barron-oneill-pelayo17,geroldinger-schmid18,conaway-etal18}.
 \item \textit{Monoids of zero-sum sequences}: for a finite abelian group $G$, this monoid consists of formal words or ``sequences" in the elements of $G$ whose sums are equal to $0$.  
 %This monoid can be written as $\F(G) \cap \sigma^{-1}(0)$, where $\F(G)$ is the free \textit{abelian} monoid in which words are unordered and $\sigma: \F(G) \to G$ is the unique homomorphism sending $g \mapsto g$ (compare with our product map $\pi_H: \F^*(H) \to H$).
-The interest in these monoids can be traced back to the study of the class group of a Dedekind domain (usually a ring of integers of a number field).  \textcolor{red}{[CITE SOME PAPERS]}
+The interest in these monoids can be traced back to the study of the class group of a Dedekind domain (usually a ring of integers of a number field).  They have been studied in some form or another since the late 1960s.
+The broad problems centered around zero-sum sequences are well-formulated in \cite{gao-geroldinger06} and \cite{geroldinger-hk06}.
+More recent works with varying perspectives on the subject include \cite{gao-al18,savchev-chen17,girard-schmid19,girard-schmid20}.
 
-\item \textit{Integer-valued polynomials}: let $D$ be a domain with field of fractions $K$; then $\operatorname{Int}(D) := \{f(x) \in K[x]: f(D) \subseteq D \}$ is the ring of integer-valued polynomials of $D$.
-In addition to the rich theory developed around understanding the prime ideal structure of this ring, it is amenable to the study of factorization behavior, and exhibits some surprising behaviors.  
-For example, any finite subset of $\NN_{\ge2}$ can be realized as the set of factorization lengths of some polynomial $f(x)\in \operatorname{Int}(D)$.
-Additionally, one can pose similar questions regarding the ring $\operatorname{Int}^\text{R}(D)$ of integer-valued rational functions. \textcolor{red}{[CITE SOME PAPERS]}
+\item \textit{Integer-valued polynomials}: let $D$ be a domain with field of fractions $K$; then $\operatorname{Int}(D) := \{f(x) \in K[x]: f(D) \subseteq D \}$ is the ring of integer-valued polynomials of $D$ which, of course, is well-discussed in \cite{cahen-chabert97}.
+In addition to the rich theory developed -- in, for instance, \cite{loper97a},\cite{loper97b}, or \cite{chapman-loper-smith02} -- around understanding the prime ideal structure of this ring, it is amenable to the study of factorization behavior, and exhibits some surprising behaviors.  
+For example, any finite subset of $\NN_{\ge2}$ can be realized as the set of factorization lengths of some polynomial $f(x)\in \operatorname{Int}(D)$ whenever $D$ is a Dedekind domain with infinitely many maximal ideals of finite index \cite{frisch-al19,frisch13}.
 \end{itemize}
 \item Since we will usually be looking at atomic monoids, we offer a non-example here; consider the set $Q = \mathbb{Q}_{\ge 0}$ of non-negative rational numbers under addition.
 $Q$ is reduced (its only unit is the identity, $0$) and we have, for any non-zero element $x\in Q$, that $x = \frac{x}{2} + \frac{x}{2}$.
@@ -214,15 +220,16 @@ This strategy is made more precise by the following result, which is borrowed fr
 	See the proof of \cite[Proposition 2.21]{fan-tringali18}.
 \end{proof}
 
+Now we will borrow from \cite[Definition 3.2]{tringali18} notion of an \textit{equimorphism}, which formally packages the idea that, under suitable conditions, arithmetic may be transferred from one monoid to another.
 %
 \begin{defn}\label{def:equimorphism}
-	Let $H$ and $K$ be monoids, and $\varphi: H\to K$ a monoid homomorphism. We denote by $\varphi^*: \F^*(H)\to\F^*(K)$ the (unique) monoid homomorphism such that $\varphi^\ast(x) = \varphi(x)$ for every $x \in H$, and we call $\varphi$ an \emph{equimorphism} if the following hold:
+	Let $H$ and $K$ be monoids, and $\varphi: H\to K$ a monoid homomorphism. We denote by $\varphi^*: \F^*(H)\to\F^*(K)$ the (unique) monoid homomorphism such that $\varphi^\ast(x) = \varphi(x)$ for every $x \in H$, and we call $\varphi$ an \textbf{equimorphism} if the following hold:
 	\begin{enumerate}[label={({\small{E}}\arabic{*})}]
 		\item\label{def:equimorphism(E1)} $\varphi^{-1}(K^\times)\subseteq H^\times$;
-		\item\label{def:equimorphism(E2)} $\varphi$ is \emph{atom-preserving}, meaning that $\varphi(\A(H)) \subseteq \A(K)$;
+		\item\label{def:equimorphism(E2)} $\varphi$ is \textbf{atom-preserving}, meaning that $\varphi(\A(H)) \subseteq \A(K)$;
 		\item\label{def:equimorphism(E3)} If $x\in H$ and $\mathfrak{b}\in \mathcal{Z}_K(\varphi(x))$ is a non-empty $\A(K)$-word, then $\varphi^*(\mathfrak{a}) \in [ \mathfrak{b} ]_{\C_K}$ for some $\mathfrak{a}\in \mathcal{Z}_H(x)$.
 	\end{enumerate}
-	Moreover, we say that $\varphi$ is \emph{essentially surjective} if $K = K^\times \varphi(H)K^\times$.
+	Moreover, we say that $\varphi$ is \textbf{essentially surjective} if $K = K^\times \varphi(H)K^\times$.
 \end{defn}
 %
 \begin{prop}\label{prop:equimorphism}

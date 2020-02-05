@@ -1,4 +1,5 @@
-\begin{thebibliography}{AAVL01}
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{GLPW18}
 
 \bibitem[AAM85]{AndMar85a}
 D.~D. Anderson, David~F. Anderson, and Raj Markanda.
@@ -42,6 +43,12 @@ Nicholas~R. Baeth, Brandon Burns, and James Mixco.
 \newblock A fundamental theorem of modular arithmetic.
 \newblock {\em Period. Math. Hungar.}, 75(2):356--367, 2017.
 
+\bibitem[BOP17]{barron-oneill-pelayo17}
+Thomas Barron, Christopher O'Neill, and Roberto Pelayo.
+\newblock On dynamic algorithms for factorization invariants in numerical
+  monoids.
+\newblock {\em Math. Comp.}, 86(307):2429--2447, 2017.
+
 \bibitem[Bou74a]{Bou74a}
 A.~Bouvier.
 \newblock Anneaux pr\'{e}simplifiables.
@@ -62,6 +69,24 @@ Sangmin Chun, D.~D. Anderson, and Silvia Valdez-Leon.
 \newblock Reduced factorizations in commutative rings with zero divisors.
 \newblock {\em Communications in Algebra}, 39(5):1583--1594, 2011.
 
+\bibitem[CC97]{cahen-chabert97}
+Paul-Jean Cahen and Jean-Luc Chabert.
+\newblock {\em Integer-valued polynomials}, volume~48 of {\em Mathematical
+  Surveys and Monographs}.
+\newblock American Mathematical Society, Providence, RI, 1997.
+
+\bibitem[CGH{\etalchar{+}}18]{conaway-etal18}
+Rebecca Conaway, Felix Gotti, Jesse Horton, Christopher O'Neill, Roberto
+  Pelayo, Mesa Pracht, and Brian Wissman.
+\newblock Minimal presentations of shifted numerical monoids.
+\newblock {\em Internat. J. Algebra Comput.}, 28(1):53--68, 2018.
+
+\bibitem[CLS02]{chapman-loper-smith02}
+Scott~T. Chapman, Alan Loper, and William~W. Smith.
+\newblock The strong two-generator property in rings of integer-valued
+  polynomials determined by finite sets.
+\newblock {\em Arch. Math. (Basel)}, 78(5):372--377, 2002.
+
 \bibitem[Erd42]{erdos42}
 P.~Erd\"{o}s.
 \newblock On an elementary proof of some asymptotic formulas in the theory of
@@ -79,6 +104,18 @@ C.~R. Fletcher.
 \newblock {\em Mathematical Proceedings of the Cambridge Philosophical
   Society}, 65(3):579–583, 1969.
 
+\bibitem[FNR19]{frisch-al19}
+Sophie Frisch, Sarah Nakato, and Roswitha Rissner.
+\newblock Sets of lengths of factorizations of integer-valued polynomials on
+  {D}edekind domains with finite residue fields.
+\newblock {\em J. Algebra}, 528:231--249, 2019.
+
+\bibitem[Fri13]{frisch13}
+Sophie Frisch.
+\newblock A construction of integer-valued polynomials with prescribed sets of
+  lengths of factorizations.
+\newblock {\em Monatsh. Math.}, 171(3-4):341--350, 2013.
+
 \bibitem[FT18]{fan-tringali18}
 Yushuang Fan and Salvatore Tringali.
 \newblock Power monoids: a bridge between factorization theory and arithmetic
@@ -89,6 +126,11 @@ Yushuang Fan and Salvatore Tringali.
 Steven Galovich.
 \newblock Unique factorization rings with zero divisors.
 \newblock {\em Math. Mag.}, 51(5):276--283, 1978.
+
+\bibitem[GG06]{gao-geroldinger06}
+Weidong Gao and Alfred Geroldinger.
+\newblock Zero-sum problems in finite abelian groups: a survey.
+\newblock {\em Expo. Math.}, 24(4):337--369, 2006.
 
 \bibitem[GHK06]{geroldinger-hk06}
 Alfred Geroldinger and Franz Halter-Koch.
@@ -102,6 +144,11 @@ Alfred Geroldinger and G\"{u}nter Lettl.
 \newblock Factorization problems in semigroups.
 \newblock {\em Semigroup Forum}, 40(1):23--38, 1990.
 
+\bibitem[GLPW18]{gao-al18}
+Weidong Gao, Yuanlin Li, Jiangtao Peng, and Guoqing Wang.
+\newblock A unifying look at zero-sum invariants.
+\newblock {\em Int. J. Number Theory}, 14(3):705--711, 2018.
+
 \bibitem[Gor80]{gorenstein80}
 Daniel Gorenstein.
 \newblock {\em Finite groups}.
@@ -113,12 +160,37 @@ David~J. Grynkiewicz.
   Mathematics}.
 \newblock Springer, Cham, 2013.
 
+\bibitem[GS18]{geroldinger-schmid18}
+Alfred Geroldinger and Wolfgang~Alexander Schmid.
+\newblock A realization theorem for sets of lengths in numerical monoids.
+\newblock {\em Forum Math.}, 30(5):1111--1118, 2018.
+
+\bibitem[GS19]{girard-schmid19}
+Benjamin Girard and Wolfgang~A. Schmid.
+\newblock Direct zero-sum problems for certain groups of rank three.
+\newblock {\em J. Number Theory}, 197:297--316, 2019.
+
+\bibitem[GS20]{girard-schmid20}
+B.~Girard and W.~A. Schmid.
+\newblock Inverse zero-sum problems for certain groups of rank three.
+\newblock {\em Acta Math. Hungar.}, 160(1):229--247, 2020.
+
 \bibitem[HR00]{hardy-ram18}
 G.~H. Hardy and S.~Ramanujan.
 \newblock Asymptotic formul\ae in combinatory analysis [{P}roc. {L}ondon
   {M}ath. {S}oc. (2) {\bf 17} (1918), 75--115].
 \newblock In {\em Collected papers of {S}rinivasa {R}amanujan}, pages 276--309.
   AMS Chelsea Publ., Providence, RI, 2000.
+
+\bibitem[Lop97a]{loper97a}
+Alan Loper.
+\newblock Sequence domains and integer-valued polynomials.
+\newblock {\em J. Pure Appl. Algebra}, 119(2):185--210, 1997.
+
+\bibitem[Lop97b]{loper97b}
+K.~Alan Loper.
+\newblock Ideals of integer-valued polynomial rings.
+\newblock {\em Comm. Algebra}, 25(3):833--845, 1997.
 
 \bibitem[Nat02]{nathanson02}
 M.~B. Nathanson.
@@ -127,6 +199,24 @@ M.~B. Nathanson.
 \newblock In {\em Paul {E}rd\H{o}s and his mathematics, {I} ({B}udapest,
   1999)}, volume~11 of {\em Bolyai Soc. Math. Stud.}, pages 515--531. J\'{a}nos
   Bolyai Math. Soc., Budapest, 2002.
+
+\bibitem[OP17]{oneill-pelayo17}
+Christopher O'Neill and Roberto Pelayo.
+\newblock Factorization invariants in numerical monoids.
+\newblock In {\em Algebraic and geometric methods in discrete mathematics},
+  volume 685 of {\em Contemp. Math.}, pages 231--249. Amer. Math. Soc.,
+  Providence, RI, 2017.
+
+\bibitem[OP18]{oneill-pelayo18}
+Christopher O'Neill and Roberto Pelayo.
+\newblock Realisable sets of catenary degrees of numerical monoids.
+\newblock {\em Bull. Aust. Math. Soc.}, 97(2):240--245, 2018.
+
+\bibitem[SC17]{savchev-chen17}
+Svetoslav Savchev and Fang Chen.
+\newblock An inverse problem about minimal zero-sum sequences over finite
+  cyclic groups.
+\newblock {\em J. Number Theory}, 177:381--427, 2017.
 
 \bibitem[Tri19]{tringali18}
 Salvatore Tringali.

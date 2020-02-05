@@ -1,5 +1,5 @@
 %\chapter{Integer Partitions and the Natural Power Monoid}
-\chapter{Partitions and Interval Factorization in the Natural Power Monoid} \label{ch:partitions}
+\chapter{Partitions and Intervals in the Natural Power Monoid} \label{ch:partitions}
 
 
 In \cite[Section 4]{fan-tringali18}, Fan and Tringali took a thorough look at $\PN$.
@@ -112,39 +112,39 @@ This algorithm comes up short since it fails in general to obtain the entire set
 This example suggests an adjustment to the algorithm presented just above.
 
 \begin{defn} \label{def:fac algorithm}
-	We define the function $\mathbf{fac}$ which assigns to a given $X$ a set of factorizations of $X$ (which we will later assert is the entire set of factorizations of $X$).
+	We define the function $\alg{fac}$ which assigns to a given $X$ a set of factorizations of $X$ (which we will later assert is the entire set of factorizations of $X$).
 	Given any $X\in \P_\fon(H)$,
 	\begin{itemize}
-		\item[(1)] Start with $\mathbf{fac}(X) = \emptyset$.
-		\item[(2)] If $X = \{0\}$, return $\mathbf{fac}(X) = \emptyset$.
-		\item[(3)] If $X$ is an atom, return $\mathbf{fac}(X) = \{X\}$. 
+		\item[(1)] Start with $\alg{fac}(X) = \emptyset$.
+		\item[(2)] If $X = \{0\}$, return $\alg{fac}(X) = \emptyset$.
+		\item[(3)] If $X$ is an atom, return $\alg{fac}(X) = \{X\}$. 
 		\item[(4)] For each atom $A \subseteq X$, if $A + X\:A = X$,
 		\begin{itemize}
 			\item[(5)] For every subset $Y \subseteq X\:A$ with $\max(Y) = \max(X\:A)$, if $A+Y = X$,
 			\begin{itemize}
-				\item[(6)] For every $\bb\in \mathbf{fac}(Y)$, add $A*\bb$ to $\mathbf{fac}(X)$.
+				\item[(6)] For every $\bb\in \alg{fac}(Y)$, add $A*\bb$ to $\alg{fac}(X)$.
 			\end{itemize}
 		\end{itemize}
-		\item[(7)] Return $\mathbf{fac}(X)$.
+		\item[(7)] Return $\alg{fac}(X)$.
 	\end{itemize}
 \end{defn}
 
 \begin{prop}
-	For any $X\in \PN$, $\mathbf{fac}(X) = \Z_{\PN}(X)$.
+	For any $X\in \PN$, $\alg{fac}(X) = \Z_{\PN}(X)$.
 \end{prop}
 
 \begin{proof}
 We can prove this by inducting on the size of $X$.
-If $|X|=1$ then $X = \{1\}$ and $\Z_{\P_\fon(H)}(X) = \emptyset = \mathbf{fac}(X)$ (in accordance with step (2) in the definition of $\mathbf{fac}$).
+If $|X|=1$ then $X = \{1\}$ and $\Z_{\P_\fon(H)}(X) = \emptyset = \alg{fac}(X)$ (in accordance with step (2) in the definition of $\alg{fac}$).
 If $|X| = 2$ then, since $H$ is reduced and contains no nontrivial idempotents (as it lies inside $G$), $X$ is an atom by Lemma \ref{lem:2-elt-atoms}.
-Hence $\Z_{\P_\fon(H)}(X) = \{X\} = \mathbf{fac}(X)$ by step (3).
+Hence $\Z_{\P_\fon(H)}(X) = \{X\} = \alg{fac}(X)$ by step (3).
 	
-It is apparent by construction that $\mathbf{fac}(X) \subseteq \Z_{\P_\fon(H)}(X)$, so we only need to show that the other inclusion holds.
+It is apparent by construction that $\alg{fac}(X) \subseteq \Z_{\P_\fon(H)}(X)$, so we only need to show that the other inclusion holds.
 Suppose $A_1*\cdots*A_k \in \Z_{\P_\fon(H)}$.
 Then $A_1 + (A_2 + \cdots + A_k) = X$, so Proposition \ref{prop:cofactors}(iii) implies that $A_1 + (X\:A_1) = X$.
-At this point, step (5) of the procedure for generating $\mathbf{fac}(X)$ will find $Y:=A_2+\cdots+A_k$ in its search of all subsets of $X\:A_1$.
-By induction, we have that $A_2*\cdots*A_k \in \Z_{\P_\fon(X)}(Y) = \mathbf{fac}(Y)$.
-Thus $A_1 * \cdots * A_k \in \mathbf{fac}(X)$, as we wished.
+At this point, step (5) of the procedure for generating $\alg{fac}(X)$ will find $Y:=A_2+\cdots+A_k$ in its search of all subsets of $X\:A_1$.
+By induction, we have that $A_2*\cdots*A_k \in \Z_{\P_\fon(X)}(Y) = \alg{fac}(Y)$.
+Thus $A_1 * \cdots * A_k \in \alg{fac}(X)$, as we wished.
 \end{proof}
 
 This algorithm still proceeds by brute force, and can be computationally cumbersome.  
@@ -166,7 +166,7 @@ Note that
 	\item $\PN = \bigsqcup_{n=0}^\infty \P^{(n)}$.
 	\item For any $m,n\ge 0$, $\P^{(m)} + \P^{(n)} \subseteq \P^{(m+n)}$.
 \end{itemize}
-From this we see that the sets $\P_n$ give a grading of our monoid.
+From this we see that the sets $\P^{(n)}$ give a grading of our monoid.
 \end{rk}
 
 For any nonunit $x$ in a monoid $H$, the set $\Z_H(x)$ houses the full data of the factorization behavior of $x$. 
@@ -182,13 +182,21 @@ This will help us in our endeavor to develop a more effecient algorithm for fact
 	Each $m_i$ is said to be a \textit{part} of $P$, and $k$ is said to be the \textit{length} or number of parts of $P$.
 	For brevity, we occasionally write $P \vdash n$.
 	
-	For $X \in \PN$ and for any partition $P = (m_1,\dots, m_k)$ of $\max(X)$, we define the \textbf{set of factorizations of $X$ of (partition) type $P$} to be
-	\[ \Z^P(X) := \{ A_1*\cdots * A_k \in \Z(X) : A_i \in \mathcal{A}^{(m_i)} \textrm{ for } i\in [ 1,k ] \}. \]
+	For a factorization $\aa \in \F^*(\A(\PN))$ satisfying $\aa = A_1*\cdots*A_k$ with $\max(A_1)\ge\cdots\ge\max(A_k)$, the \textbf{partition type} of any factorization $\bb\in [\aa]_\simeq$ is $\mathsf{ptype}(\bb) := (\max(A_1),\dots,\max(A_k))$.
+	
+	In general, for any $X \in \PN$ and for any partition $P = (m_1,\dots, m_k)$ of $\max(X)$, we define the \textbf{set of factorizations of $X$} and \textbf{set of factorization classes of (partition) type $P$} to be
+	\[ \Z^P(X) := \{ \aa \in \Z(X) : \mathsf{ptype}(\aa) = P \} \]
+	and
+	\[\mathsf{Z}^P(X) := \{ [\aa]_\simeq \in \mathsf{Z}(X): \mathsf{ptype}(\aa) = P \},\]
+	respectively.
 	We also define the \textbf{set of (partition) types of $X$} to be
 	\[ \mathsf{T}(X) :=  \{ P \vdash \max(X) : \Z^P(X) \neq \emptyset \}. \]
 \end{defn}
 
-\begin{rk}
+Note that, since $\PN$ is reduced, for any factorizations $\aa,\bb\in \F^*(\A(\PN))$, $\aa \simeq \bb$ if and only if $\aa$ and $\bb$ are the same up to reordering of factors.  
+This tells us that $\mathsf{ptype}$ as written above is well-defined.
+
+\begin{rk} \label{rk:ptype}
 	There are some elementary observations to be made which connect factorization behavior with partition type.
 	Say $X \in \PN$ with $n = \max(X)$.
 	\begin{enumerate}[label={\rm (\roman{*})}]
@@ -201,26 +209,26 @@ This will help us in our endeavor to develop a more effecient algorithm for fact
 
 
 To conclude this section, we suggest an outline of another algorithm for calculating sets of factorizations in $\PN$.
-In contrast with $\mathsf{fac}$ from Definition \ref{def:fac algorithm}, this one will proceed constructively rather than inductively.
-It also supposes that one has found the sets $\A^{(m)}$ for $m < \max(X)$.
-This is a computational endeavor in its own right, but removes some of the labor from the process of finding all factorizations of a given set $X$.
+In contrast with $\alg{fac}$ from Definition \ref{def:fac algorithm}, this one will proceed constructively rather than inductively.
 
-First define, for $X\in \PN$ and $P = (m_1,\dots,m_k)$ a partition of $\max(X)$, $\mathsf{fac\_of\_type}(X,P)$ in the following way:
-For every $(A_1,\dots,A_k)\in \A^{(m_1)}\times\cdots\times\A^{(m_k)}$, if $A_1 + \cdots + A_k = X$, then add $A_1 * \cdots * A_k$ to $\mathbf{fac\_of\_type}(X,P)$.
+First define, for $X\in \PN$ and $P = (m_1,\dots,m_k)$ a partition of $\max(X)$, $\alg{fac\_of\_type}(X,P)$ in the following way:
+For every $(A_1,\dots,A_k)\in \A^{(m_1)}\times\cdots\times\A^{(m_k)}$, if $A_1 + \cdots + A_k = X$, then add $A_1 * \cdots * A_k$ to $\alg{fac\_of\_type}(X,P)$.
 
-After this, we can define a new function, $\mathbf{fac\_by\_type}(X)$.
+After this, we can define a new function, $\alg{fac\_by\_type}(X)$.
 The end result is an algorithm of the following form:
 \begin{itemize}
-	\item[(1)] Start with $\mathbf{fac\_by\_type}(X) = \emptyset$.
+	\item[(1)] Start with $\alg{fac\_by\_type}(X) = \emptyset$.
 	\item[(2)] For each partition $P=(m_1,\dots, m_k)$ of $\max(X)$, if $\{0,m_1\}+\cdots+\{0,m_k\} \subseteq X$,
 	\begin{itemize}
-		\item[(3)] Add $\mathbf{facs_\_of\_type}(X,P)$ to $\mathbf{fac\_by\_type}(P)$.
+		\item[(3)] Add $\alg{facs_\_of\_type}(X,P)$ to $\alg{fac\_by\_type}(P)$.
 	\end{itemize}
-	\item[(4)] Return $\mathbf{fac\_by\_type}(X)$.
+	\item[(4)] Return $\alg{fac\_by\_type}(X)$.
 \end{itemize}
 
-Though this procedure for generating $\mathsf{fac\_by\_type}(X)$ still relies on brute force, it does work fast relative to $\mathsf{fac}$---especially for ``small" subsets $X\subseteq \NN$.
-It also affords some opportunities for unnecessary calculations; for instance, step (2) identifies which partition types are feasible by examining the subsums $\Sigma(P)$ of $P$.
+Though this procedure for generating $\mathsf{fac\_by\_type}(X)$ still relies on brute force, it does work fast relative to $\alg{fac}$---especially for ``small" subsets $X\subseteq \NN$.
+It requires that one computes the sets $\A^{(m)}$ for $m<\max(X)$, which is a computational endeavor in its own right.
+However, calculating and recording the elements of $\A^{(m)}$ a single time compares favorably with $\alg{fac}$, as $\alg{fac}$ essentially requires the calculation of all atoms which are subsets of the input set $X$ each time the algorithm is used.
+It also affords some opportunities for avoiding unnecessary calculations; for instance, step (2) identifies which partition types are feasible by examining the subsums $\Sigma(P)$ of $P$.
 We will have more to say about subsums in Section \ref{sec:subsums}.
 
 
@@ -234,7 +242,8 @@ We will have more to say about subsums in Section \ref{sec:subsums}.
 %However, as with other aspects of the set of factorizations of $[ 0,n ]$, we hope this indicates that intervals have \textit{many} factorizations of each such type $P$.
 %On the other hand, some types can never admit factorizations; we shall see some examples of this soon.
 
-
+As alluded to in Remark \ref{rk:ptype}, it is not always clear for which $P$ is $\Z^P(X) \neq \emptyset$ for a given $X$.
+In this section we fully address this question in the case when $X = [0,n]$ is an interval.
 
 
 \begin{prop} \label{prop:2-elt factor/cofactor}
@@ -321,6 +330,10 @@ To aid in this, we will need a few classes of specifically structured ``large at
 \end{prop}
 
 \begin{proof}
+	One who has read ahead will realize that, for $h > 5$, each of these is an instance of a \textit{residually concentrated atom} as defined and explored in Chapter \ref{ch:intervals}.  
+	The proof is then finished by citing Proposition \ref{prop:resid concentrated atoms} and applying one of the algorithms from Section \ref{sec:algorithms} to handle the comparatively cases when $h\le 5$.
+	However, we will also give a direct proof which has the benefit of giving insight into the way in which these atoms were constructed, and into how one might generally argue about factorizations in $\PN$.
+	
 	Beginning with (i), we suppose that there are $X,Y\in \PN$ so that $B_{2h-1} = X + Y$.
 	Without loss of generality, $1\in X$.
 	Then $Y\subseteq B_{2h-1}$ cannot contain any nonzero elements; if $y\in Y\setminus\{0\}$ then $1+y\in B_{2h-1}$ is even, a contradiction.
@@ -348,7 +361,8 @@ To aid in this, we will need a few classes of specifically structured ``large at
 We will see that the above constructions are helpful because sums of small numbers of these atoms will be able to form relatively large intervals.
 
 \begin{lemma} \label{lem:two-part types}
-	If $q\ge r \ge 3$ then $[ 0, q+r ] \in \A^{(q)} + \A^{(r)}$; that is, there are atoms $A_q\in \A^{(q)}$ and $A'_r\in \A^{(q)}$ such that $A_q + A'_r = [ 0,q+r ]$.
+	If $q\ge r \ge 3$ then $[ 0, q+r ] \in \A^{(q)} + \A^{(r)}$; 
+	that is, there are atoms $A_q\in \A^{(q)}$ and $A'_r\in \A^{(q)}$ such that $A_q + A'_r = [ 0,q+r ]$.
 \end{lemma}
 
 \begin{proof}
@@ -395,6 +409,9 @@ We will see that the above constructions are helpful because sums of small numbe
 \end{prop}
 
 \begin{proof}
+	As in the proof of Proposition \ref{prop:2-congruence atoms}, we note that these sets may be verified to be atoms by applying Proposition \ref{prop:resid concentrated atoms}.
+	Yet we will, once again, outline a more direct argument for the sake of clarity.
+	
 	The arguments for each are similar, but (i) and (ii) are comparatively easier than (iii), so we will just prove (iii).
 	Suppose that there are $X$ and $Y$ so that $D_{3h+2} = X + Y$.
 	We may freely suppose that $1\in X$ this implies that $Y \subseteq \{0,3h,3h+1\}$.
@@ -450,7 +467,7 @@ To make this precise, we have the following lemma.
 \begin{thm} \label{thm:good types}
 	Let $n\ge 1$ and suppose $P$ is a partition of $n$ with $P \notin \{(n-2,2)\} \cup \{ (m,2\dots,2) : 2\le m \le 5\}$.
 	Then $\Z^P([ 0,n ]) \neq \emptyset$.
-	In particular, $|\mathsf{T}([ 0,n ])| = p(n)-4$, where $p(n)$ is the number of integer partitions of $n$.
+	In particular, for $n\ge 8$, $|\mathsf{T}([ 0,n ])| = p(n)-4$, where $p(n)$ is the number of integer partitions of $n$.
 \end{thm}
 
 \begin{proof}
@@ -496,86 +513,106 @@ To make this precise, we have the following lemma.
 	This allows us to conclude that $\aa = \bb * \{0,m_k\} \in \Z^P([ 0,n ])$, proving what we wished.
 \end{proof}
 
-\section{Subsums and Near Intervals} \label{sec:subsums}
+\section{Subsums and Non-Intervals} \label{sec:subsums}
 We have just seen that intervals of the form $[ 0,n ]$ have factorizations of most partition types.
 There is a very sharp dichotomy between the wildly varied factorization behavior of intervals and that of any other subset of $\NN$, which we will see presently.  
 
+We have just seen that intervals of the form $[0,n]$ have factorizations of almost every partition type.
+However, this section will demonstrate that non-intervals a very far from satisfying this sort of behavior.
+This helps us begin to distinguish intervals from the rest of $\PN$ in a quantifiable way.  
+
 \begin{defn}
-	Let $m_1,\dots, m_k$ be integers.
-	We will refer to $S = (m_1,\dots, m_k)$ as a \textit{sequence} of integers.
-	Define the \textbf{set of subsums of S} to be $\Sigma(S) := \left\{ \sum_{i\in I} m_i : I\subseteq [ 1,k ] \right\}$.
+Let $m_1,\dots, m_k$ be integers.
+We will refer to $S = (m_1,\dots, m_k)$ as a \textit{sequence} of integers.
+Define the \textbf{set of subsums of S} to be $\Sigma(S) := \left\{ \sum_{i\in I} m_i : I\subseteq [ 1,k ] \right\}$.
 \end{defn}
 
 \begin{rk}
-	The notion of ``set of subsums" of a sequence can be compared with the similar notion which appears in much of the literature on zero-sum problems in finite abelian groups \textcolor{red}{[CITE SOME PAPERS]}.  
-	Ours is nearly identical, except for its inclusion of the empty sum.
-	Since we are not focused on the appearance of zero sums, including the empty sum does not put us at any disadvantage in our setting.
-	To the contrary, it is convenient for us as it allows us to express the set of subsums of $S = (m_1,\dots, m_k)$ as a sum in $\P_\fon(\ZZ)$: $\Sigma(S)  = \{0,m_1\} + \cdots +\{0,m_k\}$.
+The notion of ``set of subsums" of a sequence can be compared with the similar notion which appears in much of the literature on zero-sum problems in finite abelian groups; see \cite[Definition 5.1.1]{geroldinger-hk06} or many papers on zero-sum problems for similar notation in a different context. 
+Our definition is nearly identical, except for its inclusion of the empty sum.
+Since we are not focused on the appearance of zero sums, including the empty sum does not put us at any disadvantage in our setting.
+To the contrary, it is convenient for us as it allows us to express the set of subsums of $S = (m_1,\dots, m_k)$ as a sum in $\P_\fon(\ZZ)$: $\Sigma(S)  = \{0,m_1\} + \cdots +\{0,m_k\}$.
 \end{rk}
 
 \begin{lemma} \label{lem:long-partitions}
-	Let $m_1,\dots, m_k$ be positive integers with $m_1\ge \cdots \ge m_k \ge 1$ and let $n = m_1 + \cdots + m_k$.
-	If $k> n/2$ then $\Sigma(m_1,\dots, m_k) = [ 0,n ]$.
+Let $m_1,\dots, m_k$ be positive integers with $m_1\ge \cdots \ge m_k \ge 1$ and let $n = m_1 + \cdots + m_k$.
+If $k> n/2$ then $\Sigma(m_1,\dots, m_k) = [ 0,n ]$.
 \end{lemma}
 
 \begin{proof}
-	To prove this, we will induct on $k$; if $k=1 > n/2$, then $n \le 1$ and the result is trivial.
-	Now suppose $k > 1$ and that, for any sequence $T$ consisting of $\ell < k$ terms satisfying $\ell > \max(\Sigma(T))/2$, $\Sigma(T) = [ 0, \max(\Sigma(T)) ]$.
+To prove this, we will induct on $k$; if $k=1 > n/2$, then $n \le 1$ and the result is trivial.
+Now suppose $k > 1$ and that, for any sequence $T$ consisting of $\ell < k$ terms satisfying $\ell > \max(\Sigma(T))/2$, $\Sigma(T) = [ 0, \max(\Sigma(T)) ]$.
 	
-	First observe that the maximum term of $S$ is at least the average of the terms of $S$; that is, $m_1 \ge \frac{n}{k}$.
-	From here, we have
-	\[ \frac{m_2+\cdots + m_k}{k-1} = \frac{n-m_1}{k-1} \le \frac{n-n/k}{k-1} = \frac{n}{k} < 2 \]
-	Thus $k - 1 > \frac{m_2+\cdots+m_k}{2}$ and we can apply the inductive hypothesis to $T := (m_2,\dots, m_k)$.
-	Now we have $\Sigma(T) = [ 0, n-m_1 ]$, so $\Sigma(S) = \{0,m_1\} + [ 0,n-m_1 ] = [ 0,n-m_1 ] \cup [ m_1,n ]$.
-	This union of intervals is equal to $[ 0,n ]$ if $m_1 \le m_2 + \cdots + m_k +1$, so all that remains is to verify this last inequality.
+First observe that the maximum term of $S$ is at least the average of the terms of $S$; that is, $m_1 \ge \frac{n}{k}$.
+From here, we have
+\[ \frac{m_2+\cdots + m_k}{k-1} = \frac{n-m_1}{k-1} \le \frac{n-n/k}{k-1} = \frac{n}{k} < 2 \]
+Thus $k - 1 > \frac{m_2+\cdots+m_k}{2}$ and we can apply the inductive hypothesis to $T := (m_2,\dots, m_k)$.
+Now we have $\Sigma(T) = [ 0, n-m_1 ]$, so $\Sigma(S) = \{0,m_1\} + [ 0,n-m_1 ] = [ 0,n-m_1 ] \cup [ m_1,n ]$.
+This union of intervals is equal to $[ 0,n ]$ if $m_1 \le m_2 + \cdots + m_k +1$, so all that remains is to verify this last inequality.
 	
-	From our assumption that $k > n/2$, we have $k-1 \ge (n-1)/2$, so 
-	\[m_2 + \cdots + m_k \ge 1 +\cdots + 1 = k-1 \ge \frac{n-1}{2}.\]
-	Using this inequality twice, we have that
-	\[m_1 = n - (m_2 + \cdots + m_k) \le n - \frac{n-1}{2} = \frac{n+1}{2} \le m_2 + \cdots + m_k + 1,\]
-	exactly as we wished.
+From our assumption that $k > n/2$, we have $k-1 \ge (n-1)/2$, so 
+\[m_2 + \cdots + m_k \ge 1 +\cdots + 1 = k-1 \ge \frac{n-1}{2}.\]
+Using this inequality twice, we have that
+\[m_1 = n - (m_2 + \cdots + m_k) \le n - \frac{n-1}{2} = \frac{n+1}{2} \le m_2 + \cdots + m_k + 1,\]
+exactly as we wished.
 \end{proof}
 
 \begin{lemma} \label{lem:n/2-partitions}
-	Let $n$ be even and let $P$ be a partition into $n/2$ parts.
-	Then one of the following holds:
-	\begin{itemize}
-		\item $\Sigma(P) = [ 0, n ]$.
-		\item $\Sigma(P) = [ 0,n ]\setminus\{n/2\}$ and $P = (n/2+1,1,\dots,1)$.
-		\item $\Sigma(P) = 2\cdot [ 0, n/2 ]$ and $P = (2,\dots, 2)$
-	\end{itemize}
+Let $n$ be even and let $P$ be a partition into $n/2$ parts.
+Then one of the following holds:
+\begin{itemize}
+	\item $\Sigma(P) = [ 0, n ]$.
+	\item $\Sigma(P) = [ 0,n ]\setminus\{n/2\}$ and $P = (n/2+1,1,\dots,1)$.
+	\item $\Sigma(P) = 2\cdot [ 0, n/2 ]$ and $P = (2,\dots, 2)$
+\end{itemize}
 \end{lemma}
 
 \begin{proof}
-	Let $P = (m_1,\dots, m_k)$ with $k=n/2$ and $m_1\ge \cdots \ge m_k \ge 1$.
-	Note that the average size of the parts of $P$ is $(m_1+\cdots+m_k)/k = n/(n/2) = 2$.
-	Thus the smallest part $m_k$ satisfies $m_k \le 2$.
+Let $P = (m_1,\dots, m_k)$ with $k=n/2$ and $m_1\ge \cdots \ge m_k \ge 1$.
+Note that the average size of the parts of $P$ is $(m_1+\cdots+m_k)/k = n/(n/2) = 2$.
+Thus the smallest part $m_k$ satisfies $m_k \le 2$.
 	
-	If $m_k = 2$ then $m_1 = n - (m_2+\cdots+m_k) \le n - (k-1)(2) = n - (n/2-1)2 = 2$.
-	Thus we have $m_1 = \cdots = m_k = 2$ and so $\Sigma(P) = \{0,2\}+\cdots+\{0,2\} = \{0,2,\dots,n\} = 2\cdot[0,n/2]$ (recalling that $2\cdot X = \{2x: x\in X\}$, as opposed to $2X = X+X$).
+If $m_k = 2$ then $m_1 = n - (m_2+\cdots+m_k) \le n - (k-1)(2) = n - (n/2-1)2 = 2$.
+Thus we have $m_1 = \cdots = m_k = 2$ and so $\Sigma(P) = \{0,2\}+\cdots+\{0,2\} = \{0,2,\dots,n\} = 2\cdot[0,n/2]$ (recalling that $2\cdot X = \{2x: x\in X\}$, as opposed to $2X = X+X$).
 	
-	Suppose now that $m_k=1$.
-	Then, since the average of the parts $m_i$ is equal to $2$, we must have that the greatest part $m_1 > 2$.
-	As a result, 
-	\[\frac{m_2+\cdots+m_k}{k-1} = \frac{n-m_1}{n/2-1} < \frac{n-2}{n/2-1} = 2, \]
-	so $k-1 > (m_2 + \cdots + m_k)/2$; by Lemma \ref{lem:long-partitions}, $\Sigma(m-2,\dots,m_k) = [ 0, n-m_1 ]$.
+Suppose now that $m_k=1$.
+Then, since the average of the parts $m_i$ is equal to $2$, we must have that the greatest part $m_1 > 2$.
+As a result, 
+\[\frac{m_2+\cdots+m_k}{k-1} = \frac{n-m_1}{n/2-1} < \frac{n-2}{n/2-1} = 2, \]
+so $k-1 > (m_2 + \cdots + m_k)/2$; by Lemma \ref{lem:long-partitions}, $\Sigma(m-2,\dots,m_k) = [ 0, n-m_1 ]$.
 	
-	Now we have $\Sigma(P) = \{0,m_1\} + [ 0,n-m_1] = [ 0,n-m_1 ] \cup [ m_1, n]$, so $\Sigma(P) = [ 0,n ]$ provided $2m_1 < n+1$.
-	If not, then $2m_1 \ge n+2$, so $m_1 \ge \frac{n+2}{2}$.
-	From this, it follows that 
-	\[m_2 +\cdots+m_k = n-m_1 \le n - \frac{n+2}{2} = \frac{n}{2}-1 = k-1.\]
-	Since each $m_i \ge 1$, we must have $m_2 = \cdots = m_k = 1$, so $P = (n/2+1, 1,\dots, 1)$ and $\Sigma(P) = [ 0,n/2-1 ] \cup [ n/2+1,n]$.
+Now we have $\Sigma(P) = \{0,m_1\} + [ 0,n-m_1] = [ 0,n-m_1 ] \cup [ m_1, n]$, so $\Sigma(P) = [ 0,n ]$ provided $2m_1 < n+1$.
+If not, then $2m_1 \ge n+2$, so $m_1 \ge \frac{n+2}{2}$.
+From this, it follows that 
+\[m_2 +\cdots+m_k = n-m_1 \le n - \frac{n+2}{2} = \frac{n}{2}-1 = k-1.\]
+Since each $m_i \ge 1$, we must have $m_2 = \cdots = m_k = 1$, so $P = (n/2+1, 1,\dots, 1)$ and $\Sigma(P) = [ 0,n/2-1 ] \cup [ n/2+1,n]$.
 \end{proof}
 
-\begin{thm}
-	Let $X \in \PN$ and suppose that there is $k\in \mathsf{L}(X)$ with $k > \max(X)/2$.
-	Then $X = [ 0, \max(X) ]$.
+\begin{thm} \label{thm:long factorization implies interval}
+Let $X \in \PN$ and say $n := \max(X)$.
+\begin{enumerate}[{label=(\roman{*})}]
+	\item If there is $k\in \mathsf{L}(X)$ with $k>n/2$ then $X = [0,n]$
+	\item If $n/2\in \mathsf{L}(X)$ then $X = [0,n]$, $X=[0,n]\setminus\{n/2\}$, or $X = (n/2)\cdot \{0,2\}$
+\end{enumerate}
+%and suppose that there is $k\in \mathsf{L}(X)$ with $k > \max(X)/2$.
+%Then $X = [ 0, \max(X) ]$.
 \end{thm}
 
 \begin{proof}
-	Let $n = \max(X)$ and let $\aa\in\Z(X)$ be a factorization with length $|\aa| = k$.
-	Then there are integers $m_1\ge\cdots \ge m_k \ge 1$ and atoms $A_i\in \A^{(m_i)}$ with $\aa = A_1*\cdots*A_k$.
-	The result is immediate from Lemma \ref{lem:long-partitions}, since we have
-	\[ X = A_1 + \cdots + A_k \supseteq \{0,m_1\} + \cdots + \{0,m_k\} = \Sigma(m_1,\cdots,m_k) = [ 0,n ] \]
-	and we know $X \subseteq [ 0,\max(X) ] = [ 0, n ]$.
+Begin with (i): let $n = \max(X)$ and let $\aa\in\Z(X)$ be a factorization with length $|\aa| = k$.
+Then there are integers $m_1\ge\cdots \ge m_k \ge 1$ and atoms $A_i\in \A^{(m_i)}$ with $\aa = A_1*\cdots*A_k$.
+The result is immediate from Lemma \ref{lem:long-partitions}, since we have
+\[ X = A_1 + \cdots + A_k \supseteq \{0,m_1\} + \cdots + \{0,m_k\} = \Sigma(m_1,\cdots,m_k) = [ 0,n ] \]
+and we know $X \subseteq [ 0,\max(X) ] = [ 0, n ]$.
+
+The argument for (ii) is identical, except we instead use Lemma \ref{lem:n/2-partitions}.
+\end{proof}
+
+\begin{cor}
+If $X\in \PN$ and $X$ is not an interval or an atom, then $\mathsf{L}(X) \subseteq [2,\max(X)/2]$.
+In particular, $X$ has no factorizations of partition type $P$ for any $P$ with $|P| > \max(X)/2$.
+\end{cor}
+
+\begin{proof}
+This is immediate, as it is the contrapositive of Theorem \ref{thm:long factorization implies interval}.
 \end{proof}

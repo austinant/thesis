@@ -2,7 +2,7 @@
 
 \begin{titlepage}
 \begin{center}
-	{\LARGE \bf On Sum Decompositions of Sets: \\ \vspace{3mm}
+	{\LARGE \bf On Product and Sum Decompositions of Sets: \\ \vspace{3mm}
 		
 		The Factorization Theory of Power Monoids}
 
@@ -13,9 +13,9 @@
 \
 	
 	Presented in Partial Fulfillment of the Requirements 
+	for the Degree 
 	
-	for the Degree Doctor of Philosophy 
-	
+	Doctor of Philosophy 
 	in the Graduate School of The Ohio State University
 
 \
@@ -40,7 +40,7 @@
 	
 	Ivo Herzog
 	
-	HOPEFULLY SOMEBODY ELSE}
+	Cosmin Roman}
 \end{center}
 
 \end{titlepage}
@@ -51,14 +51,43 @@
 
 2020}
 \end{center}
+\setcounter{page}{1}
 \vfill
 \pagestyle{empty}
 \chapter{Abstract}
+Let $(H,\cdot)$ be a monoid.
+The \textit{power monoid} of $H$, first studied by Y. Fan and S. Tringali, is the collection $\P_\fin(H)$ of finite, nonempty subsets of $H$, with the operation of setwise multiplication given by $X\cdot Y := \{x\cdot y: x\in X, \, y\in Y\}$.
+This is a highly non-cancellative monoid in which many standard factorization questions (e.g., for which $H$ is $\P_\fin(H)$ BF, or which sets occur as sets of factorization lengths) have complicated and interesting answers.
+We pivot to the submonoid $\P_\fun(H)$ consisting of finite subsets containing $1$, which is equimorphic to $\P_\fin(H)$ when $H$ is a group, but is also deserving of study in its own right.
+
+We determine exact conditions on $H$ for which $\P_\fun(H)$ is atomic (resp. BF).
+Due to its non-cancellative nature, $\P_\fun(H)$ eludes characterization by some of the usual tools of factorization theory.  
+To respond in a systematic way to non-cancellative phenomena, we formulate the notion of ``minimal'' factorizations and the ``minimal'' versions of the usual properties BmF, FmF,HmF, and UmF (corresponding, respectively to BF, FF, HF, and UF or factoriality).
+With this in hand, we can give exact conditions on those $H$ which make $\P_\fun(H)$ BmF (resp. FmF, HmF, UmF).
+As a further application, we show that all intervals of the form $[2,k]$ are realized as sets of factorization lengths in $\P_\fon(\ZZ/n\ZZ)$ for $k\in[2,n-1]$.
+
+Even $\PN$, the reduced power monoid of the naturals, is a rich object of study.  
+Of particular interest are the quantifiable differences between the intervals $[0,n]$ and the other elements of $\PN$.
+It is already known, due to Fan and Tringali, that $\mathsf{L}_\PN([0,n]) = [2,n]$.
+We refine this result by introducing the \textit{partition type} of a factorization and showing that $[0,n]$ has factorizations of almost every partition type, and that non-intervals sharply fail to do so.  
+Intervals are further distinguished %The breadth of factorization behaviors exhibited by intervals is further accentuated 
+by giving an exponential lower bound on $|\mathsf{Z}_\PN([0,n])|$, the number of factorizations of $[0,n]$.
+
+
+The study of which sets occur as sets of lengths in $\PN$ is fairly difficult, and requires some new tools.
+To this end, we show that all factorization phenomena that occur in $\P_\fon(\NN^d)$, for $d>1$, also occur in $\PN$ (and vice-versa).
+Consequently, we may leverage the intuition and geometry of the integer lattice.  
+After developing the necessary methods, we recover some known results on sets of lengths and demonstrate a new family of sets which can be realized as sets of lengths. 
+
+
+
 
 \chapter{Acknowledgements}
 I owe my thanks to many, many people whose generosity and support have helped me immeasurably while I pursued this degree.
 
-To my parents Deane and Kim, who have always encouraged me to do my best, flown me home for the holidays, and given me wisdom to help me navigate the world.
+
+To my parents Deane and Kim, without whom I would quite literally not be here.  
+You have always encouraged me to do my best, flown me home for the holidays, and given me wisdom to help me navigate the world.
 
 To my grandparents Fay and Al, who have shown me constant love and support.
 
@@ -72,12 +101,18 @@ To my collaborator, Salvo, for letting me work on such an interesting problem su
 
 To Alfred Geroldinger, whose work I greatly admire, for hosting me in Austria and for keeping factorization theory and combinatorial group theory fashionable.
 
+To Daniel Madden, my first mathematical mentor, who taught me to always write things that are true.
+
+To all the mathematicians I've encountered who cultivated my interest and encouraged me to learn more.
+
 To all my friends in the math department for productive (and not) discussions about math (and not).
 
-To Alex and Michael, for many dinners together, for celebrating and commiserating together, and for having deeper than reasonable discussions of quite trivial things.
+To Alex and Michael, for many dinners together, for celebrating and commiserating together, and for contemplating trivial things far more deeply than is reasonable---together.
+%having deeper than reasonable discussions of quite trivial things.
 
-To Jared, for always checking in on me and for reminding me of all the wonderful, silly things that exist.  
+To Jared, for always checking in on me and for reminding me of all the wonderful and silly things that exist in the world.
 
+To all the people I've had the opportunity to know who have helped me to change and to grow.
 
 
 
