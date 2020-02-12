@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  5 FEB 2020 14:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  12 FEB 2020 15:58
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
  %&-line parsing enabled.
-**Thesis.tex
-(./Thesis.tex
+**a-Thesis.tex
+(./a-Thesis.tex
 LaTeX2e <2018-12-01>
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
@@ -23,6 +23,9 @@ File: bk10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
@@ -85,10 +88,10 @@ Package: multicol 2018/12/27 v1.8v multicolumn formatting (FMi)
 \colbreak@box=\box53
 \mc@col@check@num=\count97
 )
-\@input{preamble.aux}
-\openout2 = `preamble.aux'.
+\@input{b-preamble.aux}
+\openout2 = `b-preamble.aux'.
 
-(./preamble.tex
+(./b-preamble.tex
 (/usr/local/texlive/2019/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2018/04/16 v5.8 Page Geometry
 
@@ -118,9 +121,6 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layouthoffset=\dimen123
 \Gm@layoutvoffset=\dimen124
 \Gm@dimlist=\toks16
-)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/setspace/setspace.sty
-Package: setspace 2011/12/19 v6.7a set line spacing
 )
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2018/12/01 v2.17b AMS math features
@@ -673,11 +673,64 @@ File: pgflibraryarrows.meta.code.tex 2019/02/02 v3.1.1 (3.1.1)
 \pgfarrowwidth=\dimen189
 \pgfarrowlinewidth=\dimen190
 )))
-\c@defn=\count147
-) (./Thesis.aux (./frontmatter.aux) (./c-intro.aux)
-(./c-fundamentals.aux) (./c-atomicity.aux) (./c-minfac.aux) (./c-partitions.aux
-) (./c-intervals.aux) (./c-lattices.aux))
-\openout1 = `Thesis.aux'.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/minitoc/minitoc.sty
+Package: minitoc 2018/07/12 v62 Package minitoc
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/minitoc/mtcmess.sty
+Package: mtcmess 2006/03/14
+)
+Package minitoc Info: I0001
+(minitoc)             *** minitoc package, version 62 ***.
+\tf@mtc=\write4
+\mtcindent=\skip55
+\mtcskipamount=\skip56
+Package minitoc Info: I0005
+(minitoc)             compatible with hyperref.
+Package minitoc Info: I0023
+(minitoc)             part level macros available.
+Package minitoc Info: I0003
+(minitoc)             chapter level macros available.
+\mtc@toks=\toks44
+\mtc@strutbox=\box69
+\mtc@hstrutbox=\box70
+Package minitoc Info: I0002
+(minitoc)             Autoconfiguration of extensions.
+\openout4 = `a-Thesis.mtc0'.
+
+\openout4 = `a-Thesis.mtc'.
+
+
+(./a-Thesis.mtc0)
+Package minitoc Info: I0012
+(minitoc)             Long extensions (Unix-like) will be used.
+Package minitoc Info: I0031
+(minitoc)             ==> this version is configured for UNIX-like 
+(minitoc)                 (long extensions) file names.
+\openout4 = `a-Thesis.mtc'.
+
+\openout4 = `a-Thesis.mtc0'.
+
+\c@mtc=\count147
+\c@minitocdepth=\count148
+\c@ptc=\count149
+\c@parttocdepth=\count150
+\ptcindent=\skip57
+Package minitoc Info: I0010
+(minitoc)             The english language is selected.
+(minitoc)              on input line 4910.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/minitoc/english.mld
+File: english.mld 2006/01/13
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/minitoc/english.mld
+File: english.mld 2006/01/13
+))
+\c@defn=\count151
+)
+(./a-Thesis.aux (./c1-intro.aux) (./c2-fundamentals.aux) (./c3-atomicity.aux)
+(./c4-minfac.aux) (./c5-partitions.aux) (./c6-intervals.aux) (./c7-lattices.aux
+))
+\openout1 = `a-Thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
 LaTeX Font Info:    ... okay on input line 19.
@@ -728,7 +781,7 @@ LaTeX Font Info:    ... okay on input line 19.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box69
+\AtBeginShipoutBox=\box71
 Package hyperref Info: Link coloring ON on input line 19.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -736,99 +789,110 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count148
+\c@section@level=\count152
 )
 LaTeX Info: Redefining \ref on input line 19.
 LaTeX Info: Redefining \pageref on input line 19.
 LaTeX Info: Redefining \nameref on input line 19.
 
-(./Thesis.out) (./Thesis.out)
-\@outlinefile=\write4
-\openout4 = `Thesis.out'.
+(./a-Thesis.out) (./a-Thesis.out)
+\@outlinefile=\write5
+\openout5 = `a-Thesis.out'.
 
  ABD: EveryShipout initializing macros
-\openout2 = `frontmatter.aux'.
+Package minitoc(hints) Info: I0049
+(minitoc(hints))             ==> You requested the hints option. 
+(minitoc(hints))             Some hints are eventually given below.
 
 
-(./frontmatter.tex [1
+Package minitoc(hints) Warning: W0099
+(minitoc(hints))                --- The titlesec package is loaded. 
+(minitoc(hints))                It is incompatible 
+(minitoc(hints))                with the minitoc package.
 
 
+Package minitoc(hints) Warning: W0030
+(minitoc(hints))                --- The \part command is altered 
+(minitoc(hints))                after minitoc.
 
 
+Package minitoc(hints) Warning: W0023
+(minitoc(hints))                --- It may be the consequence 
+(minitoc(hints))                of loading the ``hyperref'' package.
 
 
-] [1] [2
+Package minitoc(hints) Warning: W0028
+(minitoc(hints))                --- The \chapter command is altered 
+(minitoc(hints))                after minitoc.
 
-]
-LaTeX Font Info:    Try loading font information for U+msa on input line 58.
 
+Package minitoc(hints) Warning: W0023
+(minitoc(hints))                --- It may be the consequence 
+(minitoc(hints))                of loading the ``hyperref'' package.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 23.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 58.
+LaTeX Font Info:    Try loading font information for U+msb on input line 23.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 58.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 23.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 58.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 23.
 
-(/usr/local/texlive/2019/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [3] [4
+(/usr/local/texlive/2019/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [1
+
+
+
+
+] [2
 
 ]
-[5] [6
+(./a-Thesis.toc [3])
+\tf@toc=\write6
+\openout6 = `a-Thesis.toc'.
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 123--129
+ [4]
+\openout2 = `c1-intro.aux'.
 
- []
-
-) [7] [8
-
-
-] (./Thesis.toc [9])
-\tf@toc=\write5
-\openout5 = `Thesis.toc'.
-
- [10]
-\openout2 = `c-intro.aux'.
-
- (./c-intro.tex
+ (./c1-intro.tex
 Chapter 1.
 [1
 
 
 
 ] [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 112.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 109.
 
  (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
-LaTeX Font Info:    Try loading font information for U+euf on input line 118.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 109.
+LaTeX Font Info:    Try loading font information for U+euf on input line 115.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/ueuf.fd
 File: ueuf.fd 2013/01/14 v3.01 Euler Fraktur
 ) [3]) [4]
-\openout2 = `c-fundamentals.aux'.
+\openout2 = `c2-fundamentals.aux'.
 
 
-(./c-fundamentals.tex
+(./c2-fundamentals.tex
 Chapter 2.
 [5
 
 
 
 ] [6] [7] [8] [9] [10] [11]) [12]
-\openout2 = `c-atomicity.aux'.
+\openout2 = `c3-atomicity.aux'.
 
- (./c-atomicity.tex
+ (./c3-atomicity.tex
 Chapter 3.
 
 Underfull \vbox (badness 5711) has occurred while \output is active []
@@ -843,9 +907,9 @@ Underfull \vbox (badness 6859) has occurred while \output is active []
 
  [15]
 [16] [17] [18] [19]) [20]
-\openout2 = `c-minfac.aux'.
+\openout2 = `c4-minfac.aux'.
 
- (./c-minfac.tex
+ (./c4-minfac.tex
 Chapter 4.
 [21
 
@@ -856,16 +920,16 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [28]
 [29] [30] [31] [32] [33] [34]) [35]
-\openout2 = `c-partitions.aux'.
+\openout2 = `c5-partitions.aux'.
 
- (./c-partitions.tex [36
+ (./c5-partitions.tex [36
 
 
 
 ]
 Chapter 5.
 [37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49]
-Overfull \hbox (6.2558pt too wide) in paragraph at lines 638--645
+Overfull \hbox (6.2558pt too wide) in paragraph at lines 633--640
 []\OT1/cmr/m/n/10 to be the num-ber of ir-re-ducibles in $\U/msb/m/n/10 F[]\OT1
 /cmr/m/n/10 [\OML/cmm/m/it/10 H\OT1/cmr/m/n/10 ]$ of de-gree $\OML/cmm/m/it/10 
 n$\OT1/cmr/m/n/10 . For con-ve-nience, we also write $\OML/cmm/m/it/10 ^^Z[]\OT
@@ -875,14 +939,10 @@ mr/m/n/10 (\OML/cmm/m/it/10 n\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 =\OMS/cmsy/m/n/1
 cmsy/m/n/10 j$
  []
 
-[50] [51] [52]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[50] [51] [52] [53]) [54]
+\openout2 = `c6-intervals.aux'.
 
- [53])
-[54]
-\openout2 = `c-intervals.aux'.
-
- (./c-intervals.tex
+ (./c6-intervals.tex
 Chapter 6.
 [55
 
@@ -898,9 +958,9 @@ OT1/cmr/m/n/10 2\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 4\OML/cmm/m/it/10 ; \OT1/cmr
  []
 
 [58] [59] [60] [61] [62]) [63]
-\openout2 = `c-lattices.aux'.
+\openout2 = `c7-lattices.aux'.
 
- (./c-lattices.tex [64
+ (./c7-lattices.tex [64
 
 
 
@@ -910,43 +970,45 @@ Chapter 7.
 Underfull \vbox (badness 2469) has occurred while \output is active []
 
  [67]
-[68] [69] [70]
+[68] [69] [70] [71] [72] [73]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 287.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 287.
-
-[71] [72] [73] [74] [75]
-Underfull \vbox (badness 3078) has occurred while \output is active []
-
- [76])
-[77] [78
+ [74]
+[75] [76] [77]) [78] (./a-Thesis.bbl [79
 
 
-] (./Thesis.bbl [79
 
-] [80] [81]) [82]
+] [80] [81])
+Package minitoc Info: I0009
+(minitoc)             Listing minitoc auxiliary files. 
+(minitoc)             Creating the a-Thesis.maf file.
+\openout4 = `a-Thesis.maf'.
+
+
+
+Package minitoc(hints) Warning: W0024
+(minitoc(hints))                Some hints have been written 
+(minitoc(hints))                in the a-Thesis.log file.
+
+[82]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 54.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 54.
- (./Thesis.aux (./frontmatter.aux)
-(./c-intro.aux) (./c-fundamentals.aux) (./c-atomicity.aux) (./c-minfac.aux)
-(./c-partitions.aux) (./c-intervals.aux) (./c-lattices.aux))
+ (./a-Thesis.aux (./c1-intro.aux) (./c2-fundamentals.aux)
+(./c3-atomicity.aux) (./c4-minfac.aux) (./c5-partitions.aux)
+(./c6-intervals.aux) (./c7-lattices.aux))
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 54.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 54.
-Package rerunfilecheck Info: File `Thesis.out' has not changed.
-(rerunfilecheck)             Checksum: B3586F5F474A1EBD6DBECAF85A73A1C6;2626.
+Package rerunfilecheck Info: File `a-Thesis.out' has not changed.
+(rerunfilecheck)             Checksum: B6AFDA51116FEBE5F26F2E3AA38FADDC;2467.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 54.
  ) 
 Here is how much of TeX's memory you used:
- 18379 strings out of 492624
- 354521 string characters out of 6129578
- 454287 words of memory out of 5000000
- 21904 multiletter control sequences out of 15000+600000
- 13288 words of font info for 53 fonts, out of 8000000 for 9000
+ 19941 strings out of 492624
+ 375604 string characters out of 6129578
+ 490582 words of memory out of 5000000
+ 23234 multiletter control sequences out of 15000+600000
+ 16628 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 65i,16n,87p,930b,1044s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 65i,16n,87p,933b,1044s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Thesis.dvi (93 pages, 622140 bytes).
+Output written on a-Thesis.dvi (86 pages, 626048 bytes).

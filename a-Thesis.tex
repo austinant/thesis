@@ -1,5 +1,5 @@
 \documentclass[10pt]{book}
-%\usepackage[doublespacing]{setspace}
+\usepackage[doublespacing]{setspace}
 
 %For centering chapters
 \usepackage[explicit]{titlesec}
@@ -7,9 +7,9 @@
 \titleformat{\chapter}[display]{\bfseries\centering}{\LARGE Chapter \thechapter}{1mm}{\LARGE #1}
 
 %For including macros/commands you have pre-defined
-\include{preamble}
+\include{b-preamble}
 
-\title{On Sum Decompositions of Sets: \\ 
+\title{On Product and Sum Decompositions of Sets: \\ 
 	The Factorization Theory of Power Monoids}
 
 \author{Austin Alan Antoniou}
@@ -17,25 +17,25 @@
 \date{\today}
 
 \begin{document}
-\include{frontmatter}
-%\maketitle
-
+%\include{b-frontmatter}
+\maketitle
+%\dominitoc
 \tableofcontents
 \mainmatter
 
-\include{c-intro}
+\include{c1-intro}
 
-\include{c-fundamentals}
+\include{c2-fundamentals}
 
-\include{c-atomicity}
+\include{c3-atomicity}
 
-\include{c-minfac}
+\include{c4-minfac}
 
-\include{c-partitions}
+\include{c5-partitions}
 
-\include{c-intervals}
+\include{c6-intervals}
 
-\include{c-lattices}
+\include{c7-lattices}
 
 %\include{chap-asymptotics}
 

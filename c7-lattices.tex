@@ -23,7 +23,7 @@ We briefly recall the basic ideas underpinning this fact below.
 	If $H$ is a non-torsion monoid, let $x\in H$ be an element with infinite multiplicative order.  
 	Then the map $f: \NN \to \gen{x}$ given by $n\mapsto x^n$ is an isomorphism (specifically, from $(\NN,+)\to (\gen{x},\cdot)$).
 	On the level of sets, this yields an isomorphism $f: \PN \to \P_\fun(\gen{x})$.
-	In turn, this isomorphism induces an isomorphism $f^*: \F(\A(\PN)) \to \F(\A(\P_\fun(\gen{x})))$.
+	In turn, this isomorphism induces an isomorphism $f^*: \F^*(\A(\PN)) \to \F^*(\A(\P_\fun(\gen{x})))$.
 	As a consequence, for any $X \in \PN$, we have a bijection $f^*: \Z_{\PN}(X) \to \Z_{\P_\fun(\gen{x})}(f(X)) = \Z_{\P_\fun(H)}(f(X))$, where the last equality follows from Proposition \ref{prop:pm-arith} \ref{it:prop:pm-arith(ii)} (that is, $\P_\fun(\gen{x})$ is divisor-closed in $\P_\fun(H)$).
 \end{proof}
 
@@ -284,8 +284,8 @@ It is not too difficult to see that $\varphi(e_i) = b^{i-1}$, so that $U = \{0,1
 %We the end this section with a result with a result asserting some degree of compatibility between uniqueness of factorization and $\ZZ$-independence.
 
 
-\section{Recovering the $\{2,n+1\}$ Realization Result} \label{sec:recovering length sets}
-In this section we will work specifically toward recovering a version of \cite[Proposition 4.10]{fan-tringali18} which says that, for any $n\ge 2$, there is an element $U\in \PN$ which has exactly two factorizations: one of length $2$, and one of length $n+1$.
+\section{Recovering the Two-Lengths Realization Result} \label{sec:recovering length sets}
+In this section we will work specifically toward obtaining a version of \cite[Proposition 4.10]{fan-tringali18} which says that, for any $n\ge 2$, there is an element $U\in \PN$ which has exactly two factorizations: one of length $2$, and one of length $n+1$.
 Applying our high-dimensional viewpoint to Fan and Tringali's result gives us some new insights on their construction and how it may be pushed further.
 The fruits of these insights will become apparent soon, in Section \ref{sec:new length sets}.
 For now, we begin by fixing some notation for our examination of Fan and Tringali's construction.
@@ -313,10 +313,10 @@ Before proving this fact or making use of it, we construct a class of atoms whic
 \begin{proof}
 	Suppose that $B = X + Y$.
 	It will suffice to prove that one of $X$ or $Y$ is equal to $\{0\}$.
-	Observe first that $f$ cannot be written as a sum of two or more elements of $B$, since $f\notin \operatorname{span}_\ZZ (\{e_1,\dots, e_{n-1}\}\cup V)$ and the $e_n$ coefficient of $g$ is larger than that of $f$.
+	Observe first that $f$ cannot be written as a sum of two or more elements of $B$, since $f\notin \ZZ (\{e_1,\dots, e_{n-1}\}\cup V)$ and the $e_n$ coefficient of $g$ is larger than that of $f$.
 	
 	One can also see that $g$ cannot be written as a sum of two or more elements of $B$.
-	As above, $g\notin \operatorname{span}_\ZZ (\{e_1,\dots, e_{n-1}\}\cup V)$.
+	As above, $g\notin \ZZ (\{e_1,\dots, e_{n-1}\}\cup V)$.
 	The only remaining possibility is that $f$ is included at least twice in the sum so that $g = 2f + b$ for some $b\in B$.
 	This is impossible, as the $e_1$ coefficient of $2f+b$ is at least $2$, whereas that of $g$ is $1$.
 	
@@ -350,8 +350,8 @@ Before proving this fact or making use of it, we construct a class of atoms whic
 	To prove some of the claims which follow, we will use a basic understanding of which linear combinations of the $e_i$ appear as elements of $U$.
 	Every element of $U$ has one of the following forms:
 	\begin{enumerate}[label={\rm (F\arabic{*})}]
-		\item $e_I$: the coefficient to each $e_i$ is either $0$ or $1$.
-		\item $g+e_I$: the $e_n$ coefficient is either $2$ or $3$, and all other $e_i$-coefficients are either $1$ or $2$.
+		\item $e_I$: the coefficient to each $e_i$ is either $0$ or $1$. \label{form 1}
+		\item $g+e_I$: the $e_n$ coefficient is either $2$ or $3$, and all other $e_i$-coefficients are either $1$ or $2$. \label{form 2}
 	\end{enumerate}
 	
 	We now wish to determine the structure of $X$ and $Y$.
@@ -395,7 +395,7 @@ Before proving this fact or making use of it, we construct a class of atoms whic
 		However, since $[ 1,n-1 ] \subseteq I_X$, we have $e_1 + f \in X+Y$, which is a contradiction (no element of $U$ has an $e_n$-coefficient of $1$ and an $e_1$-coefficient of $2$), finishing the proof of the claim.
 	
 	Assume without loss of generality that $g\in X$.
-	If $I_X = \emptyset$ then $X = \{0,g\}$ and $Y = \sum_{i=1}^n \{0,e_i\}$ by Claim A.
+	If $I_X = \emptyset$ then $I_Y = [1,n]$ so $X = \{0,g\}$ by Claim (B) and $Y = \sum_{i=1}^n \{0,e_i\}$ by Claim (A).
 	By Theorem \ref{thm:ind-atoms}, $Y$ factors uniquely and we have $\{0,e_1\}*\cdots \{0,e_n\}*\{0,g\}\in \Z_{\P_\fon(\NN^n)}(U)$.
 	
 	Now suppose $I_X \neq \emptyset$.
@@ -403,40 +403,42 @@ Before proving this fact or making use of it, we construct a class of atoms whic
 	\[X \supseteq \{0,g\} + \sum_{i\in I_X} \{0,e_i\} \tag{1} \label{factor-includes} \]
 	We can completely determine the structure of $Y$.
 	First observe that we cannot have $f=e_{[1,n]}\in Y$ since we would then have $(g+e_{I_X})+f \in X+Y$, but this is not an element of $U$.
-	This allows us to use Claim (B), as well as (A) and (D), to say that $Y = \sum_{i\in I_Y} \{0,e_i\}$.
+	This allows us to use Claim (B), as well as (A) and (D), to say that $Y = \sum_{i\in I_Y} \{0,e_i\}$ with $I_Y\neq\emptyset$ (otherwise $Y=\{0\}$).
 	
 	With this, we can say more about the structure of $X$.
 	By Proposition \ref{prop:cofactors}, we have 
-	\[X \subseteq U\:Y = \bigcap_{y\in Y}(U-y) = \bigcap_{K\subseteq I_Y} \underbrace{\{e_I - e_K, g+e_I - e_K : I\subseteq [ 1,n ] \}}_{=:U_K} \]
+	\[X \subseteq U\:Y = \bigcap_{y\in Y}(U-y) = \bigcap_{K\subseteq I_Y} \underbrace{\{e_I - e_K, g+e_I - e_K : I\subseteq [ 1,n ] \}}_{=:U_K} \tag{2} \label{Y cofactor}\]
 	
-	Recalling the forms (F1) and (F2) of all elements of $U$ that we outlined earlier, we can similarly express the forms of elements of $U\:Y$:
+	Recalling the forms \ref{form 1} and \ref{form 2} of all elements of $U$ that we outlined earlier, we can similarly express the forms of elements of $U\:Y$:
 	\begin{enumerate}[label={\rm (F\arabic{*}$'$)}]
-		\item $e_I$ for $I\subseteq I_X$. 
+		\item $e_I$ for $I\subseteq I_X$. \label{form 1'}
 		To see this, observe that $e_I = e_{I\cup K}-e_K\in U_K$ for any $K\subseteq I_Y$.
 		On the other hand note that, for $H \subseteq [ 1,n ]$ with $H\cap I_Y\neq \emptyset$, $g+e_H\notin U_{H\cap I_Y}$, so these are the only elements of form (F1) which remain in $U\:Y$.
 		%
 		%for each $k\in I_Y$, every element of the form $e_I - e_k\in U_{\{k\}}\cap U$ has $e_k$ coefficient of zero.
 		%In the intersection of the $U_K$ over all $K\subseteq I_Y$, we are left only with the elements whose $e_i$ coefficients are $0$ for all $i\in I_Y$.
-		\item $g+e_I$ for $I\subseteq I_X$.
+		\item $g+e_I$ for $I\subseteq I_X$. \label{form 2'}
 		For this, we observe $g+e_{I\cup K} - e_K\in U_K$. 
 		Similar to the argument just above, we see that $g+e_H\notin U_{H\cap I_Y}$ whenever $H\cap I_Y\neq\emptyset$.
-		\item $f\in U\:Y$ only if $I_Y = \{n\}$.
+		\item $f\in U\:Y$ only if $I_Y = \{n\}$. \label{form 3'}
 		First, it is clear that $f = e_{[ 1,n ]} \in U_\emptyset$.
 		For any $K\subseteq I_Y$ with $n\in K$, $f = g+ e_{K\setminus\{n\}} - e_K\in U_K$.
 		However, if $n\notin K$ but $K$ is non-empty, then $f\notin U_K = \{e_I, g+e_I-e_K: I\subseteq [1,n]\}$.
 		This is because $e_I - e_K \neq f$ (since $K$ is non-empty), and $g+e_I-e_K$ has an $e_n$ coefficient larger than $1$ (since $n\notin K$).
 	\end{enumerate}
-	We now have, combining our work here with (\ref{factor-includes}) above, that
-	\[ \{0,g\} + \sum_{i\in I_X}\{0,e_i\} \subseteq X \subseteq U\:Y \subseteq \left[\{0,g\}+\sum_{i\in I_X} \{0,e_i\} \right]\cup\{f\},\]
+	We now have, combining (\ref{factor-includes}) and (\ref{Y cofactor}) with our work here, that
+	\[ \{0,g\} + \sum_{i\in I_X}\{0,e_i\} \subseteq X \subseteq \left[\{0,g\}+\sum_{i\in I_X} \{0,e_i\} \right]\cup\{f\},\]
 	so we have determined $X$ almost exactly, up to the choice of whether $f\in X$.
 	
 	Before discussing the possible factorizations of $X$, recall that $Y = \sum_{i\in I_Y} \{0,e_i\}$ and so $Y$ factors uniquely (by Theorem \ref{thm:ind-atoms}) as the sum of the $\{0,e_i\}$ for $i\in I_Y$.
 	
 	Now we turn to $X$; first suppose $f\notin X$.
-	Then $X = \{0,g\} +\sum_{i\in I_X} \{0,e_i\}$, which has a unique factorization (by Theorem \ref{thm:ind-atoms}) as the sum of $\{0,g\}$ and the $\{0,e_i\}$ for $i\in I_X$.
+	Then $X = \{0,g\} +\sum_{i\in I_X} \{0,e_i\}$ and, since $I_Y\neq\emptyset$, $I_X\subsetneqq [1,n]$.
+	Consequently, $\{e_i: i\in I_X\}\cup\{g\}$ is a $\ZZ$-linearly independent subset of $\ZZ^n$, so the summands of $X$ are $\ZZ$-independent by Proposition \ref{prop:eltwise-indep}(i).
+	In turn, we have that $X$ factors uniquely (by Theorem \ref{thm:ind-atoms}) as the sum of $\{0,g\}$ and the $\{0,e_i\}$ for $i\in I_X$.
 	This can only produce -- up to reordering, of course -- the factorization $\{0,g\}*\{0,e_1\}*\cdots*\{0,e_n\}\in \Z_{\P_\fon(\NN^n)}(U)$.
 	
-	If $f\in X$, then $X = \left[\{0,g\}+\sum_{i\in I_X} \{0,e_i\} \right]\cup\{f\}$ (and $Y = \{0,e_n\}$ per our considerations in (F3$'$)).
+	If $f\in X$, then $X = \left[\{0,g\}+\sum_{i\in I_X} \{0,e_i\} \right]\cup\{f\}$ (and $Y = \{0,e_n\}$ per our considerations in \ref{form 3'}).
 	By Lemma \ref{lem:large-atom-two-fac}, $X$ is an atom, producing the factorization $X*\{0,e_n\}\in \Z_{\P_\fon(\NN^n)}(U)$ and completing the proof.
 \end{proof}
 
@@ -447,109 +449,108 @@ Before proving this fact or making use of it, we construct a class of atoms whic
 
 
 \section{A New Family of Length Sets} \label{sec:new length sets}
-%In this section, we wish to show that certain prescribed sets occur as sets of lengths of elements of $\P_\fon(\NN^d)$ (and hence as sets of lengths of elements of $\PN$).
-%First, we will recover a version of \cite[Proposition 4.10]{fan-tringali18} which says that, for any $n\ge 2$, there is an element $U$ which has exactly two factorizations: one of length $2$, and one of length $n+1$.
-%Then we will extend this construction to a class of constructions which realizes some new sets of lengths.
-%We will be working with a particular construction for most of this section, so we take a moment to set some notation.
 Our work thus far culminates in realizing a new family of sets, parameterized by two integers $m$ and $n$, as sets of lengths for elements of $\P_\fon(\NN^d)$ (and consequently for elements of $\PN$ by Theorem \ref{thm:passage-to-Nd}).
+This builds toward the conjecture, originally made by Fan and Tringali in \cite{fan-tringali18}, that all feasible sets occur as sets of lengths in $\PN$.
+\begin{conj}
+For any finite subset $S \subseteq \NN_{\ge 2}$, there is an $W\in\PN$ such that $\mathsf{L}_\PN(W)=S$.
+\end{conj}
 Before explicitly showing how to construct these elements, we extract a more general result that lies at the heart of what makes the construction work. 
 
-
-\begin{thm} \label{thm:unique longest factorization}
-	Let $U\in \P_\fon(\NN^d)$ be an element whose two longest factorizations have lengths $\ell$ and $N$, with $\ell < N$.
-	Suppose $V_1,\dots,V_m\subseteq \NN^d$ are atoms so that $U,V_1,\dots, V_k$ are totally $\ZZ$-independent.
-	Further assume that $U$ has a unique longest factorization (of length $N$).
-	Then $\mathsf{L}(U+V_1+\cdots+V_k) \cap [ \ell+1,\infty ] = \{N+m\}$.
-\end{thm}
+\begin{lemma} \label{lem:unique longest factorization}
+Let $U\in \P_\fon(\NN^d)$ be an element whose two longest factorizations have lengths $M$ and $N$, with $M < N$.
+Suppose $m\ge1$ and $V_1,\dots,V_m\subseteq \NN^d$ are atoms such that $U,V_1,\dots, V_m$ are totally $\ZZ$-independent.
+Further assume that $U$ has a \textit{unique} longest factorization (of length $N$).
+Then $\mathsf{L}(U+V_1+\cdots+V_m) \cap [ M+m+1,\infty ] = \{N+m\}$.
+\end{lemma}
 
 \begin{proof}
-	For convenience, let $V := V_1 + \cdots + V_m$.
-	Suppose that $k > \ell + m$ and that there are atoms $A_1,\dots,A_k$ with $U+V = A_1 + \cdots + A_k$.
-	By Proposition \ref{prop:indep-decomp}(iv), we know that $k \le N+m$.
+For convenience, let $V := V_1 + \cdots + V_m$.
+Suppose that $k > M + m$ and that there are atoms $A_1,\dots,A_k$ with $U+V = A_1 + \cdots + A_k$.
+By Proposition \ref{prop:indep-decomp}(iv), we know that $k \le N+m$.
 	
-	By Proposition \ref{prop:indep-decomp}(iii), we can say (renumbering if necessary)
-	\[ [ 1,s ] =  \{ i: U\cap A_i \neq\{0\}\} \quad \textrm{and} \quad [ t,k ] = \{i: V\cap A_i \neq \{0\}\}. \]
-	Since we know that $[ 1,k ] = [ 1,s ] \cup [ t,k ]$, we know that $t \le s+1$.
-	The arguments to follow hinge on whether these two intervals overlap.  
-	First suppose that the intervals overlap; i.e., that $t \le s$.
-	We will show that this cannot happen by showing that, in this case, $A_s$ is not an atom.
+By Proposition \ref{prop:indep-decomp}(iii), we can say (renumbering if necessary)
+\[ [ 1,s ] =  \{ i: U\cap A_i \neq\{0\}\} \quad \textrm{and} \quad [ t,k ] = \{i: V\cap A_i \neq \{0\}\}. \]
+Since we know that $[ 1,k ] = [ 1,s ] \cup [ t,k ]$, we know that $t \le s+1$.
+The arguments to follow hinge on whether these two intervals overlap.  
+First suppose that the intervals overlap; i.e., that $t \le s$.
+We will show that this cannot happen by showing that, in this case, $A_s$ is not an atom.
 	
-	Let $J = \{ j: V_j \subseteq A_s \}$ and set $V' = \sum_{j\in J} V_j$; we know by Lemma \ref{lem:indep-atom-decomp} that $V' = V \cap A_s$.
-	Also let $K = [ 1,m ] \setminus J$ and $V'' = \sum_{j\in K} V_j$.
+Let $J = \{ j: V_j \subseteq A_s \}$ and set $V' = \sum_{j\in J} V_j$; we know by Lemma \ref{lem:indep-atom-decomp} that $V' = V \cap A_s$.
+Also let $K = [ 1,m ] \setminus J$ and $V'' = \sum_{j\in K} V_j$.
 	
-	\noindent\underline{Claim A}: $V' = V\cap A_s$ and $V'' \cap A_s = \{0\}$. \label{cla}
+\noindent\underline{Claim A}: $V' = V\cap A_s$ and $V'' \cap A_s = \{0\}$. \label{cla}
 	
-	This follows directly from Lemma \ref{lem:indep-atom-decomp}(ii),(iii).
+This follows directly from Lemma \ref{lem:indep-atom-decomp}(ii),(iii).
 	
-	\noindent\underline{Claim B}: $A_i \subseteq U$ for $i<t$ and $A_i \subseteq V$ for $i > s$. \label{clb}
+\noindent\underline{Claim B}: $A_i \subseteq U$ for $i<t$ and $A_i \subseteq V$ for $i > s$. \label{clb}
 	
-	Proposition \ref{prop:indep-decomp}(ii) implies both statements since $V \cap A_i = \{0\}$ for $i<t$ (and $U\cap A_i = \{0\}$ for $i>s$).
+Proposition \ref{prop:indep-decomp}(ii) implies both statements since $V \cap A_i = \{0\}$ for $i<t$ (and $U\cap A_i = \{0\}$ for $i>s$).
 	
-	\noindent\underline{Claim C} For $v\in V$, $U+v = \sum\limits_{i<s} U\cap A_i + (U+v)\cap A_s$. \label{clc}
+\noindent\underline{Claim C} For $v\in V$, $U+v = \sum\limits_{i<s} U\cap A_i + (U+v)\cap A_s$. \label{clc}
 	
-	We move to show both inclusions.
-	First suppose $u\in U$. 
-	Then $u+v \in \sum_{i=1}^\ell A_i$, and we can find $u_1,\dots, u_s\in U$ and $v_t,\dots, v_k\in V$ so that
-	$u_i\in A_i$ if $i < t$, $u_i + v_i \in A_i$ if $t\le i \le s$, and $v_i \in A_i$ if $i > s$.
-	Then we will have
-	\[u+v = \sum_{i<t} u_i + \sum_{i=t}^{s} (u_i+v_i) + \sum_{i > s} v_i, \]
-	whence the $\ZZ$-independence of $U,V_1,\dots,V_m$ implies that $u = \sum_{i\le s} u_i$, $v_s = v$, and $v_i = 0$ for all $i\neq s$.
-	Now $u+v = \sum_{i<s} u_i + (u_s+v)\in \sum_{i<s} U\cap A_i + (U+v)\cap A_s$.
+We will show both inclusions.
+First suppose $u\in U$. 
+Then $u+v \in \sum_{i=1}^M A_i$, and we can find $u_1,\dots, u_s\in U$ and $v_t,\dots, v_k\in V$ so that
+$u_i\in A_i$ if $i < t$, $u_i + v_i \in A_i$ if $t\le i \le s$, and $v_i \in A_i$ if $i > s$.
+Then we will have
+\[u+v = \sum_{i<t} u_i + \sum_{i=t}^{s} (u_i+v_i) + \sum_{i > s} v_i, \]
+whence the $\ZZ$-independence of $U,V_1,\dots,V_m$ implies that $u = \sum_{i\le s} u_i$, $v_s = v$, and $v_i = 0$ for all $i\neq s$.
+Now $u+v = \sum_{i<s} u_i + (u_s+v)\in \sum_{i<s} U\cap A_i + (U+v)\cap A_s$.
 	
-	For the other inclusion, let $u_1,\dots, u_s\in U$ with $u_i\in A_i$ for all $i<s$ and $u_s + v\in A_s$.
-	Then $\sum_{i\le s} u_i +v \in \sum_{i\le s} A_i \subseteq U+V$, so we can find $u'\in U$ and $v'\in V$ with 
-	\[\sum_{i\le s}u_i + v = u' + v',\]
-	at which point we can use $\ZZ$-independence again to see that $v' = v$, so that $\sum_{i\le s} u_i + v\in U+v$.
+For the other inclusion, let $u_1,\dots, u_s\in U$ with $u_i\in A_i$ for all $i<s$ and $u_s + v\in A_s$.
+Then $\sum_{i\le s} u_i +v \in \sum_{i\le s} A_i \subseteq U+V$, so we can find $u'\in U$ and $v'\in V$ with 
+\[\sum_{i\le s}u_i + v = u' + v',\]
+at which point we can use $\ZZ$-independence again to see that $v' = v$, so that $\sum_{i\le s} u_i + v\in U+v$.
 	
-	\noindent\underline{Claim D}: $(U+v)\cap A_s = U\cap A_s + v$. \label{cld}
+\noindent\underline{Claim D}: $(U+v)\cap A_s = U\cap A_s + v$. \label{cld}
 	
-	We can write $(U+v)\cap A_s = A + v$ for some $A \subseteq U$.
-	Now $U+v = \sum_{i<s} U\cap A_i + (U+v)\cap A_s = \sum_{i<s} U\cap A_i + A + v$.
-	We can cancel $v$ from both sides of this set equality (since $v$ is a unit in $\P_\fon(\ZZ^n)$), yielding
-	\[ U = \sum_{i<s} U\cap A_i + A. \tag{D1}\]
-	On the other hand, we also have that
-	\[ U = \sum_{i<s} U\cap A_i + U\cap A_s. \tag{D2}\]
-	We will now show that we can cancel the common factors that appear in these two decompositions.
+We can write $(U+v)\cap A_s = A + v$ for some $A \subseteq U$.
+Now $U+v = \sum_{i<s} U\cap A_i + (U+v)\cap A_s = \sum_{i<s} U\cap A_i + A + v$.
+We can cancel $v$ from both sides of this set equality (since $v$ is a unit in $\P_\fon(\ZZ^n)$), yielding
+\[ U = \sum_{i<s} U\cap A_i + A. \tag{D1}\]
+On the other hand, we also have that
+\[ U = \sum_{i<s} U\cap A_i + U\cap A_s. \tag{D2}\]
+We will now show that we can cancel the common factors that appear in these two decompositions.
 	
-	First, as an aside, note that $t > \ell$.
-	If this were not the case and $t \le \ell$, then $k = | [ 1,s ] \cup [ t,k ] | \le \ell + | [ t,k ] | \le \ell+m$, which contradicts our intial assumption about $k$.
+First, as an aside, note that $t > M$.
+If this were not the case and $t \le M$, then $k = | [ 1,s ] \cup [ t,k ] | \le M + | [ t,k ] | \le M+m$, which contradicts our intial assumption about $k$.
 	
-	This is significant because $\sum_{i<t} U\cap A_i = \sum_{i<t} A_i$ is a sum of at least $\ell+1$ atoms, and $U$ has only one factorization consisting of more than $\ell$ atoms.
-	Say $B_1,\dots, B_{N}$ are the atoms with $U = \sum_{i=1}^{N} B_i$.
-	Then, by renumbering if needed, there is some $h$ for which $\sum_{i<s} U\cap A_i = B_1 + \cdots + B_h$.
+This is significant because $\sum_{i<t} U\cap A_i = \sum_{i<t} A_i$ is a sum of at least $M+1$ atoms, and $U$ has only one factorization consisting of more than $M$ atoms.
+Say $B_1,\dots, B_{N}$ are the atoms with $U = \sum_{i=1}^{N} B_i$.
+Then, by renumbering if needed, there is some $h$ for which $\sum_{i<s} U\cap A_i = B_1 + \cdots + B_h$.
 	
-	Consequently, by the uniqueness of the atoms $B_i$, it must be that $B_1 +\cdots + B_h$ can be cancelled in the decompositions (D1) and (D2), leaving
-	\[ A = B_{h+1} +\cdots+ B_{N} = U\cap A_s, \]
-	and we have proved the claim.
+Consequently, by the uniqueness of the atoms $B_i$, it must be that $B_1 +\cdots + B_h$ can be cancelled in the decompositions (D1) and (D2), leaving
+\[ A = B_{h+1} +\cdots+ B_{N} = U\cap A_s, \]
+and we have proved the claim.
 	
-	\noindent\underline{Claim E}: $A_s$ is not an atom. \label{cle}
+\noindent\underline{Claim E}: $A_s$ is not an atom. \label{cle}
 	
-	To see this, we compute
-	\begin{align*}
-	A_s = (U+V)\cap A_s 
-	&= (U+V'+V'') \cap A_s \\
-	&= (U+V') \cap A_s \tag{by Claim A and Proposition \ref{prop:indep-decomp}} \\
-	&= \bigcup_{v\in V'} (U+v)\cap A_s \\
-	&= \bigcup_{v\in V'} (U\cap A_s + v) \tag{by Claim D} \\
-	&= U\cap A_s + V'.
-	\end{align*}
-	Since $U\cap A_s$ and $V' = V\cap A_s$ are both nonzero, $A_s$ is not an atom.
-	This is a contradiction which followed from our assumption that some of the $A_i$ may intersect nontrivially with \textit{both} $U$ and $V$.
+To see this, we compute
+\begin{align*}
+A_s = (U+V)\cap A_s 
+&= (U+V'+V'') \cap A_s \\
+&= (U+V') \cap A_s \tag{by Claim A and Proposition \ref{prop:indep-decomp}} \\
+&= \bigcup_{v\in V'} (U+v)\cap A_s \\
+&= \bigcup_{v\in V'} (U\cap A_s + v) \tag{by Claim D} \\
+&= U\cap A_s + V'.
+\end{align*}
+Since $U\cap A_s$ and $V' = V\cap A_s$ are both nonzero, $A_s$ is not an atom.
+This is a contradiction which followed from our assumption that some of the $A_i$ may intersect nontrivially with \textit{both} $U$ and $V$.
 	
-	Now suppose this does not occur; necessarily, $s < t$ and we in fact have that $t = s+1$ by Proposition \ref{prop:indep-decomp}(iii).
-	For $i \le s$, since $V\cap A_i  = \{0\}$, Proposition \ref{prop:indep-decomp}(ii) implies that $A_i = (U+V)\cap A_i = U\cap A_i \subseteq U$.
-	Then we have, by Proposition \ref{prop:indep-decomp}(i), that $U = \sum_{i\le s} U\cap A_i = \sum_{i\le s} A_i$.
-	This means that $s\in \mathsf{L}(U)$ and, by identical reasoning for $V$, that $| [ t,k ]| = m$.
-	We conclude that $k \in \mathsf{L}(U) + m$ and, due to the assumption that $k>\ell+m$, it must be the case that $k = N + m$.
+Now suppose this does not occur; necessarily, $s < t$ and we in fact have that $t = s+1$ by Proposition \ref{prop:indep-decomp}(iii).
+For $i \le s$, since $V\cap A_i  = \{0\}$, Proposition \ref{prop:indep-decomp}(ii) implies that $A_i = (U+V)\cap A_i = U\cap A_i \subseteq U$.
+Then we have, by Proposition \ref{prop:indep-decomp}(i), that $U = \sum_{i\le s} U\cap A_i = \sum_{i\le s} A_i$.
+This means that $s\in \mathsf{L}(U)$ and, by identical reasoning for $V$, that $| [ t,k ]| = m$.
+We conclude that $k \in \mathsf{L}(U) + m$ and, due to the assumption that $k>M+m$, it must be the case that $k = N + m$.
 \end{proof}
 
 
-\begin{cor} \label{thm:int-point-construction}
-Fix $n\ge 2$ and $m\ge 1$.  
+\begin{thm} \label{thm:int-point-construction}
+Fix $n\ge 2$, $m\ge 1$, and $d\ge m+n$.
 Let $U_{n+1}$ be as in Section \ref{sec:recovering length sets} so that, in particular, $U_{n+1}$ has exactly two factorizations, of lengths $2$ and $n+1$, respectively.  
 Suppose $V_1,\dots, V_m \subseteq \NN^d$ are atoms such that $U_{n+1},V_1,\dots, V_m$ are totally $\ZZ$-independent.
 Then $\mathsf{L}(U_{n+1}+V_1+\cdots+V_m) = [ 2,m+2 ] \cup \{m+n+1\}$.
-\end{cor}
+\end{thm}
 
 \begin{proof}
 For convenience, let $U := U_{n+1}$ and $V := V_1 + \cdots + V_m$.
@@ -565,7 +566,15 @@ so $h+2 \in \mathsf{L}(U+V)$.
 As we allow $h$ to range over $[ 0,m ]$, we get that $[ 2,m+2 ] \in \mathsf{L}(U+V)$.
 
 For the other inclusion, we need to show that no other values are included in $\mathsf{L}(U+V)$.
-To do this, we note that $U$ has a unique longest factorization by Theorem \ref{thm:2n-length-set} and hence, using Theorem \ref{thm:unique longest factorization}, $\mathsf{L}(U+V) \cap [ m+3, m+n+1 ] = \{m+n+1\}$.
+To do this, we note that $U$ has a unique longest factorization by Theorem \ref{thm:2n-length-set} and hence, using Lemma \ref{lem:unique longest factorization}, $\mathsf{L}(U+V) \cap [ m+3, m+n+1 ] = \{m+n+1\}$.
+\end{proof}
+
+\begin{cor}
+For every $m\ge 1$ and $n\ge 2$, there is an element $W\in \PN$ with $\mathsf{L}_\PN(W) = [2,m+2]\cup\{m+n+1\}$.
+\end{cor}
+
+\begin{proof}
+One simply needs to apply Theorems \ref{thm:int-point-construction} and \ref{thm:passage-to-Nd} to see that $[2,m+2]\cup\{m+n+1\}\in \mathcal{L}(\P_\fon(\NN^d)) = \mathcal{L}(\PN)$.
 \end{proof}
 
 

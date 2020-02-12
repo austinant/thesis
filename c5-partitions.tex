@@ -1,6 +1,5 @@
 \chapter{Partitions and Intervals in the Natural Power Monoid} \label{ch:partitions}
 
-
 In \cite[Section 4]{fan-tringali18}, Fan and Tringali took a thorough look at $\PN$.
 They established, among other things, some significant results on which sets may occur as sets of lengths of elements of $\PN$.  
 Several of their results (which will be addressed further in Chapter \ref{ch:lattices}) specify some elements of $\PN$ with very well-controlled sets of factorizations.
@@ -589,17 +588,13 @@ This is immediate, as it is the contrapositive of Theorem \ref{thm:long factoriz
 
 
 \section{An Aside on Asymptotic Density in Numerical Monoid Rings} \label{sec:numerical monoid ring density}
-
 To complete our discussion of partition types, we show an application of the idea of partition types to an area seemingly unrelated to power monoids.  
 Rather than being a direct application of the concepts and techniques we have formulated, it represents a more abstract ideological connection to the type of thinking employed in the previous sections.  
 An optimist might hope that the success found in the techniques employed here can be extended far beyond the present scope.
 
-The particular problem addressed here is directly inspired and informed by the work of S. Talbott, C. O'Neill, R. Edmonds, and B. Kubik in [CITATION].
+The particular problem addressed here is directly informed and inspired by the work of S. Talbott, C. O'Neill, R. Edmonds, and B. Kubik in \textcolor{red}{[PREPRINT]}.
 We show that the \textit{atomic density} in any numerical monoid polynomial ring is asymptotically zero.
-This is the first of hopefully many questions along these lines in what promises to be a meaningful expansion on the study of numrical monoids.
-All necessary definitions to formally pose and resolve this problem will appear soon.  
-
-
+This is but one of many questions along these lines in what promises to be a meaningful expansion on the study of numerical monoids.
 
 \begin{defn}
 	A numerical monoid is an additive submonoid $H \le \NN$ such that $\NN\setminus H$ is a finite set.  
@@ -611,7 +606,7 @@ All necessary definitions to formally pose and resolve this problem will appear 
 \end{defn}
 
 
-We wish to study a family of polynomial rings constructed from numerical monoids [REFERENCES??].
+We wish to study a family of polynomial rings constructed from numerical monoids \textcolor{red}{[REFERENCES]}.
 
 \begin{defn}
 	Let $H$ be a numerical monoid and let $K$ be a field.
@@ -626,7 +621,7 @@ We wish to study a family of polynomial rings constructed from numerical monoids
 	Then, for any field $K$, $K[H] = K[x^2,x^3] \subseteq K[x]$ is the ring of polynomials with coefficients in $K$ whose linear coefficient is zero.
 \end{eg}
 
-Our goal is to show that the percentage of polynomials of a given degree in any numerical monoid ring which are irreducible tends to zero as the degree becomes large.
+%Our goal is to show that the percentage of polynomials of a given degree in any numerical monoid ring which are irreducible tends to zero as the degree becomes large.
 Before moving onward, we set some notation for some quantities which are necessary in the discussion that follows.
 
 \begin{defn}
@@ -653,24 +648,24 @@ The following can be considered the classical case of the main result of this se
 \end{prop}
 
 \begin{proof}
-This can be argued by counting the irreducible elements of $\FF_{q^n}$ and then applying the M\"{o}bius inversion formula.
-We do not include the proof here, as it has already been presented well in \cite[Section 14.3]{dummit-foote91} and \cite[Section 2.3]{lidl-niederreiter97}.
+	This can be argued by counting the elements of $\FF_{q^n}$ and then applying the M\"{o}bius inversion formula.
+	We do not include the proof here, as it has already been presented well in \cite[Section 14.3]{dummit-foote91} and \cite[Section 2.3]{lidl-niederreiter97}.
 \end{proof}
 
-%We seek to understand the atoms of $\Fq[H]$, for an arbitrary numerical monoid $H$, in terms of the irreducibles of $\Fq[x]$.
-%This next lemma will aid us in doing so.
+We seek to understand the atoms of $\Fq[H]$, for an arbitrary numerical monoid $H$, in terms of the irreducibles of $\Fq[x]$.
+This next lemmas will aid us in doing so.
 
 \begin{lemma}\label{lem:coefficient gap boosting}
-Let $q$ be a prime power, let $N\in\NN$ be positive, and let $r \ge q^{N-1}$.
-If $f_1,\dots,f_k\in \Fq[x]$ with $f_i(0)\neq 0$ then there is some $f\in \Fq + x^N \Fq[x]$ with $f | f_1\dots f_k$.
-That is, there is a sub-product of $f_1\cdots f_k$ which whose coefficients of degree $1\le d < N$ are all zero.
+	Let $q$ be a prime power, let $N\in\NN$ be positive, and let $k \ge q^{N-1}$.
+	If $f_1,\dots,f_k\in \Fq[x]$ with $f_i(0)\neq 0$ then there is some a sub-product $f$ of $f_1\dots f_k$ with $f\in \Fq + x^N \Fq[x]$.
+	That is, there are $1\le i_1 < \dots < i_\ell \le k$ with $f = f_{i_1}\cdots f_{i_\ell} \in \Fq + x^N \Fq[x]$.
 \end{lemma}
 
 \begin{proof}
 	If $N=1$ then $\Fq + x^N\Fq[x] = \Fq[x]$, so the statement is trivial.
-	Suppose, by way of induction, that the statement of the lemma is true for some $N\ge 1$, and let $f_1,\dots, f_k\in \Fq[x]$ with $r \ge q^N$ and $f_i(0)\neq0$ for all $i\le r$.
+	Suppose, by way of induction, that the statement of the lemma is true for some $N\ge 1$, and let $f_1,\dots, f_k\in \Fq[x]$ with $k \ge q^N$ and $f_i(0)\neq0$ for all $i\le k$.
 	
-	Since $r \ge q q^{N-1}$, we can inductively apply the lemma $q$ times to find $g_1,\dots,g_q\in \Fq + x^N \Fq[x]$ with $g_1\cdots g_q | f_1\cdots f_k$.
+	Since $k \ge q q^{N-1}$, we can inductively apply the lemma $q$ times to find $g_1,\dots,g_q\in \Fq + x^N \Fq[x]$ with $g_1\cdots g_q | f_1\cdots f_k$.
 	To be precise, we may treat the $q^N$ polynomials as $q$ separate collections of $q^{N-1}$ polynomials, applying the lemma to each collection.
 	Notice, since each $f_i(0) \neq 0$, that any factor of $f_1\cdots f_k$ -- in particular, each of the $g_i$ -- also has nonzero constant term.
 	Replacing $g_i$ with $g_i/g_i(0)$ where needed, we may assume that $g_i(0)=1$ for every $i\in [1,q]$
@@ -684,16 +679,73 @@ That is, there is a sub-product of $f_1\cdots f_k$ which whose coefficients of d
 	In either case, we have found an $h\in \Fq + x^{N+1}\Fq[x]$ such that $h | g_1\cdots g_q | f_1\cdots f_k$, as we wished.
 \end{proof}
 
-With the previous lemma, we can now give a characterization of the irreducibles of $\Fq[H]$ in terms of those of $\Fq[x]$.
+\begin{lemma}\label{lem:numerical int closure}
+	Let $K$ be a field and $H$ be a numerical monoid.
+	Suppose $g\in K[H]$ with $g(0) \neq 0$ and $h\in K[x]$ such that $gh\in K[H]$.
+	Then $h\in K[H]$.
+\end{lemma}
+
+\begin{proof}
+	Suppose to the contrary that $h\notin K[H]$.
+	Then, writing $h = \sum_{j=0}^n b_j x^j$, let $d = \min\{j: b_j\neq0 \textrm{ and } j\notin H\}$.
+	Let $g = \sum_{i=1}^m a_ix^i$; then, since $gh\in K[H]$, the degree-$d$ term of $gh$ in $0$.
+	On the other hand, we may also express the degree-$d$ term of $gh$ in terms of the $a_i$ and $b_j$ to get that
+	\[ \sum_{i+j = d} a_i b_j = 0 \]
+	Since $s+t\in H$ for all $s,t\in H$, any pair $(i,j)$ appearing in the above sum must satisfy $i\notin H$ or $j\notin H$.
+	However, $a_i = 0$ for all $i\notin H$ and, because of the minimality of $d$, $b_j = 0$ for all $j\notin H$ with $j < d$.
+	As a result, the only nonzero term in the sum is the $(i,j) = (0,d)$ term, $a_0b_d$.
+	Recalling that $a_0 = g(0) \neq 0$ and that $b_d \neq 0$ by definition, $a_0 b_d \neq 0$.
+	Thus $gh$ has a nonzero $x^d$ term, which contradicts the assumption that $gh\in K[H]$ and finishes the proof.
+\end{proof}
+
+We can now give a characterization of the irreducibles of $\Fq[H]$ in terms of those of $\Fq[x]$.
 
 \begin{prop}\label{prop:num ring atom classification}
 	Let $H$ be a numerical monoid and let $f\in \Fq[H]$ be irreducible.
-	Then $f$ is of one of the following types:
-	\begin{enumerate}[label=(\rm \arabic{*})]
-		\item There are $k< q^{F(H)}$ and irreducibles $f_1,\dots,f_k\in \Fq[x]$ with $f = f_1\cdots f_k$ and $f_i(0)\neq 0$ for each $i$.
-		\item There are $m < 2(F(H)+1)$, $k < q^{F(H)}$, and irreducibles $f_1,\dots, f_k\in \Fq[x]$ with $f = x^m f_1\cdots f_k$.
-	\end{enumerate}
+	Then $f = x^m f_1\cdots f_k$, where
+	\begin{itemize}
+		\item $f_1,\dots, f_k\in \Fq[x]$ are irreducible with $f_i(0)\neq 0$ for each $i\in [1,k]$
+		\item $0\le m < 2(F(H)+1)$
+		\item $1\le k<q^{F(H)}$.
+	\end{itemize}
+	%PHRASING OPTION 1
+	%Then there are $m < 2(F(H)+1)$, $k < q^{F(H)}$, and irreducibles $f_1,\dots, f_k\in \Fq[x]$ with $f_i(0)\neq 0$ such that
+	%$f = x^m f_1\cdots f_k$.
+	%
+	%PHRASING OPTION 2
+	%Then $f$ is of one of the following types:
+	%\begin{enumerate}[label=(\rm \arabic{*})]
+	%	\item There are $k< q^{F(H)}$ and irreducibles $f_1,\dots,f_k\in \Fq[x]$ with $f = f_1\cdots f_k$ and $f_i(0)\neq 0$ for each $i$.
+	%	\item There are $m < 2(F(H)+1)$, $k < q^{F(H)}$, and irreducibles $f_1,\dots, f_k\in \Fq[x]$ with $f = x^m f_1\cdots f_k$.
+	%\end{enumerate}
 \end{prop}
+
+\begin{proof}
+	For our later convenience and to match our earlier notation, we will let $N = F(H)+1$.
+	Suppose $f\in \Fq[H]$ is irreducible; if $f$ is also irreducible in $\Fq[x]$ then we are done, so suppose otherwise.  
+	
+	\underline{Case 1}: $x$ does not divide $f$.
+	Then we may write $f = f_1\cdots f_k$ for some irreducibles $f_1,\dots,f_k\in \Fq[x]$ (and $f_i(0)\neq0$ for each $i$).
+	Suppose $k\ge q^{F(H)} = q^{N-1}$; then, by Lemma \ref{lem:coefficient gap boosting}, there is a $g|f_1\dots f_k$ with $g\in \Fq+x^N \Fq[x]t$.
+	Let $h = (f_1\cdots f_k)/g$.
+	Since $gh = f_1\cdots f_k = f \in \Fq[H]$, we must have that $g(0) \neq 0$ (otherwise $f(0)=0$ and $f$ would be divisible by $x$).
+	%Then we claim that $h\in \Fq[H]$; if not, then there is some $d\in G(H)$ so that the $x^d$ term of $h$ is $a x^d$ for some $a\in \Fq\setminus\{0\}$.
+	%Consequently, the $x^d$ coefficient of $f = gh$ is $g(0)a \neq 0$, so $f\notin \Fq[H]$, a contradiction.
+	%However, this implies that $g,h\in \Fq[H]$, which produces a contradiction to the irreducibility of $f$ in $\Fq[H]$ and implies that $k < q^{F(H)}$.
+	Now, by Lemma \ref{lem:numerical int closure}, $h\in K[H]$, which produces a contradiction to the irreducibility of $f$ in $\Fq[H]$ and implies that $k < q^{F(H)}$.
+	
+	\underline{Case 2}: The remaining case is that $f = x^m f_1\cdots f_k$, with $m$ maximal (so $x$ does not divide $f_1\cdots f_k$).
+	We need to show that $m<2(F(H)+1) = 2N$ and that $k<q$.
+	The first part is easy: if $m\ge 2N$ then we may write $f = x^{m-N} (x^N f_1\cdots f_k)$.
+	Now we have produced a factorization of $f$ in $\Fq[H]$, for $x^{m-N}, x^N (f_1\cdots f_k) \in \Fq + x^N \Fq[x] \subseteq \Fq[H]$.
+	
+	All that remains is to manage $k$; suppose $k \ge q^{N-1}$.
+	Since $x$ does not divide $f_1 \cdots f_k$, we have that $f_i(0) \neq 0$ for each $i\le r$ and, as before, Lemma \ref{lem:coefficient gap boosting} gives us a $g\in \Fq+x^N \Fq[x]$ with $g|f_1\cdots f_k$.
+	Then, choosing $h\in \Fq[x]$ so that $gh = f_1\cdots f_k$, we now wish to show that $x^m h \in \Fq[H]$.
+	%However, since $g (x^m h) = f \in \Fq[H]$, we can argue this in the same manner as in Case 1 (with our $x^m h$ playing the role of $h$ from Case 1).
+	Noting that $g (x^m h)\in K[H]$ and $g(0) \neq 0$ (since $g|f_1\cdots f_k$), Lemma \ref{lem:numerical int closure} implies that $x^m h\in K[H]$.
+	This yields a contradiction and we conclude, as in the previous case, that $k< q$.
+\end{proof}
 
 \begin{proof}
 	For our later convenience and to match our earlier notation, we will let $N = F(H)+1$.
@@ -762,22 +814,25 @@ Before finally reaching our main goal for the section, we need one more auxiliar
 	Thus $|\Fq[H]^{(n)}| = (q-1)q^{n-g(H)}$.
 	
 	Next, we can make crude estimates on the number of each of the types of irreducibles from the characterization given in Proposition \ref{prop:num ring atom classification}.
-	Let $A^1(n)$ and $A^2(n)$ denote the numbers of irreducibles of types (1) and (2) from Proposition \ref{prop:num ring atom classification}, respectively.
+	%Let $A^1(n)$ and $A^2(n)$ denote the numbers of irreducibles of types (1) and (2) from Proposition \ref{prop:num ring atom classification}, respectively.
+	Let 
+	$A_{\neq0}(n) = | \{f\in \Fq[H]^{(n)}:  f \textrm{ is irreducible and } f(0)\neq 0\}|$ and
+	$A_{0}(n) = | \{f\in \Fq[H]^{(n)}:  f \textrm{ is irreducible and } f(0) = 0\}|$.
 	
-	Let $M := q^{F(H)}$; $A^1(n)$ is the number of degree-$n$ elements which are products of $k$ irreducibles for some $k\in [1,M-1]$.
-	This quantity is certainly no larger than the number of \textit{all} tuples of $k$ $(f_1,\dots,f_k)$ irreducibles of $\Fq[x]$ with $k\in [1,M-1]$ and $\deg(f_1\cdots f_k) = n$.
-	For any such tuple, we know that $\deg(f_1) + \cdots \deg(f_k) = n$, so we can take a sum over all partitions of $n$ into fewer than $M$ parts to help us estimate $A^1(n)$ in the following way:
+	Let $M := q^{F(H)}$; $A_{\neq0}(n)$ is the number of degree-$n$ elements which are products of $k$ irreducibles for some $k\in [1,M-1]$.
+	This quantity is certainly no larger than the number of \textit{all} tuples $(f_1,\dots,f_k)$ of $k$ irreducibles of $\Fq[x]$ with $k\in [1,M-1]$ and $\deg(f_1\cdots f_k) = n$.
+	For any such tuple, we know that $\deg(f_1) + \cdots \deg(f_k) = n$, so we can take a sum over all partitions of $n$ into fewer than $M$ parts to help us estimate $A_{\neq0}(n)$ in the following way:
 	
-	\[ A^1(n) \le 
+	\[ A_{\neq0}(n) \le 
 	\underbrace{\sum_{\substack{m_1,\dots, m_k \\ k < M}} a_q(m_1)\cdots a_q(m_k)}_{\substack{\textrm{Number of degree $n$ products} \\ \textrm{of $k$ irreducibles of $\Fq[x]$}}}
 	= \sum_{m_1,\dots,m_k} \left(\frac{q^{m_1}}{m_1}\right)\cdots \left(\frac{q^{m_k}}{m_k}\right) 
 	=  \sum_{m_1,\dots,m_k} \frac{q^n}{m_1\cdots m_k}. \tag{$*$}
 	\]
 	
-	We can handle $A^2(n)$ similarly; for an irreducible $f\in \Fq[H]$ which can be written as $f= x^m f_1\cdots f_k$ in $\Fq[x]$, we similarly observe that $\deg(m_1)+\cdots+\deg(m_k) = n-m$. 
-	Because $m$ can take on at most $2F(H)+1$ different values, we can estimate $A^2(n)$ (rather carelessly) by using the same bound we for $A^1(n)$ in ($*$) another $2F(H)+1$ times.
+	We can handle $A_0(n)$ similarly; for an irreducible $f\in \Fq[H]$ which can be written as $f= x^m f_1\cdots f_k$ in $\Fq[x]$, we similarly observe that $\deg(m_1)+\cdots+\deg(m_k) = n-m$. 
+	Because $m$ can take on at most $2F(H)+1$ different values, we can estimate $A_0(n)$ (rather carelessly) by using the same bound we for $A_{\neq0}(n)$ in ($*$) another $2F(H)+1$ times.
 	This yields that
-	\[a_q^H(n) = A^1(n) + A^2(n) \le (2F(H)+2) \sum_{\substack{m_1,\dots,m_k \\ k < M}} \frac{q^n}{m_1\cdots m_k}. \]
+	\[a_q^H(n) = A_{\neq0}(n) + A_0(n) \le (2F(H)+2) \sum_{\substack{m_1,\dots,m_k \\ k < M}} \frac{q^n}{m_1\cdots m_k}. \]
 	Now we are in a position to show that $\lim_{n\to\infty}\rho_q^H(n) = 0$:
 	\begin{align*}
 	\rho_q^H(n) 
@@ -788,4 +843,3 @@ Before finally reaching our main goal for the section, we need one more auxiliar
 	\end{align*}
 	From here we can see that each summand tends to $0$ as $n\to\infty$ (and the number $M$ of summands does not depend on $n$), so it follows that $\rho_q^H(n) \to 0$ as $n\to \infty$.
 \end{proof}
-

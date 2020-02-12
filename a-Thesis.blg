@@ -1,19 +1,18 @@
 This is BibTeX, Version 0.99d (TeX Live 2019)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
-The top-level auxiliary file: Thesis.aux
-A level-1 auxiliary file: frontmatter.aux
-A level-1 auxiliary file: c-intro.aux
-A level-1 auxiliary file: c-fundamentals.aux
-A level-1 auxiliary file: c-atomicity.aux
-A level-1 auxiliary file: c-minfac.aux
-A level-1 auxiliary file: c-partitions.aux
-A level-1 auxiliary file: c-intervals.aux
-A level-1 auxiliary file: c-lattices.aux
+The top-level auxiliary file: a-Thesis.aux
+A level-1 auxiliary file: c1-intro.aux
+A level-1 auxiliary file: c2-fundamentals.aux
+A level-1 auxiliary file: c3-atomicity.aux
+A level-1 auxiliary file: c4-minfac.aux
+A level-1 auxiliary file: c5-partitions.aux
+A level-1 auxiliary file: c6-intervals.aux
+A level-1 auxiliary file: c7-lattices.aux
 The style file: alpha.bst
 Database file #1: bib.bib
 You've used 44 entries,
             2543 wiz_defined-function locations,
-            864 strings with 10907 characters,
+            863 strings with 10903 characters,
 and the built_in function-call counts, 17778 in all, are:
 = -- 1833
 > -- 763
