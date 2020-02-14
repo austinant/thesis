@@ -1,6 +1,7 @@
 This is BibTeX, Version 0.99d (TeX Live 2019)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: a-Thesis.aux
+A level-1 auxiliary file: b-frontmatter.aux
 A level-1 auxiliary file: c1-intro.aux
 A level-1 auxiliary file: c2-fundamentals.aux
 A level-1 auxiliary file: c3-atomicity.aux
@@ -10,44 +11,46 @@ A level-1 auxiliary file: c6-intervals.aux
 A level-1 auxiliary file: c7-lattices.aux
 The style file: alpha.bst
 Database file #1: bib.bib
+Warning--I didn't find a database entry for "fletcher69"
 You've used 44 entries,
             2543 wiz_defined-function locations,
-            863 strings with 10903 characters,
-and the built_in function-call counts, 17778 in all, are:
-= -- 1833
-> -- 763
-< -- 26
-+ -- 258
-- -- 248
-* -- 1349
-:= -- 2900
-add.period$ -- 138
+            864 strings with 10945 characters,
+and the built_in function-call counts, 17731 in all, are:
+= -- 1826
+> -- 774
+< -- 25
++ -- 261
+- -- 252
+* -- 1338
+:= -- 2894
+add.period$ -- 137
 call.type$ -- 44
-change.case$ -- 261
-chr.to.int$ -- 41
+change.case$ -- 262
+chr.to.int$ -- 42
 cite$ -- 44
-duplicate$ -- 694
-empty$ -- 1314
-format.name$ -- 306
-if$ -- 3602
-int.to.chr$ -- 4
+duplicate$ -- 689
+empty$ -- 1307
+format.name$ -- 309
+if$ -- 3593
+int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 51
-newline$ -- 226
+missing$ -- 50
+newline$ -- 225
 num.names$ -- 132
-pop$ -- 197
+pop$ -- 204
 preamble$ -- 1
-purify$ -- 309
+purify$ -- 310
 quote$ -- 0
-skip$ -- 565
+skip$ -- 569
 stack$ -- 0
-substring$ -- 1189
+substring$ -- 1162
 swap$ -- 95
-text.length$ -- 26
-text.prefix$ -- 15
+text.length$ -- 25
+text.prefix$ -- 14
 top$ -- 0
 type$ -- 324
 warning$ -- 0
 while$ -- 189
 width$ -- 48
-write$ -- 586
+write$ -- 583
+(There was 1 warning)

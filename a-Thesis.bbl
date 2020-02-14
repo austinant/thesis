@@ -26,6 +26,11 @@ D.~D. Anderson and Raj Markanda.
 \newblock Unique factorization rings with zero divisors.
 \newblock {\em Houston J. Math.}, 11(1):15--30, 1985.
 
+\bibitem[AT19]{antoniou-tringali19}
+Austin~A. Antoniou and Salvatore Tringali.
+\newblock On the arithmetic of power monoids and sumsets in cyclic groups,
+  2019.
+
 \bibitem[AVL96]{AnVL96}
 D.~D. Anderson and Silvia Valdes-Leon.
 \newblock Factorization in commutative rings with zero divisors.
@@ -98,16 +103,10 @@ P.~Erd\"{o}s.
   partitions.
 \newblock {\em Ann. of Math. (2)}, 43:437--450, 1942.
 
-\bibitem[Fle69a]{Fl69}
+\bibitem[Fle69]{Fl69}
 C.~R. Fletcher.
 \newblock Unique factorization rings.
 \newblock {\em Proc. Cambridge Philos. Soc.}, 65:579--583, 1969.
-
-\bibitem[Fle69b]{fletcher69}
-C.~R. Fletcher.
-\newblock Unique factorization rings.
-\newblock {\em Mathematical Proceedings of the Cambridge Philosophical
-  Society}, 65(3):579–583, 1969.
 
 \bibitem[FNR19]{frisch-al19}
 Sophie Frisch, Sarah Nakato, and Roswitha Rissner.

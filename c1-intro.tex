@@ -37,9 +37,11 @@ In the present work, we bring our attention to a fairly new class of algebraic o
 The motivation to study power monoids is drawn from two sources: factorization theory and arithmetic combinatorics.
 
 Arithmetic combinatorics has historically involved sumsets in abelian groups (or even just in $\ZZ$).
-It has been concerned with questions such as ``how large can a sumset be expected to be?'' which is resolved in the case of $\ZZ/p\ZZ$ by the Cauchy-Davenport inequality: for $A,B\subseteq \ZZ/p\ZZ$, $|A+B| \ge \min\{p,|A| + |B| -1\}$ \cite[Theorem 6.2]{grynkiewicz13}.
+It has been concerned with questions such as ``how large can a sumset be expected to be?'' which is resolved in the case of $\ZZ/p\ZZ$ by the Cauchy-Davenport inequality: for $A,B\subseteq \ZZ/p\ZZ$, $|A+B| \ge \min\{p,|A| + |B| -1\}$. 
+%\cite[Theorem 6.2]{grynkiewicz13}.
 There is, of course, an accompanying inverse problem; namely, which pairs $A$ and $B$ satisfy $|A+B| = |A|+|B|-1$?
-This is resolved by Vosper's Theorem, which says that the extremal pairs $A$ and $B$ are arithmetic progressions with the same difference \cite[Theorem 8.1]{grynkiewicz13}.
+This is resolved by Vosper's Theorem, which says that the extremal pairs $A$ and $B$ are arithmetic progressions with the same difference.
+% \cite[Theorem 8.1]{grynkiewicz13}.
 Though this is but a small slice of what the subject has to offer, it brings to our attention the potential for structural questions in arithmetic combinatorics and consequently highlights its surprising ideological closeness to parts of factorization theory.  
 
 The broadest question in factorization theory is: ``how do elements decompose into atoms?''
@@ -52,15 +54,15 @@ Making these ideas rigorous is one of the challenges but also one of the predomi
 Once we have settled these parameters of the question, we can then think about various settings and how to characterize their factorization behavior.
 Historically, one of the first classes of rings which drew the attention of many was that of rings of integers inside number fields.
 In this setting, we find perhaps the most famous example of a ring which fails to have unique factorization, $\ZZ[\sqrt{-5}]$, as $2\cdot3 = 6 = (1+\sqrt{-5})(1-\sqrt{-5})$.
-A significant effort, which drew techniques and ideas from analysis and geometry, went toward understanding the full range of behaviors exhibited by elements of rings of integers.
+A significant effort, which furthered the study of ring theory while also drawing ideas from analysis and geometry, went toward understanding the full range of behaviors exhibited by elements of rings of integers.
 This eventually blossomed into the study of general Dedekind domains, Krull domains, and further generalizations.  
 
 From this, we see how even a single class of examples can have a lasting impact on factorization theory, and on mathematics.
 However, much of the field to date has focused on studying factorization in rings which are not only commutative but also \textit{cancellative}, meaning $ab = ac$ implies that $b=c$.
 This is not to say that the subject has neglected non-cancellative settings altogether; monoids of modules or monoids of ideals in commutative rings are certainly well-studied.
-However, these settings can involve heavy machinery and make it difficult to interact with other areas of mathematics.
-On the other hand, power monoids are highly non-cancellative while being rooted in a simple and natural combinatorial construction.
-We strive to open up the study of power monoids to bring attention to their own robust structure and also to explore their inevitable entanglement with combinatorics and number theory.  
+However, these settings can involve heavy algebraic machinery and make it difficult to interact with other areas of mathematics.
+On the other hand, power monoids are highly non-cancellative while being rooted in a simple and natural combinatorial construction: the collection of (finite) subsets of a monoid, endowed with setwise multiplication.
+We strive to open up the study of power monoids to bring attention to their own robust structure and also to explore their inevitable entanglement with combinatorics, number theory, and other areas of mathematics.  
 
 %%%%%%
 %%%%%%
@@ -69,9 +71,6 @@ We strive to open up the study of power monoids to bring attention to their own 
 \section{Plan and Main Results}
 %%%%%%
 %%%%%%
-
-%In the remainder of this chapter, we will tell (some of) the story of factorization theory up to this point, by way of motivating the chapters to come.  
-%We will also set some notation and conventions to be used.
 In the remainder of this chapter, we will set some notation and conventions to be used hereafter.
 
 Chapter \ref{ch:fundamentals} begins laying the foundation neessary to have a detailed discussion of factorizations.
@@ -101,8 +100,12 @@ This affords us the opportunity to use higher-dimensional geometric intuition to
 This line of thought allows us to recover some known results for realizations of length sets in $\PN$; namely, that $\{n\} \in\mathcal{L}(\PN)$ for all $n\ge 2$ (Theorem \ref{thm:ind-atoms} or  \cite[Proposition 4.9]{fan-tringali18}) and that $\{2,n+1\}\in \mathcal{L}(\PN)$ for all $n\ge 2$ (Theorem \ref{thm:2n-length-set} or \cite[Proposition 4.10]{fan-tringali18}).
 Finally, we push the methods developed to realize a new family of sets as sets of lengths in $\PN$; we show that $[2,m+2]\cup\{m+n+1\}\in \mathcal{L}(\PN)$ for all $n\ge 2$ and $m\ge 1$ (Theorem \ref{thm:int-point-construction}).
 
-%%%%%%
-%%%%%%
+It should be mentioned that large sections of what follows are the result of joint work with Salvatore Tringali, whose paper \cite{fan-tringali18} with Yushuang Fan marks the first entry in the literature toward the general study of power monoids.
+Specifically, Section \ref{sub:other-factorizations} and Chapters \ref{ch:power monoids} and \ref{ch:minimal factorizations} are borrowed from \cite{antoniou-tringali19}.  
+Even further, the questions posed by Fan and Tringali -- especially the conjecture that the system of sets of lengths of $\PN$ is as large as possible, made in \cite[Section 5]{fan-tringali18} -- inspired the work done in Chapter \ref{ch:lattices}.
+
+
+
 \section{Notation and Conventions} \label{subsec:generalities}
 
 \begin{itemize}
@@ -111,7 +114,7 @@ Finally, we push the methods developed to realize a new family of sets as sets o
 	
 	\item In general, unless otherwise specified, lowercase letters ($a$, $b$, $x$, $y$, etc.) will usually refer to elements of a monoid; 
 	ordinary uppercase letters to sets and subsets ($A$, $B$, $X$, $Y$, etc.); 
-	script or calligraphic uppercase letters ($\A$, $\C$, $\F$, $\P$) to collections of subsets; 
+	script or calligraphic uppercase letters ($\A$, $\C$, $\F$, $\P$) to distinguished subsets or collections of subsets; 
 	math fraktur letters ($\aa$, $\bb$, etc.) to words in a free monoid over a given generating set 
 	(see Section \ref{subsec:factorizations} for more details on free monoids).
 	Specifically, $i$, $j$, $k$, $\ell$, $m$, and $n$ will usually stand for non-negative integers. 
@@ -137,7 +140,7 @@ Finally, we push the methods developed to realize a new family of sets as sets o
 	By a similar token, for a subset $X\subseteq \ZZ/m\ZZ$, we set $\hat{X} := \{\hat{x}: x\in X\}$.
 	
 	\item In general, we will refer to the operation of a not necessarily commutative monoid $(H,\cdot)$ as ``multiplication''.
-	We will often adopt the practice of suppressing the symbol ``$\cdot$'' when no confusion is likely to arise; that is, we will write $xy$ instead of $x\cdot y$.
+	We will often write $xy$ instead of $x\cdot y$ when no confusion is likely to arise.
 	
 	\item The identity of a multiplicative monoid $(H,\cdot)$ will be called $1$; the identity of an additive monoid $(H,+)$ will be called $0$.
 	
