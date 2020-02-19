@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  14 FEB 2020 16:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=latex 2019.4.10)  17 FEB 2020 16:15
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -719,20 +719,20 @@ File: pgflibraryarrows.meta.code.tex 2019/02/02 v3.1.1 (3.1.1)
 (./c5-partitions.aux) (./c6-intervals.aux) (./c7-lattices.aux))
 \openout1 = `a-Thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 20.
-LaTeX Font Info:    ... okay on input line 20.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 21.
+LaTeX Font Info:    ... okay on input line 21.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
@@ -769,7 +769,7 @@ LaTeX Font Info:    ... okay on input line 20.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \AtBeginShipoutBox=\box69
-Package hyperref Info: Link coloring ON on input line 20.
+Package hyperref Info: Link coloring ON on input line 21.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
@@ -778,9 +778,9 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count150
 )
-LaTeX Info: Redefining \ref on input line 20.
-LaTeX Info: Redefining \pageref on input line 20.
-LaTeX Info: Redefining \nameref on input line 20.
+LaTeX Info: Redefining \ref on input line 21.
+LaTeX Info: Redefining \pageref on input line 21.
+LaTeX Info: Redefining \nameref on input line 21.
 
 (./a-Thesis.out) (./a-Thesis.out)
 \@outlinefile=\write4
@@ -797,25 +797,25 @@ LaTeX Info: Redefining \nameref on input line 20.
 
 
 
-] [1]
-LaTeX Font Info:    Try loading font information for U+msa on input line 68.
+]
+LaTeX Font Info:    Try loading font information for U+msa on input line 52.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 68.
+LaTeX Font Info:    Try loading font information for U+msb on input line 52.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 68.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 52.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 68.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 52.
 
-(/usr/local/texlive/2019/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/stmaryrd/Ustmry.fd) [2] [1]
 Underfull \vbox (badness 4660) has occurred while \output is active []
 
  [2
@@ -824,7 +824,7 @@ Underfull \vbox (badness 4660) has occurred while \output is active []
 [3] [4
 
 ] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 134--140
+Underfull \hbox (badness 10000) in paragraph at lines 133--139
 
  []
 
@@ -918,11 +918,7 @@ Chapter 4.
 
 
 
-] [29]
-
-LaTeX Warning: Citation `fletcher69' on page 30 undefined on input line 82.
-
-[30]
+] [29] [30]
 Underfull \vbox (badness 3148) has occurred while \output is active []
 
  [31]
@@ -953,17 +949,7 @@ Chapter 5.
 
 
 
-] [49] [50] [51]
-Overfull \hbox (29.88397pt too wide) in paragraph at lines 154--155
-[]\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 A[]\OT1/cmr/m/n/10.95 )$, the \OT1/cm
-r/bx/n/10.95 par-ti-tion type \OT1/cmr/m/n/10.95 of any fac-tor-iza-tion $\U/eu
-f/m/n/10.95 b \OMS/cmsy/m/n/10.95 2 \OT1/cmr/m/n/10.95 [\U/euf/m/n/10.95 a\OT1/
-cmr/m/n/10.95 ][]$ is $[](\U/euf/m/n/10.95 b\OT1/cmr/m/n/10.95 ) := ([](\OML/cm
-m/m/it/10.95 A[]\OT1/cmr/m/n/10.95 )\OML/cmm/m/it/10.95 ; [] ; []\OT1/cmr/m/n/1
-0.95 (\OML/cmm/m/it/10.95 A[]\OT1/cmr/m/n/10.95 ))$. 
- []
-
-[52]
+] [49] [50] [51] [52]
 Overfull \hbox (21.95609pt too wide) in paragraph at lines 183--185
 [][]\OT1/cmr/m/n/10.95 First de-fine, for $\OML/cmm/m/it/10.95 X \OMS/cmsy/m/n/
 10.95 2 []$ \OT1/cmr/m/n/10.95 and $\OML/cmm/m/it/10.95 P \OT1/cmr/m/n/10.95 = 
@@ -986,18 +972,7 @@ Chapter 6.
 
 
 
-]
-Overfull \hbox (9.22653pt too wide) in paragraph at lines 51--52
-[][]\OT1/cmr/m/n/10.95 The next lemma amounts to a mere un-pack-ing of a sum de
--com-po-si-tion of an $\OML/cmm/m/it/10.95 r$\OT1/cmr/m/n/10.95 -concentrated
- []
-
-[74]
-Overfull \hbox (21.60986pt too wide) detected at line 75
-[]
- []
-
-
+] [74]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [75]
@@ -1018,16 +993,7 @@ Chapter 7.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [96]
-[97]
-Overfull \hbox (4.80498pt too wide) in paragraph at lines 455--456
-[][][][]\OT1/cmr/bx/n/10.95 Conjecture 7.4.1. [][]\OT1/cmr/m/n/10.95 For any fi
--nite $\OML/cmm/m/it/10.95 S \OMS/cmsy/m/n/10.95 ^^R \U/msb/m/n/10.95 N[]$\OT1/
-cmr/m/n/10.95 , there is a $\OML/cmm/m/it/10.95 W \OMS/cmsy/m/n/10.95 2 []$ \OT
-1/cmr/m/n/10.95 such that $\OT1/cmss/m/n/10.95 L[]\OT1/cmr/m/n/10.95 (\OML/cmm/
-m/it/10.95 W\OT1/cmr/m/n/10.95 ) =
- []
-
-[98]
+[97] [98]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [99]
@@ -1039,29 +1005,25 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 ] [104] [105] [106]) [107]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 54.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 54.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 55.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 55.
  (./a-Thesis.aux
 (./b-frontmatter.aux) (./c1-intro.aux) (./c2-fundamentals.aux)
 (./c3-atomicity.aux) (./c4-minfac.aux) (./c5-partitions.aux)
 (./c6-intervals.aux) (./c7-lattices.aux))
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 54.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 54.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 55.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 55.
 Package rerunfilecheck Info: File `a-Thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 72205A7AE235CC238D50C725B897DF86;2575.
-
-
-LaTeX Warning: There were undefined references.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 54.
+(rerunfilecheck)             Checksum: F461BCD9716E288350120D09A007286D;2575.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 55.
  ) 
 Here is how much of TeX's memory you used:
- 18668 strings out of 492624
- 358910 string characters out of 6129578
- 456999 words of memory out of 5000000
- 22183 multiletter control sequences out of 15000+600000
- 16286 words of font info for 63 fonts, out of 8000000 for 9000
+ 18666 strings out of 492624
+ 358886 string characters out of 6129578
+ 457995 words of memory out of 5000000
+ 22182 multiletter control sequences out of 15000+600000
+ 15933 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 65i,16n,87p,933b,1044s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 65i,21n,87p,933b,1044s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on a-Thesis.dvi (116 pages, 664032 bytes).
+Output written on a-Thesis.dvi (117 pages, 658976 bytes).

@@ -31,4 +31,4 @@
 \contentsline {section}{\numberline {7.2}Independence Arguments in the Natural Lattice}{88}{section.7.2}% 
 \contentsline {section}{\numberline {7.3}Recovering the Two-Lengths Realization Result}{93}{section.7.3}% 
 \contentsline {section}{\numberline {7.4}A New Family of Length Sets}{98}{section.7.4}% 
-\contentsline {chapter}{Bibliography}{103}{section*.21}% 
+\contentsline {chapter}{Bibliography}{103}{section*.22}% 

@@ -11,10 +11,9 @@ A level-1 auxiliary file: c6-intervals.aux
 A level-1 auxiliary file: c7-lattices.aux
 The style file: alpha.bst
 Database file #1: bib.bib
-Warning--I didn't find a database entry for "fletcher69"
 You've used 44 entries,
             2543 wiz_defined-function locations,
-            864 strings with 10945 characters,
+            863 strings with 10935 characters,
 and the built_in function-call counts, 17731 in all, are:
 = -- 1826
 > -- 774
@@ -53,4 +52,3 @@ warning$ -- 0
 while$ -- 189
 width$ -- 48
 write$ -- 583
-(There was 1 warning)

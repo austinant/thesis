@@ -48,13 +48,12 @@ Then $x+y \equiv x+y' \not\equiv r \mod m$ so, by the $r$-concentratedness of $Z
 From here it is clear that $y=y'$ and the result follows.
 \end{proof}
 
-The next lemma amounts to a mere unpacking of a sum decomposition of an $r$-concentrated set, but a special case of this result will serve us several times in constructing atoms out of members of $\mathcal{X}_{m,r}$.
+The next lemma amounts merely to unpacking a sum decomposition of an $r$-concentrated set, but a special case of this result will serve us several times in constructing atoms out of members of $\mathcal{X}_{m,r}$.
 
 \begin{lemma} \label{lem:both summands small}
 Let $Z := \{0\}\cup R \cup B\in \mathcal{X}_{m,r}$, suppose that $Z = X + Y$, and say $n_1 = |X\cap R|$ and $n_2 = |Y\cap R|$.
 \begin{enumerate}[label={\rm (\roman{*})}]
-\item Then 
-\[|R| \le (1+\delta_{\bar{0}}(Y\cap B))n_1 + (1+\delta_{\bar{0}}(X\cap B))n_2 + \delta_{\bar{0}}(R)n_1n_2 + |2B \cap R|,\]
+\item Then $|R| \le (1+\delta_{\bar{0}}(Y\cap B))n_1 + (1+\delta_{\bar{0}}(X\cap B))n_2 + \delta_{\bar{0}}(R)n_1n_2 + |2B \cap R|$,
 where 
 \[\delta_{\bar{0}}(S) = 
 \begin{cases}
@@ -67,11 +66,12 @@ where
 
 \begin{proof}
 For (i): first observe that $X = \{0\}\cup (X\cap R) \cup (X\cap B)$ and $Y = \{0\}\cup (Y\cap R) \cup (Y\cap B)$.
-Then, since each of $X$ and $Y$ is the union of $3$ sets, $X+Y$ can be written as a union of $9$ sets; namely, the sums of each pair chosen from $\{\{0\}, X\cap R, X\cap B\} \times \{ \{0\}, Y\cap R, Y\cap B\}$, as in
+Then, since each of $X$ and $Y$ is the union of $3$ sets, $X+Y$ can be written as a union of $9$ sets; namely, the sums of each pair chosen from $\{\{0\}, X\cap R, X\cap B\} \times \{ \{0\}, Y\cap R, Y\cap B\}$, as in:
 \begin{align*}
 X+Y &= \{0\}\cup (X\cap R) \cup (X\cap B) + \{0\} \cup (Y\cap R) \cup (Y\cap B) \\
-&= \{0\}\cup (X\cap R) \cup (X\cap B) \cup (Y\cap R) \cup (Y\cap B) \cup (X\cap R + Y\cap B) \cup (X\cap B + Y\cap R)\\
-& \hspace{7.5cm} \hfill \cup (X\cap R + Y\cap R) \cup (X\cap B + Y\cap B).
+&= \{0\}\cup (X\cap R) \cup (X\cap B) \cup (Y\cap R) \cup (Y\cap B) \\
+& \quad\; \cup (X\cap R + Y\cap B) \cup (X\cap B + Y\cap R)\\
+& \quad\; \cup (X\cap R + Y\cap R) \cup (X\cap B + Y\cap B).
 \end{align*}
 To bound the size of $R = R\cap (X+Y)$, we will look at the intersection of $R$ with each of these $9$ sets.  
 Fortunately, it is easy to see that $\{0\}$, $X\cap B$, and $Y\cap B$ have trivial intersection with $R$ and that $X\cap R$ and $Y\cap R$ are already subsets of $R$.

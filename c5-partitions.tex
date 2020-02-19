@@ -151,7 +151,7 @@ This will help us in our endeavor to develop a more effecient algorithm for fact
 	Each $m_i$ is said to be a \textit{part} of $P$, and $k$ is said to be the \textit{length} or number of parts of $P$.
 	For brevity, we occasionally write $P \vdash n$.
 	
-	For a factorization $\aa \in \F^*(\A(\PN))$ satisfying $\aa = A_1*\cdots*A_k$ with $\max(A_1)\ge\cdots\ge\max(A_k)$, the \textbf{partition type} of any factorization $\bb\in [\aa]_\simeq$ is $\mathsf{ptype}(\bb) := (\max(A_1),\dots,\max(A_k))$.
+	For a factorization $\aa \in \F^*(\A(\PN))$ satisfying $\aa = A_1*\cdots*A_k$ with $\max(A_1)\ge\cdots\ge\max(A_k)$, the \textbf{partition type} of any $\bb\in [\aa]_\simeq$ is $\mathsf{ptype}(\bb) := (\max(A_1),\dots,\max(A_k))$.
 	
 	In general, for any $X \in \PN$ and for any partition $P = (m_1,\dots, m_k)$ of $\max(X)$, we define the \textbf{set of factorizations of $X$} and \textbf{set of factorization classes of (partition) type $P$} to be
 	\[ \Z^P(X) := \{ \aa \in \Z(X) : \mathsf{ptype}(\aa) = P \} \]
@@ -823,14 +823,15 @@ Before finally reaching our main goal for the section, we need one more auxiliar
 	This quantity is certainly no larger than the number of \textit{all} tuples $(f_1,\dots,f_k)$ of $k$ irreducibles of $\Fq[x]$ with $k\in [1,M-1]$ and $\deg(f_1\cdots f_k) = n$.
 	For any such tuple, we know that $\deg(f_1) + \cdots \deg(f_k) = n$, so we can take a sum over all partitions of $n$ into fewer than $M$ parts to help us estimate $A_{\neq0}(n)$ in the following way:
 	
-	\[ A_{\neq0}(n) \le 
-	\underbrace{\sum_{\substack{m_1,\dots, m_k \\ k < M}} a_q(m_1)\cdots a_q(m_k)}_{\substack{\textrm{Number of degree $n$ products} \\ \textrm{of $k$ irreducibles of $\Fq[x]$}}}
-	= \sum_{m_1,\dots,m_k} \left(\frac{q^{m_1}}{m_1}\right)\cdots \left(\frac{q^{m_k}}{m_k}\right) 
-	=  \sum_{m_1,\dots,m_k} \frac{q^n}{m_1\cdots m_k}. \tag{$*$}
-	\]
+	\begin{align*}
+	A_{\neq0}(n) &\le 
+	\overbrace{\sum_{\substack{m_1,\dots, m_k \\ k < M}} a_q(m_1)\cdots a_q(m_k)}^{\substack{\textrm{Number of degree $n$ products} \\ \textrm{of $k$ irreducibles of $\Fq[x]$}}} \\
+	&= \sum_{m_1,\dots,m_k} \left(\frac{q^{m_1}}{m_1}\right)\cdots \left(\frac{q^{m_k}}{m_k}\right) \\
+	&=  \sum_{m_1,\dots,m_k} \frac{q^n}{m_1\cdots m_k} \tag{$*$}
+	\end{align*}
 	
 	We can handle $A_0(n)$ similarly; for an irreducible $f\in \Fq[H]$ which can be written as $f= x^m f_1\cdots f_k$ in $\Fq[x]$, we similarly observe that $\deg(m_1)+\cdots+\deg(m_k) = n-m$. 
-	Because $m$ can take on at most $2F(H)+1$ different values, we can estimate $A_0(n)$ (rather carelessly) by using the same bound we for $A_{\neq0}(n)$ in ($*$) another $2F(H)+1$ times.
+	Because $m$ can take on at most $2F(H)+1$ different values, we can estimate $A_0(n)$ (rather carelessly) by using the same bound we found for $A_{\neq0}(n)$ in ($*$) another $2F(H)+1$ times.
 	This yields that
 	\[a_q^H(n) = A_{\neq0}(n) + A_0(n) \le (2F(H)+2) \sum_{\substack{m_1,\dots,m_k \\ k < M}} \frac{q^n}{m_1\cdots m_k}. \]
 	Now we are in a position to show that $\lim_{n\to\infty}\rho_q^H(n) = 0$:
