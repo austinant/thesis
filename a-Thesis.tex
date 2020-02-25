@@ -1,14 +1,9 @@
-%\documentclass[10pt]{book}
-\documentclass[11pt, letterpaper,openany]{book}
-\usepackage[doublespacing]{setspace}
-\pagestyle{plain}
+\documentclass[10pt, letterpaper,openany]{book} %10pt, 11pt, or 12pt are acceptable. 
 
-%For centering chapters
-\usepackage[explicit]{titlesec}
-\usepackage{multicol}
-\titleformat{\chapter}[display]{\bfseries\centering}{\LARGE Chapter \thechapter}{1mm}{\LARGE #1}
-
-%For including macros/commands you have pre-defined
+%Includes preamble, which contains:
+%**formatting preferences
+%**specific packages you may need
+%**commands you've defined
 \include{b-preamble}
 
 \title{On Product and Sum Decompositions of Sets: \\ 
@@ -36,7 +31,7 @@
 
 \include{c6-intervals}
 
-\include{c7-lattices}
+\include{c7-lattices2}
 
 %\include{chap-asymptotics}
 
@@ -45,7 +40,7 @@
 %\bibliography{bib}
 %\bibliographystyle{plain}
 
-\cleardoublepage
+%\cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Bibliography}
 \bibliographystyle{alpha}

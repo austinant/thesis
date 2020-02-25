@@ -8,47 +8,47 @@ A level-1 auxiliary file: c3-atomicity.aux
 A level-1 auxiliary file: c4-minfac.aux
 A level-1 auxiliary file: c5-partitions.aux
 A level-1 auxiliary file: c6-intervals.aux
-A level-1 auxiliary file: c7-lattices.aux
+A level-1 auxiliary file: c7-lattices2.aux
 The style file: alpha.bst
 Database file #1: bib.bib
-You've used 44 entries,
+You've used 48 entries,
             2543 wiz_defined-function locations,
-            863 strings with 10935 characters,
-and the built_in function-call counts, 17731 in all, are:
-= -- 1826
-> -- 774
-< -- 25
-+ -- 261
-- -- 252
-* -- 1338
-:= -- 2894
-add.period$ -- 137
-call.type$ -- 44
-change.case$ -- 262
-chr.to.int$ -- 42
-cite$ -- 44
-duplicate$ -- 689
-empty$ -- 1307
-format.name$ -- 309
-if$ -- 3593
+            889 strings with 11559 characters,
+and the built_in function-call counts, 19148 in all, are:
+= -- 1970
+> -- 839
+< -- 26
++ -- 282
+- -- 272
+* -- 1433
+:= -- 3136
+add.period$ -- 152
+call.type$ -- 48
+change.case$ -- 283
+chr.to.int$ -- 46
+cite$ -- 48
+duplicate$ -- 748
+empty$ -- 1413
+format.name$ -- 334
+if$ -- 3883
 int.to.chr$ -- 3
 int.to.str$ -- 0
-missing$ -- 50
-newline$ -- 225
-num.names$ -- 132
-pop$ -- 204
+missing$ -- 56
+newline$ -- 246
+num.names$ -- 144
+pop$ -- 223
 preamble$ -- 1
-purify$ -- 310
+purify$ -- 337
 quote$ -- 0
-skip$ -- 569
+skip$ -- 617
 stack$ -- 0
-substring$ -- 1162
-swap$ -- 95
-text.length$ -- 25
-text.prefix$ -- 14
+substring$ -- 1228
+swap$ -- 99
+text.length$ -- 26
+text.prefix$ -- 15
 top$ -- 0
-type$ -- 324
+type$ -- 348
 warning$ -- 0
-while$ -- 189
-width$ -- 48
-write$ -- 583
+while$ -- 203
+width$ -- 52
+write$ -- 637
