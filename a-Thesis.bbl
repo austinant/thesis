@@ -16,10 +16,20 @@ Dan Anderson and Sangmin Chun.
 \newblock Irreducible elements in commutative rings with zero-divisors.
 \newblock {\em Houston Journal of Mathematics}, 37, 01 2011.
 
+\bibitem[ACIS93]{anderson-etal93}
+David~F. Anderson, Scott~T. Chapman, Faith Inman, and William~W. Smith.
+\newblock Factorization ink[x2,x3].
+\newblock {\em Archiv der Mathematik}, 61:521--528, 1993.
+
 \bibitem[AFRS03]{axtell-et-al03}
 Michael Axtell, Sylvia Forman, Nick Roersma, and Joe Stickles.
 \newblock Properties of u-factorizations.
 \newblock {\em International Journal of Commutative Rings}, 2, 01 2003.
+
+\bibitem[AJ95]{and-jenk95}
+David~F. Anderson and Susanne Jenkens.
+\newblock Factorization in {$K[X^n,X^{n+1},\cdots, X^{2n-1}]$}.
+\newblock {\em Comm. Algebra}, 23(7):2561--2576, 1995.
 
 \bibitem[AM85]{AndMar85b}
 D.~D. Anderson and Raj Markanda.
@@ -42,6 +52,12 @@ D.~D. Anderson and Silvia Valdes-Leon.
 \newblock In {\em Factorization in integral domains ({I}owa {C}ity, {IA},
   1996)}, volume 189 of {\em Lecture Notes in Pure and Appl. Math.}, pages
   197--219. Dekker, New York, 1997.
+
+\bibitem[Bar06]{barucci06}
+Valentina Barucci.
+\newblock Numerical semigroup algebras.
+\newblock In {\em Multiplicative ideal theory in commutative algebra}, pages
+  39--53. Springer, New York, 2006.
 
 \bibitem[BBM17]{BaBuMi17}
 Nicholas~R. Baeth, Brandon Burns, and James Mixco.
@@ -96,6 +112,10 @@ Scott~T. Chapman, Alan Loper, and William~W. Smith.
 David~S. Dummit and Richard~M. Foote.
 \newblock {\em Abstract algebra}.
 \newblock Prentice Hall, Inc., Englewood Cliffs, NJ, 1991.
+
+\bibitem[EKOT20]{CRBS20}
+R.~A.~C. Edmonds, B.~Kubik, C.~O'Neill, and S.~Talbott.
+\newblock On atomic density of numerical semigroup algebras, 2020.
 
 \bibitem[Erd42]{erdos42}
 P.~Erd\"{o}s.
