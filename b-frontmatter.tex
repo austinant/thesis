@@ -48,9 +48,9 @@
 \end{titlepage}
 
 %Blank page for copyright offset
-\newpage
-$~$
-\thispagestyle{empty}
+%\newpage
+%$~$
+%\thispagestyle{empty}
 \newpage
 
 \hspace{0pt}
@@ -82,11 +82,17 @@ We refine this result by introducing the \textit{partition type} of a factorizat
 Intervals are further distinguished %The breadth of factorization behaviors exhibited by intervals is further accentuated 
 by giving an exponential lower bound on $|\mathsf{Z}_\PN([0,n])|$, the number of factorizations of $[0,n]$.
 
+Following the idea of partition type beyond the realm of power monoids, we take a detour to show that the density of atoms of a given degree in any numerical semigroup algebra over a finite field is asymptotically zero (as we let the degree approach infinity).
 
+
+Returning to power monoids, we end by focusing in particular on sets of factorization lengths in $\PN$.
 The study of which sets occur as sets of lengths in $\PN$ is fairly difficult, and requires some new tools.
 To this end, we show that all factorization phenomena that occur in $\P_\fon(\NN^d)$, for $d>1$, also occur in $\PN$ (and vice-versa).
 Consequently, we may leverage the intuition and geometry of the integer lattice.  
-After developing the necessary methods, we recover some known results on sets of lengths and demonstrate a new family of sets which can be realized as sets of lengths. 
+After developing the necessary methods, we recover some known results on sets of lengths; namely, that $\{n\}$ and $\{2,n+1\}$ occur as sets of lengths for any $n\ge 2$.
+Finally, we demonstrate that $[2,m+2]\cup\{m+n+1\}$ can be realized as a set of factorization lengths for all $m\ge 1$ and $n\ge 2$, representing progress toward the conjecture, made by Fan and Tringali, that $\PN$ realizes all feasible sets of lengths.
+
+
 
 
 
@@ -95,7 +101,7 @@ After developing the necessary methods, we recover some known results on sets of
 I owe my thanks to many, many people whose generosity and support have helped me immeasurably while I pursued this degree.
 
 
-To my parents Deane and Kim, without whom I would quite literally not be here.  
+To my parents Deane and Kim, without whom I would quite literally (and in many other senses) not be here.
 You have always encouraged me to do my best, flown me home for the holidays, and given me wisdom to help me navigate the world.
 
 To my grandparents Fay and Al, who have shown me constant love and support.
@@ -104,10 +110,10 @@ To YiaYia, Jason, and Kyle, for hiding me safely away from work every Thanksgivi
 
 To Peter, for always making sure that I'm curious.
 
-To my advisor, Alan Loper, for helping me to grow as a mathematician, for asking interesting questions, and for his patience.
+To my advisor, Alan Loper, for helping me to grow as a mathematician, for asking interesting questions, for encouraging me to think imaginatively, for helping me to look beyond accidents of small numbers, and for his patience.
 
-To my collaborator, Salvo, with whom I co-wrote an article as well as large portions of this document.
-Thank you for letting me work on such an interesting problem suited to my strengths, for being a thorough and thoughtful coathor, and for being a friend during my time in Austria.
+To my collaborator, Salvo, who introduced me to power monoids and with whom I co-wrote an article which eventually became Section \ref{sub:other-factorizations} and Chapters \ref{ch:power monoids}-\ref{ch:minimal factorizations}.
+Thank you for letting me work on such an interesting problem suited to my strengths, for being a thorough and thoughtful coathor, and for being a friend during my time in Austria and afterward.
 
 To Alfred Geroldinger, whose work I greatly admire, for hosting me in Austria and for keeping factorization theory and combinatorial group theory fashionable.
 
@@ -120,9 +126,12 @@ To all my friends in the math department for productive (and not) discussions ab
 To Alex and Michael, for many dinners together, for celebrating and commiserating together, and for contemplating trivial things far more deeply than is reasonable---together.
 %having deeper than reasonable discussions of quite trivial things.
 
+I owe Alex a special thanks for his tolerance of my annoying habits in our shared office, for enjoying music with me, and for our many discussions toward solving all the world's problems.
+
 To Jared, for always checking in on me and for reminding me of all the wonderful and silly things that exist in the world.
 
 To all the people I've had the opportunity to know who have helped me to change and to grow.
+Few people will read this document, but many have helped shape it by shaping me.
 
 
 

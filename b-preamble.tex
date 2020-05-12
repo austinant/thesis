@@ -2,7 +2,9 @@
 % BEGIN COMMANDS FOR FORMATTING ACCORDING TO GRADUATE SCHOOL GUIDELINES (i.e. DON'T CHANGE THIS EXCEPT WHERE NOTED %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[doublespacing]{setspace}
+%\usepackage[doublespacing]{setspace}
+\usepackage{setspace}
+\linespread{1.35}
 \pagestyle{plain} %places page numbers at the bottom and suppresses chapter title headings at the tops of pages
 
 %For margins: "includefoot" means that the distance between the footer (not the bottom of the text) and the bottom of the page is 1in
@@ -15,6 +17,9 @@
 
 \usepackage[titletoc]{appendix}
 
+\usepackage{mainmatterfix} %removes page number after TOC
+
+
 
 \usepackage[hidelinks]{hyperref} %eliminates boxes around links/references
 \hypersetup{colorlinks,%
@@ -26,6 +31,7 @@
 %For placing leader dots between chapters and chapter pages in the table of contents
 \usepackage{tocloft}
 \renewcommand{\cftchapdotsep}{\cftdotsep}
+\renewcommand{\contentsname}{\begin{center} \LARGE Table of Contents \end{center}}
 
 \usepackage{enumitem} %this package modifies the enumerate environments
 %It has more customizable labeling and is is compatible with internal references (\label and \ref)

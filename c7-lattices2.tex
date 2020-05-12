@@ -127,7 +127,7 @@ The remaining results in this section highlight the motivating example for the d
 \end{proof}
 
 \begin{rk}
-	Note that the property $(*)$ in Lemma \ref{lem:local-transport} is \textit{not} equivalent to the restriction $\varphi|_W$ being injective, because we have not made any assumption of algebraic structure on $W$; in particular, $W$ is not necessarily closed under addition. 
+	Note that property $(*)$ in Lemma \ref{lem:local-transport} is \textit{not} equivalent to the restriction $\varphi|_W$ being injective, because we have not made any assumption of algebraic structure on $W$; in particular, $W$ is not necessarily closed under addition. 
 \end{rk}
 
 \begin{prop}\label{prop:flattening}
@@ -307,16 +307,24 @@ More often than not, we will use these without mention, or by simply citing ``$\
 	Then $V_j \cap A_h = \{0\}$ for all $j\in [1,m]$, so Lemma \ref{lem:indep-atom-decomp}(ii) implies that $A_h = V\cap A_h  = \{0\}$.
 	This is a contradiction since $A_h$ is an atom and hence nonzero.
 	
-	To witness the injectivity of $f$, let $h\in [1,m]$; Lemma \ref{lem:indep-atom-decomp}(iii) says that $A_h = V\cap A_h = \sum_{j\in f^{-1}(h)} V_j$.
+	To demonstrate the injectivity of $f$, let $h\in [1,m]$; Lemma \ref{lem:indep-atom-decomp}(iii) says that $A_h = V\cap A_h = \sum_{j\in f^{-1}(h)} V_j$.
 	However, since $A_h$ is an atom it must be the case that $|f^{-1}(h)| =1$.
 	
 	Now $f$ is a bijection with $V_j = A_{f(j)}$ for each $j\in [1,m]$.
 	This proves that $A_1*\cdots*A_k \simeq V_1*\cdots*V_m$, as we wished.
 \end{proof}
 
+We will now see how Theorem \ref{thm:ind-atoms} allows us to partially recover \cite[Proposition 4.9]{fan-tringali18} which, for any $\ell\ge 1$, gives sufficient conditions guaranteeing that a subset $U\in \PN$ factors uniquely into exactly $\ell$ atoms.  
+Before giving the details of this process in the following example, we outline the intuition behind the calculation.
+
+To begin, we will look at the set $V$ of vertices of an $\ell$-dimensional cube in $\NN^\ell$.
+We will then iteratively ``flatten" the cube in one dimension at a time, essentially by removing a codimension-$1$ facet and placing it ``far away" from the rest of the set.  
+Each step will preserve all relevant factorization data, per Proposition \ref{prop:flattening}.
+After flattening to one dimension, we will then use Fan and Tringali's result to verify that our initial construction indeed factored uniquely.  
+
 \begin{eg} \label{eg:recover-flat-unique-fac}
-	Theorem \ref{thm:ind-atoms} allows us to partially recover \cite[Proposition 4.9]{fan-tringali18}.
-	We recall here the content of Fan and Tringali's result: Let $a_1,\dots, a_\ell \in \NN$ such that $a_1 + \cdots + a_i < \frac{1}{2} a_{i+1}$ for $i\in [ 1,\ell-2 ]$ and (if $\ell \ge 2$) $a_1+\cdots + a_{\ell-1} < a_\ell - a_{\ell-1}$.
+	%Theorem \ref{thm:ind-atoms} allows us to partially recover \cite[Proposition 4.9]{fan-tringali18}.
+	First recall the content of \cite[Proposition 4.9]{fan-tringali18}: Let $a_1,\dots, a_\ell \in \NN$ such that $a_1 + \cdots + a_i < \frac{1}{2} a_{i+1}$ for $i\in [ 1,\ell-2 ]$ and (if $\ell \ge 2$) $a_1+\cdots + a_{\ell-1} < a_\ell - a_{\ell-1}$.
 	Then $\mathsf{Z}_{\PN}(\{0,a_1\}+\cdots+\{0,a_\ell\}) = \{ \{0,a_1\}*\cdots*\{0,a_\ell\}\}$.
 	
 	There are many sequences of integers $a_1,\dots,a_\ell$ satisfying the specified properties; for simplicity, let us use the sequence given by $a_i = b^{i-1}$, for some integer $b \ge 3$.
@@ -425,11 +433,21 @@ Before proving the Theorem, we construct a class of atoms which will continue to
 \end{proof}
 
 \begin{thm} \label{thm:2n-length-set}
-	Let $n\ge 2$ and let $e_1,\dots, e_n\in \NN^n$ be $\ZZ$-linearly independent.
+	Let $n\ge 2$ and let $e_1,\dots, e_n\in \NN^d$ be $\ZZ$-linearly independent.
 	Set $f = \sum_{i=1}^n e_i$, $g=f+e_n$.
-	Letting $U = \sum_{i=1}^n \{0,e_i\} + \{0,g\}$, we have 
-	\[\mathsf{Z}_{\P_\fon(\NN^n)}(U) = \left\{ \{0,e_1\}*\cdots*\{0,e_n\}*\{0,g\}, \left[\sum_{i=1}^{n-1}\{0,e_i\}+\{0,g\}\right]\cup\{f\} * \{0,e_n\} \right\}. \]
+	Then $U := \sum_{i=1}^n \{0,e_i\} + \{0,g\}$ has exactly two factorizations in $\P_\fon(\NN^d)$:
+	\[ \underbrace{\{0,e_1\}*\cdots*\{0,e_n\}*\{0,g\}}_{\textrm{length } n+1} \quad \textrm{and}\quad \underbrace{\left[\sum_{i=1}^{n-1}\{0,e_i\}+\{0,g\}\right]\cup\{f\} * \{0,e_n\}}_{\textrm{length } 2} \]
 \end{thm}
+
+Our strategy for the proof imitates that of Fan and Tringali's proof of \cite[Theorem 4.10]{fan-tringali18}, but uses $\ZZ$-linear independence to stand in for parts of their arguments which relied on certain inequalities.
+
+We aim to show that, if $U = X+Y$, then both $X$ and $Y$ are very neatly structured: roughly speaking, it will turn out that each must be the set of vertices of some parallelepiped, thus implying that each factors uniquely (by Theorem \ref{thm:ind-atoms}).
+Ranging over all decompositions $X+Y$ will allow us to enumerate all decompositions of $U$ into atoms---of course, there will only end up being two of these, as we will see now.
+
+To help us in this method for understanding sum decompositions, we will use the idea of a \textit{saturated cofactor} as formulated in Definition \ref{def:cofactor}, as well as Proposition \ref{prop:cofactors}(ii).  
+We recall them here (in notation more convenient to the current situation) for ease of reading.
+If $Y \subseteq U$ then the \textit{saturated cofactor} of $Y$ in $U$ is $U\:Y = \bigcap_{y\in Y} (U-y)$.
+$U\:Y$ is the largest solution $X$ to the equation $X+Y=U$ in the sense that, if $X+Y = U$, then $X \subseteq U\:Y$.
 
 \begin{proof}
 	Suppose $U = X + Y$ for some $X,Y\subseteq U$ with $X,Y\neq \{0\}$.
@@ -519,7 +537,7 @@ Before proving the Theorem, we construct a class of atoms which will continue to
 	This allows us to use Claims \ref{cl:sum implies index}, \ref{cl:index implies sum}, and \ref{cl:only one offset factor} to say that $Y = \sum_{i\in I_Y} \{0,e_i\}$ (with $I_Y\neq\emptyset$, otherwise $Y=\{0\}$).
 	Since the $e_i$ are linearly independent, the $\{0,e_i\}$ are $\ZZ$-independent, so $Y$ factors uniquely as the sum of the $\{0,e_i\}$ for $i\in I_Y$ by Theorem \ref{thm:ind-atoms}.
 	
-	With this, we can say more about the structure of $X$.
+	Now we can say more about the structure of $X$ by calculating the saturated cofactor of $Y$ in $U$.
 	By Proposition \ref{prop:cofactors}, we have 
 	\[X \subseteq U\:Y = \bigcap_{y\in Y}(U-y) = \bigcap_{K\subseteq I_Y} \underbrace{\{e_I - e_K, g+e_I - e_K : I\subseteq [ 1,n ] \}}_{=:U_K} \tag{2} \label{Y cofactor}\]
 	
@@ -568,6 +586,15 @@ This builds toward Conjecture \ref{conj:lengths}; but before explicitly showing 
 	Suppose $m\ge1$ and that $V_1,\dots,V_m\subseteq \NN^d$ are atoms such that $U,V_1,\dots, V_m$ are totally $\ZZ$-independent.
 	Then $\mathsf{L}(U+V_1+\cdots+V_m) \cap [ M+m+1,\infty ] = \{N+m\}$.
 \end{lemma}
+
+This Lemma is the workhorse of our main result, Theorem \ref{thm:int-point-construction}. 
+Before descending into the details of the proof, we highlight the broad strokes of our strategy.
+We start with a decomposition of $U+V$ into many (more than $M+m$) atoms.
+The result will easily follow if each atom involves only elements of $U$ or only elements of $V$.
+As such, most of our work will center around the case in which (at least) one atom contains nontrivial sums from $U+V$.
+
+In the spirit of the proofs of Theorem \ref{thm:ind-atoms} and Theorem \ref{thm:2n-length-set}, we will get that this atom, call it $A$, has neat enough structure for us to produce a nontrivial decomposition of the form $A = U\cap A + V\cap A$, a contradiction.
+
 
 \setcounter{claim}{0}
 \begin{proof}
@@ -680,6 +707,7 @@ This builds toward Conjecture \ref{conj:lengths}; but before explicitly showing 
 	We conclude that $k \in \mathsf{L}(U) + m$ and, due to the assumption that $k>M+m$, it must be the case that $k = N + m$.
 \end{proof}
 
+Finally, we give some new evidence toward Conjecture \ref{conj:lengths} by constructing, for each $m\ge 1$ and $n\ge 2$, a subset of $\NN^d$ whose set of factorization lengths is exactly $[2,m+2]\cup\{m+n+1\}$.
 
 \begin{thm} \label{thm:int-point-construction}
 	Fix $n\ge 2$, $m\ge 1$, and $d\ge m+n$.
